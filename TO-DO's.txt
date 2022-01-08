@@ -1,0 +1,46 @@
+MVP TO-DO's
+
+- Custom UI elements                                                                                                                !***!
+    - This makes it easier to develop for both android and iOS at the same time                                                     !***!
+
+Home Screen
+    - Weather Card
+        - Fetch weather using OpenWeatherMap
+    - Working News Cards                                                                                                            !***!
+        - Displaying the same as the ones on the News Screen                                                                        !***!
+    - Events for the day
+        - Classes, projects, tests should all have different colors
+    - Goals Card
+        - Shows goals that you have set for yourself from the beginning of the year
+        - Be able to add or remove goals from the list
+
+Calendar Screen
+    - Create 2 modals
+        - These modals will be activated by 2 buttons located in the header
+            - Side-by-side the other information displyed in the header
+        - Modal should appear without animation, and not full height
+        - Modal 1 is for the vertical Calendar List (default view of the calendar section)
+        - Modal 2 is for the Agenda View 
+    - Include holidays in the calendar
+        - Find these holidays online or create the dataset yourself
+
+News Screen
+    - Make detail pages for the cards                                                                                               !***!
+        - onPress of NewsTabElement, open modal with the correct image,                                                             !***!
+            title, publisher, description and body text as the card
+        - The information should be loaded from Firebase (the info from the cards that is)
+    - Project Submit Page & Card
+        - Possible to upload image on Project Submition
+
+Settings Screen
+    - Add more settings options
+
+Login Screen
+    - Fix the header
+    - Firebase Authentication
+
+
+
+
+
+!***! == completed
