@@ -1,13 +1,13 @@
 MVP TO-DO's
 
-- Custom UI elements                                                                                                                !***!
-    - This makes it easier to develop for both android and iOS at the same time                                                     !***!
+- Custom UI elements                                                                                                                
+    - This makes it easier to develop for both android and iOS at the same time
 
 Home Screen
     - Weather Card
         - Fetch weather using OpenWeatherMap
-    - Working News Cards                                                                                                            !***!
-        - Displaying the same as the ones on the News Screen                                                                        !***!
+    - Working News Cards
+        - Displaying the same as the ones on the News Screen
     - Events for the day
         - Classes, projects, tests should all have different colors
     - Goals Card
@@ -25,8 +25,8 @@ Calendar Screen
         - Find these holidays online or create the dataset yourself
 
 News Screen
-    - Make detail pages for the cards                                                                                               !***!
-        - onPress of NewsTabElement, open modal with the correct image,                                                             !***!
+    - Make detail pages for the cards
+        - onPress of NewsTabElement, open modal with the correct image,
             title, publisher, description and body text as the card
         - The information should be loaded from Firebase (the info from the cards that is)
     - Project Submit Page & Card
@@ -38,9 +38,3 @@ Settings Screen
 Login Screen
     - Fix the header
     - Firebase Authentication
-
-
-
-
-
-!***! == completed
