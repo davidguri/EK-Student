@@ -3,11 +3,8 @@
 EK-Student is an app currently being developed by David Guri, a high-school student from Albania. This app was created as a tool to help students in David's school with calendars containing classes, events etc., with news regarding the school and more.
 
 
-## Features
-
-- Calendar containing events related to the school
-- News page
-- Supports both iOS and Android
+## Projects
+- [To-Do's](https://github.com/EK-Student/ek-student-app/projects/1)
 
 
 ## Demo
