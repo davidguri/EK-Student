@@ -1,27 +1,43 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableHighlight,
+  Modal,
+} from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
 
 import Colors from "../constants/colors";
 import CalendarHeader from "../components/CalendarHeader";
 
+import CalendarListModal from "../components/CalendarListModal";
+import CalendarAgendaModal from "../components/CalendarAgendaModal";
+
 import { CalendarList, Agenda } from "react-native-calendars";
 
 const CalendarScreen = (props) => {
-  const [ selected, setSelected] = useState(1);
+  const [selected, setSelected] = useState(1);
+
+  const [isOpenModalAgenda, setIsOpenModalAgenda] = useState(false);
+  const [isOpenModalList, setIsOpenModalList] = useState(true);
 
   if (selected == 1) {
     var iconColor1 = "black";
     var iconColor2 = Colors.primary;
-    {/* isOpenModalList(true)
-        isOpenModalAgenda(false) */}
+    {
+      /* isOpenModalList(true)
+        isOpenModalAgenda(false) */
+    }
   } else {
     var iconColor2 = "black";
     var iconColor1 = Colors.primary;
-    {/* isOpenModalAgenda(true)
-        isOpenModalList(false) */}
-  };
+    {
+      /* isOpenModalAgenda(true)
+        isOpenModalList(false) */
+    }
+  }
 
   return (
     <View style={styles.screen}>
@@ -30,15 +46,31 @@ const CalendarScreen = (props) => {
         <View style={styles.headerButtonContainer}>
           <TouchableHighlight
             onPress={() => setSelected(1)}
-            style={[styles.buttonLeftContainer, selected === 1 ? { backgroundColor: Colors.primary }: null]}
+            style={[
+              styles.buttonLeftContainer,
+              selected === 1 ? { backgroundColor: Colors.primary } : null,
+            ]}
           >
-            <Ionicons name="calendar" color={iconColor1} size={22.75} style={{ padding: 2.75 }} />
+            <Ionicons
+              name="calendar"
+              color={iconColor1}
+              size={22.75}
+              style={{ padding: 2.75 }}
+            />
           </TouchableHighlight>
           <TouchableHighlight
             onPress={() => setSelected(2)}
-            style={[styles.buttonRightContainer, selected === 2 ? { backgroundColor: Colors.primary }: null]}
+            style={[
+              styles.buttonRightContainer,
+              selected === 2 ? { backgroundColor: Colors.primary } : null,
+            ]}
           >
-            <Ionicons name="list" color={iconColor2} size={22.75}style={{ padding: 2.75 }} />
+            <Ionicons
+              name="list"
+              color={iconColor2}
+              size={22.75}
+              style={{ padding: 2.75 }}
+            />
           </TouchableHighlight>
         </View>
       </View>
