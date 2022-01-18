@@ -52,7 +52,7 @@ export default function App(props) {
   const [isLogged, setIsLogged] = useState(false);
 
   const logInHandler = () => {
-    setIsLogged(true)
+    setIsLogged(true);
   };
 
   if (isLogged == true) {
@@ -68,9 +68,7 @@ export default function App(props) {
                 if (route.name === "Home") {
                   iconName = focused ? "home" : "home-outline";
                 } else if (route.name === "News") {
-                  iconName = focused
-                    ? "newspaper"
-                    : "newspaper-outline";
+                  iconName = focused ? "newspaper" : "newspaper-outline";
                 } else if (route.name === "Calendar") {
                   iconName = focused ? "calendar" : "calendar-outline";
                 }
@@ -83,8 +81,8 @@ export default function App(props) {
               showLabel: true,
               showIcon: true,
               style: {
-                paddingBottom: 5,
-                paddingTop: 5,
+                paddingBottom: 4,
+                paddingTop: 4,
               },
             }}
           >
@@ -110,7 +108,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#000",
     height: "100%",
-    paddingBottom: 20,
+    paddingBottom: 0,
   },
 
   header: {

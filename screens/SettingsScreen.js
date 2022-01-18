@@ -10,6 +10,7 @@ import {
   Switch,
   ScrollView,
   Alert,
+  StatusBar,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 

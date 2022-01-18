@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingTop: 8,
     paddingBottom: 12,
-    borderRadius: 18,
+    borderRadius: 22,
   },
 
   cardTitle: {

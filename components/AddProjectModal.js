@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   Modal,
   TextInput,
+  StatusBar,
 } from "react-native";
 
 import Colors from "../constants/colors";

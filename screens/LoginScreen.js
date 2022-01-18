@@ -61,7 +61,7 @@ const LoginScreen = (props) => {
             </TouchableOpacity>
             <TouchableOpacity onPress={() => {}}>
               <View style={styles.forgotBtn}>
-                <Button title="Forgot password?" color="white" />
+                <Text style={{ color: "white", fontSize: 17, paddingRight: 5, }}>Forgot Password?</Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -139,17 +139,17 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: Colors.primary,
     fontWeight: "600",
-    borderRadius: 20,
-    padding: 5,
-    paddingHorizontal: 24,
+    borderRadius: 18,
+    padding: 4,
+    paddingHorizontal: 22,
     marginHorizontal: 12,
   },
 
   loginBtn: {
     fontWeight: "600",
-    padding: 10,
+    padding: 8.75,
     textAlign: "center",
-    fontSize: 18,
+    fontSize: 17.8,
   },
 
   forgotBtn: {
