@@ -24,6 +24,7 @@ const SettingsScreen = (props) => {
     aboutTheDeveloper: {
       title: "About the Developer",
       description: "Lorem Ipsum Dolor Sit Amet",
+      bodyContent: "Hello there my name is david."
     },
 
     feedback: {
@@ -58,6 +59,30 @@ const SettingsScreen = (props) => {
   const closeModalHandler = () => {
     setIsOpenModal(false);
   };
+
+  var image = true;
+
+  if (image == true) {
+    const AccountImage = () => {
+      return (
+        <Ionicons
+          name="person-circle-outline"
+          color={Colors.primary}
+          size={95}
+        />
+      );
+    };
+  } else {
+    const AccountImage = () => {
+      return (
+        <Ionicons
+          name="person-circle-outline"
+          color={Colors.primary}
+          size={95}
+        />
+      );
+    };
+  }
 
   return (
     <Modal visible={props.visible} animationType="slide">
@@ -96,7 +121,7 @@ const SettingsScreen = (props) => {
                   <View style={styles.leftContainer}>
                     <Ionicons
                       name="code-slash"
-                      size={24}
+                      size={23}
                       color={Colors.primary}
                     />
                     <Text style={styles.containerRowTitle}>
@@ -118,7 +143,7 @@ const SettingsScreen = (props) => {
                 >
                   <View style={styles.leftContainer}>
                     <Ionicons
-                      name="alert-circle"
+                      name="thumbs-up"
                       size={24}
                       color={Colors.primary}
                     />
@@ -165,7 +190,6 @@ const SettingsScreen = (props) => {
                   />
                 </View>
               </Card>
-
             </View>
           </ScrollView>
         </View>

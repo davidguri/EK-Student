@@ -79,14 +79,13 @@ const styles = StyleSheet.create({
   card: {
     margin: 8,
     marginBottom: 0,
-    borderRadius: 15,
+    borderRadius: 18,
   },
 
   cardTitle: {
     fontSize: 26,
     color: "white",
     fontWeight: "700",
-    paddingBottom: 0,
     paddingLeft: 2,
   },
 });

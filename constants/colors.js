@@ -9,8 +9,21 @@ export default {
   redOpacity: "rgba(255, 69, 58, 0.3)",
 
   blue: "#0a84ff",
+  blueOpacity: "",
 
-  daysOff: "",
-  classes: "",
-  events: "",
+  daysOff: {
+    main: "#FA9570",
+    background: "rgb(250, 149, 112, 0.2)",
+    textColor: "#FA9570",
+  },
+  classes: {
+    main: "#8afbe4",
+    background: "rgba(79, 255, 227, 0.2)",
+    textColor: "#8afbe4",
+  },
+  events: {
+    main: "#C6A2FA",
+    background: "rgba(198, 162, 250, 0.2)",
+    textColor: "C6A2FA",
+  },
 };

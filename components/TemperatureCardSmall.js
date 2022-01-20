@@ -90,15 +90,15 @@ const styles = StyleSheet.create({
 
   conditionText: {
     color: Colors.primary,
-    fontSize: 21.5,
+    fontSize: 21,
     fontWeight: "600",
   },
 
   subtitleText: {
     color: "#8c8c8c",
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: "600",
-    paddingTop: 2.55,
+    paddingTop: 3.25,
   },
 
   currentText: {

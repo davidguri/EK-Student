@@ -9,7 +9,9 @@ import {
   Modal,
   ScrollView,
   StatusBar,
+  Linking,
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 import Colors from "../constants/colors";
 import Card from "./Card";
@@ -32,7 +34,28 @@ const AboutDevModal = (props) => {
                 <Text style={styles.title}>About the Developer</Text>
               </View>
               <View style={styles.content}>
-                <Text style={styles.bodyText}>{props.bodyContent}</Text>
+                <Text style={styles.bodyText}>
+                  Hi! I'm David Guri, a student currently in the 1st year of
+                  highschool. I also happen to be the main (only) developer of
+                  this app.
+                </Text>
+
+                <Card style={styles.containerRow}>
+                  <TouchableOpacity
+                    onPress={() => Linking.openURL("https://github.com/EK-Student")}
+                    style={styles.containerButton}
+                  >
+                    <View style={styles.leftContainer}>
+                      <Ionicons
+                        name="logo-github"
+                        size={27}
+                        color={Colors.primary}
+                      />
+                      <Text style={styles.containerRowTitle}>Our GitHub</Text>
+                    </View>
+                    <Text style={styles.modalArrow}>&gt; </Text>
+                  </TouchableOpacity>
+                </Card>
               </View>
             </View>
           </ScrollView>
@@ -98,11 +121,51 @@ const styles = StyleSheet.create({
   content: {
     marginHorizontal: 10,
     paddingTop: 30,
+    width: "90%",
+    marginHorizontal: "5%",
   },
 
   bodyText: {
     color: "white",
-    fontSize: 17,
+    fontSize: 18,
+    paddingBottom: 30,
+  },
+
+  containerRow: {
+    flexDirection: "row",
+    marginVertical: 10,
+    width: "100%",
+    borderRadius: 18,
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingVertical: 10,
+  },
+
+  leftContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+
+  containerButton: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingVertical: 8,
+  },
+
+  containerRowTitle: {
+    color: "#fff",
+    fontWeight: "500",
+    fontSize: 18,
+    paddingLeft: 12,
+  },
+
+  modalArrow: {
+    color: "#8c8c8c",
+    fontSize: 24,
+    fontWeight: "600",
   },
 });
 

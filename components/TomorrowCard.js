@@ -25,13 +25,13 @@ const TomorrowCard = (props) => {
 const styles = StyleSheet.create({
   card: {
     margin: 10,
-    borderRadius: 15,
+    borderRadius: 18,
   },
 
   cardTitle: {
     fontSize: 26,
     color: "white",
-    paddingVertical: 5,
+    paddingBottom: 15,
     fontWeight: "bold",
   },
 

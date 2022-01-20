@@ -51,8 +51,8 @@ const styles = StyleSheet.create({
     width: "95%",
     flexDirection: "row",
     alignItems: "center",
-    paddingVertical: 12,
-    borderRadius: 16,
+    paddingVertical: 13,
+    borderRadius: 18,
   },
 
   textContainer: {
@@ -69,7 +69,8 @@ const styles = StyleSheet.create({
 
   conditionText: {
     color: Colors.primary,
-    fontSize: 20,
+    fontSize: 21,
+    paddingBottom: 4,
     fontWeight: "600",
   },
 
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
 
   currentText: {
     color: "#8c8c8c",
-    fontSize: 35,
+    fontSize: 38,
     paddingLeft: 5,
   },
 });

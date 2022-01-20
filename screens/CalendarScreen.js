@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableHighlight,
-  Modal,
-} from "react-native";
+import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
 
@@ -86,22 +80,34 @@ const CalendarScreen = (props) => {
         onPressArrowLeft={(subtractMonth) => subtractMonth()}
         onPressArrowRight={(addMonth) => addMonth()}
         disableAllTouchEventsForDisabledDays={true}
-        enableSwipeMonths={true}
+        enableSwipeMonths={false}
         displayLoadingIndicator={false}
         markingType={"period"}
         markedDates={{
-          "2021-12-23": {
+          "2022-01-25": {
             selected: true,
-            color: Colors.primary,
+            color: Colors.daysOff.main,
             textColor: "black",
             startingDay: true,
           },
-          "2021-12-24": {
+          "2022-01-26": {
             selected: true,
-            color: Colors.primary,
+            color: Colors.classes.main,
+            textColor: "black",
+          },
+          "2022-01-27": {
+            selected: true,
+            color: Colors.events.main,
             textColor: "black",
             endingDay: true,
           },
+          "2022-01-13": {
+            selected: true,
+            color: Colors.events.main,
+            textColor: "black",
+            endingDay: true,
+            startingDay: true,
+          },          
         }}
         style={{
           height: "100%",
@@ -112,7 +118,7 @@ const CalendarScreen = (props) => {
           backgroundColor: "#000",
           calendarBackground: "#000",
           textSectionTitleColor: "#b6c1cd",
-          todayTextColor: Colors.primary,
+          todayTextColor: Colors.accent,
           dayTextColor: "#d9e1e8",
           textDisabledColor: "#2d4150",
           monthTextColor: Colors.primary,

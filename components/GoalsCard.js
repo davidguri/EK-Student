@@ -16,11 +16,11 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 const DATA = [
   {
     id: "1",
-    title: "Live to see the next day",
+    title: "Launch MVP in April",
   },
   {
     id: "2",
-    title: "To be deleted",
+    title: "Test Goal",
   },
 ];
 
@@ -87,7 +87,7 @@ const GoalsCard = (props) => {
 const styles = StyleSheet.create({
   card: {
     margin: 10,
-    borderRadius: 15,
+    borderRadius: 18,
   },
 
   cardTitleContainer: {

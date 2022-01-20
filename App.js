@@ -26,10 +26,6 @@ const appTheme = {
   },
 };
 
-function Login() {
-  return <LoginScreen />;
-}
-
 function Home() {
   return <HomeScreen />;
 }

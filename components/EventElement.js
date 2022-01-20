@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Button, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 import Colors from "../constants/colors";
 
@@ -19,14 +19,16 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(79, 255, 227, 0.2)",
     borderColor: Colors.primary,
     borderWidth: 3,
-    borderRadius: 10,
-    marginRight: 8,
+    borderRadius: 12,
+    marginRight: 5,
+    minWidth: "20%",
+    maxWidth: "35%"
   },
 
   eventTitle: {
-    fontSize: 15,
+    fontSize: 15.2,
     color: "white",
-    fontWeight: "500",
+    fontWeight: "600",
   },
 });
 

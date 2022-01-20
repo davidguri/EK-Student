@@ -2,11 +2,10 @@ import React from "react";
 import {
   View,
   Text,
-  Button,
-  Image,
   ScrollView,
   TouchableOpacity,
   StyleSheet,
+  FlatList,
 } from "react-native";
 
 import Card from "./Card";
@@ -14,14 +13,43 @@ import EventElement from "./EventElement";
 
 import Colors from "../constants/colors";
 
+const DATA = [
+  {
+    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
+    title: "THIS",
+    eventType: {
+      color: "white",
+      type: "class",
+    }
+  },
+  {
+    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
+    title: "IS",
+  },
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d72",
+    title: "SPARTA",
+  },
+];
+
+const Item = ({ title }) => {
+  <EventElement title={title} />;
+};
+
 const UpcomingCard = (props) => {
+  const renderItem = ({ item }) => {
+    <Item title={item.title} />;
+  };
+
   return (
     <Card style={styles.card}>
       <Text style={styles.cardTitle}>Today's Events</Text>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        {/* Instead of a ScrollView and the elements inside of it, have a flatlist that scrolls horizontally, 
-        and have the elements in a const DATA = () => [] above */}
-      </ScrollView>
+      <FlatList
+        data={DATA}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+        horizontal={true}
+      ></FlatList>
     </Card>
   );
 };
@@ -29,13 +57,13 @@ const UpcomingCard = (props) => {
 const styles = StyleSheet.create({
   card: {
     margin: 10,
-    borderRadius: 15,
+    borderRadius: 18,
   },
 
   cardTitle: {
     fontSize: 26,
     color: "white",
-    paddingVertical: 5,
+    paddingBottom: 15,
     fontWeight: "bold",
   },
 
