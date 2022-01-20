@@ -24,7 +24,7 @@ const SettingsScreen = (props) => {
     aboutTheDeveloper: {
       title: "About the Developer",
       description: "Lorem Ipsum Dolor Sit Amet",
-      bodyContent: "Hello there my name is david."
+      bodyContent: "Hello there my name is david.",
     },
 
     feedback: {
@@ -63,12 +63,15 @@ const SettingsScreen = (props) => {
   var image = true;
 
   if (image == true) {
+    {
+      /* TURN THIS INTO AN ACTUAL IMAGE, WHICH IS IN THE IMAGES FOLDER*/
+    }
     const AccountImage = () => {
       return (
         <Ionicons
           name="person-circle-outline"
           color={Colors.primary}
-          size={95}
+          size={100}
         />
       );
     };
@@ -78,7 +81,7 @@ const SettingsScreen = (props) => {
         <Ionicons
           name="person-circle-outline"
           color={Colors.primary}
-          size={95}
+          size={100}
         />
       );
     };
@@ -98,7 +101,7 @@ const SettingsScreen = (props) => {
             <Ionicons
               name="person-circle-outline"
               color={Colors.primary}
-              size={93}
+              size={100}
             />
             <View style={{ paddingLeft: 17.5 }}>
               <Text style={styles.profileUsername}>{username}</Text>

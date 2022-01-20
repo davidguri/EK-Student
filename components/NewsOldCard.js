@@ -8,13 +8,16 @@ const DATA = {
   item1: {
     publisher: "Principal's Office",
     title: "Back to School Folks",
+    description:
+      "Our school, unlike every other school, starts on the 13th of September.",
     image: "https://i.ytimg.com/vi/RXma-bHU1WE/maxresdefault.jpg",
     id: "item1",
   },
 
   item2: {
     publisher: "Principal's Office",
-    title: "Winter Brake",
+    title: "Winter Break",
+    description: "Bad news, it's been cut short, only 9 days!",
     image: "https://i.ytimg.com/vi/RXma-bHU1WE/maxresdefault.jpg",
     id: "item2",
   },
@@ -22,6 +25,7 @@ const DATA = {
   item3: {
     publisher: "Principal's Office",
     title: "Something Else",
+    description: "Some other description.",
     image: "https://i.ytimg.com/vi/RXma-bHU1WE/maxresdefault.jpg",
     id: "item3",
   },
@@ -29,8 +33,9 @@ const DATA = {
   item4: {
     publisher: "Principal's Office",
     title: "Something Else",
+    description: "Some other description.",
     image: "https://i.ytimg.com/vi/RXma-bHU1WE/maxresdefault.jpg",
-    id: "item4",
+    id: "item3",
   },
 };
 
