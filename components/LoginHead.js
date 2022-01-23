@@ -14,7 +14,7 @@ const LoginHead = (props) => {
   return (
     <View style={styles.screen}>
       <View style={styles.head}>
-        <Image source={Logo} style={{ width: 85, height: 45 }} />
+        <Image source={Logo} style={{ width: 85, height: 32 }} />
         <Text style={styles.headTitle}>{props.title}</Text>
       </View>
     </View>

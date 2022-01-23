@@ -5,28 +5,25 @@ import Colors from "../constants/colors";
 
 const EventElement = (props) => {
   return (
-    <TouchableOpacity onPress={props.event}>
-      <View style={{ ...styles.eventElement, ...props.style }}>
-        <Text style={styles.eventTitle}>{props.title}</Text>
-      </View>
-    </TouchableOpacity>
+    <View style={{ ...styles.eventElement, ...props.color }}>
+      <Text style={styles.eventTitle}>{props.title}</Text>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   eventElement: {
-    padding: 10,
-    backgroundColor: "rgba(79, 255, 227, 0.2)",
+    padding: 12,
+    backgroundColor: Colors.opacity,
     borderColor: Colors.primary,
     borderWidth: 3,
-    borderRadius: 12,
-    marginRight: 5,
-    minWidth: "20%",
-    maxWidth: "35%"
+    borderRadius: 16,
+    marginRight: 12,
+    marginBottom: 5,
   },
 
   eventTitle: {
-    fontSize: 15.2,
+    fontSize: 15,
     color: "white",
     fontWeight: "600",
   },

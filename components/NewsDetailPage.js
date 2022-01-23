@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    color: "rgb(255, 69, 58)",
+    color: Colors.red,
     fontSize: 18,
     fontWeight: "800",
     padding: 5,

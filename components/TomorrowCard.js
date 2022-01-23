@@ -18,6 +18,20 @@ const TomorrowCard = (props) => {
   return (
     <Card style={styles.card}>
       <Text style={styles.cardTitle}>Tomorrow</Text>
+      <View style={styles.content}>
+        <View style={styles.section}>
+          <Text style={styles.sectionHeader}>Classes</Text>
+        </View>
+        <View style={styles.section}>
+          <Text style={styles.sectionHeader}>Projects</Text>
+        </View>
+        <View style={styles.section}>
+          <Text style={styles.sectionHeader}>Tests</Text>
+        </View>
+        <View style={styles.section}>
+          <Text style={styles.sectionHeader}>Events</Text>
+        </View>
+      </View>
     </Card>
   );
 };
@@ -35,26 +49,16 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 
-  events: {
-    flexDirection: "row",
-    paddingVertical: 10,
+  section: {
+    flexDirection: "column",
+    paddingTop: 10,
   },
 
-  eventElement: {
-    padding: 10,
-    backgroundColor: Colors.primary,
-    borderRadius: 10,
-    marginRight: 8,
-  },
-
-  eventTitle: {
-    fontSize: 15,
-    color: "black",
-  },
-
-  eventType: {
-    fontSize: 15,
-    color: "white",
+  sectionHeader: {
+    fontSize: 17,
+    color: Colors.primary,
+    fontWeight: "600",
+    paddingBottom: 5,
   },
 });
 

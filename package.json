@@ -34,6 +34,7 @@
     "react-native-gesture-handler": "~1.10.2",
     "react-native-image-picker": "^4.6.1",
     "react-native-modal": "^13.0.0",
+    "react-native-modals": "^0.22.3",
     "react-native-navigation-bar-color": "^2.0.1",
     "react-native-radio-buttons-group": "^2.2.7",
     "react-native-reanimated": "^2.2.4",

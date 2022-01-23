@@ -84,6 +84,27 @@ const CalendarScreen = (props) => {
         displayLoadingIndicator={false}
         markingType={"period"}
         markedDates={{
+          "2022-01-01": {
+            selected: true,
+            color: Colors.classes.main,
+            textColor: "black",
+            endingDay: true,
+            startingDay: true,
+          },
+          "2022-01-13": {
+            selected: true,
+            color: Colors.events.main,
+            textColor: "black",
+            endingDay: true,
+            startingDay: true,
+          },
+          "2022-01-23": {
+            selected: true,
+            color: Colors.daysOff.main,
+            textColor: "black",
+            endingDay: true,
+            startingDay: true,
+          }, 
           "2022-01-25": {
             selected: true,
             color: Colors.daysOff.main,
@@ -100,14 +121,7 @@ const CalendarScreen = (props) => {
             color: Colors.events.main,
             textColor: "black",
             endingDay: true,
-          },
-          "2022-01-13": {
-            selected: true,
-            color: Colors.events.main,
-            textColor: "black",
-            endingDay: true,
-            startingDay: true,
-          },          
+          },         
         }}
         style={{
           height: "100%",
