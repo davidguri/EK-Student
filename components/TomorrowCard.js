@@ -17,7 +17,9 @@ import Colors from "../constants/colors";
 const TomorrowCard = (props) => {
   return (
     <Card style={styles.card}>
-      <Text style={styles.cardTitle}>Tomorrow</Text>
+      <View style={styles.cardTitleContainer}>
+        <Text style={styles.cardTitle}>Tomorrow</Text>
+      </View>
       <View style={styles.content}>
         <View style={styles.section}>
           <Text style={styles.sectionHeader}>Classes</Text>
@@ -42,11 +44,20 @@ const styles = StyleSheet.create({
     borderRadius: 18,
   },
 
+  cardTitleContainer: {
+    borderBottomWidth: 2,
+    borderBottomColor: "rgba(79, 255, 227, 0.2)",
+    paddingBottom: 10,
+  },
+
   cardTitle: {
     fontSize: 26,
     color: "white",
-    paddingBottom: 15,
     fontWeight: "bold",
+  },
+
+  content: {
+    paddingTop: 5,
   },
 
   section: {
@@ -56,7 +67,7 @@ const styles = StyleSheet.create({
 
   sectionHeader: {
     fontSize: 17,
-    color: Colors.primary,
+    color: "white",
     fontWeight: "600",
     paddingBottom: 5,
   },

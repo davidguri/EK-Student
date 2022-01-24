@@ -128,7 +128,9 @@ const styles = StyleSheet.create({
   bodyText: {
     color: "white",
     fontSize: 18,
-    paddingBottom: 30,
+    paddingBottom: 32,
+    width: "98%",
+    marginHorizontal: "1%",
   },
 
   containerRow: {

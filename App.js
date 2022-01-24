@@ -18,7 +18,7 @@ const appTheme = {
   dark: true,
   colors: {
     primary: Colors.primary,
-    background: "#000",
+    background: Colors.backgroundColor,
     card: "#000",
     text: "#fff",
     border: "#000",

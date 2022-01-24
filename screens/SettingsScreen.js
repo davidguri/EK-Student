@@ -64,7 +64,7 @@ const SettingsScreen = (props) => {
 
   if (image == true) {
     {
-      /* TURN THIS INTO AN ACTUAL IMAGE, WHICH IS IN THE IMAGES FOLDER*/
+      /* TURN THIS INTO AN ACTUAL IMAGE, WHICH IS IN THE IMAGES FOLDER */
     }
     const AccountImage = () => {
       return (

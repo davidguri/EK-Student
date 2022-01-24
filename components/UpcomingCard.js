@@ -41,9 +41,9 @@ const DATA = [
 const UpcomingCard = (props) => {
   const [isModalVisible, setModalVisible] = useState(false);
 
-  const Item = ({ title }) => (
+  const Item = ({ title, colors }) => (
     <TouchableOpacity onPress={toggleModalHandler}>
-      <EventElement title={title} color={DATA.colors} />
+      <EventElement title={title} colors={{ colors }} />
     </TouchableOpacity>
   );
 
@@ -51,11 +51,15 @@ const UpcomingCard = (props) => {
     setModalVisible(!isModalVisible);
   };
 
-  const renderItem = ({ item }) => <Item title={item.title} />;
+  const renderItem = ({ item }) => (
+    <Item title={item.title} colors={item.colors} />
+  );
 
   return (
     <Card style={styles.card}>
-      <Text style={styles.cardTitle}>For Today</Text>
+      <View style={styles.cardTitleContainer}>
+        <Text style={styles.cardTitle}>For Today</Text>
+      </View>
       <FlatList
         data={DATA}
         renderItem={renderItem}
@@ -70,31 +74,35 @@ const UpcomingCard = (props) => {
         style={{ margin: 0 }}
         hideModalContentWhileAnimating={true}
         onBackdropPress={toggleModalHandler}
-        animationInTiming={420}
-        animationOutTiming={380}
+        animationInTiming={450}
+        animationOutTiming={350}
       >
         <View style={styles.main}>
-        {/* Background color of the modal should be determined by the color of the event. */}
+          {/* Background color of the modal should be determined by the color of the event. */}
           <View style={styles.header}>
             <View style={styles.textContainer}>
               <Text style={styles.headerTitle}>"EVENT TITLE"</Text>
               <Text style={styles.headerSubtitle}>"TYPE OF EVENT"</Text>
             </View>
-            <TouchableOpacity
-              style={styles.buttonContainer}
-              onPress={toggleModalHandler}
-            >
-              <Text style={styles.buttonText}>X</Text>
-            </TouchableOpacity>
           </View>
-
           <View style={styles.mainContent}>
-            <View style={styles.timeSection}>
-            <Text style={styles.timeText}>Time of event</Text>
-            <Text style={styles.time}>"HH:MM"</Text>
+            <View style={[styles.section, styles.column]}>
+              <View style={[styles.section, styles.row, { paddingBottom: 0 }]}>
+                <Text style={styles.timeText}>Start of event:</Text>
+                <Text style={styles.time}>"HH:MM"</Text>
+              </View>
+              <View style={[styles.section, styles.row, { paddingTop: 0 }]}>
+                <Text style={styles.timeText}>End of event:</Text>
+                <Text style={styles.time}>"HH:MM"</Text>
+              </View>
+            </View>
+            <View style={[styles.section, styles.column]}>
+              <Text style={styles.description}>Event Description:</Text>
+              <Text style={styles.descriptionBody}>
+                "Lorem Ipsum Dolor Sit Amet"
+              </Text>
             </View>
           </View>
-
           <View style={styles.footer}></View>
         </View>
       </Modal>
@@ -117,7 +125,7 @@ const styles = StyleSheet.create({
 
   main: {
     margin: 20,
-    paddingVertical: 10,
+    paddingVertical: 15,
     paddingHorizontal: 15,
     borderRadius: 15,
     backgroundColor: Colors.primary,
@@ -127,7 +135,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 20,
+    marginBottom: 18,
   },
 
   textContainer: {
@@ -146,23 +154,16 @@ const styles = StyleSheet.create({
     color: "black",
   },
 
-  buttonContainer: {
-    borderWidth: 4,
-    borderColor: "black",
-    borderRadius: 50,
-    backgroundColor: "transparent",
-    marginVertical: 5,
+  section: {
+    paddingTop: 7,
+    paddingBottom: 5,
   },
 
-  buttonText: {
-    color: "black",
-    fontSize: 20,
-    fontWeight: "800",
-    padding: 8,
-    paddingHorizontal: 13,
+  column: {
+    flexDirection: "column",
   },
 
-  timeSection: {
+  row: {
     justifyContent: "space-between",
     flexDirection: "row",
   },
@@ -174,9 +175,19 @@ const styles = StyleSheet.create({
   },
 
   time: {
+    fontSize: 19,
+    fontWeight: "600",
+    color: "black",
+  },
+
+  description: {
     fontSize: 18,
     fontWeight: "600",
     color: "black",
+  },
+
+  descriptionBody: {
+    paddingTop: 4,
   },
 });
 

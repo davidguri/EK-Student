@@ -1,6 +1,7 @@
 export default {
   accent: "#FF6349",
   back: "#1a1a1a",
+  backgroundColor: "#000",
 
   primary: "#8afbe4",
   opacity: "rgba(79, 255, 227, 0.2)",
