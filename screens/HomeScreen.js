@@ -6,10 +6,8 @@ import {
   TouchableOpacity,
   ScrollView,
   Image,
-  Touchable,
   Linking,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 
 import Header from "../components/Header";
 import TomorrowCard from "../components/TomorrowCard";
@@ -49,12 +47,10 @@ const HomeScreen = (props) => {
           </View>
         </Card>
       </View>
-      <View style={styles.goalsContainer}>
-        <GoalsCard />
-      </View>
       <View>
         <UpcomingCard />
         <TomorrowCard />
+        <GoalsCard />
         <Card style={styles.card}>
           <NewsTodayCard />
         </Card>
