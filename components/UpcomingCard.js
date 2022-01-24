@@ -43,7 +43,7 @@ const UpcomingCard = (props) => {
 
   const Item = ({ title, colors }) => (
     <TouchableOpacity onPress={toggleModalHandler}>
-      <EventElement title={title} colors={{ colors }} />
+      <EventElement title={title} />
     </TouchableOpacity>
   );
 

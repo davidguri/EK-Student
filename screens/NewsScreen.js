@@ -97,28 +97,6 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
   },
 
-  events: {
-    flexDirection: "row",
-    paddingVertical: 10,
-  },
-
-  eventElement: {
-    padding: 10,
-    backgroundColor: Colors.primary,
-    borderRadius: 10,
-    marginRight: 8,
-  },
-
-  eventTitle: {
-    fontSize: 15,
-    color: "black",
-  },
-
-  eventType: {
-    fontSize: 15,
-    color: "white",
-  },
-
   span: {
     color: Colors.primary,
   },

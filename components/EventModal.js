@@ -9,7 +9,6 @@ import {
 import Modal from "react-native-modal";
 
 import Colors from "../constants/colors";
-import Card from "../components/Card";
 
 const EventModal = (props) => {
   return (
@@ -44,7 +43,7 @@ const EventModal = (props) => {
           <View style={[styles.section, styles.column]}>
             <Text style={styles.description}>Event Description:</Text>
             <Text style={styles.descriptionBody}>
-              "Lorem Ipsum Dolor Sit Amet"
+              Lorem Ipsum Dolor Sit Amet
             </Text>
           </View>
         </View>

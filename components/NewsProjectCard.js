@@ -42,10 +42,10 @@ const styles = StyleSheet.create({
   },
 
   cardTitle: {
-    fontSize: 26,
+    fontSize: 24,
     color: "white",
     fontWeight: "bold",
-    paddingVertical: 5,
+    paddingVertical: 7.75,
     marginHorizontal: 1,
   },
 

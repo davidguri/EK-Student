@@ -5,7 +5,7 @@ import Colors from "../constants/colors";
 
 const EventElement = (props) => {
   return (
-    <View style={{ ...styles.eventElement, ...props.color }}>
+    <View style={styles.eventElement}>
       <Text style={styles.eventTitle}>{props.title}</Text>
     </View>
   );

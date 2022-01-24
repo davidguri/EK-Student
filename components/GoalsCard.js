@@ -61,13 +61,14 @@ const GoalsCard = (props) => {
   return (
     <Card style={styles.card}>
       <View style={styles.cardTitleContainer}>
-        <Text style={styles.cardTitle}>Your Goals</Text>
+        <Text style={styles.cardTitle}>Tasks &#38; Goals</Text>
       </View>
       <FlatList
         data={DATA}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         style={styles.list}
+        scrollEnabled={false}
       />
       <TouchableOpacity
         onPress={() => setIsOpenAddModal(true)}
@@ -122,7 +123,7 @@ const styles = StyleSheet.create({
     borderColor: Colors.primary,
     borderRadius: 50,
     backgroundColor: Colors.opacity,
-    marginTop: 28,
+    marginTop: 20,
     marginBottom: 3,
   },
 
