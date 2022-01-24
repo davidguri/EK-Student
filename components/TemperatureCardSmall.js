@@ -12,15 +12,15 @@ const TemperatureCardSmall = (props) => {
   var apiKey = "02d60f9f68d161477b8d81a069ac7d31";
 
   var temp;
-  var min;
-  var max;
+  var min = 11;
+  var max = 16;
   var desc;
 
   var weather = "Drizzle";
   var temperature = "11";
 
   return (
-    <Card style={styles.card}>
+    <Card style={{ ...styles.tempCard, ...props.styles }}>
       <View style={styles.topContainer}>
         <View style={styles.imageContainer}>
           <Ionicons
@@ -41,9 +41,7 @@ const TemperatureCardSmall = (props) => {
             {weatherConditions[weather].title}
           </Text>
           <View>
-            <Text style={styles.subtitleText}>
-              {weatherConditions[weather].subtitle}
-            </Text>
+            <Text style={styles.subtitleText}>H: {max}&deg;  L: {min}&deg;</Text>
           </View>
         </View>
       </View>
@@ -52,8 +50,8 @@ const TemperatureCardSmall = (props) => {
 };
 
 const styles = StyleSheet.create({
-  card: {
-    width: "47.75%",
+  tempCard: {
+    width: "100%",
     flexDirection: "column",
     justifyContent: "center",
     paddingVertical: 12,
@@ -95,14 +93,14 @@ const styles = StyleSheet.create({
   },
 
   subtitleText: {
-    color: "#8c8c8c",
-    fontSize: 14.5,
+    color: "#fff",
+    fontSize: 13.25,
     fontWeight: "600",
     paddingTop: 3.25,
   },
 
   currentText: {
-    color: "#8c8c8c",
+    color: "#fff",
     fontSize: 38,
   },
 });

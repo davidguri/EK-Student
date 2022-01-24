@@ -63,7 +63,9 @@ const NewsScreen = (props) => {
         <NewsHeader title="News" sub={date} />
       </View>
       <View style={styles.smallCardContainer}>
-        <TemperatureCardSmall />
+        <View style={styles.leftConatiner}>
+          <TemperatureCardSmall />
+        </View>
         <NewsProjectCard />
       </View>
       <View style={{ margin: 3, marginBottom: 12 }}>
@@ -105,6 +107,14 @@ const styles = StyleSheet.create({
     margin: 10,
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
+  },
+
+  leftConatiner: {
+    flexDirection: "column",
+    justifyContent: "center",
+    width: "47.75%",
+    alignItems: "center",
   },
 });
 

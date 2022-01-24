@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: "white",
     fontWeight: "bold",
-    paddingVertical: 7.75,
+    paddingVertical: 7,
     marginHorizontal: 1,
   },
 
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     borderRadius: 18,
     borderColor: Colors.primary,
     borderWidth: 4,
-    marginTop: 10,
+    marginTop: 8,
     marginBottom:8,
   },
 

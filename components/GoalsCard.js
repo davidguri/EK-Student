@@ -6,50 +6,24 @@ import {
   FlatList,
   TouchableOpacity,
 } from "react-native";
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 import Colors from "../constants/colors";
 import Card from "./Card";
-import AddGoalModal from "./AddGoalModal";
 
-import BouncyCheckbox from "react-native-bouncy-checkbox";
-
-const DATA = [
-  {
-    id: "1",
-    title: "Launch MVP in April",
-  },
-  {
-    id: "2",
-    title: "Test Goal",
-  },
-];
-
-{
-  /* This element will be replaced by Firebase */
-}
-
-const Item = ({ title }) => {
-  return (
-    <View style={styles.item}>
-      <BouncyCheckbox
-        size={28}
-        fillColor={Colors.opacity}
-        unfillColor="transparent"
-        text={title}
-        iconStyle={{ borderColor: Colors.primary, borderWidth: 2 }}
-        textStyle={{ fontSize: 20, color: "white" }}
-      />
-    </View>
-  );
-};
+import GoalModal from "./GoalsModal";
+import ToDoModal from "./ToDoModal";
 
 const GoalsCard = (props) => {
-  const renderItem = ({ item }) => <Item title={item.title} />;
+  const [isOpenGoalModal, setIsOpenGoalModal] = useState(false);
+  const [isOpenToDoModal, setIsOpenToDoModal] = useState(false);
 
-  const [isOpenAddModal, setIsOpenAddModal] = useState(false);
+  const toggleGoalModalHandler = () => {
+    setIsOpenGoalModal(!isOpenGoalModal);
+  };
 
-  const closeModalHandler = () => {
-    setIsOpenAddModal(false);
+  const toggleToDoModalHandler = () => {
+    setIsOpenToDoModal(!isOpenToDoModal);
   };
 
   const addElement = () => {
@@ -61,79 +35,63 @@ const GoalsCard = (props) => {
   return (
     <Card style={styles.card}>
       <View style={styles.cardTitleContainer}>
-        <Text style={styles.cardTitle}>Tasks &#38; Goals</Text>
+        <Text style={styles.cardTitle}>Goals and To-Do's</Text>
       </View>
-      <FlatList
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        style={styles.list}
-        scrollEnabled={false}
-      />
-      <TouchableOpacity
-        onPress={() => setIsOpenAddModal(true)}
-        style={styles.button}
-      >
-        <Text style={styles.buttonText}>+</Text>
-      </TouchableOpacity>
-      <AddGoalModal
-        visible={isOpenAddModal}
-        onCancel={closeModalHandler}
-        onSubmit={addElement}
-      />
+      <View style={styles.bodySection}>
+        <TouchableOpacity
+          onPress={toggleGoalModalHandler}
+          style={styles.buttonContainer}
+        >
+          <Text style={styles.buttonText}>Goals</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={toggleToDoModalHandler}
+          style={styles.buttonContainer}
+        >
+          <Text style={styles.buttonText}>To-Do's</Text>
+        </TouchableOpacity>
+      </View>
+      <GoalModal visible={isOpenGoalModal} onCancel={toggleGoalModalHandler} />
+      <ToDoModal visible={isOpenToDoModal} onCancel={toggleToDoModalHandler} />
     </Card>
   );
 };
 
 const styles = StyleSheet.create({
   card: {
-    margin: 10,
-    borderRadius: 18,
+    borderRadius: 22,
+    width: "47.75%",
   },
 
   cardTitleContainer: {
-    borderBottomWidth: 2,
-    borderBottomColor: "rgba(79, 255, 227, 0.2)",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
   },
 
   cardTitle: {
-    fontSize: 26,
+    fontSize: 24,
     color: "white",
     fontWeight: "bold",
     marginBottom: 10,
   },
 
-  list: {
-    paddingTop: 12,
-  },
-
-  item: {
-    padding: 12,
-    flexDirection: "row",
-    alignItems: "center",
-  },
-
-  button: {
-    borderWidth: 4,
-    width: "62%",
-    marginHorizontal: "19%",
-    borderColor: Colors.primary,
-    borderRadius: 50,
+  buttonContainer: {
+    width: "100%",
     backgroundColor: Colors.opacity,
-    marginTop: 20,
-    marginBottom: 3,
+    borderRadius: 18,
+    borderColor: Colors.primary,
+    borderWidth: 4,
+    marginTop: 8,
+    marginBottom: 6,
   },
 
   buttonText: {
-    color: Colors.primary,
-    fontSize: 27.5,
+    fontSize: 18,
     fontWeight: "700",
-    paddingTop: 3.35,
-    paddingBottom: 3.8,
+    padding: 9,
     textAlign: "center",
+    color: Colors.primary,
   },
 });
 

@@ -5,9 +5,9 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
-  Image,
   Linking,
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 import Header from "../components/Header";
 import TomorrowCard from "../components/TomorrowCard";
@@ -19,8 +19,6 @@ import GoalsCard from "../components/GoalsCard";
 import Colors from "../constants/colors";
 import Card from "../components/Card";
 
-import Logo from "../assets/Images/teamsIcon.png";
-
 const HomeScreen = (props) => {
   return (
     <ScrollView style={styles.screen}>
@@ -28,29 +26,25 @@ const HomeScreen = (props) => {
         <Header title="Home" />
       </View>
       <View style={styles.smallCardContainer}>
-        <TemperatureCardSmall />
-        <Card style={styles.teamsCard}>
-          <View style={styles.topContainer}>
-            <Image source={Logo} style={{ width: 67.5, height: 67.5 }} />
-          </View>
-          <View style={styles.bottomContainer}>
+        <View style={styles.leftContainer}>
+          <TemperatureCardSmall />
+          <Card style={styles.teamsCard}>
             <TouchableOpacity
-              onPress={() =>
-                Linking.openURL(
-                  "https://www.microsoft.com/en-ww/microsoft-teams/log-in"
-                )
-              }
+              onPress={() => Linking.openURL("https://youtube.com")}
               style={styles.buttonContainer}
             >
-              <Text style={styles.title}>Teams</Text>
+              <View style={styles.section}>
+                <Ionicons name="logo-xbox" size={29} color={Colors.primary} />
+                <Text style={styles.buttonText}>Teams</Text>
+              </View>
             </TouchableOpacity>
-          </View>
-        </Card>
+          </Card>
+        </View>
+        <GoalsCard />
       </View>
       <View>
         <UpcomingCard />
         <TomorrowCard />
-        <GoalsCard />
         <Card style={styles.card}>
           <NewsTodayCard />
         </Card>
@@ -90,33 +84,53 @@ const styles = StyleSheet.create({
   },
 
   teamsCard: {
-    width: "47.75%",
+    width: "100%",
     flexDirection: "column",
-    justifyContent: "space-between",
-    paddingVertical: 12,
-    borderRadius: 22,
+    justifyContent: "center",
+    paddingVertical: 9,
+    borderRadius: 21,
+    borderColor: Colors.primary,
+    borderWidth: 3.8,
+    backgroundColor: Colors.opacity,
   },
-
-  buttonContainer: {},
 
   smallCardContainer: {
     margin: 10,
+    width: "95%",
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
   },
 
-  topContainer: {
-    paddingTop: 5,
-  },
-
-  bottomContainer: {
-    paddingBottom: 5,
+  leftContainer: {
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "47.75%",
   },
 
   title: {
     fontSize: 30,
     color: "white",
     fontWeight: "600",
+  },
+
+  buttonContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+
+  buttonText: {
+    paddingLeft: 10,
+    fontSize: 19,
+    color: Colors.primary,
+    fontWeight: "600",
+  },
+
+  section: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
 });
 

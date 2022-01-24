@@ -21,7 +21,7 @@ const AddGoalModal = (props) => {
         <View style={styles.screen}>
 
           <View style={styles.header}>
-            <Text style={styles.headerTitle}>Add Goal</Text>
+            <Text style={styles.headerTitle}>{props.title}</Text>
           </View>
 
           <View style={styles.body}>
@@ -30,10 +30,10 @@ const AddGoalModal = (props) => {
               value={text}
               onChangeText={onChangeText}
               placeholderTextColor="#777"
-              placeholder="Title of goal"
+              placeholder="Title"
             />
             <TouchableOpacity onPress={props.onSubmit} style={styles.submitContainer}>
-                <Text style={styles.submitButton}>Add Goal</Text>
+                <Text style={styles.submitButton}>{props.title}</Text>
             </TouchableOpacity>
           </View>
 
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
   submitButton: {
     fontSize: 21,
     fontWeight: "700",
-    padding: 12.25,
+    padding: 11.5,
     textAlign: "center",
     color: Colors.primary,
   },
