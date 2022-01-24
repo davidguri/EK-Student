@@ -34,7 +34,7 @@ const HomeScreen = (props) => {
               style={styles.buttonContainer}
             >
               <View style={styles.section}>
-                <Ionicons name="logo-xbox" size={29} color={Colors.primary} />
+                <Ionicons name="logo-tumblr" size={28} color={Colors.primary} />
                 <Text style={styles.buttonText}>Teams</Text>
               </View>
             </TouchableOpacity>
@@ -81,16 +81,15 @@ const styles = StyleSheet.create({
     margin: 10,
     marginBottom: 15,
     borderRadius: 15,
+    padding: 10,
   },
 
   teamsCard: {
     width: "100%",
-    flexDirection: "column",
-    justifyContent: "center",
-    paddingVertical: 9,
-    borderRadius: 21,
+    paddingVertical: 8.75,
+    borderRadius: 22,
     borderColor: Colors.primary,
-    borderWidth: 3.8,
+    borderWidth: 4,
     backgroundColor: Colors.opacity,
   },
 
@@ -99,12 +98,10 @@ const styles = StyleSheet.create({
     width: "95%",
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center",
   },
 
   leftContainer: {
     flexDirection: "column",
-    alignItems: "center",
     justifyContent: "space-between",
     width: "47.75%",
   },

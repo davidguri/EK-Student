@@ -18,6 +18,7 @@ import Colors from "../constants/colors";
 import Card from "../components/Card";
 
 import AboutDevModal from "../components/AboutDevModal";
+import ProfileModal from "../components/ProfileModal";
 
 const SettingsScreen = (props) => {
   const DATA = {
@@ -40,7 +41,6 @@ const SettingsScreen = (props) => {
 
   var username = "David Guri";
   var email = "dguri@ernestkoliqi.com";
-  var account = "Developer";
 
   const [isEnabled, setIsEnabled] = useState(true);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
@@ -51,6 +51,11 @@ const SettingsScreen = (props) => {
     ]);
 
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isOpenProfileModal, setIsOpenProfileModal] = useState(false);
+
+  const toggleProfileModalHandler = () => {
+    setIsOpenProfileModal(!isOpenProfileModal)
+  };
 
   const openAboutDevHandler = () => {
     setIsOpenModal(true);
@@ -59,33 +64,6 @@ const SettingsScreen = (props) => {
   const closeModalHandler = () => {
     setIsOpenModal(false);
   };
-
-  var image = true;
-
-  if (image == true) {
-    {
-      /* TURN THIS INTO AN ACTUAL IMAGE, WHICH IS IN THE IMAGES FOLDER */
-    }
-    const AccountImage = () => {
-      return (
-        <Ionicons
-          name="person-circle-outline"
-          color={Colors.primary}
-          size={100}
-        />
-      );
-    };
-  } else {
-    const AccountImage = () => {
-      return (
-        <Ionicons
-          name="person-circle-outline"
-          color={Colors.primary}
-          size={100}
-        />
-      );
-    };
-  }
 
   return (
     <Modal visible={props.visible} animationType="slide">
@@ -97,23 +75,42 @@ const SettingsScreen = (props) => {
               <Text style={styles.buttonText}>X</Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.accountContainer}>
-            <Ionicons
-              name="person-circle-outline"
-              color={Colors.primary}
-              size={100}
-            />
-            <View style={{ paddingLeft: 17.5 }}>
-              <Text style={styles.profileUsername}>{username}</Text>
-              <Text style={styles.profileEmail}>{email}</Text>
+          <ScrollView
+            style={{ width: "100%" }}
+            showsVerticalScrollIndicator={false}
+          >
+            <View style={styles.accountContainer}>
+              <Ionicons
+                name="person-circle-outline"
+                color={Colors.primary}
+                size={125}
+              />
+              <View>
+                <Text style={styles.profileUsername}>{username}</Text>
+                <Text style={styles.profileEmail}>{email}</Text>
+              </View>
             </View>
-          </View>
 
-          <ScrollView style={{ width: "100%" }}>
             <View style={{ alignItems: "center" }}>
-              <Card style={styles.container}>
-                <Text style={styles.containerTitle}>Account Type</Text>
-                <Text style={styles.accountType}>{account}</Text>
+              <Card style={styles.containerRow}>
+                <TouchableOpacity
+                  onPress={toggleProfileModalHandler}
+                  style={styles.containerButton}
+                >
+                  <View style={styles.leftContainer}>
+                    <Ionicons
+                      name="person-circle-outline"
+                      size={25}
+                      color={Colors.primary}
+                    />
+                    <Text style={styles.containerRowTitle}>Profile</Text>
+                  </View>
+                  <Text style={styles.modalArrow}>&gt; </Text>
+                </TouchableOpacity>
+                <ProfileModal
+                  visible={isOpenProfileModal}
+                  onCancel={toggleProfileModalHandler}
+                />
               </Card>
 
               <Card style={styles.containerRow}>
@@ -273,27 +270,26 @@ const styles = StyleSheet.create({
   },
 
   accountContainer: {
-    marginTop: 24,
-    marginBottom: 24,
-    width: "90%",
-    borderRadius: 18,
-    flexDirection: "row",
+    marginBottom: 26,
+    width: "100%",
+    flexDirection: "column",
     alignItems: "center",
-    paddingLeft: 5,
   },
 
   profileUsername: {
     color: "#fff",
-    fontSize: 25,
-    paddingBottom: 2,
+    fontSize: 26,
+    paddingBottom: 2.25,
     fontWeight: "600",
+    textAlign: "center",
   },
 
   profileEmail: {
-    paddingTop: 2,
-    fontSize: 17,
+    paddingTop: 2.25,
+    fontSize: 16,
     fontWeight: "500",
-    color: "#8c8c8c",
+    color: Colors.primary,
+    textAlign: "center",
   },
 
   accountTitle: {
@@ -313,13 +309,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "500",
     fontSize: 18,
-    paddingLeft: 12,
-  },
-
-  accountType: {
-    paddingTop: 4,
-    color: "#8c8c8c",
-    fontSize: 15,
+    marginLeft: 15,
   },
 
   modalArrow: {

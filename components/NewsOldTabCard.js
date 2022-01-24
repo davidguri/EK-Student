@@ -26,14 +26,14 @@ const NewsOldTabCard = (props) => {
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: 18,
+    borderRadius: 20,
     marginBottom: 0,
     marginTop: 5,
-    width: "45%",
+    width: "100%",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingVertical: 12,
+    paddingVertical: 10,
   },
 });
 

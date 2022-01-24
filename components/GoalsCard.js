@@ -3,20 +3,20 @@ import {
   StyleSheet,
   Text,
   View,
-  FlatList,
   TouchableOpacity,
 } from "react-native";
-import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 import Colors from "../constants/colors";
 import Card from "./Card";
 
 import GoalModal from "./GoalsModal";
 import ToDoModal from "./ToDoModal";
+import ProjectsModal from "./ProjectsModal";
 
 const GoalsCard = (props) => {
   const [isOpenGoalModal, setIsOpenGoalModal] = useState(false);
   const [isOpenToDoModal, setIsOpenToDoModal] = useState(false);
+  const [isOpenProjectModal, setIsOpenProjectModal] = useState(false);
 
   const toggleGoalModalHandler = () => {
     setIsOpenGoalModal(!isOpenGoalModal);
@@ -26,17 +26,12 @@ const GoalsCard = (props) => {
     setIsOpenToDoModal(!isOpenToDoModal);
   };
 
-  const addElement = () => {
-    {
-      /* Add new element */
-    }
+  const toggleProjectModalHandler = () => {
+    setIsOpenProjectModal(!isOpenProjectModal);
   };
 
   return (
     <Card style={styles.card}>
-      <View style={styles.cardTitleContainer}>
-        <Text style={styles.cardTitle}>Goals and To-Do's</Text>
-      </View>
       <View style={styles.bodySection}>
         <TouchableOpacity
           onPress={toggleGoalModalHandler}
@@ -50,9 +45,16 @@ const GoalsCard = (props) => {
         >
           <Text style={styles.buttonText}>To-Do's</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          onPress={toggleProjectModalHandler}
+          style={styles.buttonContainer}
+        >
+          <Text style={styles.buttonText}>Projects</Text>
+        </TouchableOpacity>
       </View>
       <GoalModal visible={isOpenGoalModal} onCancel={toggleGoalModalHandler} />
       <ToDoModal visible={isOpenToDoModal} onCancel={toggleToDoModalHandler} />
+      <ProjectsModal visible={isOpenProjectModal} onCancel={toggleProjectModalHandler} />
     </Card>
   );
 };
@@ -82,8 +84,8 @@ const styles = StyleSheet.create({
     borderRadius: 18,
     borderColor: Colors.primary,
     borderWidth: 4,
-    marginTop: 8,
-    marginBottom: 6,
+    marginTop: 7.25,
+    marginBottom: 7.25,
   },
 
   buttonText: {

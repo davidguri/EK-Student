@@ -60,35 +60,31 @@ const NewsOldCard = (props) => {
 
   return (
     <View style={styles.card}>
-      <Text style={styles.cardTitle}>old news BROKEN</Text>
-      <View style={styles.itemContainer}>
-        <Item
-          publisher={DATA.item1.publisher}
-          title={DATA.item1.title}
-          description={DATA.item1.description}
-          image={DATA.item1.image}
-        />
-        <Item
-          publisher={DATA.item2.publisher}
-          title={DATA.item2.title}
-          description={DATA.item2.description}
-          image={DATA.item2.image}
-        />
-      </View>
-      <View style={styles.itemContainer}>
-        <Item
-          publisher={DATA.item3.publisher}
-          title={DATA.item3.title}
-          description={DATA.item3.description}
-          image={DATA.item3.image}
-        />
-        <Item
-          publisher={DATA.item4.publisher}
-          title={DATA.item4.title}
-          description={DATA.item4.description}
-          image={DATA.item4.image}
-        />
-      </View>
+      <Text style={styles.cardTitle}>Old News</Text>
+      <Item
+        publisher={DATA.item1.publisher}
+        title={DATA.item1.title}
+        description={DATA.item1.description}
+        image={DATA.item1.image}
+      />
+      <Item
+        publisher={DATA.item2.publisher}
+        title={DATA.item2.title}
+        description={DATA.item2.description}
+        image={DATA.item2.image}
+      />
+      <Item
+        publisher={DATA.item3.publisher}
+        title={DATA.item3.title}
+        description={DATA.item3.description}
+        image={DATA.item3.image}
+      />
+      <Item
+        publisher={DATA.item4.publisher}
+        title={DATA.item4.title}
+        description={DATA.item4.description}
+        image={DATA.item4.image}
+      />
     </View>
   );
 };

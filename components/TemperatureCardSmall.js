@@ -16,7 +16,7 @@ const TemperatureCardSmall = (props) => {
   var max = 16;
   var desc;
 
-  var weather = "Drizzle";
+  var weather = "Clear";
   var temperature = "11";
 
   return (
