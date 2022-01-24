@@ -25,6 +25,11 @@ export default {
   events: {
     main: "#C6A2FA",
     background: "rgba(198, 162, 250, 0.2)",
-    textColor: "C6A2FA",
+    textColor: "#C6A2FA",
+  },
+  tests: {
+    main: "rgb(255, 69, 58)",
+    background: "rgba(255, 69, 58, 0.3)",
+    textColor: "rgb(255, 69, 58)",
   },
 };
