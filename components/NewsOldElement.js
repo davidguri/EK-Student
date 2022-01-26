@@ -34,11 +34,8 @@ const NewsOldElement = (props) => {
           <Image style={styles.image} source={props.image} />
         </View>
         <View style={styles.textContainer}>
-          <View style={styles.topContainer}>
-            <Text style={styles.title}>{props.title}</Text>
-            <Text style={styles.publisher}>{props.publisher}</Text>
-          </View>
-          <Text style={styles.description}>{props.description}</Text>
+          <Text style={styles.title}>{props.title}</Text>
+          <Text style={styles.publisher}>{props.publisher}</Text>
         </View>
       </Card>
 
@@ -89,24 +86,17 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
 
-  topContainer: {
-    paddingBottom: 8,
-  },
-
   title: {
-    fontSize: 21,
+    fontSize: 23,
     color: "white",
-    fontWeight: "700",
+    fontWeight: "800",
+    paddingBottom: 2,
   },
 
   publisher: {
     color: Colors.primary,
-    fontSize: 13.5,
-  },
-
-  description: {
-    fontSize: 15,
-    color: "white",
+    fontSize: 14.75,
+    fontWeight: "500"
   },
 });
 

@@ -6,7 +6,6 @@ import {
   StyleSheet,
   Modal,
   SafeAreaView,
-  TextInput,
   StatusBar,
   FlatList,
 } from "react-native";
@@ -53,11 +52,7 @@ const GoalsModal = (props) => {
     setIsOpenAddModal(false);
   };
 
-  const addElement = () => {
-    {
-      /* Add new element */
-    }
-  };
+  const addElement = () => {};
 
   return (
     <Modal visible={props.visible} animationType="slide" transparent={true}>
@@ -75,7 +70,7 @@ const GoalsModal = (props) => {
           <View style={styles.body}>
             <Card style={styles.todayContainer}>
               <View style={styles.todayTextContainer}>
-                <Text style={styles.todayText}>For Today</Text>
+                <Text style={styles.todayText}>Your Goals This Year</Text>
               </View>
               <FlatList
                 data={DATA}
@@ -233,6 +228,7 @@ const styles = StyleSheet.create({
 
   footer: {
     width: "100%",
+    marginVertical: 15,
   },
 
   containerRow: {

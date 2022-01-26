@@ -233,6 +233,7 @@ const styles = StyleSheet.create({
 
   footer: {
     width: "100%",
+    marginVertical: 15,
   },
 
   containerRow: {

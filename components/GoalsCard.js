@@ -81,17 +81,17 @@ const styles = StyleSheet.create({
   buttonContainer: {
     width: "100%",
     backgroundColor: Colors.opacity,
-    borderRadius: 18,
+    borderRadius: 19.25,
     borderColor: Colors.primary,
     borderWidth: 4,
-    marginTop: 7.25,
-    marginBottom: 7.25,
+    marginTop: 7.75,
+    marginBottom: 7.75,
   },
 
   buttonText: {
     fontSize: 18,
     fontWeight: "700",
-    padding: 9,
+    padding: 9.25,
     textAlign: "center",
     color: Colors.primary,
   },

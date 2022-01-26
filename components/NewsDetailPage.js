@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 35,
     fontWeight: "900",
-    paddingBottom: 7.5,
+    paddingBottom: 6.5,
   },
 
   publisher: {

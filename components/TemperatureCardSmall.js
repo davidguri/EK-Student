@@ -24,7 +24,7 @@ const TemperatureCardSmall = (props) => {
       <View style={styles.topContainer}>
         <View style={styles.imageContainer}>
           <Ionicons
-            size={44}
+            size={45}
             style={styles.conditionIcon}
             name={weatherConditions[weather].icon}
             color={"#fff"}
@@ -70,8 +70,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingBottom: 8,
-    paddingTop: 7.5,
+    paddingBottom: 9,
+    paddingTop: 6.5,
   },
 
   textContainer: {
@@ -88,15 +88,15 @@ const styles = StyleSheet.create({
 
   conditionText: {
     color: Colors.primary,
-    fontSize: 21.5,
+    fontSize: 22,
     fontWeight: "600",
   },
 
   subtitleText: {
     color: "#fff",
-    fontSize: 13.25,
+    fontSize: 13.55,
     fontWeight: "600",
-    paddingTop: 3.25,
+    paddingTop: 3.2,
   },
 
   currentText: {
