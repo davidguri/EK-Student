@@ -110,7 +110,6 @@ const styles = StyleSheet.create({
     borderWidth: 4,
     borderTopColor: Colors.primary,
     height: "100%",
-    alignItems: "center",
     padding: 7.5,
     flexDirection: "column",
     justifyContent: "space-between",

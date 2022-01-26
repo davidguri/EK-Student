@@ -13,45 +13,8 @@ import {
 
 import Colors from "../constants/colors";
 import Card from "./Card";
-import AddGoalModal from "./AddGoalModal";
-
-import BouncyCheckbox from "react-native-bouncy-checkbox";
-
-const DATA = [
-  {
-    id: "1",
-    title: "Launch MVP in April",
-  },
-  {
-    id: "2",
-    title: "Test Goal",
-  },
-];
-
-const Item = ({ title }) => {
-  return (
-    <View style={styles.item}>
-      <BouncyCheckbox
-        size={28.25}
-        fillColor={Colors.opacity}
-        unfillColor="transparent"
-        text={title}
-        iconStyle={{ borderColor: Colors.primary, borderWidth: 2 }}
-        textStyle={{ fontSize: 20, color: "white" }}
-      />
-    </View>
-  );
-};
 
 const ProjectsModal = (props) => {
-  const renderItem = ({ item }) => <Item title={item.title} />;
-
-  const [isOpenAddModal, setIsOpenAddModal] = useState(false);
-
-  const closeModalHandler = () => {
-    setIsOpenAddModal(false);
-  };
-
   return (
     <Modal visible={props.visible} animationType="slide" transparent={true}>
       <SafeAreaView style={{ backgroundColor: "black" }}>
@@ -65,15 +28,7 @@ const ProjectsModal = (props) => {
               <Text style={styles.buttonCancelText}>X</Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.body}>
-            <FlatList
-              data={DATA}
-              renderItem={renderItem}
-              keyExtractor={(item) => item.id}
-              style={styles.list}
-              scrollEnabled={false}
-            />
-          </View>
+          <View style={styles.body}></View>
         </View>
       </SafeAreaView>
     </Modal>
