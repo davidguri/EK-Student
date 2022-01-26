@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  Image,
   Linking,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
@@ -18,6 +19,8 @@ import GoalsCard from "../components/GoalsCard";
 
 import Colors from "../constants/colors";
 import Card from "../components/Card";
+
+import TeamsLogo from "../assets/Images/Microsoft-Teams-Logo.png";
 
 const HomeScreen = (props) => {
   return (
@@ -34,7 +37,9 @@ const HomeScreen = (props) => {
               style={styles.buttonContainer}
             >
               <View style={styles.section}>
-                <Ionicons name="logo-tumblr" size={28} color={Colors.primary} />
+                <View style={styles.imageContainer}>
+                  <Image style={styles.image} width={35} height={32} source={TeamsLogo} />
+                </View>
                 <Text style={styles.buttonText}>Teams</Text>
               </View>
             </TouchableOpacity>
@@ -89,8 +94,9 @@ const styles = StyleSheet.create({
     paddingVertical: 8.75,
     borderRadius: 22,
     borderColor: Colors.primary,
-    borderWidth: 4,
+    borderWidth: 3,
     backgroundColor: Colors.opacity,
+    padding: 15,
   },
 
   smallCardContainer: {

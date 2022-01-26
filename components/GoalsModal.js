@@ -10,6 +10,7 @@ import {
   StatusBar,
   FlatList,
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 import Colors from "../constants/colors";
 import Card from "./Card";
@@ -28,10 +29,6 @@ const DATA = [
   },
 ];
 
-{
-  /* This element will be replaced by Firebase */
-}
-
 const Item = ({ title }) => {
   return (
     <View style={styles.item}>
@@ -47,7 +44,7 @@ const Item = ({ title }) => {
   );
 };
 
-const GoalModal = (props) => {
+const GoalsModal = (props) => {
   const renderItem = ({ item }) => <Item title={item.title} />;
 
   const [isOpenAddModal, setIsOpenAddModal] = useState(false);
@@ -76,13 +73,48 @@ const GoalModal = (props) => {
             </TouchableOpacity>
           </View>
           <View style={styles.body}>
-            <FlatList
-              data={DATA}
-              renderItem={renderItem}
-              keyExtractor={(item) => item.id}
-              style={styles.list}
-              scrollEnabled={false}
-            />
+            <Card style={styles.todayContainer}>
+              <View style={styles.todayTextContainer}>
+                <Text style={styles.todayText}>For Today</Text>
+              </View>
+              <FlatList
+                data={DATA}
+                renderItem={renderItem}
+                keyExtractor={(item) => item.id}
+                style={styles.list}
+                scrollEnabled={false}
+              />
+            </Card>
+            <View style={styles.otherContainer}>
+              <Card style={styles.containerRow}>
+                <TouchableOpacity
+                  onPress={() => {}}
+                  style={styles.containerButton}
+                >
+                  <View style={styles.leftContainer}>
+                    <Ionicons name="albums" size={27} color={Colors.primary} />
+                    <Text style={styles.containerRowTitle}>All Goals</Text>
+                  </View>
+                  <Text style={styles.modalArrow}>&gt; </Text>
+                </TouchableOpacity>
+              </Card>
+              <Card style={styles.containerRow}>
+                <TouchableOpacity
+                  onPress={() => {}}
+                  style={styles.containerButton}
+                >
+                  <View style={styles.leftContainer}>
+                    <Ionicons
+                      name="checkmark-circle"
+                      size={27}
+                      color={Colors.primary}
+                    />
+                    <Text style={styles.containerRowTitle}>Completed</Text>
+                  </View>
+                  <Text style={styles.modalArrow}>&gt; </Text>
+                </TouchableOpacity>
+              </Card>
+            </View>
           </View>
           <View style={styles.footer}>
             <TouchableOpacity
@@ -110,10 +142,9 @@ const styles = StyleSheet.create({
     borderWidth: 4,
     borderTopColor: Colors.primary,
     height: "100%",
-    padding: 7.5,
-    flexDirection: "column",
-    justifyContent: "space-between",
     alignItems: "center",
+    justifyContent: "space-between",
+    padding: 8,
   },
 
   header: {
@@ -181,9 +212,65 @@ const styles = StyleSheet.create({
     width: "100%",
   },
 
+  todayText: {
+    fontSize: 26,
+    color: "white",
+    fontWeight: "600",
+  },
+
+  todayContainer: {
+    padding: 12,
+    borderRadius: 22,
+    marginBottom: 10,
+  },
+
+  todayTextContainer: {
+    marginHorizontal: 10,
+    borderBottomWidth: 2,
+    borderBottomColor: "rgba(79, 255, 227, 0.2)",
+    paddingBottom: 10,
+  },
+
   footer: {
     width: "100%",
   },
+
+  containerRow: {
+    flexDirection: "row",
+    marginVertical: 10,
+    width: "100%",
+    borderRadius: 22,
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingVertical: 10,
+  },
+
+  leftContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+
+  containerButton: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingVertical: 8,
+  },
+
+  containerRowTitle: {
+    color: "#fff",
+    fontWeight: "500",
+    fontSize: 18,
+    marginLeft: 15,
+  },
+
+  modalArrow: {
+    color: "#8c8c8c",
+    fontSize: 24,
+    fontWeight: "600",
+  },
 });
 
-export default GoalModal;
+export default GoalsModal;

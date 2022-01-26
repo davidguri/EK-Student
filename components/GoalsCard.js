@@ -43,7 +43,7 @@ const GoalsCard = (props) => {
           onPress={toggleToDoModalHandler}
           style={styles.buttonContainer}
         >
-          <Text style={styles.buttonText}>To-Do's</Text>
+          <Text style={styles.buttonText}>Tasks</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={toggleProjectModalHandler}

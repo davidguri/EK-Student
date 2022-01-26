@@ -175,7 +175,7 @@ const SettingsScreen = (props) => {
                   <View style={styles.leftContainer}>
                     <Ionicons
                       name="contrast-sharp"
-                      size={24}
+                      size={25}
                       color={Colors.primary}
                     />
                     <Text style={styles.containerRowTitle}>Dark Mode</Text>
@@ -213,14 +213,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginVertical: 12,
+    marginTop: 12,
+    marginBottom: 7.5,
   },
 
   headerTitle: {
     color: "#fff",
     fontSize: 30,
     fontWeight: "bold",
-    paddingBottom: 0,
   },
 
   buttonText: {
@@ -240,19 +240,19 @@ const styles = StyleSheet.create({
 
   container: {
     marginVertical: 10,
-    width: "90%",
+    width: "95%",
     borderRadius: 18,
-    paddingVertical: 15,
+    paddingVertical: 13,
   },
 
   containerRow: {
     flexDirection: "row",
     marginVertical: 10,
-    width: "90%",
+    width: "95%",
     borderRadius: 18,
     justifyContent: "space-between",
     alignItems: "center",
-    paddingVertical: 10,
+    paddingVertical: 7.5,
   },
 
   leftContainer: {
