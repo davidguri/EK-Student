@@ -6,19 +6,24 @@ import {
   TouchableOpacity,
   StyleSheet,
   SafeAreaView,
-  Modal,
   ScrollView,
   StatusBar,
   Linking,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import Modal from "react-native-modal";
 
 import Colors from "../constants/colors";
 import Card from "./Card";
 
 const AboutDevModal = (props) => {
   return (
-    <Modal visible={props.visible} animationType="slide">
+    <Modal
+      isVisible={props.visible}
+      animationIn={"slideInRight"}
+      animationOut={"slideOutRight"}
+      style={{ margin: 0 }}
+    >
       <SafeAreaView style={{ backgroundColor: "black" }}>
         <View style={styles.screen}>
           <View style={styles.header}>
@@ -42,7 +47,9 @@ const AboutDevModal = (props) => {
 
                 <Card style={styles.containerRow}>
                   <TouchableOpacity
-                    onPress={() => Linking.openURL("https://github.com/EK-Student")}
+                    onPress={() =>
+                      Linking.openURL("https://github.com/EK-Student")
+                    }
                     style={styles.containerButton}
                   >
                     <View style={styles.leftContainer}>

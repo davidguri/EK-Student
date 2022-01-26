@@ -100,7 +100,7 @@ const SettingsScreen = (props) => {
                   <View style={styles.leftContainer}>
                     <Ionicons
                       name="person-circle-outline"
-                      size={25}
+                      size={27}
                       color={Colors.primary}
                     />
                     <Text style={styles.containerRowTitle}>Profile</Text>
@@ -213,13 +213,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    marginVertical: 12,
   },
 
   headerTitle: {
     color: "#fff",
     fontSize: 30,
     fontWeight: "bold",
-    paddingVertical: 12,
     paddingBottom: 0,
   },
 
@@ -270,7 +270,7 @@ const styles = StyleSheet.create({
   },
 
   accountContainer: {
-    marginBottom: 26,
+    marginBottom: 12,
     width: "100%",
     flexDirection: "column",
     alignItems: "center",
