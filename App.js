@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { StyleSheet, SafeAreaView, StatusBar } from "react-native";
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
@@ -44,7 +44,7 @@ const Tab = createBottomTabNavigator();
 
 const Stack = createNativeStackNavigator();
 
-export default function App(props) {
+export default function App() {
   const [isLogged, setIsLogged] = useState(false);
 
   const logInHandler = () => {
@@ -77,8 +77,8 @@ export default function App(props) {
               showLabel: true,
               showIcon: true,
               style: {
-                paddingBottom: 4,
-                paddingTop: 4,
+                paddingBottom: 4.25,
+                paddingTop: 4.25,
               },
             }}
           >
