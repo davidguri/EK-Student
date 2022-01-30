@@ -87,18 +87,6 @@ const GoalsModal = (props) => {
                   style={styles.containerButton}
                 >
                   <View style={styles.leftContainer}>
-                    <Ionicons name="albums" size={27} color={Colors.primary} />
-                    <Text style={styles.containerRowTitle}>All Goals</Text>
-                  </View>
-                  <Text style={styles.modalArrow}>&gt; </Text>
-                </TouchableOpacity>
-              </Card>
-              <Card style={styles.containerRow}>
-                <TouchableOpacity
-                  onPress={() => {}}
-                  style={styles.containerButton}
-                >
-                  <View style={styles.leftContainer}>
                     <Ionicons
                       name="checkmark-circle"
                       size={27}
