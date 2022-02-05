@@ -11,15 +11,23 @@ import {
 } from "react-native";
 
 import Colors from "../constants/colors";
+import Card from "./Card";
+
+import ImportanceModal from "./ImportanceModal";
 
 const AddGoalModal = (props) => {
   const [text, onChangeText] = React.useState("");
+
+  const [isOpenImportanceModal, setIsOpenImportanceModal] = useState(false);
+
+  const toggleImportanceModalHandler = () => {
+    setIsOpenImportanceModal(!isOpenImportanceModal);
+  };
 
   return (
     <Modal visible={props.visible} animationType="slide" transparent={true}>
       <SafeAreaView style={{ backgroundColor: "black" }}>
         <View style={styles.screen}>
-
           <View style={styles.header}>
             <Text style={styles.headerTitle}>{props.title}</Text>
           </View>
@@ -32,8 +40,20 @@ const AddGoalModal = (props) => {
               placeholderTextColor="#777"
               placeholder="Title"
             />
-            <TouchableOpacity onPress={props.onSubmit} style={styles.submitContainer}>
-                <Text style={styles.submitButton}>{props.title}</Text>
+            <TouchableOpacity
+              onPress={toggleImportanceModalHandler}
+              style={styles.input}
+            >
+              <View>
+                <Text style={{ color: "#777" }}>Importance</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={props.onSubmit}
+              style={styles.submitContainer}
+            >
+              <Text style={styles.submitButton}>{props.title}</Text> 
+              {/* onSubmit, send out importnce, title */}
             </TouchableOpacity>
           </View>
 
@@ -44,6 +64,7 @@ const AddGoalModal = (props) => {
           </View>
         </View>
       </SafeAreaView>
+      <ImportanceModal visible={isOpenImportanceModal} onBackdropPress={toggleImportanceModalHandler} />
     </Modal>
   );
 };
@@ -109,7 +130,7 @@ const styles = StyleSheet.create({
     borderRadius: 22,
     borderWidth: 4,
     borderColor: Colors.primary,
-    padding: 17,
+    padding: 16,
     margin: 10,
     color: "white",
   },
@@ -121,12 +142,12 @@ const styles = StyleSheet.create({
     borderColor: Colors.primary,
     borderWidth: 4,
     margin: 10,
+    padding: 11.5,
   },
 
   submitButton: {
     fontSize: 21,
     fontWeight: "700",
-    padding: 11.5,
     textAlign: "center",
     color: Colors.primary,
   },
