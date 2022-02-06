@@ -12,6 +12,7 @@ export default {
   blue: "#0a84ff",
   blueOpacity: "",
 
+  
   daysOff: {
     main: "#FA9570",
     background: "rgb(250, 149, 112, 0.2)",

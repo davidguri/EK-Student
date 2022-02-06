@@ -10,15 +10,15 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-import Header from "../components/Header";
-import TomorrowCard from "../components/TomorrowCard";
-import UpcomingCard from "../components/UpcomingCard";
-import TemperatureCardSmall from "../components/TemperatureCardSmall";
-import NewsTodayCard from "../components/NewsTodayCard";
-import GoalsCard from "../components/GoalsCard";
+import Header from "../components/Home/other/Header";
+import TomorrowCard from "../components/Home/today-tomorrow-card/TomorrowCard";
+import UpcomingCard from "../components/Home/today-tomorrow-card/UpcomingCard";
+import TemperatureCardSmall from "../components/Other/Weather/TemperatureCardSmall";
+import NewsTodayCard from "../components/News/todayInNews/NewsTodayCard";
+import GoalsCard from "../components/Home/goals-more-card/GoalsCard";
 
 import Colors from "../constants/colors";
-import Card from "../components/Card";
+import Card from "../components/Other/Global/Card";
 
 import TeamsLogo from "../assets/Images/Microsoft-Teams-Logo.png";
 

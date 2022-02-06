@@ -15,10 +15,10 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 
 import Colors from "../constants/colors";
-import Card from "../components/Card";
+import Card from "../components/Other/Global/Card";
 
-import AboutDevModal from "../components/AboutDevModal";
-import ProfileModal from "../components/ProfileModal";
+import AboutDevModal from "../components/Settings/AboutDevModal";
+import ProfileModal from "../components/Settings/ProfileModal";
 
 const SettingsScreen = (props) => {
   const DATA = {

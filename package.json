@@ -48,7 +48,10 @@
     "react-native-switch-toggles": "0.0.1",
     "react-native-toggle-button": "^0.1.0",
     "react-native-weather-api": "^3.0.2",
-    "react-native-web": "~0.13.12"
+    "react-native-web": "~0.13.12",
+    "react-redux": "^7.2.6",
+    "redux": "^4.1.2",
+    "redux-thunk": "^2.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"

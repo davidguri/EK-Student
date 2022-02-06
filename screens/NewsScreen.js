@@ -50,11 +50,11 @@ var date =
   dt.getDate() +
   nth(dt.getDate());
 
-import NewsHeader from "../components/NewsHeader";
-import TemperatureCardSmall from "../components/TemperatureCardSmall";
-import NewsTodayCard from "../components/NewsTodayCard";
-import NewsProjectCard from "../components/NewsProjectCard";
-import NewsOldCard from "../components/NewsOldCard";
+import NewsHeader from "../components/News/other/NewsHeader";
+import TemperatureCardSmall from "../components/Other/Weather/TemperatureCardSmall";
+import NewsTodayCard from "../components/News/todayInNews/NewsTodayCard";
+import NewsProjectCard from "../components/News/todayInNews/NewsProjectCard";
+import NewsOldCard from "../components/News/oldNews/NewsOldCard";
 
 const NewsScreen = (props) => {
   return (

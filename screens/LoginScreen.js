@@ -10,8 +10,8 @@ import {
   SafeAreaView,
 } from "react-native";
 
-import Input from "../components/Input";
-import LoginHead from "../components/LoginHead";
+import Input from "../components/Other/Global/Input";
+import LoginHead from "../components/Login/LoginHead";
 
 import Colors from "../constants/colors";
 

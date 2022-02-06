@@ -4,10 +4,10 @@ import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import Colors from "../constants/colors";
-import CalendarHeader from "../components/CalendarHeader";
+import CalendarHeader from "../components/Calendar/CalendarHeader";
 
-import CalendarListModal from "../components/CalendarListModal";
-import CalendarAgendaModal from "../components/CalendarAgendaModal";
+import CalendarListModal from "../components/Calendar/CalendarListModal";
+import CalendarAgendaModal from "../components/Calendar/CalendarAgendaModal";
 
 import { CalendarList, Agenda } from "react-native-calendars";
 
