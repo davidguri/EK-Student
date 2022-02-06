@@ -8,7 +8,7 @@ import {
   Platform,
 } from "react-native";
 
-import Logo from "../assets/icon-original-1024.png";
+import Logo from "../../assets/icon-original-1024.png";
 
 const LoginHead = (props) => {
   return (

@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
   teamsCard: {
     width: "100%",
     paddingVertical: 8.75,
-    borderRadius: 22,
+    borderRadius: 21,
     borderColor: Colors.primary,
     borderWidth: 3,
     backgroundColor: Colors.opacity,
