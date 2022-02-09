@@ -4,7 +4,7 @@ import { Text, StyleSheet, TouchableOpacity } from "react-native";
 import Card from "../../Other/Global/Card";
 import Colors from "../../../constants/colors";
 
-import AddProjectModal from "../../Home/goals-more-card/AddProjectModal";
+import AddProjectModal from "../other/AddProjectModal";
 import AddGoalModal from "../../Home/goals-more-card/AddGoalModal";
 
 const NewsProjectCard = (props) => {
