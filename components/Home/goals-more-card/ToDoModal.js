@@ -6,9 +6,10 @@ import {
   StyleSheet,
   Modal,
   SafeAreaView,
-  TextInput,
   StatusBar,
   FlatList,
+  Switch,
+  ScrollView,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -22,14 +23,21 @@ const DATA = [
   {
     id: "1",
     title: "Launch MVP in April",
+    importance: "!",
   },
   {
     id: "2",
     title: "Test Task",
+    importance: "!!",
+  },
+  {
+    id: "3",
+    title: "Test Task 2",
+    importance: "!!!",
   },
 ];
 
-const Item = ({ title }) => {
+const Item = ({ title, importance }) => {
   return (
     <View style={styles.item}>
       <BouncyCheckbox
@@ -40,12 +48,25 @@ const Item = ({ title }) => {
         iconStyle={{ borderColor: Colors.primary, borderWidth: 2 }}
         textStyle={{ fontSize: 20, color: "white" }}
       />
+      <View style={styles.impContainer}>
+        <Text style={styles.impText}>{importance}</Text>
+      </View>
     </View>
   );
 };
 
 const ToDoModal = (props) => {
-  const renderItem = ({ item }) => <Item title={item.title} />;
+  const [isEnabledCompleted, setIsEnabledCompleted] = useState(false);
+  const [isEnabledUpcoming, setIsEnabledUpcoming] = useState(false);
+  const [isEnabledAll, setIsEnabledAll] = useState(true);
+
+  const toggleCompleted = () => setIsEnabledCompleted((previousState) => !previousState);
+  const toggleUpcoming = () => setIsEnabledUpcoming((previousState) => !previousState);
+  const toggleAll = () => setIsEnabledAll((previousState) => !previousState);
+
+  const renderItem = ({ item }) => (
+    <Item title={item.title} importance={item.importance} />
+  );
 
   const [isOpenAddModal, setIsOpenAddModal] = useState(false);
 
@@ -73,48 +94,91 @@ const ToDoModal = (props) => {
             </TouchableOpacity>
           </View>
           <View style={styles.body}>
-            <Card style={styles.todayContainer}>
-              <View style={styles.todayTextContainer}>
-                <Text style={styles.todayText}>For Today</Text>
-              </View>
-              <FlatList
-                data={DATA}
-                renderItem={renderItem}
-                keyExtractor={(item) => item.id}
-                style={styles.list}
-                scrollEnabled={false}
-              />
-            </Card>
-            <View style={styles.otherContainer}>
-              <Card style={styles.containerRow}>
-                <TouchableOpacity
-                  onPress={() => {}}
-                  style={styles.containerButton}
-                >
-                  <View style={styles.leftContainer}>
-                    <Ionicons name="albums" size={27} color={Colors.primary} />
-                    <Text style={styles.containerRowTitle}>All Tasks</Text>
-                  </View>
-                  <Text style={styles.modalArrow}>&gt; </Text>
-                </TouchableOpacity>
+            <ScrollView>
+              <Card style={styles.todayContainer}>
+                <View style={styles.todayTextContainer}>
+                  <Text style={styles.todayText}>For Today</Text> 
+                  {/* Change this based on the presets set below */}
+                </View>
+                <FlatList
+                  data={DATA}
+                  renderItem={renderItem}
+                  keyExtractor={(item) => item.id}
+                  style={styles.list}
+                  scrollEnabled={false}
+                />
               </Card>
-              <Card style={styles.containerRow}>
-                <TouchableOpacity
-                  onPress={() => {}}
-                  style={styles.containerButton}
-                >
-                  <View style={styles.leftContainer}>
-                    <Ionicons
-                      name="checkmark-circle"
-                      size={27}
-                      color={Colors.primary}
+              <View style={styles.otherContainer}>
+                <Card style={styles.containerRow}>
+                  <TouchableOpacity
+                    onPress={() => {}}
+                    style={styles.containerButton}
+                  >
+                    <View style={styles.leftContainer}>
+                      <Ionicons
+                        name="checkmark-circle"
+                        size={27}
+                        color={Colors.primary}
+                      />
+                      <Text style={styles.containerRowTitle}>
+                        Show Completed
+                      </Text>
+                    </View>
+                    <Switch
+                      trackColor={{ false: "#767577", true: "#30d158" }}
+                      thumbColor={isEnabledCompleted ? "#f4f3f4" : "#f4f3f4"}
+                      ios_backgroundColor="#3e3e3e"
+                      onValueChange={toggleCompleted}
+                      value={isEnabledCompleted}
                     />
-                    <Text style={styles.containerRowTitle}>Completed</Text>
-                  </View>
-                  <Text style={styles.modalArrow}>&gt; </Text>
-                </TouchableOpacity>
-              </Card>
-            </View>
+                  </TouchableOpacity>
+                </Card>
+                <Card style={styles.containerRow}>
+                  <TouchableOpacity
+                    onPress={() => {}}
+                    style={styles.containerButton}
+                  >
+                    <View style={styles.leftContainer}>
+                      <Ionicons
+                        name="albums"
+                        size={27}
+                        color={Colors.primary}
+                      />
+                      <Text style={styles.containerRowTitle}>Show Upcoming</Text>
+                    </View>
+                    <Switch
+                      trackColor={{ false: "#767577", true: "#30d158" }}
+                      thumbColor={isEnabledUpcoming ? "#f4f3f4" : "#f4f3f4"}
+                      ios_backgroundColor="#3e3e3e"
+                      onValueChange={toggleUpcoming}
+                      value={isEnabledUpcoming}
+                    />
+                  </TouchableOpacity>
+                </Card>
+                <Card style={styles.containerRow}>
+                  <TouchableOpacity
+                    onPress={() => {}}
+                    style={styles.containerButton}
+                  >
+                    <View style={styles.leftContainer}>
+                      <Ionicons
+                        name="albums"
+                        size={27}
+                        color={Colors.primary}
+                      />
+                      <Text style={styles.containerRowTitle}>Show All</Text>
+                    </View>
+                    <Switch
+                      trackColor={{ false: "#767577", true: "#30d158" }}
+                      thumbColor={isEnabledAll ? "#f4f3f4" : "#f4f3f4"}
+                      ios_backgroundColor="#3e3e3e"
+                      onValueChange={toggleAll}
+                      value={isEnabledAll}
+                    />
+                  </TouchableOpacity>
+                </Card>
+              </View>
+            </ScrollView>
           </View>
           <View style={styles.footer}>
             <TouchableOpacity
@@ -172,6 +236,7 @@ const styles = StyleSheet.create({
     padding: 12,
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "space-between",
   },
 
   buttonCancelText: {
@@ -271,6 +336,13 @@ const styles = StyleSheet.create({
     color: "#8c8c8c",
     fontSize: 24,
     fontWeight: "600",
+  },
+
+  impText: {
+    color: Colors.red,
+    fontSize: 24,
+    fontWeight: "600",
+    paddingRight: 2,
   },
 });
 

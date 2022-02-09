@@ -49,10 +49,18 @@ const AddGoalModal = (props) => {
               </View>
             </TouchableOpacity>
             <TouchableOpacity
+              onPress={() => {}}
+              style={styles.input}
+            >
+              <View>
+                <Text style={{ color: "#777" }}>Set Date</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
               onPress={props.onSubmit}
               style={styles.submitContainer}
             >
-              <Text style={styles.submitButton}>{props.title}</Text> 
+              <Text style={styles.submitButton}>{props.title}</Text>
               {/* onSubmit, send out importnce, title */}
             </TouchableOpacity>
           </View>
@@ -64,7 +72,10 @@ const AddGoalModal = (props) => {
           </View>
         </View>
       </SafeAreaView>
-      <ImportanceModal visible={isOpenImportanceModal} onBackdropPress={toggleImportanceModalHandler} />
+      <ImportanceModal
+        visible={isOpenImportanceModal}
+        onBackdropPress={toggleImportanceModalHandler}
+      />
     </Modal>
   );
 };

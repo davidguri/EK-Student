@@ -80,24 +80,6 @@ const GoalsModal = (props) => {
                 scrollEnabled={false}
               />
             </Card>
-            <View style={styles.otherContainer}>
-              <Card style={styles.containerRow}>
-                <TouchableOpacity
-                  onPress={() => {}}
-                  style={styles.containerButton}
-                >
-                  <View style={styles.leftContainer}>
-                    <Ionicons
-                      name="checkmark-circle"
-                      size={27}
-                      color={Colors.primary}
-                    />
-                    <Text style={styles.containerRowTitle}>Completed</Text>
-                  </View>
-                  <Text style={styles.modalArrow}>&gt; </Text>
-                </TouchableOpacity>
-              </Card>
-            </View>
           </View>
           <View style={styles.footer}>
             <TouchableOpacity
@@ -155,6 +137,7 @@ const styles = StyleSheet.create({
     padding: 12,
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "space-between",
   },
 
   buttonCancelText: {
@@ -199,6 +182,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     color: "white",
     fontWeight: "600",
+    paddingVertical: 4.75,
   },
 
   todayContainer: {

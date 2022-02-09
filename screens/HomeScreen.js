@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8.75,
     borderRadius: 21,
     borderColor: Colors.primary,
-    borderWidth: 3,
+    borderWidth: 4,
     backgroundColor: Colors.opacity,
     padding: 15,
   },
