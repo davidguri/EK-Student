@@ -11,13 +11,11 @@ import { weatherConditions } from "./WeatherConditions";
 const TemperatureCardSmall = (props) => {
   var apiKey = "02d60f9f68d161477b8d81a069ac7d31";
 
-  var temp;
+  var temp = "11";
   var min = 10;
   var max = 15;
   var desc;
-
   var weather = "Clear";
-  var temperature = "11";
 
   return (
     <Card style={{ ...styles.tempCard, ...props.styles }}>
@@ -31,7 +29,7 @@ const TemperatureCardSmall = (props) => {
           />
         </View>
         <View style={styles.currentContainer}>
-          <Text style={styles.currentText}>{temperature}&deg;</Text>
+          <Text style={styles.currentText}>{temp}&deg;</Text>
         </View>
       </View>
 

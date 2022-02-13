@@ -76,7 +76,7 @@ const ToDoModal = (props) => {
 
   const addElement = () => {
     {
-      /* Add new element */
+      /* Add new element with Redux */
     }
   };
 
