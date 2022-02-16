@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
 
@@ -11,11 +11,22 @@ import { weatherConditions } from "./WeatherConditions";
 const TemperatureCardSmall = (props) => {
   var apiKey = "02d60f9f68d161477b8d81a069ac7d31";
 
-  var temp = "11";
-  var min = 10;
-  var max = 15;
-  var desc;
-  var weather = "Clear";
+  var temp = 11; {/* weather.main.temp math.floor this value and convert to celcius */}
+  var min = 10; {/* weather.main.temp_min math.floor this value and convert to celcius */}
+  var max = 15; {/* weather.main.temp_max math.floor this value and convert to celcius */}
+  var weather = "Clear"; {/* weather.main */} 
+
+  let url = "api.openweathermap.org/data/2.5/weather?q=Tirana&appid={06caaf91eb68cc7baad9218540cfe2a1}"
+
+  const getWeather = (props) => {
+    fetch(url)
+    .then(response => {
+      return response.json();
+    })
+    .then(users => {
+      console.log(users);
+    }); 
+  }
 
   return (
     <Card style={{ ...styles.tempCard, ...props.styles }}>

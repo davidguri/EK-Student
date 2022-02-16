@@ -42,25 +42,25 @@ const AddGoalModal = (props) => {
             />
             <TouchableOpacity
               onPress={toggleImportanceModalHandler}
-              style={styles.input}
+              style={[styles.inputButton, styles.input]}
             >
               <View>
-                <Text style={{ color: "#777" }}>Importance</Text>
+                <Text style={styles.inputButtonText}>Importance</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {}}
-              style={styles.input}
+              style={[styles.inputButton, styles.input]}
             >
               <View>
-                <Text style={{ color: "#777" }}>Set Date</Text>
+                <Text style={styles.inputButtonText}>Set Date</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={props.onSubmit}
               style={styles.submitContainer}
             >
-              <Text style={styles.submitButton}>{props.title}</Text>
+              <Text style={styles.inputButtonText}>{props.title}</Text>
               {/* onSubmit, send out importnce, title */}
             </TouchableOpacity>
           </View>
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   button: {
     width: "95%",
     backgroundColor: Colors.redOpacity,
-    borderRadius: 22,
+    borderRadius: 25,
     borderColor: Colors.red,
     borderWidth: 4,
     margin: 10,
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
   },
 
   input: {
-    borderRadius: 22,
+    borderRadius: 25,
     borderWidth: 4,
     borderColor: Colors.primary,
     padding: 16,
@@ -146,21 +146,26 @@ const styles = StyleSheet.create({
     color: "white",
   },
 
+  inputButton: {
+    backgroundColor: Colors.opacity,
+  },
+
+  inputButtonText: {
+    fontSize: 21,
+    textAlign: "center",
+    fontWeight: "700",
+    color: Colors.primary,
+  },
+
   submitContainer: {
     width: "95%",
     backgroundColor: Colors.opacity,
-    borderRadius: 22,
+    borderRadius: 25,
     borderColor: Colors.primary,
     borderWidth: 4,
     margin: 10,
-    padding: 11.5,
-  },
-
-  submitButton: {
-    fontSize: 21,
-    fontWeight: "700",
-    textAlign: "center",
-    color: Colors.primary,
+    padding: 13,
+    marginTop: 35,
   },
 });
 

@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     height: "100%",
     alignItems: "center",
     justifyContent: "space-between",
-    padding: 8,
+    padding: 10,
   },
 
   header: {
