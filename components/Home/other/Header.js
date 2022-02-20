@@ -43,7 +43,7 @@ const Header = (props) => {
         <Ionicons
           name="person-circle-outline"
           color={Colors.primary}
-          size={65}
+          size={68}
         />
       </TouchableOpacity>
       <SettingsScreen visible={isOpenSettings} onCancel={closeModalHandler} />

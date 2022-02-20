@@ -8,11 +8,15 @@ import {
   SafeAreaView,
   TextInput,
   StatusBar,
+  ScrollView,
   FlatList,
 } from "react-native";
 
 import Colors from "../../../constants/colors";
 import Card from "../../Other/Global/Card";
+
+import ProjectTeamModal from "./ProjectTeamModal";
+import ProjectWorkModal from "./ProjectWorkModal";
 
 const DATA = [
   {
@@ -25,10 +29,11 @@ const DATA = [
       "second-task": "Do that",
     },
     team: ["arlind-gorrea", "bjorni-hoxha", "david-guri", "kristjan-avrami"],
-    points: {
+    task_points: {
       "first-task": 10,
       "second-task": 10,
     },
+    points: 20,
   },
   {
     id: "2",
@@ -40,14 +45,15 @@ const DATA = [
       "second-task": "Do that",
     },
     team: ["arlind-gorrea", "bjorni-hoxha", "david-guri", "kristjan-avrami"],
-    points: {
+    task_points: {
       "first-task": 10,
       "second-task": 10,
     },
+    points: 20,
   },
 ];
 
-const Item = ({ title, subject, date, work, team, points }) => {
+const Item = ({ title, subject, date, work, team, task_points, points }) => {
   {
     /* const str = "hi-i-am-david-guri";
   const arr = str.split("-");
@@ -66,24 +72,49 @@ console.log(str2); */
   }; */
   }
 
+  const [isTeamVisible, setTeamVisible] = useState(false);
+  const [isWorkVisible, setWorkVisible] = useState(false);
+
+  const toggleTeamHandler = () => {
+    setTeamVisible(!isTeamVisible);
+  };
+
+  const toggleWorkHandler = () => {
+    setWorkVisible(!isWorkVisible);
+  };
+
   return (
     <View style={styles.item}>
       <Card style={styles.projectCard}>
         <View style={styles.cardHeader}>
           <View style={styles.headerTop}>
-            <Text style={styles.projectTitle}>{title}</Text>
-            <Text style={styles.projectSubject}>{subject}</Text>
+            <Text style={styles.projectTitle}>Project Name</Text>
+            <Text style={styles.projectSubject}>Subject</Text>
           </View>
           <View style={styles.headerBottom}>
-            <Text style={styles.projectSubtitle}>{date}</Text>
+            <Text style={styles.projectSubtitle}>Due Date</Text>
           </View>
         </View>
         <View style={styles.cardBody}>
-          <View style={[styles.teamContainer, styles.container]}></View>
-          <View style={[styles.workContainer, styles.container]}></View>
+          <TouchableOpacity onPress={toggleTeamHandler}>
+            <View style={[styles.teamContainer, styles.container]}>
+              <Text style={styles.containerTitle}>Team</Text>
+              <Text style={styles.containerArrow}>&gt;</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={toggleWorkHandler}>
+            <View style={[styles.workContainer, styles.container]}>
+              <Text style={styles.containerTitle}>Work</Text>
+              <Text style={styles.containerArrow}>&gt;</Text>
+            </View>
+          </TouchableOpacity>
         </View>
-        <View style={styles.cardFooter}></View>
+        <View style={styles.cardFooter}>
+          <Text style={styles.points}>20 Pts Total</Text>
+        </View>
       </Card>
+      <ProjectTeamModal isVisible={isTeamVisible} onBackdropPress={toggleTeamHandler} />
+      <ProjectWorkModal isVisible={isWorkVisible} onBackdropPress={toggleWorkHandler} />
     </View>
   );
 };
@@ -107,15 +138,17 @@ const ProjectsModal = (props) => {
               <Text style={styles.buttonCancelText}>X</Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.body}>
-            <FlatList
-              data={DATA}
-              renderItem={renderItem}
-              keyExtractor={(item) => item.id}
-              style={styles.list}
-              scrollEnabled={false}
-            />
-          </View>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <View style={styles.body}>
+              <FlatList
+                data={DATA}
+                renderItem={renderItem}
+                keyExtractor={(item) => item.id}
+                style={styles.list}
+                scrollEnabled={false}
+              />
+            </View>
+          </ScrollView>
         </View>
       </SafeAreaView>
     </Modal>
@@ -207,7 +240,8 @@ const styles = StyleSheet.create({
     borderColor: Colors.primary,
     width: "100%",
     padding: 0,
-    paddingBottom: 15,
+    paddingBottom: 13,
+    marginBottom: 5,
   },
 
   cardHeader: {
@@ -221,21 +255,70 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingBottom: 3,
+    paddingBottom: 4,
   },
 
   headerBottom: {
-    paddingVertical: 3,
+    paddingVertical: 4,
   },
 
   projectTitle: {
-    fontSize: 18,
-    fontWeight: "500",
+    fontSize: 21,
+    fontWeight: "600",
+  },
+
+  projectSubject: {
+    fontSize: 16,
   },
 
   projectSubtitle: {
-    fontSize: 17,
+    fontSize: 16,
     fontWeight: "500",
+  },
+
+  cardBody: {
+    flexDirection: "column",
+    padding: 12,
+  },
+
+  container: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingBottom: 18,
+    paddingTop: 8,
+  },
+
+  containerTitle: {
+    fontSize: 24,
+    fontWeight: "600",
+    color: "white",
+  },
+
+  containerArrow: {
+    fontSize: 21,
+    fontWeight: "600",
+    color: "white",
+  },
+
+  cardFooter: {
+    flexDirection: "column",
+    backgroundColor: Colors.opacity,
+    borderWidth: 4,
+    borderColor: Colors.primary,
+    borderRadius: 25,
+    padding: 10,
+    marginBottom: 5,
+    width: "60%",
+    marginHorizontal: "20%",
+  },
+
+  points: {
+    fontSize: 18,
+    fontWeight: "600",
+    color: "white",
+    textAlign: "center",
+    padding: 2,
   },
 });
 
