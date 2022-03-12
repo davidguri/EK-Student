@@ -26,7 +26,7 @@ const HomeScreen = (props) => {
   return (
     <ScrollView style={styles.screen}>
       <View style={styles.header}>
-        <Header title="Home" />
+        <Header title="Homee" />
       </View>
       <View style={styles.smallCardContainer}>
         <View style={styles.leftContainer}>
