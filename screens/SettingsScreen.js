@@ -5,7 +5,6 @@ import {
   Image,
   TouchableOpacity,
   StyleSheet,
-  Modal,
   SafeAreaView,
   Switch,
   ScrollView,
@@ -13,6 +12,8 @@ import {
   StatusBar,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+
+import Modal from "react-native-modal";
 
 import Colors from "../constants/colors";
 import Card from "../components/Other/Global/Card";
@@ -66,7 +67,7 @@ const SettingsScreen = (props) => {
   };
 
   return (
-    <Modal visible={props.visible} animationType="slide">
+    <Modal isVisible={props.visible} animationIn={"slideInRight"} animationOut={"slideOutRight"} margin={0} >
       <SafeAreaView style={{ backgroundColor: "black" }}>
         <View style={styles.screen}>
           <View style={styles.header}>
