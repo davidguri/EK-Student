@@ -16,10 +16,10 @@ const Input = (props) => {
 
 const styles = StyleSheet.create({
   input: {
-    height: 50,
+    height: 55,
     borderColor: Colors.primary,
-    borderWidth: 2,
-    borderRadius: 20,
+    borderWidth: 1,
+    borderRadius: 22,
     marginVertical: 10,
   },
 });
