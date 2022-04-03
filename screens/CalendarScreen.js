@@ -72,7 +72,7 @@ const CalendarScreen = (props) => {
         minDate={"2021-09-13"}
         maxDate={"2022-06-21"}
         onDayPress={(day) => {
-          console.log("selected day", day);
+          /* console.log("selected day", day); */
         }}
         onDayLongPress={(day) => {}}
         disableMonthChange={true}

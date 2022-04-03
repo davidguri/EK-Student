@@ -33,7 +33,7 @@ const HomeScreen = (props) => {
           <TemperatureCardSmall />
           <Card style={styles.teamsCard}>
             <TouchableOpacity
-              onPress={() => Linking.openURL("https://youtube.com")}
+              onPress={() => Linking.openURL("com.teams.app")}
               style={styles.buttonContainer}
             >
               <View style={styles.section}>
