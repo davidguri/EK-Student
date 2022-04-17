@@ -4,7 +4,6 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
-  Modal,
   SafeAreaView,
   TextInput,
   StatusBar,
@@ -12,6 +11,8 @@ import {
 
 import Colors from "../../../constants/colors";
 import Card from "../../Other/Global/Card";
+
+import Modal from "react-native-modal";
 
 import ImportanceModal from "./ImportanceModal";
 
@@ -25,7 +26,7 @@ const AddGoalModal = (props) => {
   };
 
   return (
-    <Modal visible={props.visible} animationType="slide" transparent={true}>
+    <Modal isVisible={props.visible} animationType="slide" transparent={true} avoidKeyboard={true}>
       <SafeAreaView style={{ backgroundColor: "black" }}>
         <View style={styles.screen}>
           <View style={styles.header}>
@@ -61,7 +62,7 @@ const AddGoalModal = (props) => {
               style={styles.submitContainer}
             >
               <Text style={styles.inputButtonText}>{props.title}</Text>
-              {/* onSubmit, send out importnce, title */}
+              {/* onSubmit, send out importance, title */}
             </TouchableOpacity>
           </View>
 
@@ -151,7 +152,7 @@ const styles = StyleSheet.create({
   },
 
   inputButtonText: {
-    fontSize: 21,
+    fontSize: 20,
     textAlign: "center",
     fontWeight: "700",
     color: Colors.primary,

@@ -16,7 +16,9 @@ import LoginHead from "./LoginHead";
 import Modal from "react-native-modal";
 
 const LoginModal = (props) => {
-  const [hidePass, setHidePass] = useState(true);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [classNr, setClassNr] = useState("");
 
   return (
     <Modal
@@ -28,6 +30,7 @@ const LoginModal = (props) => {
       animationIn={"slideInRight"}
       animationInTiming={350}
       animationOutTiming={350}
+      avoidKeyboard={true}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <SafeAreaView style={styles.screen}>
@@ -43,6 +46,9 @@ const LoginModal = (props) => {
                 autoCorrect={false}
                 placeholder="jdoe@ernestkoliqi.com"
                 placeholderTextColor="#666"
+                value={email}
+                onChangeText={(text) => setEmail(text)}
+                selectTextOnFocus={true}
               />
               <Input
                 style={styles.input}
@@ -50,6 +56,9 @@ const LoginModal = (props) => {
                 autoCorrect={false}
                 placeholder="Class (ex: X-3)"
                 placeholderTextColor="#666"
+                value={classNr}
+                onChangeText={(text) => setClassNr(text)}
+                selectTextOnFocus={true}
               />
               <Input
                 style={styles.input}
@@ -58,18 +67,26 @@ const LoginModal = (props) => {
                 placeholder="Password"
                 placeholderTextColor="#666"
                 bool={true}
+                value={password}
+                onChangeText={(text) => setPassword(text)}
+                selectTextOnFocus={true}
               />
             </View>
             <View style={styles.buttonContainer}>
               <TouchableOpacity onPress={props.loginPress}>
                 <View style={styles.ctaBtn}>
-                  <Text style={styles.loginBtn}>LOGIN</Text>
+                  <Text style={styles.loginBtn}>Sign In</Text>
                 </View>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => {}}>
                 <View style={styles.forgotBtn}>
                   <Text
-                    style={{ color: "white", fontSize: 17, paddingRight: 5 }}
+                    style={{
+                      color: "white",
+                      fontSize: 17,
+                      paddingRight: 5,
+                      fontWeight: "500",
+                    }}
                   >
                     Forgot Password?
                   </Text>
@@ -84,6 +101,10 @@ const LoginModal = (props) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+
   screen: {
     height: "100%",
     width: "100%",

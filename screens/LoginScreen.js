@@ -9,11 +9,12 @@ import {
   SafeAreaView,
 } from "react-native";
 
-import Input from "../components/Other/Global/Input";
 import LoginHead from "../components/Login/LoginHead";
 import LoginModal from "../components/Login/LoginModal";
 
 import Colors from "../constants/colors";
+
+import { auth } from "../firebase";
 
 const LoginScreen = (props) => {
 
@@ -22,6 +23,10 @@ const LoginScreen = (props) => {
   const toggleModalHandler = () => {
     setIsOpenModal(!isOpenModal);
   };
+
+  const handleSignUp = () => {
+    auth.createUserWithEmailAndPassword(email, password)
+  }
 
   return (
     <TouchableWithoutFeedback
@@ -114,7 +119,7 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: Colors.opacity,
     fontWeight: "600",
-    borderRadius: 25,
+    borderRadius: 30,
     borderColor: Colors.primary,
     borderWidth: 4,
     padding: 6,
@@ -124,15 +129,16 @@ const styles = StyleSheet.create({
 
   buttonText: {
     fontWeight: "600",
-    padding: 6.75,
+    padding: 5.5,
     textAlign: "center",
-    fontSize: 22,
+    fontSize: 24,
     color: "#fff",
   },
 
   forgotBtn: {
     width: "100%",
     opacity: 0.6,
+    paddingTop: 5,
   },
 
   forgotText: {

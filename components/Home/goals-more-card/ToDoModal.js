@@ -4,7 +4,6 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
-  Modal,
   SafeAreaView,
   StatusBar,
   FlatList,
@@ -12,6 +11,8 @@ import {
   ScrollView,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+
+import Modal from "react-native-modal";
 
 import Colors from "../../../constants/colors";
 import Card from "../../Other/Global/Card";
@@ -57,11 +58,10 @@ const Item = ({ title, importance }) => {
 
 const ToDoModal = (props) => {
   const [isEnabledCompleted, setIsEnabledCompleted] = useState(false);
-  const [isEnabledUpcoming, setIsEnabledUpcoming] = useState(false);
   const [isEnabledAll, setIsEnabledAll] = useState(true);
 
-  const toggleCompleted = () => setIsEnabledCompleted((previousState) => !previousState);
-  const toggleUpcoming = () => setIsEnabledUpcoming((previousState) => !previousState);
+  const toggleCompleted = () =>
+    setIsEnabledCompleted((previousState) => !previousState);
   const toggleAll = () => setIsEnabledAll((previousState) => !previousState);
 
   const renderItem = ({ item }) => (
@@ -80,8 +80,20 @@ const ToDoModal = (props) => {
     }
   };
 
+
+
   return (
-    <Modal visible={props.visible} animationType="slide" transparent={true}>
+    <Modal
+      isVisible={props.visible}
+      backgroundColor={"#000"}
+      style={{ margin: 0 }}
+      hideModalContentWhileAnimating={true}
+      onBackdropPress={props.onBackdropPress}
+      animationIn={"slideInRight"}
+      animationInTiming={350}
+      animationOutTiming={350}
+      avoidKeyboard={true}
+    >
       <SafeAreaView style={{ backgroundColor: "black" }}>
         <View style={styles.screen}>
           <View style={styles.header}>
@@ -97,7 +109,7 @@ const ToDoModal = (props) => {
             <ScrollView>
               <Card style={styles.todayContainer}>
                 <View style={styles.todayTextContainer}>
-                  <Text style={styles.todayText}>For Today</Text> 
+                  <Text style={styles.todayText}>For Today</Text>
                   {/* Change this based on the presets set below */}
                 </View>
                 <FlatList
@@ -130,28 +142,6 @@ const ToDoModal = (props) => {
                       ios_backgroundColor="#3e3e3e"
                       onValueChange={toggleCompleted}
                       value={isEnabledCompleted}
-                    />
-                  </TouchableOpacity>
-                </Card>
-                <Card style={styles.containerRow}>
-                  <TouchableOpacity
-                    onPress={() => {}}
-                    style={styles.containerButton}
-                  >
-                    <View style={styles.leftContainer}>
-                      <Ionicons
-                        name="albums"
-                        size={27}
-                        color={Colors.primary}
-                      />
-                      <Text style={styles.containerRowTitle}>Show Upcoming</Text>
-                    </View>
-                    <Switch
-                      trackColor={{ false: "#767577", true: "#30d158" }}
-                      thumbColor={isEnabledUpcoming ? "#f4f3f4" : "#f4f3f4"}
-                      ios_backgroundColor="#3e3e3e"
-                      onValueChange={toggleUpcoming}
-                      value={isEnabledUpcoming}
                     />
                   </TouchableOpacity>
                 </Card>
@@ -299,6 +289,7 @@ const styles = StyleSheet.create({
   footer: {
     width: "100%",
     marginVertical: 15,
+    backgroundColor: "transparent",
   },
 
   containerRow: {

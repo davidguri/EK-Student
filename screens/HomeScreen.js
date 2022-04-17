@@ -8,7 +8,6 @@ import {
   Image,
   Linking,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 
 import Header from "../components/Home/other/Header";
 import TomorrowCard from "../components/Home/today-tomorrow-card/TomorrowCard";
