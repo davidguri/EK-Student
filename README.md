@@ -24,4 +24,4 @@ If you have any feedback, please reach out to me at davidguri@yahoo.com
 
 ## Authors
 
-- [@EK-Student](https://github.com/EK-Student)
+- [@davidguri](https://github.com/davidguri)
