@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Ionicons } from "@expo/vector-icons";
 import { enableScreens } from "react-native-screens";
+import { NativeBaseProvider } from "native-base";
 
 import Colors from "./constants/colors";
 
@@ -53,48 +54,52 @@ export default function App() {
 
   if (isLogged == true) {
     return (
-      <SafeAreaView style={styles.screen}>
-        <StatusBar barStyle="light-content" translucent={true} />
-        <NavigationContainer theme={appTheme}>
-          <Tab.Navigator
-            screenOptions={({ route }) => ({
-              tabBarIcon: ({ focused, color, size }) => {
-                let iconName;
+      <NativeBaseProvider>
+        <SafeAreaView style={styles.screen}>
+          <StatusBar barStyle="light-content" translucent={true} />
+          <NavigationContainer theme={appTheme}>
+            <Tab.Navigator
+              screenOptions={({ route }) => ({
+                tabBarIcon: ({ focused, color, size }) => {
+                  let iconName;
 
-                if (route.name === "Home") {
-                  iconName = focused ? "home" : "home-outline";
-                } else if (route.name === "News") {
-                  iconName = focused ? "newspaper" : "newspaper-outline";
-                } else if (route.name === "Calendar") {
-                  iconName = focused ? "calendar" : "calendar-outline";
-                }
-                return <Ionicons name={iconName} size={size} color={color} />;
-              },
-            })}
-            tabBarOptions={{
-              activeTintColor: Colors.primary,
-              inactiveTintColor: "gray",
-              showLabel: true,
-              showIcon: true,
-              style: {
-                paddingBottom: 4.25,
-                paddingTop: 4.25,
-              },
-            }}
-          >
-            <Tab.Screen name="Home" component={Home} />
-            <Tab.Screen name="Calendar" component={Calendar} />
-            <Tab.Screen name="News" component={News} />
-          </Tab.Navigator>
-        </NavigationContainer>
-      </SafeAreaView>
+                  if (route.name === "Home") {
+                    iconName = focused ? "home" : "home-outline";
+                  } else if (route.name === "News") {
+                    iconName = focused ? "newspaper" : "newspaper-outline";
+                  } else if (route.name === "Calendar") {
+                    iconName = focused ? "calendar" : "calendar-outline";
+                  }
+                  return <Ionicons name={iconName} size={size} color={color} />;
+                },
+              })}
+              tabBarOptions={{
+                activeTintColor: Colors.primary,
+                inactiveTintColor: "gray",
+                showLabel: true,
+                showIcon: true,
+                style: {
+                  paddingBottom: 4.25,
+                  paddingTop: 4.25,
+                },
+              }}
+            >
+              <Tab.Screen name="Home" component={Home} />
+              <Tab.Screen name="Calendar" component={Calendar} />
+              <Tab.Screen name="News" component={News} />
+            </Tab.Navigator>
+          </NavigationContainer>
+        </SafeAreaView>
+      </NativeBaseProvider>
     );
   } else {
     return (
-      <SafeAreaView style={styles.screen}>
-        <StatusBar barStyle="light-content" translucent={true} />
-        <LoginScreen loginPress={logInHandler} />
-      </SafeAreaView>
+      <NativeBaseProvider>
+        <SafeAreaView style={styles.screen}>
+          <StatusBar barStyle="light-content" translucent={true} />
+          <LoginScreen loginPress={logInHandler} />
+        </SafeAreaView>
+      </NativeBaseProvider>
     );
   }
 }
