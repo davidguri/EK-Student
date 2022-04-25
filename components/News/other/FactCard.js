@@ -4,9 +4,6 @@ import { Text, StyleSheet, TouchableOpacity } from "react-native";
 import Card from "../../Other/Global/Card";
 import Colors from "../../../constants/colors";
 
-import AddProjectModal from "../other/AddProjectModal";
-import AddGoalModal from "../../Home/goals-more-card/AddGoalModal";
-
 const FactCard = (props) => {
   const [isOpenSubmitPage, setIsOpenSubmitPage] = useState(false);
 
@@ -17,23 +14,14 @@ const FactCard = (props) => {
   return (
     <Card style={styles.card}>
       <Text style={styles.cardTitle}>Submit Project</Text>
-      <TouchableOpacity
-        onPress={() => setIsOpenSubmitPage(true)}
-        style={styles.buttonContainer}
-      >
-        <Text style={styles.buttonText}>Submit</Text>
-      </TouchableOpacity>
-      <AddProjectModal
-        visible={isOpenSubmitPage}
-        onCancel={closeModalHandler}
-      />
     </Card>
   );
 };
 
 const styles = StyleSheet.create({
   card: {
-    width: "47.75%",
+    width: "95%",
+    marginHorizontal: "2.5%",
     flexDirection: "column",
     justifyContent: "center",
     paddingTop: 8,
@@ -56,7 +44,7 @@ const styles = StyleSheet.create({
     borderColor: Colors.primary,
     borderWidth: 4,
     marginTop: 8,
-    marginBottom:8,
+    marginBottom: 8,
   },
 
   buttonText: {

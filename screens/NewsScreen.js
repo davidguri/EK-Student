@@ -53,8 +53,9 @@ var date =
 import NewsHeader from "../components/News/other/NewsHeader";
 import TemperatureCardSmall from "../components/Other/Weather/TemperatureCardSmall";
 import NewsTodayCard from "../components/News/todayInNews/NewsTodayCard";
-import NewsProjectCard from "../components/News/todayInNews/NewsProjectCard";
+import NewsProjectCard from "../components/News/other/NewsProjectCard";
 import NewsOldCard from "../components/News/oldNews/NewsOldCard";
+import FactCard from "../components/News/other/FactCard";
 
 const NewsScreen = (props) => {
   return (
@@ -67,6 +68,9 @@ const NewsScreen = (props) => {
           <TemperatureCardSmall />
         </View>
         <NewsProjectCard />
+      </View>
+      <View style={styles.bottomConatiner}>
+        <FactCard />
       </View>
       <View style={{ margin: 3, marginBottom: 12 }}>
         <NewsTodayCard />
@@ -115,6 +119,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "47.75%",
     alignItems: "center",
+  },
+
+  bottomConatiner: {
+    marginTop: 5,
   },
 });
 
