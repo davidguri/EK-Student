@@ -17,16 +17,11 @@ import Colors from "../constants/colors";
 import { auth } from "../firebase";
 
 const LoginScreen = (props) => {
-
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   const toggleModalHandler = () => {
     setIsOpenModal(!isOpenModal);
   };
-
-  const handleSignUp = () => {
-    auth.createUserWithEmailAndPassword(email, password)
-  }
 
   return (
     <TouchableWithoutFeedback
@@ -42,7 +37,10 @@ const LoginScreen = (props) => {
             <Text style={styles.titleAlt}>EK Student!</Text>
           </View>
           <View style={styles.actionsContainer}>
-            <TouchableOpacity onPress={toggleModalHandler} style={styles.buttonContainer}>
+            <TouchableOpacity
+              onPress={toggleModalHandler}
+              style={styles.buttonContainer}
+            >
               <View style={styles.ctaButton}>
                 <Text style={styles.buttonText}>Sign-in</Text>
               </View>
@@ -55,7 +53,11 @@ const LoginScreen = (props) => {
             </TouchableOpacity>
           </View>
         </View>
-        <LoginModal visible={isOpenModal} onCancel={toggleModalHandler} loginPress={props.loginPress} />
+        <LoginModal
+          visible={isOpenModal}
+          onCancel={toggleModalHandler}
+          loginPress={props.loginPress}
+        />
       </SafeAreaView>
     </TouchableWithoutFeedback>
   );
@@ -144,7 +146,7 @@ const styles = StyleSheet.create({
   forgotText: {
     color: "white",
     fontSize: 17,
-    fontWeight: "600"
+    fontWeight: "600",
   },
 });
 

@@ -75,54 +75,11 @@ const CalendarScreen = (props) => {
           /* console.log("selected day", day); */
         }}
         onDayLongPress={(day) => {}}
-        disableMonthChange={true}
         firstDay={1}
-        onPressArrowLeft={(subtractMonth) => subtractMonth()}
-        onPressArrowRight={(addMonth) => addMonth()}
         disableAllTouchEventsForDisabledDays={true}
-        enableSwipeMonths={false}
         displayLoadingIndicator={false}
         markingType={"period"}
-        markedDates={{
-          "2022-01-01": {
-            selected: true,
-            color: Colors.classes.main,
-            textColor: "black",
-            endingDay: true,
-            startingDay: true,
-          },
-          "2022-01-13": {
-            selected: true,
-            color: Colors.events.main,
-            textColor: "black",
-            endingDay: true,
-            startingDay: true,
-          },
-          "2022-01-23": {
-            selected: true,
-            color: Colors.daysOff.main,
-            textColor: "black",
-            endingDay: true,
-            startingDay: true,
-          }, 
-          "2022-01-25": {
-            selected: true,
-            color: Colors.daysOff.main,
-            textColor: "black",
-            startingDay: true,
-          },
-          "2022-01-26": {
-            selected: true,
-            color: Colors.classes.main,
-            textColor: "black",
-          },
-          "2022-01-27": {
-            selected: true,
-            color: Colors.events.main,
-            textColor: "black",
-            endingDay: true,
-          },         
-        }}
+        markedDates={{}}
         style={{
           height: "100%",
           backgroundColor: "#000",

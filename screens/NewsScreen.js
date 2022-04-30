@@ -123,6 +123,7 @@ const styles = StyleSheet.create({
 
   bottomConatiner: {
     marginTop: 5,
+    paddingBottom: 10,
   },
 });
 

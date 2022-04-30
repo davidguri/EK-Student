@@ -20,6 +20,13 @@ const LoginModal = (props) => {
   const [password, setPassword] = useState("");
   const [classNr, setClassNr] = useState("");
 
+  const handleSignUp = () => {
+    auth.createUserWithEmailAndPassword(email, password).then(userCredentials => {
+      const user = userCredentials.user;
+      console.log("Logged in with: ", user.email);
+    }).catch(error => alert(error.message))
+  };
+
   return (
     <Modal
       isVisible={props.visible}
