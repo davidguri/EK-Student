@@ -14,8 +14,6 @@ import LoginModal from "../components/Login/LoginModal";
 
 import Colors from "../constants/colors";
 
-import { auth } from "../firebase";
-
 const LoginScreen = (props) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
 
@@ -118,28 +116,28 @@ const styles = StyleSheet.create({
   },
 
   ctaButton: {
-    width: "100%",
+    width: "95%",
+    marginHorizontal: "2.5%",
     backgroundColor: Colors.opacity,
     fontWeight: "600",
     borderRadius: 30,
     borderColor: Colors.primary,
     borderWidth: 4,
-    padding: 6,
-    paddingHorizontal: 22,
+    padding: 5,
     marginHorizontal: 12,
   },
 
   buttonText: {
     fontWeight: "600",
-    padding: 5.5,
+    padding: 5.75,
     textAlign: "center",
-    fontSize: 24,
+    fontSize: 23,
     color: "#fff",
   },
 
   forgotBtn: {
     width: "100%",
-    opacity: 0.6,
+    opacity: 0.5,
     paddingTop: 5,
   },
 

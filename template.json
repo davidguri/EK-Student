@@ -1,102 +1,104 @@
 {
-	"users": {
-		"david-guri": {
-			"name": "David",
-			"surname": "Guri",
-			"email": "dguri@ernestkoliqi.com",
-			"class": "X-3",
-			"goals": [
-				"Dummy goal 1",
-				"Dummy goal 2"
-			],
-			"todos": [
-				"Dummy todo 1",
-				"Dummy todo 2"
-			],
-			"projects": [
-				"Dummy project 1",
-				"Dummy project 2"
-			]
-		}
-	}
-}
-
-{
-	"goals": {
-		"david-guri": {
-			"Dummy goal 1": {
-				"importance": "high",
-				"status": "uncompleted"
-			},
-			"Dummy goal 2": {
-				"importance": "low",
-				"status": "completed"
+	{
+		"users": {
+			"david-guri": {
+				"name": "David",
+				"surname": "Guri",
+				"email": "dguri@ernestkoliqi.com",
+				"class": "X-3",
+				"goals": [
+					"Dummy goal 1",
+					"Dummy goal 2"
+				],
+				"todos": [
+					"Dummy todo 1",
+					"Dummy todo 2"
+				],
+				"projects": [
+					"Dummy project 1",
+					"Dummy project 2"
+				]
 			}
 		}
-	}
-}
+	},
 
-{
-	"todos": {
-		"david-guri": {
-			"Dummy todo 1": {
-				"due": "10-01-2022",
-				"importance": "medium",
-				"status": "uncomplete"
-			},
-			"Dummy todo 2": {
-				"due": "10-02-2022",
-				"importance": "low",
-				"status": "complete"
+	{
+		"goals": {
+			"david-guri": {
+				"Dummy goal 1": {
+					"importance": "high",
+					"status": "uncompleted"
+				},
+				"Dummy goal 2": {
+					"importance": "low",
+					"status": "completed"
+				}
 			}
 		}
-	}
-}
+	},
 
-{
-	"projects": {
-		"david-guri": {
-			"Dummy project 1": {
-				"due": "10-01-2022",
-				"importance": "medium",
-				"status": "handed",
-				"subject": "math",
-				"team": [
-					"arlind-gorrea",
-					"kristjan-avrami",
-					"bjorni-hoxha",
-					"sirio-dafa"
-				],
-				"work": [
-					"first-task-name": [
-						"points": 10
-					]
+	{
+		"todos": {
+			"david-guri": {
+				"Dummy todo 1": {
+					"due": "10-01-2022",
+					"importance": "medium",
+					"status": "uncomplete"
+				},
+				"Dummy todo 2": {
+					"due": "10-02-2022",
+					"importance": "low",
+					"status": "complete"
+				}
+			}
+		}
+	},
+
+	{
+		"projects": {
+			"david-guri": {
+				"Dummy project 1": {
+					"due": "10-01-2022",
+					"importance": "medium",
+					"status": "handed",
+					"subject": "math",
+					"team": [
+						"arlind-gorrea",
+						"kristjan-avrami",
+						"bjorni-hoxha",
+						"sirio-dafa"
+					],
+					"work": [
+						"first-task-name": [
+							"points": 10
+						]
 					"second-task-name": [
-						"points": 10
-					]
-				],
-				"total-points": 20 
-			},
-			"Dummy project 2": {
-				"due": "10-02-2022",
-				"importance": "low",
-				"status": "unhanded",
-				"subject": "english",
-				"team": [
-					"arlind-gorrea",
-					"kristjan-avrami",
-					"bjorni-hoxha",
-					"sirio-dafa"
-				],
-				"work": [
-					"first-task-name": [
-						"points": 10
-					]
-					"second-task-name": [
-						"points": 10
-					]
-				],
-				"total-points": 20 
+							"points": 10
+						]
+					],
+					"total-points": 20
+				},
+				"Dummy project 2": {
+					"due": "10-02-2022",
+					"importance": "low",
+					"status": "unhanded",
+					"subject": "english",
+					"team": [
+						"arlind-gorrea",
+						"kristjan-avrami",
+						"bjorni-hoxha",
+						"sirio-dafa"
+					],
+					"work": [
+						"first-task-name": [
+							"points": 10
+						],
+						"second-task-name": [
+							"points": 10
+						]
+					],
+					"total-points": 20
+				}
 			}
 		}
 	}

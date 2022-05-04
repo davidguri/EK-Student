@@ -66,7 +66,7 @@ const UpcomingCard = (props) => {
         keyExtractor={(item) => item.id}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
-      ></FlatList>
+      />
       <EventModal isVisible={isModalVisible} onBackdropPress={toggleModalHandler} />
     </Card>
   );

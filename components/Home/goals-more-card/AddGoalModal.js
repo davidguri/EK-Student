@@ -8,9 +8,9 @@ import {
   TextInput,
   StatusBar,
 } from "react-native";
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 import Colors from "../../../constants/colors";
-import Card from "../../Other/Global/Card";
 
 import Modal from "react-native-modal";
 
@@ -25,8 +25,30 @@ const AddGoalModal = (props) => {
     setIsOpenImportanceModal(!isOpenImportanceModal);
   };
 
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+  const handleConfirm = (date) => {
+    console.log("A date has been picked: ", date);
+    var dateTime = date;
+    hideDatePicker();
+  };
+
   return (
-    <Modal isVisible={props.visible} animationType="slide" transparent={true} avoidKeyboard={true}>
+    <Modal
+      isVisible={props.visible}
+      animationType="slide"
+      transparent={true}
+      avoidKeyboard={true}
+      margin={0}
+    >
       <SafeAreaView style={{ backgroundColor: "black" }}>
         <View style={styles.screen}>
           <View style={styles.header}>
@@ -35,7 +57,7 @@ const AddGoalModal = (props) => {
 
           <View style={styles.body}>
             <TextInput
-              style={styles.input}
+              style={[styles.input, styles.titleInput]}
               value={text}
               onChangeText={onChangeText}
               placeholderTextColor="#777"
@@ -50,13 +72,15 @@ const AddGoalModal = (props) => {
               </View>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => {}}
+              onPress={showDatePicker}
               style={[styles.inputButton, styles.input]}
             >
               <View>
                 <Text style={styles.inputButtonText}>Set Date</Text>
               </View>
             </TouchableOpacity>
+          </View>
+          <View style={styles.footer}>
             <TouchableOpacity
               onPress={props.onSubmit}
               style={styles.submitContainer}
@@ -64,9 +88,6 @@ const AddGoalModal = (props) => {
               <Text style={styles.inputButtonText}>{props.title}</Text>
               {/* onSubmit, send out importance, title */}
             </TouchableOpacity>
-          </View>
-
-          <View style={styles.footer}>
             <TouchableOpacity onPress={props.onCancel} style={styles.button}>
               <Text style={styles.buttonCancelText}>Cancel</Text>
             </TouchableOpacity>
@@ -76,6 +97,12 @@ const AddGoalModal = (props) => {
       <ImportanceModal
         visible={isOpenImportanceModal}
         onBackdropPress={toggleImportanceModalHandler}
+      />
+      <DateTimePickerModal
+        isVisible={isDatePickerVisible}
+        mode="date"
+        onConfirm={handleConfirm}
+        onCancel={hideDatePicker}
       />
     </Modal>
   );
@@ -88,7 +115,8 @@ const styles = StyleSheet.create({
     borderTopColor: Colors.primary,
     height: "100%",
     alignItems: "center",
-    padding: 7.5,
+    paddingHorizontal: 15,
+    paddingVertical: 7,
     flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center",
@@ -134,7 +162,8 @@ const styles = StyleSheet.create({
 
   footer: {
     paddingBottom: 20,
-    flexDirection: "row",
+    width: "100%",
+    flexDirection: "column",
     alignItems: "center",
   },
 
@@ -142,9 +171,13 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     borderWidth: 4,
     borderColor: Colors.primary,
-    padding: 16,
+    padding: 12,
     margin: 10,
     color: "white",
+  },
+
+  titleInput: {
+    padding: 16,
   },
 
   inputButton: {

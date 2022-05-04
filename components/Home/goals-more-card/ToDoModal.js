@@ -89,7 +89,6 @@ const ToDoModal = (props) => {
       style={{ margin: 0 }}
       hideModalContentWhileAnimating={true}
       onBackdropPress={props.onBackdropPress}
-      animationIn={"slideInRight"}
       animationInTiming={350}
       animationOutTiming={350}
       avoidKeyboard={true}

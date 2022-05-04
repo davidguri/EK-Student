@@ -113,8 +113,14 @@ console.log(str2); */
           <Text style={styles.points}>20 Pts Total</Text>
         </View>
       </Card>
-      <ProjectTeamModal isVisible={isTeamVisible} onBackdropPress={toggleTeamHandler} />
-      <ProjectWorkModal isVisible={isWorkVisible} onBackdropPress={toggleWorkHandler} />
+      <ProjectTeamModal
+        isVisible={isTeamVisible}
+        onBackdropPress={toggleTeamHandler}
+      />
+      <ProjectWorkModal
+        isVisible={isWorkVisible}
+        onBackdropPress={toggleWorkHandler}
+      />
     </View>
   );
 };

@@ -15,6 +15,8 @@ import LoginHead from "./LoginHead";
 
 import Modal from "react-native-modal";
 
+import { auth } from "../../firebase";
+
 const LoginModal = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
 
@@ -9,25 +9,27 @@ import Colors from "../../../constants/colors";
 import { weatherConditions } from "./WeatherConditions";
 
 const TemperatureCardSmall = (props) => {
-  var apiKey = "02d60f9f68d161477b8d81a069ac7d31";
+  var apiKey = "06caaf91eb68cc7baad9218540cfe2a1";
 
-  var temp = 11; {/* weather.main.temp math.floor this value and convert to celcius */}
-  var min = 10; {/* weather.main.temp_min math.floor this value and convert to celcius */}
-  var max = 15; {/* weather.main.temp_max math.floor this value and convert to celcius */}
-  var weather = "Clear"; {/* weather.main */} 
+  let url =
+    "api.openweathermap.org/data/2.5/weather?q=Tirana&appid={06caaf91eb68cc7baad9218540cfe2a1}";
 
-  let url = "api.openweathermap.org/data/2.5/weather?q=Tirana&appid={06caaf91eb68cc7baad9218540cfe2a1}"
+  var temp;
 
-  const getWeather = (props) => {
-    fetch(url)
-    .then(response => {
-      return response.json();
-    })
-    .then(users => {
-      console.log(users);
-    }); 
-  }
+  var weather = "Clear";
 
+  var wind;
+{/*  
+  getWeather({
+    key: "your_key",
+    zip_code: "90001",
+    country: "US",
+  }).then(() => {
+    var data = new showWeather();
+    temp = data.temp;
+    wind = data.wind;
+  });        react-native-weather-api
+*/}
   return (
     <Card style={{ ...styles.tempCard, ...props.styles }}>
       <View style={styles.topContainer}>
@@ -40,7 +42,7 @@ const TemperatureCardSmall = (props) => {
           />
         </View>
         <View style={styles.currentContainer}>
-          <Text style={styles.currentText}>{temp}&deg;</Text>
+          <Text style={styles.currentText}>12&deg;</Text>
         </View>
       </View>
 
@@ -50,7 +52,7 @@ const TemperatureCardSmall = (props) => {
             {weatherConditions[weather].title}
           </Text>
           <View>
-            <Text style={styles.subtitleText}>H: {max}&deg;  L: {min}&deg;</Text>
+            <Text style={styles.subtitleText}>H: 13&deg; L: 10&deg;</Text>
           </View>
         </View>
       </View>

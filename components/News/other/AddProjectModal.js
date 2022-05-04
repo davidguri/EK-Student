@@ -5,10 +5,10 @@ import {
   TouchableOpacity,
   StyleSheet,
   SafeAreaView,
-  Modal,
   TextInput,
   StatusBar,
 } from "react-native";
+import Modal from "react-native-modal";
 
 import Colors from "../../../constants/colors";
 import Card from "../../Other/Global/Card";
@@ -18,7 +18,12 @@ const AddProjectModal = (props) => {
   const [desc, onChangeDesc] = React.useState("");
 
   return (
-    <Modal visible={props.visible} animationType="slide">
+    <Modal
+      isVisible={props.visible}
+      transparent={true}
+      avoidKeyboard={true}
+      margin={0}
+    >
       <SafeAreaView style={{ backgroundColor: "black" }}>
         <View style={styles.screen}>
           <View style={styles.header}>
@@ -43,11 +48,8 @@ const AddProjectModal = (props) => {
               placeholder="Description of Project"
             />
             <TouchableOpacity onPress={() => {}} style={styles.imageInput}>
-              <Text style={styles.imageText}>
-                Submit an Image of the Project
-              </Text>
+              <Text style={styles.imageText}>Image of the Project</Text>
             </TouchableOpacity>
-            {/* FIX THIS, MAKE IT SO THAT YOU CAN ACTUALLY UPLOAD AN IMAGE */}
 
             <View style={styles.submit}>
               <TouchableOpacity
