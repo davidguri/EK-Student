@@ -82,7 +82,7 @@ const LoginModal = (props) => {
               />
             </View>
             <View style={styles.buttonContainer}>
-              <TouchableOpacity onPress={props.loginPress}>
+              <TouchableOpacity onPress={handleSignUp}>
                 <View style={styles.ctaBtn}>
                   <Text style={styles.loginBtn}>Sign In</Text>
                 </View>

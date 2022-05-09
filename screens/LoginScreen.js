@@ -54,7 +54,6 @@ const LoginScreen = (props) => {
         <LoginModal
           visible={isOpenModal}
           onCancel={toggleModalHandler}
-          loginPress={props.loginPress}
         />
       </SafeAreaView>
     </TouchableWithoutFeedback>
