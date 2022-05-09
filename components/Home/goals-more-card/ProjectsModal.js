@@ -6,7 +6,6 @@ import {
   StyleSheet,
   Modal,
   SafeAreaView,
-  TextInput,
   StatusBar,
   ScrollView,
   FlatList,
