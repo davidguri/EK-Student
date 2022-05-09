@@ -13,12 +13,8 @@ const TemperatureCardSmall = (props) => {
 
   let url =
     "api.openweathermap.org/data/2.5/weather?q=Tirana&appid={06caaf91eb68cc7baad9218540cfe2a1}";
-
-  var temp;
-
+    
   var weather = "Clear";
-
-  var wind;
 {/*  
   getWeather({
     key: "your_key",
