@@ -20,13 +20,16 @@ import { auth } from "../../firebase";
 const LoginModal = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [classNr, setClassNr] = useState("");
 
-  const handleSignUp = () => {
-    auth.createUserWithEmailAndPassword(email, password).then(userCredentials => {
-      const user = userCredentials.user;
-      console.log("Logged in with: ", user.email);
-    }).catch(error => alert(error.message))
+  const handleLogin = () => {
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((userCredentials) => {
+        const user = userCredentials.user;
+        console.log("Logged in with:", user.email);
+        `props.loginPress`
+      })
+      .catch((error) => alert(error.message));
   };
 
   return (
@@ -46,7 +49,7 @@ const LoginModal = (props) => {
           <LoginHead title="SIGN IN" />
           <View style={styles.loginForm}>
             <View style={styles.titleContainer}>
-              <Text style={styles.title}>Sign In</Text>
+              <Text style={styles.title}>Log In</Text>
             </View>
             <View style={styles.inputContainer}>
               <Input
@@ -57,17 +60,8 @@ const LoginModal = (props) => {
                 placeholderTextColor="#666"
                 value={email}
                 onChangeText={(text) => setEmail(text)}
-                selectTextOnFocus={true}
-              />
-              <Input
-                style={styles.input}
-                blurOnSubmit
-                autoCorrect={false}
-                placeholder="Class (ex: X-3)"
-                placeholderTextColor="#666"
-                value={classNr}
-                onChangeText={(text) => setClassNr(text)}
-                selectTextOnFocus={true}
+                selectTextOnFocus
+                keyboardType="email-address"
               />
               <Input
                 style={styles.input}
@@ -78,13 +72,13 @@ const LoginModal = (props) => {
                 bool={true}
                 value={password}
                 onChangeText={(text) => setPassword(text)}
-                selectTextOnFocus={true}
+                selectTextOnFocus
               />
             </View>
             <View style={styles.buttonContainer}>
-              <TouchableOpacity onPress={handleSignUp}>
+              <TouchableOpacity onPress={handleLogin}>
                 <View style={styles.ctaBtn}>
-                  <Text style={styles.loginBtn}>Sign In</Text>
+                  <Text style={styles.loginBtn}>Log In</Text>
                 </View>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => {}}>

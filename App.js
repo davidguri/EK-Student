@@ -46,13 +46,13 @@ const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  // const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState(false);
 
-  // const logInHandler = () => {
-  //   setIsLogged(true);
-  // };
+  const logInHandler = () => {
+    setIsLogged(true);
+  };
 
-  // if (isLogged == true) {
+  if (isLogged == true) {
     return (
       <NativeBaseProvider>
         <SafeAreaView style={styles.screen}>
@@ -92,16 +92,16 @@ export default function App() {
         </SafeAreaView>
       </NativeBaseProvider>
     );
-  // } else {
-  //   return (
-  //     <NativeBaseProvider>
-  //       <SafeAreaView style={styles.screen}>
-  //         <StatusBar barStyle="light-content" translucent={true} />
-  //         <LoginScreen loginPress={logInHandler} />
-  //       </SafeAreaView>
-  //     </NativeBaseProvider>
-  //   );
-  // }
+  } else {
+    return (
+      <NativeBaseProvider>
+        <SafeAreaView style={styles.screen}>
+          <StatusBar barStyle="light-content" translucent={true} />
+          <LoginScreen loginPress={logInHandler} />
+        </SafeAreaView>
+      </NativeBaseProvider>
+    );
+  }
 }
 
 const styles = StyleSheet.create({

@@ -40,7 +40,7 @@ const LoginScreen = (props) => {
               style={styles.buttonContainer}
             >
               <View style={styles.ctaButton}>
-                <Text style={styles.buttonText}>Sign-in</Text>
+                <Text style={styles.buttonText}>Log In</Text>
               </View>
             </TouchableOpacity>
 
@@ -54,6 +54,7 @@ const LoginScreen = (props) => {
         <LoginModal
           visible={isOpenModal}
           onCancel={toggleModalHandler}
+          loginPress={props.loginPress}
         />
       </SafeAreaView>
     </TouchableWithoutFeedback>
