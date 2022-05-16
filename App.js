@@ -42,9 +42,7 @@ function Calendar() {
 }
 
 enableScreens();
-
 const Tab = createBottomTabNavigator();
-
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -55,7 +53,7 @@ export default function App() {
   setTimeout(() => {
     user != null ? setIsLogged(true) : setIsLogged(false);
   }, 2000);
-
+  
   const logInHandler = () => {
     setIsLogged(true);
   };

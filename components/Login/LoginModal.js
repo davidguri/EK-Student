@@ -27,7 +27,6 @@ const LoginModal = (props) => {
       .then((userCredentials) => {
         const user = userCredentials.user;
         console.log("Logged in with:", user.email);
-        `props.loginPress`
       })
       .catch((error) => alert(error.message));
   };
