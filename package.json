@@ -49,7 +49,7 @@
     "react-native-screens": "~3.10.1",
     "react-native-sfsymbols": "^1.1.0",
     "react-native-simple-radio-button": "^2.7.4",
-    "react-native-svg": "12.1.1",
+    "react-native-svg": "^12.3.0",
     "react-native-swipeview": "^1.0.3",
     "react-native-swipeview-flat": "^1.0.1",
     "react-native-switch-toggles": "0.0.1",
