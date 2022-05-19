@@ -27,5 +27,4 @@ If you have any feedback, please reach out to me at davidguri@yahoo.com
 - [@davidguri](https://github.com/davidguri)
 
 ## License
-
-- [MIT](https://chooseal
+- [MIT](https://choosealicense.com/licenses/mit/)
