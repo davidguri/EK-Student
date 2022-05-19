@@ -25,3 +25,7 @@ If you have any feedback, please reach out to me at davidguri@yahoo.com
 ## Authors
 
 - [@davidguri](https://github.com/davidguri)
+
+## License
+
+- [MIT](https://chooseal
