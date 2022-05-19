@@ -42,7 +42,7 @@ const AboutDevModal = (props) => {
                 <Text style={styles.bodyText}>
                   Hi! I'm David Guri, a student currently in the 1st year of
                   highschool. I also happen to be the main (only) developer of
-                  this app. But maybe this'll change... HELLOOOOo
+                  this app. But maybe this'll change... HELLOOOOo GANIIIIIi
                 </Text>
 
                 <Card style={styles.containerRow}>
