@@ -14,7 +14,7 @@ import HomeScreen from "./screens/HomeScreen";
 import NewsScreen from "./screens/NewsScreen";
 import CalendarScreen from "./screens/CalendarScreen";
 
-import firebase from "firebase";
+import firebase from "firebase/compat/app";
 
 const appTheme = {
   dark: true,
@@ -47,11 +47,11 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   const [isLogged, setIsLogged] = useState(false);
 
-  var user = firebase.auth().currentUser;
+  // var user = firebase.auth().currentUser;
 
-  setTimeout(() => {
-    user != null ? setIsLogged(true) : setIsLogged(false);
-  }, 2000);
+  // setTimeout(() => {
+  //   user != null ? setIsLogged(true) : setIsLogged(false);
+  // }, 1000);
 
   const logInHandler = () => {
     setIsLogged(true);

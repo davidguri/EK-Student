@@ -22,7 +22,7 @@
     "expo-blur": "~11.0.0",
     "expo-linear-gradient": "~11.0.3",
     "expo-status-bar": "~1.2.0",
-    "firebase": "^9.8.1",
+    "firebase": "^9.6.11",
     "native-base": "^3.4.3",
     "react": "17.0.1",
     "react-dom": "17.0.1",
