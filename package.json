@@ -23,6 +23,7 @@
     "expo-linear-gradient": "~11.0.3",
     "expo-status-bar": "~1.2.0",
     "firebase": "^9.6.11",
+    "immer": "^9.0.14",
     "native-base": "^3.4.3",
     "react": "17.0.1",
     "react-dom": "17.0.1",
@@ -57,7 +58,8 @@
     "react-native-web": "0.17.1",
     "react-redux": "^7.2.6",
     "redux": "^4.1.2",
-    "redux-thunk": "^2.4.1"
+    "redux-thunk": "^2.4.1",
+    "url-parse": "^1.5.10"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
