@@ -47,14 +47,14 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   const [isLogged, setIsLogged] = useState(false);
 
-  // var user = firebase.auth().currentUser;
-
-  // setTimeout(() => {
-  //   user != null ? setIsLogged(true) : setIsLogged(false);
-  // }, 1000);
-
   const logInHandler = () => {
-    setIsLogged(true);
+    var user = firebase.auth().currentUser;
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        setIsLogged(true);
+      }
+    });
   };
 
   if (isLogged == true) {
