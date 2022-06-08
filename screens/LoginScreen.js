@@ -43,12 +43,6 @@ const LoginScreen = (props) => {
                 <Text style={styles.buttonText}>Log In</Text>
               </View>
             </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => {}}>
-              <View style={styles.forgotBtn}>
-                <Text style={styles.forgotText}>Having trouble?</Text>
-              </View>
-            </TouchableOpacity>
           </View>
         </View>
         <LoginModal
@@ -97,13 +91,14 @@ const styles = StyleSheet.create({
     height: "90%",
     justifyContent: "center",
     alignItems: "center",
-    paddingBottom: 75,
+    paddingBottom: 80,
   },
 
   actionsContainer: {
     flexDirection: "column",
     justifyContent: "space-around",
     alignItems: "center",
+    paddingTop: 25,
   },
 
   buttonContainer: {
@@ -133,18 +128,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 23,
     color: "#fff",
-  },
-
-  forgotBtn: {
-    width: "100%",
-    opacity: 0.5,
-    paddingTop: 5,
-  },
-
-  forgotText: {
-    color: "white",
-    fontSize: 17,
-    fontWeight: "600",
   },
 });
 

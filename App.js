@@ -52,6 +52,7 @@ export default function App() {
 
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
+        console.log("Logged In Message Given. Noice.")
         setIsLogged(true);
       }
     });
