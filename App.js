@@ -45,14 +45,14 @@ const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState(true);
 
   const logInHandler = () => {
     var user = firebase.auth().currentUser;
 
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        console.log("Logged In Message Given. Noice.")
+        console.log("Logged In Message Given. Noice.");
         setIsLogged(true);
       }
     });
