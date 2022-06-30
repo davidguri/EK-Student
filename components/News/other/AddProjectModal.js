@@ -11,7 +11,6 @@ import {
 import Modal from "react-native-modal";
 
 import Colors from "../../../constants/colors";
-import Card from "../../Other/Global/Card";
 
 const AddProjectModal = (props) => {
   const [name, onChangeName] = React.useState("");
@@ -20,9 +19,13 @@ const AddProjectModal = (props) => {
   return (
     <Modal
       isVisible={props.visible}
-      transparent={true}
+      backgroundColor={"#000"}
+      style={{ margin: 0 }}
+      hideModalContentWhileAnimating={true}
+      onBackdropPress={props.onBackdropPress}
+      animationInTiming={350}
+      animationOutTiming={350}
       avoidKeyboard={true}
-      margin={0}
     >
       <SafeAreaView style={{ backgroundColor: "black" }}>
         <View style={styles.screen}>

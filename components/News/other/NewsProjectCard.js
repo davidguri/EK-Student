@@ -5,7 +5,6 @@ import Card from "../../Other/Global/Card";
 import Colors from "../../../constants/colors";
 
 import AddProjectModal from "../other/AddProjectModal";
-import AddGoalModal from "../../Home/goals-more-card/AddGoalModal";
 
 const NewsProjectCard = (props) => {
   const [isOpenSubmitPage, setIsOpenSubmitPage] = useState(false);
