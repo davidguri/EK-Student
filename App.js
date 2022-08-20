@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, SafeAreaView, StatusBar } from "react-native";
-import "react-native-gesture-handler";
+// import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -73,7 +73,6 @@ export default function App() {
             screenOptions={({ route }) => ({
               tabBarIcon: ({ focused, color, size }) => {
                 let iconName;
-
                 if (route.name === "Home") {
                   iconName = focused ? "home" : "home-outline";
                 } else if (route.name === "News") {
@@ -95,9 +94,9 @@ export default function App() {
               },
             }}
           >
-            <Tab.Screen name="Home" component={Home} />
-            <Tab.Screen name="Calendar" component={Calendar} />
-            <Tab.Screen name="News" component={News} />
+            <Tab.Screen name="Home" component={Home} options={{ headerShown: false }} />
+            <Tab.Screen name="Calendar" component={Calendar} options={{ headerShown: false }} />
+            <Tab.Screen name="News" component={News} options={{ headerShown: false }} />
           </Tab.Navigator>
         </NavigationContainer>
       </SafeAreaView>
