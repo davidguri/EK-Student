@@ -54,7 +54,14 @@ export default function App() {
   // }, 1000);
 
   const logInHandler = () => {
-    setIsLogged(true);
+    var user = firebase.auth().currentUser;
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        console.log("Logged In Message Given. Noice.");
+        setIsLogged(true);
+      }
+    });
   };
 
   if (isLogged == true) {
