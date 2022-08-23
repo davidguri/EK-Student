@@ -19,10 +19,14 @@ import { auth } from "../../firebase";
 
 import Background from "../../assets/background.png";
 
+import { AppContext } from "../../App";
+
 const SignupModal = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fName, setFName] = useState("");
+
+  const { setIsSignedIn } = useContext(AppContext);
 
   const handleSignup = () => {
     auth
@@ -30,6 +34,7 @@ const SignupModal = (props) => {
       .then((userCredentials) => {
         const user = userCredentials.user;
         console.log("Registered with:", user.email);
+        setIsSignedIn(true);
       })
       .catch((error) => alert(error.message));
   };
