@@ -8,12 +8,12 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import Modal from "react-native-modal";
 
 import Input from "../Other/Global/Input";
 import Colors from "../../constants/colors";
 import LoginHead from "./LoginHead";
-
-import Modal from "react-native-modal";
 
 import { auth } from "../../firebase";
 
@@ -21,13 +21,14 @@ const LoginModal = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigation = useNavigation();
+
   const handleLogin = () => {
     auth
       .signInWithEmailAndPassword(email, password)
       .then((userCredentials) => {
         const user = userCredentials.user;
         console.log("Logged in with:", user.email);
-        
       })
       .catch((error) => alert(error.message));
   };
@@ -43,13 +44,15 @@ const LoginModal = (props) => {
       animationInTiming={350}
       animationOutTiming={350}
       avoidKeyboard={true}
+      onSwipeComplete={props.onCancel}
+      swipeDirection="right"
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <SafeAreaView style={styles.screen}>
-          <LoginHead title="SIGN IN" />
+        <SafeAreaView style={styles.media}>
+          <LoginHead title="LOG IN" />
           <View style={styles.loginForm}>
-            <View style={styles.titleContainer}>
-              <Text style={styles.title}>Log In</Text>
+            <View style={styles.titleContainerModal}>
+              <Text style={styles.titleModal}>Log In</Text>
             </View>
             <View style={styles.inputContainer}>
               <Input
@@ -75,9 +78,9 @@ const LoginModal = (props) => {
                 selectTextOnFocus
               />
             </View>
-            <View style={styles.buttonContainer}>
+            <View style={styles.buttonContainerModal}>
               <TouchableOpacity onPress={handleLogin}>
-                <View style={styles.ctaBtn}>
+                <View style={styles.ctaBtnModal}>
                   <Text style={styles.loginBtn}>Log In</Text>
                 </View>
               </TouchableOpacity>
@@ -108,20 +111,20 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
-  screen: {
+  media: {
     height: "100%",
     width: "100%",
     justifyContent: "center",
     backgroundColor: "#000",
   },
 
-  titleContainer: {
+  titleContainerModal: {
     flexDirection: "column",
     justifyContent: "space-around",
     alignItems: "center",
   },
 
-  title: {
+  titleModal: {
     fontSize: 42,
     fontWeight: "bold",
     color: "#fff",
@@ -155,22 +158,22 @@ const styles = StyleSheet.create({
     textAlign: "left",
   },
 
-  buttonContainer: {
-    width: "100%",
+  buttonContainerModal: {
+    width: "85%",
     flexDirection: "row",
-    padding: 20,
+    paddingVertical: 10,
     justifyContent: "space-between",
     alignItems: "center",
   },
 
-  ctaBtn: {
+  ctaBtnModal: {
     width: "100%",
     backgroundColor: Colors.primary,
     fontWeight: "600",
     borderRadius: 18,
     padding: 4,
-    paddingHorizontal: 22,
-    marginHorizontal: 12,
+    paddingHorizontal: 30,
+    marginHorizontal: 0,
   },
 
   loginBtn: {
@@ -183,8 +186,7 @@ const styles = StyleSheet.create({
 
   forgotBtn: {
     width: "100%",
-    padding: 5,
-    paddingRight: 7.5,
+    paddingVertical: 5,
     opacity: 0.5,
   },
 });
