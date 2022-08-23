@@ -39,7 +39,7 @@ function Login() {
   return <LoginScreen />;
 }
 
-function AppScreen() {
+function Feed() {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -89,7 +89,7 @@ const Stack = createNativeStackNavigator();
 export const AppContext = React.createContext({});
 
 export default function App() {
-  const [isSignedIn, setIsSignedIn] = useState(true);
+  const [isSignedIn, setIsSignedIn] = useState(false);
   const contextValue = React.useMemo(
     () => ({
       isSignedIn,
@@ -111,7 +111,11 @@ export default function App() {
                 name="Login"
               />
             ) : (
-              <Stack.Screen component={AppScreen} options={{ headerShown: false }} />
+              <Stack.Screen
+                component={Feed}
+                options={{ headerShown: false }}
+                name="Feed"
+              />
             )}
           </Stack.Navigator>
         </NavigationContainer>
