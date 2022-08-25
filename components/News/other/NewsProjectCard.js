@@ -32,7 +32,7 @@ const NewsProjectCard = (props) => {
 
 const styles = StyleSheet.create({
   card: {
-    width: "47.75%",
+    width: "48%",
     flexDirection: "column",
     justifyContent: "center",
     paddingTop: 8,

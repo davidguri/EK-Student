@@ -18,7 +18,7 @@ const TomorrowCard = (props) => {
   return (
     <Card style={styles.card}>
       <View style={styles.cardTitleContainer}>
-        <Text style={styles.cardTitle}>Tomorrow</Text>
+        <Text style={styles.cardTitle}>For Tomorrow</Text>
       </View>
       <View style={styles.content}>
         <View style={styles.section}>

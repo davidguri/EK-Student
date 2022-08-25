@@ -27,6 +27,9 @@ const ProfileModal = (props) => {
       animationIn={"slideInRight"}
       animationOut={"slideOutRight"}
       style={{ margin: 0 }}
+      hideModalContentWhileAnimating={true}
+      onSwipeComplete={props.onCancel}
+      swipeDirection="right"
     >
       <SafeAreaView style={{ backgroundColor: "black" }}>
         <View style={styles.screen}>

@@ -62,7 +62,7 @@ const GoalsCard = (props) => {
 const styles = StyleSheet.create({
   card: {
     borderRadius: 22,
-    width: "47.75%",
+    width: "48%",
   },
 
   cardTitleContainer: {

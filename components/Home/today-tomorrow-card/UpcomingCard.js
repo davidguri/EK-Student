@@ -58,7 +58,7 @@ const UpcomingCard = (props) => {
   return (
     <Card style={styles.card}>
       <View style={styles.cardTitleContainer}>
-        <Text style={styles.cardTitle}>For Today</Text>
+        <Text style={styles.cardTitle}>Next Today</Text>
       </View>
       <FlatList
         data={DATA}

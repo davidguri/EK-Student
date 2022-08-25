@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   View,
   Text,
@@ -12,14 +12,16 @@ import {
   StatusBar,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-
 import Modal from "react-native-modal";
-
 import Colors from "../constants/colors";
-import Card from "../components/Other/Global/Card";
+import { AppContext } from "../App";
 
+import Card from "../components/Other/Global/Card";
 import AboutDevModal from "../components/Settings/AboutDevModal";
 import ProfileModal from "../components/Settings/ProfileModal";
+
+import { auth } from "../firebase";
+import firebase from "firebase/compat";
 
 const SettingsScreen = (props) => {
   const DATA = {
@@ -55,7 +57,7 @@ const SettingsScreen = (props) => {
   const [isOpenProfileModal, setIsOpenProfileModal] = useState(false);
 
   const toggleProfileModalHandler = () => {
-    setIsOpenProfileModal(!isOpenProfileModal)
+    setIsOpenProfileModal(!isOpenProfileModal);
   };
 
   const openAboutDevHandler = () => {
@@ -66,8 +68,29 @@ const SettingsScreen = (props) => {
     setIsOpenModal(false);
   };
 
+  // Login shizz
+
+  let user = firebase.auth().currentUser;
+
+  const { setIsSignedIn } = useContext(AppContext);
+
+  const handleSignOut = () => {
+    auth
+      .signOut()
+      .then(() => {
+        setIsSignedIn(false);
+      })
+      .catch((error) => alert(error.message));
+  };
+
   return (
-    <Modal isVisible={props.visible} animationIn={"slideInRight"} animationOut={"slideOutRight"} margin={0} >
+    <Modal
+      isVisible={props.visible}
+      animationIn={"slideInRight"}
+      animationOut={"slideOutRight"}
+      style={{ margin: 0 }}
+      hideModalContentWhileAnimating={true}
+    >
       <SafeAreaView style={{ backgroundColor: "black" }}>
         <View style={styles.screen}>
           <View style={styles.header}>
@@ -88,7 +111,7 @@ const SettingsScreen = (props) => {
               />
               <View>
                 <Text style={styles.profileUsername}>{username}</Text>
-                <Text style={styles.profileEmail}>{email}</Text>
+                <Text style={styles.profileEmail}>{user.email}</Text>
               </View>
             </View>
 
@@ -190,6 +213,14 @@ const SettingsScreen = (props) => {
                     onChange={alertConst}
                   />
                 </View>
+              </Card>
+
+              <Card style={styles.containerSignOut}>
+                <TouchableOpacity onPress={handleSignOut}>
+                  <View style={styles.rowSignOut}>
+                    <Text style={styles.containerRowTitleSignOut}>Log Out</Text>
+                  </View>
+                </TouchableOpacity>
               </Card>
             </View>
           </ScrollView>
@@ -323,6 +354,29 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+  },
+
+  containerSignOut: {
+    marginVertical: 10,
+    width: "95%",
+    borderRadius: 18,
+    paddingVertical: 13,
+    borderColor: Colors.red,
+    borderWidth: 5,
+    backgroundColor: Colors.redOpacity,
+  },
+
+  rowSignOut: {
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+
+  containerRowTitleSignOut: {
+    color: Colors.red,
+    fontWeight: "700",
+    fontSize: 18,
+    marginHorizontal: 15,
   },
 });
 

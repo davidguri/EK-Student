@@ -271,8 +271,7 @@ const styles = StyleSheet.create({
     fontSize: 42,
     fontWeight: "bold",
     color: "#fff",
-    paddingTop: 75,
-    paddingBottom: 25,
+    paddingBottom: 20,
     textAlign: "center",
   },
 
@@ -281,7 +280,6 @@ const styles = StyleSheet.create({
     height: "90%",
     justifyContent: "center",
     alignItems: "center",
-    paddingBottom: 75,
   },
 
   inputContainer: {

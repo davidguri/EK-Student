@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
 
   teamsCard: {
     width: "100%",
-    paddingVertical: 8.75,
+    paddingVertical: 9,
     borderRadius: 21,
     borderColor: Colors.primary,
     borderWidth: 4,
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   leftContainer: {
     flexDirection: "column",
     justifyContent: "space-between",
-    width: "47.75%",
+    width: "48%",
   },
 
   title: {
@@ -123,8 +123,8 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    paddingLeft: 10,
-    fontSize: 19,
+    paddingLeft: 12,
+    fontSize: 20,
     color: Colors.primary,
     fontWeight: "600",
   },

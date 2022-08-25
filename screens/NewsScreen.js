@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   leftConatiner: {
     flexDirection: "column",
     justifyContent: "center",
-    width: "47.75%",
+    width: "48%",
     alignItems: "center",
   },
 });
