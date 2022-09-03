@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   StyleSheet,
   FlatList,
-  TouchableWithoutFeedback,
 } from "react-native";
 
 import Card from "../../Other/Global/Card";
@@ -67,7 +66,10 @@ const UpcomingCard = (props) => {
         horizontal={true}
         showsHorizontalScrollIndicator={false}
       />
-      <EventModal isVisible={isModalVisible} onBackdropPress={toggleModalHandler} />
+      <EventModal
+        isVisible={isModalVisible}
+        onBackdropPress={toggleModalHandler}
+      />
     </Card>
   );
 };
