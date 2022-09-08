@@ -57,12 +57,12 @@ const LoginScreen = (props) => {
         Keyboard.dismiss();
       }}
     >
-      <SafeAreaView style={styles.screen}>
-        <ImageBackground
-          source={Background}
-          resizeMode="cover"
-          style={styles.image}
-        >
+      <ImageBackground
+        source={Background}
+        resizeMode="cover"
+        style={styles.image}
+      >
+        <SafeAreaView style={styles.screen}>
           <LoginHead title="WELCOME" />
           <View style={styles.loginForm}>
             <View style={styles.titleContainer}>
@@ -101,13 +101,13 @@ const LoginScreen = (props) => {
             onSwipeComplete={toggleLoginHandler}
             swipeDirection="right"
           >
-            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-              <SafeAreaView style={styles.media}>
-                <ImageBackground
-                  source={Background}
-                  resizeMode="cover"
-                  style={styles.image}
-                >
+            <ImageBackground
+              source={Background}
+              resizeMode="cover"
+              style={styles.image}
+            >
+              <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <SafeAreaView style={styles.media}>
                   <LoginHead title="LOG IN" />
                   <View style={styles.loginForm}>
                     <View style={styles.titleContainerModal}>
@@ -159,13 +159,13 @@ const LoginScreen = (props) => {
                       </TouchableOpacity>
                     </View>
                   </View>
-                </ImageBackground>
-              </SafeAreaView>
-            </TouchableWithoutFeedback>
+                </SafeAreaView>
+              </TouchableWithoutFeedback>
+            </ImageBackground>
           </Modal>
           <SignupModal visible={isOpenSignup} onCancel={toggleSignupHandler} />
-        </ImageBackground>
-      </SafeAreaView>
+        </SafeAreaView>
+      </ImageBackground>
     </TouchableWithoutFeedback>
   );
 };
@@ -201,17 +201,13 @@ const styles = StyleSheet.create({
     fontSize: 54,
     fontWeight: "bold",
     color: "#fff",
-    paddingTop: 45,
-    paddingBottom: 0,
     textAlign: "center",
   },
 
   loginForm: {
     width: "100%",
-    height: "90%",
     justifyContent: "center",
     alignItems: "center",
-    paddingBottom: 80,
   },
 
   actionsContainer: {
@@ -258,7 +254,6 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
     justifyContent: "center",
-    backgroundColor: "#000",
   },
 
   titleContainerModal: {

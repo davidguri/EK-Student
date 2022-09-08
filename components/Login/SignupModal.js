@@ -53,13 +53,13 @@ const SignupModal = (props) => {
       onSwipeComplete={props.onCancel}
       swipeDirection="right"
     >
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <SafeAreaView style={styles.media}>
-          <ImageBackground
-            source={Background}
-            resizeMode="cover"
-            style={styles.image}
-          >
+      <ImageBackground
+        source={Background}
+        resizeMode="cover"
+        style={styles.image}
+      >
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <SafeAreaView style={styles.media}>
             <LoginHead title="SIGN UP" />
             <View style={styles.loginForm}>
               <View style={styles.titleContainerModal}>
@@ -107,9 +107,9 @@ const SignupModal = (props) => {
                 </TouchableOpacity>
               </View>
             </View>
-          </ImageBackground>
-        </SafeAreaView>
-      </TouchableWithoutFeedback>
+          </SafeAreaView>
+        </TouchableWithoutFeedback>
+      </ImageBackground>
     </Modal>
   );
 };
@@ -123,7 +123,6 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
     justifyContent: "center",
-    backgroundColor: "#000",
   },
 
   image: {
