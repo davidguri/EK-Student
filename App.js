@@ -60,8 +60,7 @@ function Feed() {
           showLabel: true,
           showIcon: true,
           style: {
-            paddingBottom: 4.25,
-            paddingTop: 4.25,
+            paddingTop: 4.5,
           },
         })}
       >
@@ -117,6 +116,7 @@ export default function App() {
                 component={Feed}
                 options={{ headerShown: false }}
                 name="Feed"
+                paddingBottom={0}
               />
             )}
           </Stack.Navigator>
