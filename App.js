@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, SafeAreaView, StatusBar } from "react-native";
+import { StyleSheet, SafeAreaView, StatusBar, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -41,45 +41,47 @@ function Login() {
 
 function Feed() {
   return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
-          if (route.name === "Home") {
-            iconName = focused ? "home" : "home-outline";
-          } else if (route.name === "News") {
-            iconName = focused ? "newspaper" : "newspaper-outline";
-          } else if (route.name === "Calendar") {
-            iconName = focused ? "calendar" : "calendar-outline";
-          }
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
-        activeTintColor: Colors.primary,
-        inactiveTintColor: "gray",
-        showLabel: true,
-        showIcon: true,
-        style: {
-          paddingBottom: 4.25,
-          paddingTop: 4.25,
-        },
-      })}
-    >
-      <Tab.Screen
-        name="Home"
-        component={Home}
-        options={{ headerShown: false }}
-      />
-      <Tab.Screen
-        name="Calendar"
-        component={Calendar}
-        options={{ headerShown: false }}
-      />
-      <Tab.Screen
-        name="News"
-        component={News}
-        options={{ headerShown: false }}
-      />
-    </Tab.Navigator>
+    <SafeAreaView style={styles.screen}>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+            if (route.name === "Home") {
+              iconName = focused ? "home" : "home-outline";
+            } else if (route.name === "News") {
+              iconName = focused ? "newspaper" : "newspaper-outline";
+            } else if (route.name === "Calendar") {
+              iconName = focused ? "calendar" : "calendar-outline";
+            }
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+          activeTintColor: Colors.primary,
+          inactiveTintColor: "gray",
+          showLabel: true,
+          showIcon: true,
+          style: {
+            paddingBottom: 4.25,
+            paddingTop: 4.25,
+          },
+        })}
+      >
+        <Tab.Screen
+          name="Home"
+          component={Home}
+          options={{ headerShown: false }}
+        />
+        <Tab.Screen
+          name="Calendar"
+          component={Calendar}
+          options={{ headerShown: false }}
+        />
+        <Tab.Screen
+          name="News"
+          component={News}
+          options={{ headerShown: false }}
+        />
+      </Tab.Navigator>
+    </SafeAreaView>
   );
 }
 
@@ -99,7 +101,7 @@ export default function App() {
   );
 
   return (
-    <SafeAreaView style={styles.screen}>
+    <View style={styles.screen}>
       <StatusBar barStyle="light-content" translucent={true} />
       <AppContext.Provider value={contextValue}>
         <NavigationContainer theme={appTheme}>
@@ -120,7 +122,7 @@ export default function App() {
           </Stack.Navigator>
         </NavigationContainer>
       </AppContext.Provider>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -129,7 +131,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#000",
     height: "100%",
-    paddingBottom: 0,
   },
 
   header: {
