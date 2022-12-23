@@ -48,6 +48,7 @@ const AddGoalModal = (props) => {
       transparent={true}
       avoidKeyboard={true}
       margin={0}
+      padding={0}
     >
       <SafeAreaView style={{ backgroundColor: "black" }}>
         <View style={styles.screen}>
