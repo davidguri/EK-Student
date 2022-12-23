@@ -10,13 +10,11 @@ import {
   StatusBar,
   Linking,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import Modal from "react-native-modal";
 
 import Colors from "../../constants/colors";
-import Card from "../Other/Global/Card";
 
-const AboutDevModal = (props) => {
+const AboutTheDevModal = (props) => {
   return (
     <Modal
       isVisible={props.visible}
@@ -39,33 +37,10 @@ const AboutDevModal = (props) => {
           <ScrollView style={{ backgroundColor: "#000", width: "100%" }}>
             <View style={styles.body}>
               <View style={styles.headContainer}>
-                <Text style={styles.title}>About the Developer</Text>
+                <Text style={styles.title}>About The Developer</Text>
               </View>
               <View style={styles.content}>
-                <Text style={styles.bodyText}>
-                  Hi! I'm David Guri, a student currently in the 1st year of
-                  highschool. I also happen to be the main (only) developer of
-                  this app. But maybe this'll change...
-                </Text>
-
-                <Card style={styles.containerRow}>
-                  <TouchableOpacity
-                    onPress={() =>
-                      Linking.openURL("https://github.com/EK-Student")
-                    }
-                    style={styles.containerButton}
-                  >
-                    <View style={styles.leftContainer}>
-                      <Ionicons
-                        name="logo-github"
-                        size={27}
-                        color={Colors.primary}
-                      />
-                      <Text style={styles.containerRowTitle}>Our GitHub</Text>
-                    </View>
-                    <Text style={styles.modalArrow}>&gt; </Text>
-                  </TouchableOpacity>
-                </Card>
+                <Text style={styles.bodyText}>Something abt him</Text>
               </View>
             </View>
           </ScrollView>
@@ -119,7 +94,6 @@ const styles = StyleSheet.create({
     fontSize: 35,
     fontWeight: "900",
     paddingBottom: 7.5,
-    textAlign: "center",
   },
 
   description: {
@@ -181,4 +155,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AboutDevModal;
+export default AboutTheDevModal;

@@ -17,31 +17,15 @@ import Colors from "../constants/colors";
 import { AppContext } from "../App";
 
 import Card from "../components/Other/Global/Card";
-import AboutDevModal from "../components/Settings/AboutDevModal";
+import AboutTheDevModal from "../components/Settings/AboutTheDevModal";
+import FeedbackModal from "../components/Settings/FeedbackModal";
+import PrivacyModal from "../components/Settings/PrivacyModal";
 import ProfileModal from "../components/Settings/ProfileModal";
 
 import { auth } from "../firebase";
 import firebase from "firebase/compat";
 
 const SettingsScreen = (props) => {
-  const DATA = {
-    aboutTheDeveloper: {
-      title: "About the Developer",
-      description: "Lorem Ipsum Dolor Sit Amet",
-      bodyContent: "Hello there my name is david.",
-    },
-
-    feedback: {
-      title: "Feedback",
-      description: "Lorem Ipsum Dolor Sit Amet",
-    },
-
-    privacy: {
-      title: "Privacy",
-      description: "Lorem Ipsum Dolor Sit Amet",
-    },
-  };
-
   var username = "David Guri";
   var email = "dguri@ernestkoliqi.com";
 
@@ -53,7 +37,9 @@ const SettingsScreen = (props) => {
       { text: "OK", onPress: () => setIsEnabled(true), style: "done" },
     ]);
 
-  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isOpenAboutModal, setIsOpenAboutModal] = useState(false);
+  const [isOpenFeedbackModal, setIsOpenFeedbackModal] = useState(false);
+  const [isOpenPrivacyModal, setIsOpenPrivacyModal] = useState(false);
   const [isOpenProfileModal, setIsOpenProfileModal] = useState(false);
 
   const toggleProfileModalHandler = () => {
@@ -61,11 +47,27 @@ const SettingsScreen = (props) => {
   };
 
   const openAboutDevHandler = () => {
-    setIsOpenModal(true);
+    setIsOpenAboutModal(true);
   };
 
-  const closeModalHandler = () => {
-    setIsOpenModal(false);
+  const openFeedbackHandler = () => {
+    setIsOpenFeedbackModal(true);
+  };
+
+  const openPrivacyHandler = () => {
+    setIsOpenPrivacyModal(true);
+  };
+
+  const closeAboutHandler = () => {
+    setIsOpenAboutModal(false);
+  };
+
+  const closeFeedbackHandler = () => {
+    setIsOpenFeedbackModal(false);
+  };
+
+  const closePrivacyHandler = () => {
+    setIsOpenPrivacyModal(false);
   };
 
   // Login shizz
@@ -103,6 +105,7 @@ const SettingsScreen = (props) => {
             style={{ width: "100%" }}
             showsVerticalScrollIndicator={false}
           >
+            {/* about container */}
             <View style={styles.accountContainer}>
               <Ionicons
                 name="person-circle-outline"
@@ -116,6 +119,7 @@ const SettingsScreen = (props) => {
             </View>
 
             <View style={{ alignItems: "center" }}>
+              {/* profile card */}
               <Card style={styles.containerRow}>
                 <TouchableOpacity
                   onPress={toggleProfileModalHandler}
@@ -136,7 +140,7 @@ const SettingsScreen = (props) => {
                   onCancel={toggleProfileModalHandler}
                 />
               </Card>
-
+              {/* about card */}
               <Card style={styles.containerRow}>
                 <TouchableOpacity
                   onPress={openAboutDevHandler}
@@ -154,15 +158,15 @@ const SettingsScreen = (props) => {
                   </View>
                   <Text style={styles.modalArrow}>&gt; </Text>
                 </TouchableOpacity>
-                <AboutDevModal
-                  visible={isOpenModal}
-                  onCancel={closeModalHandler}
+                <AboutTheDevModal
+                  visible={isOpenAboutModal}
+                  onCancel={closeAboutHandler}
                 />
               </Card>
-
+              {/* feedback card */}
               <Card style={styles.containerRow}>
                 <TouchableOpacity
-                  onPress={openAboutDevHandler}
+                  onPress={openFeedbackHandler}
                   style={styles.containerButton}
                 >
                   <View style={styles.leftContainer}>
@@ -175,11 +179,15 @@ const SettingsScreen = (props) => {
                   </View>
                   <Text style={styles.modalArrow}>&gt; </Text>
                 </TouchableOpacity>
+                <FeedbackModal
+                  visible={isOpenFeedbackModal}
+                  onCancel={closeFeedbackHandler}
+                />
               </Card>
-
+              {/* privacy card */}
               <Card style={styles.containerRow}>
                 <TouchableOpacity
-                  onPress={openAboutDevHandler}
+                  onPress={openPrivacyHandler}
                   style={styles.containerButton}
                 >
                   <View style={styles.leftContainer}>
@@ -192,8 +200,12 @@ const SettingsScreen = (props) => {
                   </View>
                   <Text style={styles.modalArrow}>&gt; </Text>
                 </TouchableOpacity>
+                <PrivacyModal
+                  visible={isOpenPrivacyModal}
+                  onCancel={closePrivacyHandler}
+                />
               </Card>
-
+              {/* dark-mode switch */}
               <Card style={styles.container}>
                 <View style={styles.row}>
                   <View style={styles.leftContainer}>
@@ -214,7 +226,7 @@ const SettingsScreen = (props) => {
                   />
                 </View>
               </Card>
-
+              {/* sign-out button */}
               <Card style={styles.containerSignOut}>
                 <TouchableOpacity onPress={handleSignOut}>
                   <View style={styles.rowSignOut}>
