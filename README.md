@@ -1,9 +1,3 @@
-
-title: EK-Student
-created at: Sun Jan 01 2023 12:44:06 GMT+0000 (Coordinated Universal Time)
-updated at: Wed Jan 04 2023 10:03:05 GMT+0000 (Coordinated Universal Time)
----
-
 # EK-Student
 
 > Assigned engineer: David Guri  
