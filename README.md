@@ -6,8 +6,6 @@ updated at: Wed Jan 04 2023 10:03:05 GMT+0000 (Coordinated Universal Time)
 
 # EK-Student
 
-2023-01-05
-
 > Assigned engineer: David Guri  
 > School: Ernest Koliqi High-School
 > Tirana, Albania
