@@ -4,15 +4,13 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
+  Modal,
+  Platform,
   SafeAreaView,
   StatusBar,
   FlatList,
-  Switch,
-  ScrollView,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-
-import Modal from "react-native-modal";
 
 import Colors from "../../../constants/colors";
 import Card from "../../Other/Global/Card";
@@ -24,21 +22,14 @@ const DATA = [
   {
     id: "1",
     title: "Launch MVP in April",
-    importance: "!",
   },
   {
     id: "2",
-    title: "Test Task",
-    importance: "!!",
-  },
-  {
-    id: "3",
-    title: "Test Task 2",
-    importance: "!!!",
+    title: "Test Goal",
   },
 ];
 
-const Item = ({ title, importance }) => {
+const Item = ({ title }) => {
   return (
     <View style={styles.item}>
       <BouncyCheckbox
@@ -49,24 +40,12 @@ const Item = ({ title, importance }) => {
         iconStyle={{ borderColor: Colors.primary, borderWidth: 2 }}
         textStyle={{ fontSize: 20, color: "white" }}
       />
-      <View style={styles.impContainer}>
-        <Text style={styles.impText}>{importance}</Text>
-      </View>
     </View>
   );
 };
 
-const ToDoModal = (props) => {
-  const [isEnabledCompleted, setIsEnabledCompleted] = useState(false);
-  const [isEnabledAll, setIsEnabledAll] = useState(true);
-
-  const toggleCompleted = () =>
-    setIsEnabledCompleted((previousState) => !previousState);
-  const toggleAll = () => setIsEnabledAll((previousState) => !previousState);
-
-  const renderItem = ({ item }) => (
-    <Item title={item.title} importance={item.importance} />
-  );
+const GoalsModal = (props) => {
+  const renderItem = ({ item }) => <Item title={item.title} />;
 
   const [isOpenAddModal, setIsOpenAddModal] = useState(false);
 
@@ -74,29 +53,14 @@ const ToDoModal = (props) => {
     setIsOpenAddModal(false);
   };
 
-  const addElement = () => {
-    {
-      /* Add new element with Redux */
-    }
-  };
-
-
+  const addElement = () => { };
 
   return (
-    <Modal
-      isVisible={props.visible}
-      backgroundColor={"#000"}
-      style={{ margin: 0 }}
-      hideModalContentWhileAnimating={true}
-      onBackdropPress={props.onBackdropPress}
-      animationInTiming={350}
-      animationOutTiming={350}
-      avoidKeyboard={true}
-    >
+    <Modal visible={props.visible} animationType="slide" transparent={true}>
       <SafeAreaView style={{ backgroundColor: "black" }}>
         <View style={styles.screen}>
           <View style={styles.header}>
-            <Text style={styles.headerTitle}>Tasks</Text>
+            <Text style={styles.headerTitle}>Goals</Text>
             <TouchableOpacity
               onPress={props.onCancel}
               style={styles.buttonCancel}
@@ -105,76 +69,25 @@ const ToDoModal = (props) => {
             </TouchableOpacity>
           </View>
           <View style={styles.body}>
-            <ScrollView>
-              <Card style={styles.todayContainer}>
-                <View style={styles.todayTextContainer}>
-                  <Text style={styles.todayText}>For Today</Text>
-                  {/* Change this based on the presets set below */}
-                </View>
-                <FlatList
-                  data={DATA}
-                  renderItem={renderItem}
-                  keyExtractor={(item) => item.id}
-                  style={styles.list}
-                  scrollEnabled={false}
-                />
-              </Card>
-              <View style={styles.otherContainer}>
-                <Card style={styles.containerRow}>
-                  <TouchableOpacity
-                    onPress={() => {}}
-                    style={styles.containerButton}
-                  >
-                    <View style={styles.leftContainer}>
-                      <Ionicons
-                        name="checkmark-circle"
-                        size={27}
-                        color={Colors.primary}
-                      />
-                      <Text style={styles.containerRowTitle}>
-                        Show Completed
-                      </Text>
-                    </View>
-                    <Switch
-                      trackColor={{ false: "#767577", true: "#30d158" }}
-                      thumbColor={isEnabledCompleted ? "#f4f3f4" : "#f4f3f4"}
-                      ios_backgroundColor="#3e3e3e"
-                      onValueChange={toggleCompleted}
-                      value={isEnabledCompleted}
-                    />
-                  </TouchableOpacity>
-                </Card>
-                <Card style={styles.containerRow}>
-                  <TouchableOpacity
-                    onPress={() => {}}
-                    style={styles.containerButton}
-                  >
-                    <View style={styles.leftContainer}>
-                      <Ionicons
-                        name="albums"
-                        size={27}
-                        color={Colors.primary}
-                      />
-                      <Text style={styles.containerRowTitle}>Show All</Text>
-                    </View>
-                    <Switch
-                      trackColor={{ false: "#767577", true: "#30d158" }}
-                      thumbColor={isEnabledAll ? "#f4f3f4" : "#f4f3f4"}
-                      ios_backgroundColor="#3e3e3e"
-                      onValueChange={toggleAll}
-                      value={isEnabledAll}
-                    />
-                  </TouchableOpacity>
-                </Card>
+            <Card style={styles.todayContainer}>
+              <View style={styles.todayTextContainer}>
+                <Text style={styles.todayText}>Your Goals This Year</Text>
               </View>
-            </ScrollView>
+              <FlatList
+                data={DATA}
+                renderItem={renderItem}
+                keyExtractor={(item) => item.id}
+                style={styles.list}
+                scrollEnabled={false}
+              />
+            </Card>
           </View>
           <View style={styles.footer}>
             <TouchableOpacity
               onPress={() => setIsOpenAddModal(true)}
               style={styles.button}
             >
-              <Text style={styles.buttonText}>Add Task</Text>
+              <Text style={styles.buttonText}>Add Goal</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -183,7 +96,7 @@ const ToDoModal = (props) => {
         visible={isOpenAddModal}
         onCancel={closeModalHandler}
         onSubmit={addElement}
-        title="Add Task"
+        title="Add Goal"
       />
     </Modal>
   );
@@ -197,7 +110,7 @@ const styles = StyleSheet.create({
     height: "100%",
     alignItems: "center",
     justifyContent: "space-between",
-    padding: 8,
+    padding: 10,
   },
 
   header: {
@@ -270,6 +183,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     color: "white",
     fontWeight: "600",
+    paddingVertical: 4.75,
   },
 
   todayContainer: {
@@ -288,7 +202,6 @@ const styles = StyleSheet.create({
   footer: {
     width: "100%",
     marginVertical: 15,
-    backgroundColor: "transparent",
   },
 
   containerRow: {
@@ -327,13 +240,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "600",
   },
-
-  impText: {
-    color: Colors.red,
-    fontSize: 24,
-    fontWeight: "600",
-    paddingRight: 2,
-  },
 });
 
-export default ToDoModal;
+export default GoalsModal;

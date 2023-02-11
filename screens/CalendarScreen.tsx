@@ -6,10 +6,9 @@ import { Ionicons } from "@expo/vector-icons";
 import Colors from "../constants/colors";
 import CalendarHeader from "../components/Calendar/CalendarHeader";
 
-import { CalendarList, Agenda } from "react-native-calendars";
+import { CalendarList } from "react-native-calendars";
 
-const CalendarScreen = (props) => {
-
+export default function CalendarScreen(props): any {
   return (
     <View style={styles.screen}>
       <View style={styles.header}>
@@ -23,7 +22,7 @@ const CalendarScreen = (props) => {
         onDayPress={(day) => {
           /* console.log("selected day", day); */
         }}
-        onDayLongPress={(day) => {}}
+        onDayLongPress={(day) => { }}
         firstDay={1}
         disableAllTouchEventsForDisabledDays={true}
         displayLoadingIndicator={false}
@@ -45,7 +44,6 @@ const CalendarScreen = (props) => {
           indicatorColor: "white",
           textDayFontWeight: "300",
           textMonthFontWeight: "700",
-          textDayHeaderFontWeight: "400",
           textDayFontSize: 17.5,
           textMonthFontSize: 30,
           textDayHeaderFontSize: 15,
@@ -103,4 +101,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CalendarScreen;

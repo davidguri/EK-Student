@@ -8,6 +8,7 @@ import {
   ScrollView,
   StatusBar,
   TouchableWithoutFeedback,
+  Keyboard,
   ImageBackground,
 } from "react-native";
 import Modal from "react-native-modal";

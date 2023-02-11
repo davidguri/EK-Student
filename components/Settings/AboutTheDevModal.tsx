@@ -8,13 +8,13 @@ import {
   SafeAreaView,
   ScrollView,
   StatusBar,
-  Linking,
+  Platform
 } from "react-native";
 import Modal from "react-native-modal";
 
 import Colors from "../../constants/colors";
 
-const PrivacyModal = (props) => {
+const AboutTheDevModal = (props) => {
   return (
     <Modal
       isVisible={props.visible}
@@ -37,10 +37,10 @@ const PrivacyModal = (props) => {
           <ScrollView style={{ backgroundColor: "#000", width: "100%" }}>
             <View style={styles.body}>
               <View style={styles.headContainer}>
-                <Text style={styles.title}>Privacy</Text>
+                <Text style={styles.title}>About The Developer</Text>
               </View>
               <View style={styles.content}>
-                <Text style={styles.bodyText}>Terms of service</Text>
+                <Text style={styles.bodyText}>Something abt him</Text>
               </View>
             </View>
           </ScrollView>
@@ -103,7 +103,6 @@ const styles = StyleSheet.create({
   },
 
   content: {
-    marginHorizontal: 10,
     paddingTop: 30,
     width: "90%",
     marginHorizontal: "5%",
@@ -155,4 +154,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PrivacyModal;
+export default AboutTheDevModal;

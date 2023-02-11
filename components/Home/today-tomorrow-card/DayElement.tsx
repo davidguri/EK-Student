@@ -3,7 +3,7 @@ import { View, Text, Button, StyleSheet, TouchableOpacity } from "react-native";
 
 import Colors from "../../../constants/colors";
 
-const DayElement = (props) => {
+export default function DayElement(props): any {
   return (
     <TouchableOpacity onPress={props.event}>
       <View style={{ ...styles.dayElement, ...props.style }}>
@@ -36,5 +36,3 @@ const styles = StyleSheet.create({
     fontWeight: "400",
   },
 });
-
-export default DayElement;

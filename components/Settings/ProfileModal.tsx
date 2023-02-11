@@ -8,13 +8,19 @@ import {
   SafeAreaView,
   ScrollView,
   StatusBar,
-  Linking,
+  Platform,
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import Modal from "react-native-modal";
 
 import Colors from "../../constants/colors";
+import Card from "../Other/Global/Card";
 
-const FeedbackModal = (props) => {
+var account = "Developer";
+var username = "David Guri";
+var email = "dguri@ernestkoliqi.com";
+
+const ProfileModal = (props) => {
   return (
     <Modal
       isVisible={props.visible}
@@ -32,15 +38,45 @@ const FeedbackModal = (props) => {
               <Text style={styles.buttonText}>&lt; </Text>
               <Text style={styles.buttonText}>Settings</Text>
             </TouchableOpacity>
+            <TouchableOpacity onPress={() => { }} style={styles.button}>
+              <Text style={styles.buttonText}>Edit</Text>
+            </TouchableOpacity>
           </View>
 
           <ScrollView style={{ backgroundColor: "#000", width: "100%" }}>
             <View style={styles.body}>
-              <View style={styles.headContainer}>
-                <Text style={styles.title}>Feedback</Text>
-              </View>
               <View style={styles.content}>
-                <Text style={styles.bodyText}>Feedback shizz</Text>
+                <View style={styles.accountContainer}>
+                  <Ionicons
+                    name="person-circle-outline"
+                    color={Colors.primary}
+                    size={125}
+                  />
+                  <View>
+                    <Text style={styles.profileUsername}>{username}</Text>
+                    <Text style={styles.profileEmail}>{email}</Text>
+                  </View>
+                </View>
+                <Card style={styles.container}>
+                  <Text style={styles.containerTitle}>Account Type</Text>
+                  <Text style={styles.accountType}>{account}</Text>
+                </Card>
+                <Card style={styles.containerRow}>
+                  <TouchableOpacity
+                    onPress={() => { }}
+                    style={styles.containerButton}
+                  >
+                    <View style={styles.leftContainer}>
+                      <Ionicons
+                        name="briefcase"
+                        size={27}
+                        color={Colors.primary}
+                      />
+                      <Text style={styles.containerRowTitle}>My Projects</Text>
+                    </View>
+                    <Text style={styles.modalArrow}>&gt; </Text>
+                  </TouchableOpacity>
+                </Card>
               </View>
             </View>
           </ScrollView>
@@ -91,37 +127,64 @@ const styles = StyleSheet.create({
 
   title: {
     color: "white",
-    fontSize: 35,
+    fontSize: 30,
     fontWeight: "900",
     paddingBottom: 7.5,
+    textAlign: "center",
   },
 
-  description: {
-    color: "#777",
-    fontSize: 24,
-    fontWeight: "800",
+  accountType: {
+    paddingTop: 4,
+    color: "#8c8c8c",
+    fontSize: 15,
   },
 
   content: {
     marginHorizontal: 10,
-    paddingTop: 30,
-    width: "90%",
-    marginHorizontal: "5%",
+    width: "95%",
   },
 
-  bodyText: {
-    color: "white",
+  container: {
+    marginVertical: 10,
+    width: "100%",
+    borderRadius: 22,
+    paddingVertical: 15,
+  },
+
+  containerTitle: {
+    color: "#fff",
+    fontWeight: "500",
     fontSize: 18,
-    paddingBottom: 32,
-    width: "98%",
-    marginHorizontal: "1%",
+  },
+
+  accountContainer: {
+    marginBottom: 20,
+    width: "100%",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+
+  profileUsername: {
+    color: "#fff",
+    fontSize: 26,
+    paddingBottom: 2.25,
+    fontWeight: "600",
+    textAlign: "center",
+  },
+
+  profileEmail: {
+    paddingTop: 2.25,
+    fontSize: 16,
+    fontWeight: "500",
+    color: Colors.primary,
+    textAlign: "center",
   },
 
   containerRow: {
     flexDirection: "row",
     marginVertical: 10,
     width: "100%",
-    borderRadius: 18,
+    borderRadius: 22,
     justifyContent: "space-between",
     alignItems: "center",
     paddingVertical: 10,
@@ -145,7 +208,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "500",
     fontSize: 18,
-    paddingLeft: 12,
+    marginLeft: 15,
   },
 
   modalArrow: {
@@ -155,4 +218,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FeedbackModal;
+export default ProfileModal;

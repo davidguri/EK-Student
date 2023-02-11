@@ -6,6 +6,7 @@ import {
   StyleSheet,
   SafeAreaView,
   TextInput,
+  Platform,
   StatusBar,
 } from "react-native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
@@ -120,7 +121,6 @@ const styles = StyleSheet.create({
     paddingVertical: 7,
     flexDirection: "column",
     justifyContent: "space-between",
-    alignItems: "center",
   },
 
   header: {

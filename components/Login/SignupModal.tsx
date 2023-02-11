@@ -159,7 +159,6 @@ const styles = StyleSheet.create({
 
   input: {
     width: "85%",
-    textAlign: "center",
     padding: 10,
     paddingHorizontal: 14,
     fontSize: 14,

@@ -45,7 +45,7 @@ const NewsTodayCard = (props) => {
     <Item
       title={item.title}
       publisher={item.publisher}
-      desc={item.description}
+      description={item.description}
       image={item.image}
     />
   );

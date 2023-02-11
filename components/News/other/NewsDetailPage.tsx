@@ -7,6 +7,7 @@ import {
   StyleSheet,
   SafeAreaView,
   Modal,
+  Platform,
   ScrollView,
   StatusBar,
 } from "react-native";
@@ -19,7 +20,7 @@ const NewsDetailPage = (props) => {
     <Modal visible={props.visible} animationType="slide">
       <SafeAreaView style={{ backgroundColor: "black" }}>
         <View style={styles.screen}>
-        <View style={styles.header}>
+          <View style={styles.header}>
             <TouchableOpacity onPress={props.onCancel} style={styles.button}>
               <Text style={styles.buttonText}>X</Text>
             </TouchableOpacity>

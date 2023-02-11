@@ -6,6 +6,7 @@ import {
   StyleSheet,
   SafeAreaView,
   TextInput,
+  Platform,
   StatusBar,
 } from "react-native";
 import Modal from "react-native-modal";
@@ -50,7 +51,7 @@ const AddProjectModal = (props) => {
               color="white"
               placeholder="Description of Project"
             />
-            <TouchableOpacity onPress={() => {}} style={styles.imageInput}>
+            <TouchableOpacity onPress={() => { }} style={styles.imageInput}>
               <Text style={styles.imageText}>Image of the Project</Text>
             </TouchableOpacity>
 
@@ -85,7 +86,6 @@ const styles = StyleSheet.create({
     padding: 7.5,
     flexDirection: "column",
     justifyContent: "space-between",
-    alignItems: "center",
   },
 
   header: {

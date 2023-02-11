@@ -21,7 +21,7 @@ import Card from "../components/Other/Global/Card";
 
 import TeamsLogo from "../assets/Images/Microsoft-Teams-Logo.png";
 
-const HomeScreen = (props) => {
+const HomeScreen = (props): any => {
   return (
     <ScrollView style={styles.screen}>
       <View style={styles.header}>
@@ -33,11 +33,17 @@ const HomeScreen = (props) => {
           <Card style={styles.teamsCard}>
             <TouchableOpacity
               onPress={() => Linking.openURL("com.teams.app")}
+              // Doesn't Work
               style={styles.buttonContainer}
             >
               <View style={styles.section}>
                 <View style={styles.imageContainer}>
-                  <Image style={styles.image} width={35} height={32} source={TeamsLogo} />
+                  <Image
+                    style={styles.image}
+                    width={35}
+                    height={32}
+                    source={TeamsLogo}
+                  />
                 </View>
                 <Text style={styles.buttonText}>Teams</Text>
               </View>

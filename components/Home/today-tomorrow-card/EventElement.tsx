@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 import Colors from "../../../constants/colors";
 
-const EventElement = (props) => {
+export default function EventElement(props): any {
   return (
     <View style={styles.eventElement}>
       <Text style={styles.eventTitle}>{props.title}</Text>
@@ -28,5 +28,3 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
 });
-
-export default EventElement;

@@ -10,10 +10,6 @@ import {
 } from "react-native";
 import Modal from "react-native-modal";
 
-import Colors from "../../constants/colors";
-import Card from "../Other/Global/Card";
-
-
 const TemplateModal = (props) => {
   return (
     <Modal
@@ -25,7 +21,7 @@ const TemplateModal = (props) => {
     >
       <SafeAreaView style={{ backgroundColor: "black" }}>
         <View style={styles.screen}>
-          
+
         </View>
       </SafeAreaView>
     </Modal>

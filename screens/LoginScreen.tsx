@@ -21,7 +21,7 @@ import Background from "../assets/background.png";
 
 import { auth } from "../firebase";
 
-const LoginScreen = (props) => {
+export default function LoginScreen(props): any {
   const [isOpenLogin, setIsOpenLogin] = useState(false);
 
   const toggleLoginHandler = () => {
@@ -143,7 +143,7 @@ const LoginScreen = (props) => {
                           <Text style={styles.loginBtn}>Log In</Text>
                         </View>
                       </TouchableOpacity>
-                      <TouchableOpacity onPress={() => {}}>
+                      <TouchableOpacity onPress={() => { }}>
                         <View style={styles.forgotBtn}>
                           <Text
                             style={{
@@ -204,12 +204,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 
-  loginForm: {
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
   actionsContainer: {
     flexDirection: "column",
     justifyContent: "space-between",
@@ -228,7 +222,6 @@ const styles = StyleSheet.create({
 
   ctaButton: {
     width: "95%",
-    marginHorizontal: "2.5%",
     backgroundColor: Colors.opacity,
     fontWeight: "600",
     borderRadius: 30,
@@ -285,7 +278,6 @@ const styles = StyleSheet.create({
 
   input: {
     width: "85%",
-    textAlign: "center",
     padding: 10,
     paddingHorizontal: 14,
     fontSize: 14,
@@ -326,5 +318,3 @@ const styles = StyleSheet.create({
     opacity: 0.65,
   },
 });
-
-export default LoginScreen;

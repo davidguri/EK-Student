@@ -8,6 +8,7 @@ import {
   SafeAreaView,
   StatusBar,
   ScrollView,
+  Platform,
   FlatList,
 } from "react-native";
 
@@ -52,7 +53,7 @@ const DATA = [
   },
 ];
 
-const Item = ({ title, subject, date, work, team, task_points, points }) => {
+const Item = ({ title }): any => {
   {
     /* const str = "hi-i-am-david-guri";
   const arr = str.split("-");
@@ -87,7 +88,7 @@ console.log(str2); */
       <Card style={styles.projectCard}>
         <View style={styles.cardHeader}>
           <View style={styles.headerTop}>
-            <Text style={styles.projectTitle}>Project Name</Text>
+            <Text style={styles.projectTitle}>{title}</Text>
             <Text style={styles.projectSubject}>Subject</Text>
           </View>
           <View style={styles.headerBottom}>

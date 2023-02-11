@@ -4,7 +4,7 @@ import { Text, StyleSheet, TouchableOpacity } from "react-native";
 import Card from "../../Other/Global/Card";
 import Colors from "../../../constants/colors";
 
-import AddProjectModal from "../other/AddProjectModal";
+import AddProjectModal from "./AddProjectModal";
 
 const NewsProjectCard = (props) => {
   const [isOpenSubmitPage, setIsOpenSubmitPage] = useState(false);
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     borderColor: Colors.primary,
     borderWidth: 4,
     marginTop: 8,
-    marginBottom:8,
+    marginBottom: 8,
   },
 
   buttonText: {

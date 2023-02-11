@@ -13,8 +13,8 @@ import Colors from "../../constants/colors";
 import Modal from "react-native-modal";
 import { AppContext } from "../../App";
 
-import Input from "../../components/Other/Global/Input";
-import LoginHead from "../../components/Login/LoginHead";
+import Input from "../Other/Global/Input";
+import LoginHead from "./LoginHead";
 import ForgotModal from "./Forgot";
 
 import Background from "../../assets/background.png";
@@ -184,7 +184,6 @@ const styles = StyleSheet.create({
 
   input: {
     width: "85%",
-    textAlign: "center",
     padding: 10,
     paddingHorizontal: 14,
     fontSize: 14,
