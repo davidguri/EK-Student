@@ -14,7 +14,7 @@ import Modal from "react-native-modal";
 
 import Colors from "../../constants/colors";
 
-const PrivacyModal = (props) => {
+export default function PrivacyModal(props): any {
   return (
     <Modal
       isVisible={props.visible}
@@ -153,5 +153,3 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
 });
-
-export default PrivacyModal;

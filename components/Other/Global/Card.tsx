@@ -3,7 +3,7 @@ import { View, StyleSheet, Platform } from "react-native";
 
 import Colors from "../../../constants/colors";
 
-const Card = (props) => {
+export default function Card(props): any {
   return (
     <View style={{ ...styles.card, ...props.style }}>{props.children}</View>
   );
@@ -24,5 +24,3 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 });
-
-export default Card;

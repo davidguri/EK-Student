@@ -14,7 +14,7 @@ import Modal from "react-native-modal";
 
 import Colors from "../../constants/colors";
 
-const AboutTheDevModal = (props) => {
+export default function AboutTheDevModal(props): any {
   return (
     <Modal
       isVisible={props.visible}
@@ -153,5 +153,3 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
 });
-
-export default AboutTheDevModal;

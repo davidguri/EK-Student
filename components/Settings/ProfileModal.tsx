@@ -20,7 +20,7 @@ var account = "Developer";
 var username = "David Guri";
 var email = "dguri@ernestkoliqi.com";
 
-const ProfileModal = (props) => {
+export default function ProfileModal(props): any {
   return (
     <Modal
       isVisible={props.visible}
@@ -217,5 +217,3 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
 });
-
-export default ProfileModal;

@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import Modal from "react-native-modal";
 
-const TemplateModal = (props) => {
+export default function TemplateModal(props): any {
   return (
     <Modal
       isVisible={props.visible}
@@ -37,5 +37,3 @@ const styles = StyleSheet.create({
     padding: 8.5,
   },
 });
-
-export default TemplateModal;

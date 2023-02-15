@@ -3,7 +3,7 @@ import { StyleSheet, TextInput } from "react-native";
 
 import Colors from "../../../constants/colors";
 
-const Input = (props) => {
+export default function Input(props): any {
   return (
     <TextInput
       secureTextEntry={props.bool}
@@ -23,5 +23,3 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
 });
-
-export default Input;

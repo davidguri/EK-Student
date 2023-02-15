@@ -8,14 +8,14 @@ import Colors from "../../../constants/colors";
 
 import { weatherConditions } from "./WeatherConditions";
 
-const TemperatureCardSmall = (props) => {
+export default function TemperatureCardSmall(props): any {
   var apiKey = "06caaf91eb68cc7baad9218540cfe2a1";
 
   let url =
     "api.openweathermap.org/data/2.5/weather?q=Tirana&appid={06caaf91eb68cc7baad9218540cfe2a1}";
-    
+
   var weather = "Clear";
-{/*  
+  {/*  
   getWeather({
     key: "your_key",
     zip_code: "90001",
@@ -111,5 +111,3 @@ const styles = StyleSheet.create({
     fontSize: 38,
   },
 });
-
-export default TemperatureCardSmall;
