@@ -9,27 +9,11 @@ import Colors from "../../../constants/colors";
 import { weatherConditions } from "./WeatherConditions";
 
 export default function TemperatureCardSmall(props): any {
-  var apiKey = "06caaf91eb68cc7baad9218540cfe2a1";
-
-  let url =
-    "api.openweathermap.org/data/2.5/weather?q=Tirana&appid={06caaf91eb68cc7baad9218540cfe2a1}";
-
   var weather = "Clear";
-  {/*  
-  getWeather({
-    key: "your_key",
-    zip_code: "90001",
-    country: "US",
-  }).then(() => {
-    var data = new showWeather();
-    temp = data.temp;
-    wind = data.wind;
-  });        react-native-weather-api
-*/}
   return (
     <Card style={{ ...styles.tempCard, ...props.styles }}>
       <View style={styles.topContainer}>
-        <View style={styles.imageContainer}>
+        <View>
           <Ionicons
             size={45}
             style={styles.conditionIcon}
@@ -37,7 +21,7 @@ export default function TemperatureCardSmall(props): any {
             color={"#fff"}
           />
         </View>
-        <View style={styles.currentContainer}>
+        <View>
           <Text style={styles.currentText}>12&deg;</Text>
         </View>
       </View>
