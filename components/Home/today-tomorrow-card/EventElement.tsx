@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
 import Colors from "../../../constants/colors";
 
@@ -13,18 +13,18 @@ export default function EventElement(props): any {
 
 const styles = StyleSheet.create({
   eventElement: {
-    padding: 12,
+    padding: 17,
     backgroundColor: Colors.opacity,
     borderColor: Colors.primary,
     borderWidth: 3,
-    borderRadius: 16,
-    marginRight: 12,
-    marginBottom: 5,
+    borderRadius: 15,
+    width: "100%",
   },
 
   eventTitle: {
-    fontSize: 15,
+    fontSize: 20,
     color: "white",
-    fontWeight: "600",
+    textAlign: "center",
+    fontWeight: "700",
   },
 });
