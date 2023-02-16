@@ -35,6 +35,7 @@ export default function LoginModal(props): any {
   const { setIsSignedIn }: any = useContext(AppContext);
 
   const handleLogin = () => {
+    Keyboard.dismiss()
     auth
       .signInWithEmailAndPassword(email, password)
       .then((userCredentials) => {
@@ -199,7 +200,7 @@ const styles = StyleSheet.create({
   loginBtn: {
     fontWeight: "600",
     paddingVertical: 8.7,
-    paddingHorizontal: 8,
+    paddingHorizontal: 16,
     textAlign: "center",
     fontSize: 17.5,
   },

@@ -17,8 +17,8 @@ import firebase from "firebase/compat";
 export default function ForgotModal(props): any {
   const [email, setEmail] = useState("");
 
-  function forgotPassword(Email): any {
-    firebase.auth().sendPasswordResetEmail(Email)
+  function forgotPassword(setEmail): any {
+    firebase.auth().sendPasswordResetEmail(setEmail)
       .then(function (user) {
         alert('Please check your email...')
       }).catch(function (error) {
@@ -38,28 +38,37 @@ export default function ForgotModal(props): any {
         animationOut={"slideOutDown"}
         style={{ margin: 0 }}
         hideModalContentWhileAnimating={true}
-        onSwipeComplete={props.onCancel}
-        swipeDirection="right"
+        avoidKeyboard={true}
       >
         <SafeAreaView style={{ backgroundColor: "black" }}>
           <View style={styles.screen}>
             <View style={styles.headContainer}>
-              <Text style={styles.title}>Forgot Password?</Text>
               <TouchableOpacity onPress={props.onCancel} style={styles.button}>
                 <Text style={styles.buttonText}>X</Text>
               </TouchableOpacity>
             </View>
             <View style={styles.body}>
-              <Input
-                style={styles.input}
-                blurOnSubmit
-                autoCorrect={false}
-                placeholder="jdoe@ernestkoliqi.com"
-                placeholderTextColor="#999"
-                value={email}
-                onChangeText={(text) => setEmail(text)}
-                selectTextOnFocus
-                keyboardType="email-address" />
+              <View style={styles.topContainer}>
+                <Text style={styles.title}>Forgot Password?</Text>
+                <Text style={styles.subTitle}>Please, enter your email below to receive our reset password email.</Text>
+              </View>
+              <View style={styles.middleContainer}>
+                <Text style={styles.text}>Recovery Email</Text>
+                <Input
+                  style={styles.input}
+                  blurOnSubmit
+                  autoCorrect={false}
+                  placeholder="jdoe@ernestkoliqi.com"
+                  placeholderTextColor="#999"
+                  value={email}
+                  onChangeText={(text): any => setEmail(text)}
+                  selectTextOnFocus
+                  keyboardType="email-address"
+                />
+                <TouchableOpacity style={styles.continueContainer} onPress={forgotPassword}>
+                  <Text style={styles.continueText}>Continue</Text>
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
         </SafeAreaView>
@@ -86,6 +95,27 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
   },
 
+  continueContainer: {
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 6,
+    backgroundColor: Colors.opacity,
+    borderRadius: 22,
+    borderWidth: 4,
+    borderColor: Colors.primary,
+    marginTop: 5,
+  },
+
+  continueText: {
+    fontSize: 21,
+    fontWeight: "800",
+    paddingVertical: 5,
+    textAlign: "center",
+    color: Colors.primary,
+  },
+
   button: {
     borderWidth: 3,
     borderColor: Colors.red,
@@ -93,10 +123,22 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.redOpacity,
   },
 
+  topContainer: {
+    marginBottom: 30,
+  },
+
+  middleContainer: {
+    marginTop: 30,
+  },
+
   body: {
-    width: "100%",
-    height: "100%",
-    justifyContent: "center",
+    width: "95%",
+    marginHorizontal: "2.5%",
+    height: "65%",
+  },
+
+  text: {
+    color: "white"
   },
 
   input: {
@@ -111,16 +153,25 @@ const styles = StyleSheet.create({
 
   headContainer: {
     width: "95%",
+    height: "20%",
     marginHorizontal: "2.5%",
+    paddingTop: 10,
     flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
   },
 
   title: {
     color: "white",
     fontSize: 35,
     fontWeight: "900",
+    marginBottom: 4,
+  },
+
+  subTitle: {
+    color: "#4a4a4a",
+    fontSize: 18,
+    fontWeight: "700",
   },
 
   description: {
