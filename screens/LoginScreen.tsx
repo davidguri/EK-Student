@@ -15,7 +15,9 @@ import { AppContext } from "../App";
 
 import Input from "../components/Other/Global/Input";
 import LoginHead from "../components/Login/LoginHead";
+import LoginModal from "../components/Login/LoginModal";
 import SignupModal from "../components/Login/SignupModal";
+import ForgotModal from "../components/Login/Forgot";
 
 import Background from "../assets/background.png";
 
@@ -33,22 +35,11 @@ export default function LoginScreen(props): any {
   const toggleSignupHandler = () => {
     setIsOpenSignup(!isOpenSignup);
   };
-  // Login Shizz
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [isOpenForgot, setIsOpenForgot] = useState(false);
 
-  const { setIsSignedIn } = useContext(AppContext);
-
-  const handleLogin = () => {
-    auth
-      .signInWithEmailAndPassword(email, password)
-      .then((userCredentials) => {
-        const user = userCredentials.user;
-        console.log("Logged in with:", user.email);
-        setIsSignedIn(true);
-      })
-      .catch((error) => alert(error.message));
+  const toggleForgotHandler = () => {
+    setIsOpenForgot(!isOpenForgot);
   };
 
   return (
@@ -57,12 +48,12 @@ export default function LoginScreen(props): any {
         Keyboard.dismiss();
       }}
     >
-      <ImageBackground
-        source={Background}
-        resizeMode="cover"
-        style={styles.image}
-      >
-        <SafeAreaView style={styles.screen}>
+      <SafeAreaView style={styles.screen}>
+        <ImageBackground
+          source={Background}
+          resizeMode="cover"
+          style={styles.image}
+        >
           <LoginHead title="WELCOME" />
           <View style={styles.loginForm}>
             <View style={styles.titleContainer}>
@@ -88,84 +79,12 @@ export default function LoginScreen(props): any {
               </TouchableOpacity>
             </View>
           </View>
-          <Modal
-            isVisible={isOpenLogin}
-            backgroundColor={"#000"}
-            style={{ margin: 0 }}
-            hideModalContentWhileAnimating={true}
-            onBackdropPress={props.onBackdropPress}
-            animationIn={"slideInRight"}
-            animationInTiming={350}
-            animationOutTiming={350}
-            avoidKeyboard={true}
-            onSwipeComplete={toggleLoginHandler}
-            swipeDirection="right"
-          >
-            <ImageBackground
-              source={Background}
-              resizeMode="cover"
-              style={styles.image}
-            >
-              <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                <SafeAreaView style={styles.media}>
-                  <LoginHead title="LOG IN" />
-                  <View style={styles.loginForm}>
-                    <View style={styles.titleContainerModal}>
-                      <Text style={styles.titleModal}>Log In</Text>
-                    </View>
-                    <View style={styles.inputContainer}>
-                      <Input
-                        style={styles.input}
-                        blurOnSubmit
-                        autoCorrect={false}
-                        placeholder="jdoe@ernestkoliqi.com"
-                        placeholderTextColor="#999"
-                        value={email}
-                        onChangeText={(text) => setEmail(text)}
-                        selectTextOnFocus
-                        keyboardType="email-address"
-                      />
-                      <Input
-                        style={styles.input}
-                        blurOnSubmit
-                        autoCorrect={false}
-                        placeholder="Password"
-                        placeholderTextColor="#999"
-                        bool={true}
-                        value={password}
-                        onChangeText={(text) => setPassword(text)}
-                        selectTextOnFocus
-                      />
-                    </View>
-                    <View style={styles.buttonContainerModal}>
-                      <TouchableOpacity onPress={handleLogin}>
-                        <View style={styles.ctaBtnModal}>
-                          <Text style={styles.loginBtn}>Log In</Text>
-                        </View>
-                      </TouchableOpacity>
-                      <TouchableOpacity onPress={() => { }}>
-                        <View style={styles.forgotBtn}>
-                          <Text
-                            style={{
-                              color: "white",
-                              fontSize: 17,
-                              paddingRight: 5,
-                              fontWeight: "500",
-                            }}
-                          >
-                            Forgot Password?
-                          </Text>
-                        </View>
-                      </TouchableOpacity>
-                    </View>
-                  </View>
-                </SafeAreaView>
-              </TouchableWithoutFeedback>
-            </ImageBackground>
-          </Modal>
+          <LoginModal visible={isOpenLogin} onCancel={toggleLoginHandler} />
           <SignupModal visible={isOpenSignup} onCancel={toggleSignupHandler} />
-        </SafeAreaView>
-      </ImageBackground>
+          <ForgotModal visible={isOpenForgot} onCancel={toggleForgotHandler} />
+        </ImageBackground>
+      </SafeAreaView>
+
     </TouchableWithoutFeedback>
   );
 };

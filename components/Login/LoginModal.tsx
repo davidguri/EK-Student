@@ -21,13 +21,7 @@ import Background from "../../assets/background.png";
 
 import { auth } from "../../firebase";
 
-const LoginModal = (props) => {
-  const [isOpenLogin, setIsOpenLogin] = useState(false);
-
-  const toggleLoginHandler = () => {
-    setIsOpenLogin(!isOpenLogin);
-  };
-
+export default function LoginModal(props): any {
   const [isOpenForgot, setIsOpenForgot] = useState(false);
 
   const toggleForgotHandler = () => {
@@ -38,7 +32,7 @@ const LoginModal = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { setIsSignedIn } = useContext(AppContext);
+  const { setIsSignedIn }: any = useContext(AppContext);
 
   const handleLogin = () => {
     auth
@@ -52,90 +46,82 @@ const LoginModal = (props) => {
   };
 
   return (
-    <TouchableWithoutFeedback
-      onPress={() => {
-        Keyboard.dismiss();
-      }}
+    <Modal
+      isVisible={props.visible}
+      style={{ margin: 0 }}
+      hideModalContentWhileAnimating={true}
+      onBackdropPress={props.onBackdropPress}
+      animationIn={"slideInRight"}
+      animationInTiming={350}
+      animationOutTiming={350}
+      avoidKeyboard={true}
+      onSwipeComplete={props.onCancel}
+      swipeDirection="right"
     >
-      <SafeAreaView style={styles.screen}>
-        <Modal
-          isVisible={props.visible}
-          backgroundColor={"#000"}
-          style={{ margin: 0 }}
-          hideModalContentWhileAnimating={true}
-          onBackdropPress={props.onBackdropPress}
-          animationIn={"slideInRight"}
-          animationInTiming={350}
-          animationOutTiming={350}
-          avoidKeyboard={true}
-          onSwipeComplete={props.onCancel}
-          swipeDirection="right"
-        >
-          <ImageBackground
-            source={Background}
-            resizeMode="cover"
-            style={styles.image}
-          >
-            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-              <SafeAreaView style={styles.media}>
-                <LoginHead title="LOG IN" />
-                <View style={styles.loginForm}>
-                  <View style={styles.titleContainerModal}>
-                    <Text style={styles.titleModal}>Log In</Text>
+      <ImageBackground
+        source={Background}
+        resizeMode="cover"
+        style={styles.image}
+      >
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <SafeAreaView style={styles.media}>
+            <LoginHead title="LOG IN" />
+            <View style={styles.loginForm}>
+              <View style={styles.titleContainerModal}>
+                <Text style={styles.titleModal}>Log In</Text>
+              </View>
+              <View style={styles.inputContainer}>
+                <Input
+                  style={styles.input}
+                  blurOnSubmit
+                  autoCorrect={false}
+                  placeholder="jdoe@ernestkoliqi.com"
+                  placeholderTextColor="#999"
+                  value={email}
+                  onChangeText={(text) => setEmail(text)}
+                  selectTextOnFocus
+                  keyboardType="email-address"
+                />
+                <Input
+                  style={styles.input}
+                  blurOnSubmit
+                  autoCorrect={false}
+                  placeholder="Password"
+                  placeholderTextColor="#999"
+                  bool={true}
+                  value={password}
+                  onChangeText={(text) => setPassword(text)}
+                  selectTextOnFocus
+                />
+              </View>
+              <View style={styles.buttonContainerModal}>
+                <TouchableOpacity onPress={handleLogin}>
+                  <View style={styles.ctaBtnModal}>
+                    <Text style={styles.loginBtn}>Log In</Text>
                   </View>
-                  <View style={styles.inputContainer}>
-                    <Input
-                      style={styles.input}
-                      blurOnSubmit
-                      autoCorrect={false}
-                      placeholder="jdoe@ernestkoliqi.com"
-                      placeholderTextColor="#999"
-                      value={email}
-                      onChangeText={(text) => setEmail(text)}
-                      selectTextOnFocus
-                      keyboardType="email-address"
-                    />
-                    <Input
-                      style={styles.input}
-                      blurOnSubmit
-                      autoCorrect={false}
-                      placeholder="Password"
-                      placeholderTextColor="#999"
-                      bool={true}
-                      value={password}
-                      onChangeText={(text) => setPassword(text)}
-                      selectTextOnFocus
-                    />
+                </TouchableOpacity>
+                <TouchableOpacity onPress={toggleForgotHandler}>
+                  <View style={styles.forgotBtn}>
+                    <Text
+                      style={{
+                        color: "white",
+                        fontSize: 17,
+                        paddingRight: 5,
+                        fontWeight: "500",
+                      }}
+                    >
+                      Forgot Password?
+                    </Text>
                   </View>
-                  <View style={styles.buttonContainerModal}>
-                    <TouchableOpacity onPress={handleLogin}>
-                      <View style={styles.ctaBtnModal}>
-                        <Text style={styles.loginBtn}>Log In</Text>
-                      </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={toggleForgotHandler}>
-                      <View style={styles.forgotBtn}>
-                        <Text
-                          style={{
-                            color: "white",
-                            fontSize: 17,
-                            paddingRight: 5,
-                            fontWeight: "500",
-                          }}
-                        >
-                          Forgot Password?
-                        </Text>
-                      </View>
-                    </TouchableOpacity>
-                  </View>
-                </View>
-              </SafeAreaView>
-            </TouchableWithoutFeedback>
-          </ImageBackground>
-        </Modal>
-        <ForgotModal visible={isOpenForgot} onCancel={toggleForgotHandler} />
-      </SafeAreaView>
-    </TouchableWithoutFeedback>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </SafeAreaView>
+        </TouchableWithoutFeedback>
+      </ImageBackground>
+      <ForgotModal visible={isOpenForgot} onCancel={toggleForgotHandler} />
+    </Modal>
+
   );
 };
 
@@ -224,5 +210,3 @@ const styles = StyleSheet.create({
     opacity: 0.65,
   },
 });
-
-export default LoginModal;
