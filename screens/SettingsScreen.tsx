@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import {
   View,
   Text,
-  Image,
   TouchableOpacity,
   StyleSheet,
   SafeAreaView,
@@ -26,7 +25,7 @@ import ProfileModal from "../components/Settings/ProfileModal";
 import { auth } from "../firebase";
 import firebase from "firebase/compat";
 
-const SettingsScreen = (props) => {
+export default function SettingsScreen(props): any {
   var username = "David Guri";
   var email = "dguri@ernestkoliqi.com";
 
@@ -35,7 +34,7 @@ const SettingsScreen = (props) => {
 
   const alertConst = () =>
     Alert.alert("HAH!", "No light mode allowed.", [
-      { text: "OK", onPress: () => setIsEnabled(true), style: "done" },
+      { text: "OK", onPress: () => setIsEnabled(true), style: "default" },
     ]);
 
   const [isOpenAboutModal, setIsOpenAboutModal] = useState(false);
@@ -75,7 +74,7 @@ const SettingsScreen = (props) => {
 
   let user = firebase.auth().currentUser;
 
-  const { setIsSignedIn } = useContext(AppContext);
+  const { setIsSignedIn }: any = useContext(AppContext);
 
   const handleSignOut = () => {
     auth
@@ -392,5 +391,3 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
   },
 });
-
-export default SettingsScreen;
