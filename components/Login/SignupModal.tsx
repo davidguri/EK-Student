@@ -24,11 +24,11 @@ import { AppContext } from "../../App";
 const SignupModal = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [fName, setFName] = useState("");
 
-  const { setIsSignedIn } = useContext(AppContext);
+  const { setIsSignedIn }: any = useContext(AppContext);
 
-  const handleSignup = () => {
+  const handleSignup = (): any => {
+    Keyboard.dismiss
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((userCredentials) => {
@@ -42,7 +42,6 @@ const SignupModal = (props) => {
   return (
     <Modal
       isVisible={props.visible}
-      backgroundColor={"#000"}
       style={{ margin: 0 }}
       hideModalContentWhileAnimating={true}
       onBackdropPress={props.onBackdropPress}
@@ -74,16 +73,6 @@ const SignupModal = (props) => {
                   placeholderTextColor="#999"
                   value={email}
                   onChangeText={(text) => setEmail(text)}
-                  selectTextOnFocus
-                  keyboardType="email-address"
-                />
-                <Input
-                  style={styles.input}
-                  blurOnSubmit
-                  autoCorrect={false}
-                  placeholder="Full Name"
-                  placeholderTextColor="#999"
-                  onChangeText={(text) => setFName(text)}
                   selectTextOnFocus
                   keyboardType="email-address"
                 />

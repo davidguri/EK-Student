@@ -26,7 +26,7 @@ const CalendarHeader = (props) => {
     "Nov",
     "Dec",
   ];
-  
+
   const nth = function (d) {
     if (d > 3 && d < 21) return "th";
     switch (d % 10) {
@@ -40,7 +40,7 @@ const CalendarHeader = (props) => {
         return "th";
     }
   };
-  
+
   var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   var dt = new Date();
   var date =
@@ -70,14 +70,14 @@ const styles = StyleSheet.create({
 
   headerTitle: {
     color: "white",
-    fontSize: 30,
+    fontSize: 35,
     fontWeight: "bold",
     paddingTop: 12,
   },
 
   headerSubtitle: {
     color: "#666",
-    fontSize: 21,
+    fontSize: 24,
     fontWeight: "bold",
     paddingBottom: 12,
   },

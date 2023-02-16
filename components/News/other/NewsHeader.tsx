@@ -51,14 +51,14 @@ const styles = StyleSheet.create({
 
   headerTitle: {
     color: "white",
-    fontSize: 30,
+    fontSize: 35,
     fontWeight: "bold",
     paddingTop: 12,
   },
 
   headerSubtitle: {
     color: "#666",
-    fontSize: 21,
+    fontSize: 24,
     fontWeight: "bold",
     paddingBottom: 12,
   },

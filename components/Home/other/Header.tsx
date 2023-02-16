@@ -5,7 +5,6 @@ import {
   StyleSheet,
   StatusBar,
   Platform,
-  Image,
   TouchableOpacity,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
@@ -13,14 +12,23 @@ import { Ionicons } from "@expo/vector-icons";
 import Colors from "../../../constants/colors";
 import SettingsScreen from "../../../screens/SettingsScreen";
 
-const Header = (props) => {
+import firebase from "firebase/compat";
+
+export default function Header(props): any {
   const [isOpenSettings, setIsOpenSettings] = useState(false);
 
   const closeModalHandler = () => {
     setIsOpenSettings(false);
   };
 
-  var username = "David";
+  var user = firebase.auth().currentUser;
+  var email: any;
+
+  if (user != null) {
+    email = user.email;
+  }
+
+  var username = email.split("@")[0];
 
   var objDate = new Date();
   var hours = objDate.getHours();
@@ -34,26 +42,25 @@ const Header = (props) => {
 
   return (
     <View style={styles.header}>
-      <View>
+      <View style={styles.textContainer}>
         <Text style={styles.headerTitle}>{props.title}</Text>
         <Text style={styles.headerSubtitle}>{HelloText}</Text>
       </View>
-
       <TouchableOpacity onPress={() => setIsOpenSettings(true)}>
         <Ionicons
           name="person-circle-outline"
           color={Colors.primary}
-          size={68}
+          size={75}
         />
       </TouchableOpacity>
       <SettingsScreen visible={isOpenSettings} onCancel={closeModalHandler} />
-    </View>
+    </View >
   );
 };
 
 const styles = StyleSheet.create({
   header: {
-    width: "90%",
+    width: "95%",
     height: "auto",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     flexDirection: "row",
@@ -63,25 +70,21 @@ const styles = StyleSheet.create({
 
   headerTitle: {
     color: "#fff",
-    fontSize: 30,
+    fontSize: 35,
     fontWeight: "bold",
     paddingTop: 12,
   },
 
   headerSubtitle: {
     color: "#666",
-    fontSize: 21,
+    fontSize: 24,
     fontWeight: "bold",
     paddingBottom: 12,
   },
 
-  iconContainer: {
-    borderWidth: 3,
-    borderRadius: 50,
-    borderColor: Colors.accent,
+  textContainer: {
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "flex-start",
+    paddingLeft: 15,
   },
 });
-
-export default Header;

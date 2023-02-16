@@ -51,20 +51,18 @@ var date =
   nth(dt.getDate());
 
 import NewsHeader from "../components/News/other/NewsHeader";
-import TemperatureCardSmall from "../components/Other/Weather/TemperatureCardSmall";
+import TemperatureCardSmall from "../components/Other/Weather/WeatherWidget";
 import NewsTodayCard from "../components/News/todayInNews/NewsTodayCard";
 import NewsProjectCard from "../components/News/other/NewsProjectCard";
 
-const NewsScreen = (props) => {
+export default function NewsScreen(props): any {
   return (
     <ScrollView style={styles.screen}>
       <View style={styles.header}>
         <NewsHeader title="News" sub={date} />
       </View>
       <View style={styles.smallCardContainer}>
-        <View style={styles.leftConatiner}>
-          <TemperatureCardSmall />
-        </View>
+        <TemperatureCardSmall />
         <NewsProjectCard />
       </View>
       <View style={{ margin: 3, marginBottom: 12 }}>
@@ -101,8 +99,7 @@ const styles = StyleSheet.create({
 
   smallCardContainer: {
     margin: 10,
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: "column",
     alignItems: "center",
   },
 
@@ -113,5 +110,3 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
-
-export default NewsScreen;
