@@ -5,51 +5,26 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
-  Image,
-  Linking,
 } from "react-native";
 
 import Header from "../components/Home/other/Header";
 import TomorrowCard from "../components/Home/today-tomorrow-card/TomorrowCard";
 import UpcomingCard from "../components/Home/today-tomorrow-card/UpcomingCard";
-import TemperatureCardSmall from "../components/Other/Weather/TemperatureCardSmall";
+import WeatherWidget from "../components/Other/Weather/WeatherWidget";
 import NewsTodayCard from "../components/News/todayInNews/NewsTodayCard";
 import GoalsCard from "../components/Home/goals-more-card/GoalsCard";
 
 import Colors from "../constants/colors";
 import Card from "../components/Other/Global/Card";
 
-import TeamsLogo from "../assets/Images/Microsoft-Teams-Logo.png";
-
-const HomeScreen = (props): any => {
+export default function HomeScreen(props): any {
   return (
     <ScrollView style={styles.screen}>
       <View style={styles.header}>
         <Header title="Home" />
       </View>
       <View style={styles.smallCardContainer}>
-        <View style={styles.leftContainer}>
-          <TemperatureCardSmall />
-          <Card style={styles.teamsCard}>
-            <TouchableOpacity
-              onPress={() => Linking.openURL("com.teams.app")}
-              // Doesn't Work
-              style={styles.buttonContainer}
-            >
-              <View style={styles.section}>
-                <View style={styles.imageContainer}>
-                  <Image
-                    style={styles.image}
-                    width={35}
-                    height={32}
-                    source={TeamsLogo}
-                  />
-                </View>
-                <Text style={styles.buttonText}>Teams</Text>
-              </View>
-            </TouchableOpacity>
-          </Card>
-        </View>
+        <WeatherWidget />
         <GoalsCard />
       </View>
       <View>
@@ -107,8 +82,8 @@ const styles = StyleSheet.create({
   smallCardContainer: {
     margin: 10,
     width: "95%",
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: "column",
+    alignItems: "center",
   },
 
   leftContainer: {
@@ -140,6 +115,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
   },
-});
 
-export default HomeScreen;
+  image: {
+    width: 35,
+    height: 35,
+  }
+});
