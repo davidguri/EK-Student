@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, SafeAreaView, StatusBar, View } from "react-native";
+import { StyleSheet, SafeAreaView, StatusBar, View, Appearance, useColorScheme } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -16,10 +16,10 @@ const appTheme = {
   colors: {
     primary: Colors.primary,
     background: Colors.backgroundColor,
-    card: "#000",
-    text: "#fff",
-    border: "#000",
-    notification: "red",
+    card: Colors.backgroundColor,
+    text: Colors.textColor,
+    border: Colors.backgroundColor,
+    notification: Colors.red,
   },
 };
 
@@ -45,7 +45,7 @@ function Feed() {
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
+            let iconName: any;
             if (route.name === "Home") {
               iconName = focused ? "home" : "home-outline";
             } else if (route.name === "News") {
@@ -56,12 +56,9 @@ function Feed() {
             return <Ionicons name={iconName} size={size} color={color} />;
           },
           activeTintColor: Colors.primary,
-          inactiveTintColor: "gray",
+          inactiveTintColor: Colors.back,
           showLabel: true,
           showIcon: true,
-          style: {
-            paddingTop: 4.5,
-          },
         })}
       >
         <Tab.Screen
@@ -100,7 +97,7 @@ export default function App() {
   );
 
   return (
-    <View style={styles.screen}>
+    <SafeAreaView style={styles.screen}>
       <StatusBar barStyle="light-content" translucent={true} />
       <AppContext.Provider value={contextValue}>
         <NavigationContainer theme={appTheme}>
@@ -121,7 +118,7 @@ export default function App() {
           </Stack.Navigator>
         </NavigationContainer>
       </AppContext.Provider>
-    </View>
+    </SafeAreaView>
   );
 }
 
