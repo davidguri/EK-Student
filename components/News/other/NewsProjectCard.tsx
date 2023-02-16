@@ -15,12 +15,11 @@ const NewsProjectCard = (props) => {
 
   return (
     <Card style={styles.card}>
-      <Text style={styles.cardTitle}>Submit Project</Text>
       <TouchableOpacity
         onPress={() => setIsOpenSubmitPage(true)}
         style={styles.buttonContainer}
       >
-        <Text style={styles.buttonText}>Submit</Text>
+        <Text style={styles.buttonText}>Submit Project</Text>
       </TouchableOpacity>
       <AddProjectModal
         visible={isOpenSubmitPage}
@@ -32,37 +31,24 @@ const NewsProjectCard = (props) => {
 
 const styles = StyleSheet.create({
   card: {
-    width: "48%",
-    flexDirection: "column",
-    justifyContent: "center",
-    paddingTop: 8,
-    paddingBottom: 12,
-    borderRadius: 22,
-  },
-
-  cardTitle: {
-    fontSize: 24,
-    color: "white",
-    fontWeight: "bold",
-    paddingVertical: 7,
-    paddingBottom: 12,
-    marginHorizontal: 1,
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 6,
+    backgroundColor: Colors.opacity,
+    borderRadius: 15,
+    borderWidth: 4,
+    borderColor: Colors.primary,
   },
 
   buttonContainer: {
     width: "100%",
-    backgroundColor: Colors.opacity,
-    borderRadius: 18,
-    borderColor: Colors.primary,
-    borderWidth: 4,
-    marginTop: 8,
-    marginBottom: 8,
   },
 
   buttonText: {
-    fontSize: 18,
-    fontWeight: "700",
-    padding: 9,
+    fontSize: 21,
+    fontWeight: "800",
+    padding: 5,
     textAlign: "center",
     color: Colors.primary,
   },

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
-  View,
   TouchableOpacity,
 } from "react-native";
 
@@ -13,7 +12,7 @@ import GoalModal from "./GoalsModal";
 import ToDoModal from "./ToDoModal";
 import ProjectsModal from "./ProjectsModal";
 
-const GoalsCard = (props) => {
+export default function GoalsCard(props): any {
   const [isOpenGoalModal, setIsOpenGoalModal] = useState(false);
   const [isOpenToDoModal, setIsOpenToDoModal] = useState(false);
   const [isOpenProjectModal, setIsOpenProjectModal] = useState(false);
@@ -32,26 +31,24 @@ const GoalsCard = (props) => {
 
   return (
     <Card style={styles.card}>
-      <View style={styles.bodySection}>
-        <TouchableOpacity
-          onPress={toggleGoalModalHandler}
-          style={styles.buttonContainer}
-        >
-          <Text style={styles.buttonText}>Goals</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={toggleToDoModalHandler}
-          style={styles.buttonContainer}
-        >
-          <Text style={styles.buttonText}>Tasks</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={toggleProjectModalHandler}
-          style={styles.buttonContainer}
-        >
-          <Text style={styles.buttonText}>Projects</Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity
+        onPress={toggleGoalModalHandler}
+        style={styles.buttonContainer}
+      >
+        <Text style={styles.buttonText}>Goals</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={toggleToDoModalHandler}
+        style={styles.buttonContainer}
+      >
+        <Text style={styles.buttonText}>Tasks</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={toggleProjectModalHandler}
+        style={styles.buttonContainer}
+      >
+        <Text style={styles.buttonText}>Projects</Text>
+      </TouchableOpacity>
       <GoalModal visible={isOpenGoalModal} onCancel={toggleGoalModalHandler} />
       <ToDoModal visible={isOpenToDoModal} onCancel={toggleToDoModalHandler} />
       <ProjectsModal visible={isOpenProjectModal} onCancel={toggleProjectModalHandler} />
@@ -61,40 +58,28 @@ const GoalsCard = (props) => {
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: 22,
-    width: "48%",
-  },
-
-  cardTitleContainer: {
+    borderRadius: 15,
+    width: "100%",
     flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-
-  cardTitle: {
-    fontSize: 24,
-    color: "white",
-    fontWeight: "bold",
-    marginBottom: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 14,
   },
 
   buttonContainer: {
-    width: "100%",
+    flex: 1,
     backgroundColor: Colors.opacity,
-    borderRadius: 20,
+    borderRadius: 18,
     borderColor: Colors.primary,
-    borderWidth: 4.3,
-    marginTop: 7.85,
-    marginBottom: 7.85,
+    borderWidth: 3.8,
+    marginHorizontal: 4,
   },
 
   buttonText: {
-    fontSize: 18.75,
+    fontSize: 19,
     fontWeight: "700",
-    padding: 9.35,
+    padding: 9,
+    margin: 0,
     textAlign: "center",
-    color: Colors.primary,
+    color: "#fff",
   },
 });
-
-export default GoalsCard;
