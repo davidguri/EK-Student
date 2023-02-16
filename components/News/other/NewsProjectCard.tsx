@@ -17,7 +17,6 @@ const NewsProjectCard = (props) => {
     <Card style={styles.card}>
       <TouchableOpacity
         onPress={() => setIsOpenSubmitPage(true)}
-        style={styles.buttonContainer}
       >
         <Text style={styles.buttonText}>Submit Project</Text>
       </TouchableOpacity>
@@ -39,10 +38,6 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     borderWidth: 4,
     borderColor: Colors.primary,
-  },
-
-  buttonContainer: {
-    width: "100%",
   },
 
   buttonText: {
