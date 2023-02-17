@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, SafeAreaView, StatusBar, View, Appearance, useColorScheme } from "react-native";
+import { StyleSheet, SafeAreaView, StatusBar, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";

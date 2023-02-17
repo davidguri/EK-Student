@@ -66,11 +66,13 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 17,
     fontWeight: "700",
+    marginBottom: 1.5,
   },
 
   subtitleText: {
     color: "#fff",
     fontSize: 14,
+    marginTop: 1.5,
     fontWeight: "600",
   },
 

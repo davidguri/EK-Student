@@ -8,7 +8,6 @@ import {
   FlatList,
 } from "react-native";
 
-import Card from "../../Other/Global/Card";
 import EventElement from "./EventElement";
 import EventModal from "./EventModal";
 

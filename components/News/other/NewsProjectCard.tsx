@@ -6,7 +6,7 @@ import Colors from "../../../constants/colors";
 
 import AddProjectModal from "./AddProjectModal";
 
-const NewsProjectCard = (props) => {
+export default function NewsProjectCard(props): any {
   const [isOpenSubmitPage, setIsOpenSubmitPage] = useState(false);
 
   const closeModalHandler = () => {
@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "center",
     paddingVertical: 6,
     backgroundColor: Colors.opacity,
     borderRadius: 15,
@@ -43,10 +44,8 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 21,
     fontWeight: "800",
-    padding: 5,
+    paddingVertical: 6,
     textAlign: "center",
     color: Colors.primary,
   },
 });
-
-export default NewsProjectCard;
