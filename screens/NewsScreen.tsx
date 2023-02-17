@@ -74,7 +74,7 @@ export default function NewsScreen(props): any {
 
 const styles = StyleSheet.create({
   screen: {
-    padding: 7.5,
+    padding: 5,
   },
 
   header: {

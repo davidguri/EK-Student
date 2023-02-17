@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     padding: 17,
     backgroundColor: Colors.opacity,
     borderColor: Colors.primary,
-    borderWidth: 3,
+    borderWidth: 3.5,
     borderRadius: 15,
     width: "100%",
   },

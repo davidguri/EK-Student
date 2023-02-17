@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
+  View,
   TouchableOpacity,
 } from "react-native";
 
 import Colors from "../../../constants/colors";
-import Card from "../../Other/Global/Card";
 
 import GoalModal from "./GoalsModal";
 import ToDoModal from "./ToDoModal";
@@ -30,7 +30,7 @@ export default function GoalsCard(props): any {
   };
 
   return (
-    <Card style={styles.card}>
+    <View style={styles.card}>
       <TouchableOpacity
         onPress={toggleGoalModalHandler}
         style={styles.buttonContainer}
@@ -52,33 +52,31 @@ export default function GoalsCard(props): any {
       <GoalModal visible={isOpenGoalModal} onCancel={toggleGoalModalHandler} />
       <ToDoModal visible={isOpenToDoModal} onCancel={toggleToDoModalHandler} />
       <ProjectsModal visible={isOpenProjectModal} onCancel={toggleProjectModalHandler} />
-    </Card>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: 15,
     width: "100%",
     flexDirection: "row",
-    paddingHorizontal: 10,
-    paddingVertical: 14,
+    justifyContent: "center",
+    paddingVertical: 0,
   },
 
   buttonContainer: {
-    flex: 1,
+    width: "31%",
     backgroundColor: Colors.opacity,
-    borderRadius: 18,
+    borderRadius: 15,
     borderColor: Colors.primary,
-    borderWidth: 3.8,
-    marginHorizontal: 4,
+    borderWidth: 3.5,
+    marginHorizontal: "1.5%",
   },
 
   buttonText: {
-    fontSize: 19,
+    fontSize: 21,
     fontWeight: "700",
-    padding: 9,
-    margin: 0,
+    paddingVertical: 14,
     textAlign: "center",
     color: "#fff",
   },
