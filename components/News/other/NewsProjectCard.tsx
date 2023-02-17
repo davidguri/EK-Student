@@ -14,17 +14,17 @@ export default function NewsProjectCard(props): any {
   };
 
   return (
-    <Card style={styles.card}>
-      <TouchableOpacity
-        onPress={() => setIsOpenSubmitPage(true)}
-      >
-        <Text style={styles.buttonText}>Submit Project</Text>
-      </TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => setIsOpenSubmitPage(true)}
+      style={styles.card}
+    >
+
+      <Text style={styles.buttonText}>Submit Project</Text>
       <AddProjectModal
         visible={isOpenSubmitPage}
         onCancel={closeModalHandler}
       />
-    </Card>
+    </TouchableOpacity>
   );
 };
 
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    fontSize: 21,
+    fontSize: 23,
     fontWeight: "800",
     paddingVertical: 6,
     textAlign: "center",
