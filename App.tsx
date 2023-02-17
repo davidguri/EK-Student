@@ -55,12 +55,6 @@ function Feed() {
             }
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-          tabBarOptions: {
-            labelStyle: {
-              padding: 0,
-              margin: 0,
-            }
-          },
           activeTintColor: Colors.primary,
           inactiveTintColor: Colors.back,
           showLabel: true,
@@ -103,7 +97,7 @@ export default function App() {
   );
 
   return (
-    <View style={styles.screen}>
+    <SafeAreaView style={styles.screen}>
       <StatusBar barStyle="light-content" translucent={true} />
       <AppContext.Provider value={contextValue}>
         <NavigationContainer theme={appTheme}>
@@ -124,7 +118,7 @@ export default function App() {
           </Stack.Navigator>
         </NavigationContainer>
       </AppContext.Provider>
-    </View>
+    </SafeAreaView>
   );
 }
 
