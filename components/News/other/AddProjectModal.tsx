@@ -20,7 +20,6 @@ const AddProjectModal = (props) => {
   return (
     <Modal
       isVisible={props.visible}
-      backgroundColor={"#000"}
       style={{ margin: 0 }}
       hideModalContentWhileAnimating={true}
       onBackdropPress={props.onBackdropPress}
@@ -40,7 +39,6 @@ const AddProjectModal = (props) => {
               value={name}
               onChangeText={onChangeName}
               placeholderTextColor="#777"
-              color="white"
               placeholder="Name of Project"
             />
             <TextInput
@@ -48,14 +46,13 @@ const AddProjectModal = (props) => {
               value={desc}
               onChangeText={onChangeDesc}
               placeholderTextColor="#777"
-              color="white"
               placeholder="Description of Project"
             />
             <TouchableOpacity onPress={() => { }} style={styles.imageInput}>
               <Text style={styles.imageText}>Image of the Project</Text>
             </TouchableOpacity>
 
-            <View style={styles.submit}>
+            <View>
               <TouchableOpacity
                 onPress={props.onSubmit}
                 style={styles.submitContainer}

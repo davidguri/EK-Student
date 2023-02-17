@@ -10,11 +10,10 @@ import Modal from "react-native-modal";
 
 import Colors from "../../../constants/colors";
 
-const EventModal = (props) => {
+export default function EventModal(props): any {
   return (
     <Modal
       isVisible={props.isVisible}
-      backgroundColor={"transparent"}
       style={{ margin: 0 }}
       hideModalContentWhileAnimating={true}
       onBackdropPress={props.onBackdropPress}
@@ -22,14 +21,13 @@ const EventModal = (props) => {
       animationOutTiming={350}
     >
       <View style={styles.main}>
-        {/* Background color of the modal should be determined by the color of the event. */}
         <View style={styles.header}>
           <View style={styles.textContainer}>
-            <Text style={styles.headerTitle}>Event Title</Text>
+            <Text style={styles.headerTitle}>{props.title}</Text>
             <Text style={styles.headerSubtitle}>Type of event</Text>
           </View>
         </View>
-        <View style={styles.mainContent}>
+        <View>
           <View style={[styles.section, styles.column]}>
             <View style={[styles.section, styles.row, { paddingBottom: 0 }]}>
               <Text style={styles.timeText}>Start of event:</Text>
@@ -47,7 +45,6 @@ const EventModal = (props) => {
             </Text>
           </View>
         </View>
-        <View style={styles.footer}></View>
       </View>
     </Modal>
   );
@@ -120,5 +117,3 @@ const styles = StyleSheet.create({
     paddingTop: 4,
   },
 });
-
-export default EventModal;

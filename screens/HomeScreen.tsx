@@ -1,14 +1,11 @@
 import React from "react";
 import {
   View,
-  Text,
   StyleSheet,
-  TouchableOpacity,
   ScrollView,
 } from "react-native";
 
 import Header from "../components/Home/other/Header";
-import TomorrowCard from "../components/Home/today-tomorrow-card/TomorrowCard";
 import UpcomingCard from "../components/Home/today-tomorrow-card/UpcomingCard";
 import WeatherWidget from "../components/Other/Weather/WeatherWidget";
 import NewsTodayCard from "../components/News/todayInNews/NewsTodayCard";
@@ -29,7 +26,6 @@ export default function HomeScreen(props): any {
       </View>
       <View>
         <UpcomingCard />
-        <TomorrowCard />
         <Card style={styles.card}>
           <NewsTodayCard />
         </Card>

@@ -10,18 +10,12 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import Colors from "../constants/colors";
-import Modal from "react-native-modal";
-import { AppContext } from "../App";
-
-import Input from "../components/Other/Global/Input";
 import LoginHead from "../components/Login/LoginHead";
 import LoginModal from "../components/Login/LoginModal";
 import SignupModal from "../components/Login/SignupModal";
 import ForgotModal from "../components/Login/Forgot";
 
 import Background from "../assets/background.png";
-
-import { auth } from "../firebase";
 
 export default function LoginScreen(props): any {
   const [isOpenLogin, setIsOpenLogin] = useState(false);
@@ -48,12 +42,12 @@ export default function LoginScreen(props): any {
         Keyboard.dismiss();
       }}
     >
-      <SafeAreaView style={styles.screen}>
-        <ImageBackground
-          source={Background}
-          resizeMode="cover"
-          style={styles.image}
-        >
+      <ImageBackground
+        source={Background}
+        resizeMode="cover"
+        style={styles.image}
+      >
+        <SafeAreaView style={styles.screen}>
           <LoginHead title="WELCOME" />
           <View style={styles.loginForm}>
             <View style={styles.titleContainer}>
@@ -82,9 +76,8 @@ export default function LoginScreen(props): any {
           <LoginModal visible={isOpenLogin} onCancel={toggleLoginHandler} />
           <SignupModal visible={isOpenSignup} onCancel={toggleSignupHandler} />
           <ForgotModal visible={isOpenForgot} onCancel={toggleForgotHandler} />
-        </ImageBackground>
-      </SafeAreaView>
-
+        </SafeAreaView>
+      </ImageBackground>
     </TouchableWithoutFeedback>
   );
 };
