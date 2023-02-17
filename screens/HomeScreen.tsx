@@ -26,9 +26,7 @@ export default function HomeScreen(props): any {
       </View>
       <View>
         <UpcomingCard />
-        <Card style={styles.card}>
-          <NewsTodayCard />
-        </Card>
+        <NewsTodayCard />
       </View>
     </ScrollView>
   );
@@ -36,43 +34,12 @@ export default function HomeScreen(props): any {
 
 const styles = StyleSheet.create({
   screen: {
-    padding: 7.5,
+    padding: 5,
     paddingBottom: 10,
   },
 
   header: {
     alignItems: "center",
-  },
-
-  helloText: {
-    color: "white",
-    fontSize: 30,
-    fontWeight: "bold",
-    padding: 10,
-    paddingTop: 8,
-    textAlign: "center",
-  },
-
-  tempContainer: {
-    marginVertical: 10,
-    alignItems: "center",
-  },
-
-  card: {
-    margin: 10,
-    marginBottom: 15,
-    borderRadius: 15,
-    padding: 10,
-  },
-
-  teamsCard: {
-    width: "100%",
-    paddingVertical: 9,
-    borderRadius: 21,
-    borderColor: Colors.primary,
-    borderWidth: 4,
-    backgroundColor: Colors.opacity,
-    padding: 15,
   },
 
   smallCardContainer: {
@@ -81,39 +48,4 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
   },
-
-  leftContainer: {
-    flexDirection: "column",
-    justifyContent: "space-between",
-    width: "48%",
-  },
-
-  title: {
-    fontSize: 30,
-    color: "white",
-    fontWeight: "600",
-  },
-
-  buttonContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-
-  buttonText: {
-    paddingLeft: 12,
-    fontSize: 20,
-    color: Colors.primary,
-    fontWeight: "600",
-  },
-
-  section: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-
-  image: {
-    width: 35,
-    height: 35,
-  }
 });

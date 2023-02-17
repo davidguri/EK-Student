@@ -6,7 +6,7 @@ import Colors from "../../../constants/colors";
 
 import AddProjectModal from "./AddProjectModal";
 
-const NewsProjectCard = (props) => {
+export default function NewsProjectCard(props): any {
   const [isOpenSubmitPage, setIsOpenSubmitPage] = useState(false);
 
   const closeModalHandler = () => {
@@ -14,17 +14,17 @@ const NewsProjectCard = (props) => {
   };
 
   return (
-    <Card style={styles.card}>
-      <TouchableOpacity
-        onPress={() => setIsOpenSubmitPage(true)}
-      >
-        <Text style={styles.buttonText}>Submit Project</Text>
-      </TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => setIsOpenSubmitPage(true)}
+      style={styles.card}
+    >
+
+      <Text style={styles.buttonText}>Submit Project</Text>
       <AddProjectModal
         visible={isOpenSubmitPage}
         onCancel={closeModalHandler}
       />
-    </Card>
+    </TouchableOpacity>
   );
 };
 
@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "center",
     paddingVertical: 6,
     backgroundColor: Colors.opacity,
     borderRadius: 15,
@@ -41,12 +42,10 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    fontSize: 21,
+    fontSize: 23,
     fontWeight: "800",
-    padding: 5,
+    paddingVertical: 6,
     textAlign: "center",
     color: Colors.primary,
   },
 });
-
-export default NewsProjectCard;

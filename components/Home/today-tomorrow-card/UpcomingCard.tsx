@@ -8,7 +8,6 @@ import {
   FlatList,
 } from "react-native";
 
-import Card from "../../Other/Global/Card";
 import EventElement from "./EventElement";
 import EventModal from "./EventModal";
 
@@ -17,22 +16,22 @@ import Colors from "../../../constants/colors";
 const DATA_TDY = [
   {
     id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-    title: "Class Item",
+    title: "Math",
     colors: Colors.classes.main,
   },
   {
     id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-    title: "Event Item",
+    title: "English",
     colors: Colors.events.main,
   },
   {
     id: "58694a0f-3da1-471f-bd96-145571e29d72",
-    title: "Day Off Item",
+    title: "Albanian",
     colors: Colors.daysOff.main,
   },
   {
     id: "jwiejiwefqijwfowjeiguoqwjrojef",
-    title: "Test Item",
+    title: "Exam His",
     colors: Colors.tests.main,
   },
 ];
@@ -56,7 +55,7 @@ const DATA_TMR = [
   {
     id: "jwiejiwefqijwfowjeiguoqwjrojef",
     title: "Test Item",
-    colors: Colors.tests.main,
+    colors: "backgroundColor: Colors.tests.main",
   },
 ];
 
@@ -65,7 +64,7 @@ export default function UpcomingCard(props): any {
 
   const Item = ({ title, colors }) => (
     <TouchableOpacity onPress={toggleModalHandler} style={styles.eventElement}>
-      <EventElement title={title} />
+      <EventElement title={title} color={colors} />
     </TouchableOpacity>
   );
 
@@ -103,8 +102,7 @@ export default function UpcomingCard(props): any {
 const styles = StyleSheet.create({
   card: {
     margin: 10,
-    marginTop: 0,
-    borderRadius: 18,
+    marginBottom: 30,
   },
 
   cardTitle: {

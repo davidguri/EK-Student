@@ -1,11 +1,8 @@
 import React from "react";
 import { View, StyleSheet, Text, FlatList } from "react-native";
 
-import Card from "../../Other/Global/Card";
-import NewsTabCard from "./NewsTabCard";
-
-const DATA = {
-  item1: {
+const DATA = [
+  {
     publisher: "Principal's Office",
     title: "Back to School Folks",
     description:
@@ -13,34 +10,15 @@ const DATA = {
     image: "https://i.ytimg.com/vi/RXma-bHU1WE/maxresdefault.jpg",
     id: "item1",
   },
+];
 
-  item2: {
-    publisher: "Principal's Office",
-    title: "Winter Break",
-    description: "Bad news, it's been cut short, only 9 days!",
-    image: "https://i.ytimg.com/vi/RXma-bHU1WE/maxresdefault.jpg",
-    id: "item2",
-  },
+export default function NewsTodayCard(props): any {
+  const Item = ({ title, publisher, description, image }) => (
+    <View>
+      <Text style={{ color: "white" }}>Hello</Text>
+    </View>
+  );
 
-  item3: {
-    publisher: "Principal's Office",
-    title: "Something Else",
-    description: "Some other description.",
-    image: "https://i.ytimg.com/vi/RXma-bHU1WE/maxresdefault.jpg",
-    id: "item3",
-  },
-};
-
-const Item = ({ title, publisher, description, image }) => (
-  <NewsTabCard
-    publisher={publisher}
-    title={title}
-    desc={description}
-    image={image}
-  />
-);
-
-const NewsTodayCard = (props) => {
   const renderItem = ({ item }) => (
     <Item
       title={item.title}
@@ -53,23 +31,12 @@ const NewsTodayCard = (props) => {
   return (
     <View style={styles.card}>
       <Text style={styles.cardTitle}>Today in News</Text>
-      <Item
-        publisher={DATA.item1.publisher}
-        title={DATA.item1.title}
-        description={DATA.item1.description}
-        image={DATA.item1.image}
-      />
-      <Item
-        publisher={DATA.item2.publisher}
-        title={DATA.item2.title}
-        description={DATA.item2.description}
-        image={DATA.item2.image}
-      />
-      <Item
-        publisher={DATA.item3.publisher}
-        title={DATA.item3.title}
-        description={DATA.item3.description}
-        image={DATA.item3.image}
+      <FlatList
+        data={DATA}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
       />
     </View>
   );
@@ -83,11 +50,9 @@ const styles = StyleSheet.create({
   },
 
   cardTitle: {
-    fontSize: 26,
+    fontSize: 30,
     color: "white",
     fontWeight: "700",
     paddingLeft: 2,
   },
 });
-
-export default NewsTodayCard;

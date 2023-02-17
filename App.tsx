@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, SafeAreaView, StatusBar, View, Appearance, useColorScheme } from "react-native";
+import { StyleSheet, SafeAreaView, StatusBar, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -97,7 +97,7 @@ export default function App() {
   );
 
   return (
-    <View style={styles.screen}>
+    <SafeAreaView style={styles.screen}>
       <StatusBar barStyle="light-content" translucent={true} />
       <AppContext.Provider value={contextValue}>
         <NavigationContainer theme={appTheme}>
@@ -118,7 +118,7 @@ export default function App() {
           </Stack.Navigator>
         </NavigationContainer>
       </AppContext.Provider>
-    </View>
+    </SafeAreaView>
   );
 }
 

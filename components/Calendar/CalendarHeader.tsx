@@ -56,11 +56,10 @@ const CalendarHeader = (props) => {
 
 const styles = StyleSheet.create({
   header: {
-    width: "75%",
+    width: "92.5%",
     height: "auto",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-    flexDirection: "column",
-    justifyContent: "center",
+    justifyContent: "space-between",
   },
 
   textContainer: {
@@ -80,19 +79,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     paddingBottom: 12,
-  },
-
-  prevNextBtn: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-
-  btnText: {
-    color: Colors.primary,
-    padding: 12,
-    fontSize: 23,
-    fontWeight: "bold",
-    opacity: 0.75,
   },
 });
 
