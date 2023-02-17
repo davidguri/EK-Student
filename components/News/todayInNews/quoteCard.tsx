@@ -9,6 +9,7 @@ export default function QuoteCard(props): any {
     return (
         <Card style={styles.card}>
             <Text style={styles.quoteText}>"Input Quote Here"</Text>
+            <Text style={styles.authorText}>-Author</Text>
         </Card>
     );
 };
@@ -16,8 +17,8 @@ export default function QuoteCard(props): any {
 const styles = StyleSheet.create({
     card: {
         width: "100%",
-        flexDirection: "row",
-        alignItems: "center",
+        flexDirection: "column",
+        alignItems: "flex-start",
         justifyContent: "center",
         paddingVertical: 6,
         borderRadius: 15,
@@ -25,10 +26,14 @@ const styles = StyleSheet.create({
     },
 
     quoteText: {
-        fontSize: 23,
-        fontWeight: "800",
-        paddingVertical: 6,
-        textAlign: "center",
-        color: Colors.primary,
+        fontSize: 18,
+        fontWeight: "700",
+        color: "white",
+    },
+    
+    authorText: {
+        fontSize: 14,
+        fontWeight: "600",
+        color: "white"
     },
 });
