@@ -60,7 +60,7 @@ export default function Header(props): any {
 
 const styles = StyleSheet.create({
   header: {
-    width: "95%",
+    width: "92%",
     height: "auto",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     flexDirection: "row",
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   },
 
   headerTitle: {
-    color: "#fff",
+    color: "white",
     fontSize: 35,
     fontWeight: "bold",
     paddingTop: 12,
@@ -85,6 +85,6 @@ const styles = StyleSheet.create({
   textContainer: {
     justifyContent: "center",
     alignItems: "flex-start",
-    paddingLeft: 15,
+    paddingLeft: 0,
   },
 });

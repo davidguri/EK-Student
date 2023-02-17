@@ -1,7 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, StyleSheet } from "react-native";
-
-import { Ionicons } from "@expo/vector-icons";
 
 import Colors from "../constants/colors";
 import CalendarHeader from "../components/Calendar/CalendarHeader";
@@ -31,7 +29,6 @@ export default function CalendarScreen(props): any {
         style={{
           height: "100%",
           backgroundColor: "#000",
-          color: "#fff",
         }}
         theme={{
           backgroundColor: "#000",

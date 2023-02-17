@@ -55,6 +55,12 @@ function Feed() {
             }
             return <Ionicons name={iconName} size={size} color={color} />;
           },
+          tabBarOptions: {
+            labelStyle: {
+              padding: 0,
+              margin: 0,
+            }
+          },
           activeTintColor: Colors.primary,
           inactiveTintColor: Colors.back,
           showLabel: true,

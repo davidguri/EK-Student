@@ -5,7 +5,6 @@ import {
   StyleSheet,
   StatusBar,
   Platform,
-  Image,
   TouchableOpacity,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
@@ -31,7 +30,7 @@ const NewsHeader = (props) => {
         <Ionicons
           name="person-circle-outline"
           color={Colors.primary}
-          size={68}
+          size={75}
         />
       </TouchableOpacity>
       <SettingsScreen visible={isOpenSettings} onCancel={closeModalHandler} />
@@ -41,7 +40,7 @@ const NewsHeader = (props) => {
 
 const styles = StyleSheet.create({
   header: {
-    width: "90%",
+    width: "92%",
     height: "auto",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     flexDirection: "row",
