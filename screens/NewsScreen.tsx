@@ -6,6 +6,11 @@ import {
 } from "react-native";
 
 import Colors from "../constants/colors";
+import NewsHeader from "../components/News/other/NewsHeader";
+import TemperatureCardSmall from "../components/Other/Weather/WeatherWidget";
+import NewsTodayCard from "../components/News/todayInNews/NewsTodayCard";
+import NewsProjectCard from "../components/News/other/NewsProjectCard";
+import QuoteCard from "../components/News/todayInNews/quoteCard";
 
 var months = [
   "January",
@@ -46,11 +51,6 @@ var date =
   dt.getDate() +
   nth(dt.getDate());
 
-import NewsHeader from "../components/News/other/NewsHeader";
-import TemperatureCardSmall from "../components/Other/Weather/WeatherWidget";
-import NewsTodayCard from "../components/News/todayInNews/NewsTodayCard";
-import NewsProjectCard from "../components/News/other/NewsProjectCard";
-
 export default function NewsScreen(props): any {
   return (
     <ScrollView style={styles.screen}>
@@ -60,6 +60,7 @@ export default function NewsScreen(props): any {
       <View style={styles.smallCardContainer}>
         <TemperatureCardSmall />
         <NewsProjectCard />
+        <QuoteCard />
       </View>
       <View style={{ margin: 3, marginBottom: 12 }}>
         <NewsTodayCard />
