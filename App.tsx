@@ -97,7 +97,7 @@ export default function App() {
   );
 
   return (
-    <SafeAreaView style={styles.screen}>
+    <View style={styles.screen}>
       <StatusBar barStyle="light-content" translucent={true} />
       <AppContext.Provider value={contextValue}>
         <NavigationContainer theme={appTheme}>
@@ -118,7 +118,7 @@ export default function App() {
           </Stack.Navigator>
         </NavigationContainer>
       </AppContext.Provider>
-    </SafeAreaView>
+    </View>
   );
 }
 
