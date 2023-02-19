@@ -15,16 +15,16 @@ import Input from "../Other/Global/Input";
 import firebase from "firebase/compat";
 
 export default function ForgotModal(props): any {
-  const [email, setEmail] = useState("");
+  // const [email, setEmail] = useState("");
 
-  function forgotPassword(setEmail): any {
-    firebase.auth().sendPasswordResetEmail(setEmail)
-      .then(function (user) {
-        alert('Please check your email...')
-      }).catch(function (error) {
-        console.log(error)
-      });
-  };
+  // function forgotPassword(setEmail): any {
+  //   firebase.auth().sendPasswordResetEmail(setEmail)
+  //     .then(function (user) {
+  //       alert('Please check your email...')
+  //     }).catch(function (error) {
+  //       console.log(error)
+  //     });
+  // };
 
   return (
     <TouchableWithoutFeedback
@@ -49,8 +49,8 @@ export default function ForgotModal(props): any {
             </View>
             <View style={styles.body}>
               <View style={styles.topContainer}>
-                <Text style={styles.title}>Forgot Password?</Text>
-                <Text style={styles.subTitle}>Please, enter your email below to receive our reset password email.</Text>
+                <Text style={styles.title}>Forgot Password? You're not the only one!</Text>
+                <Text style={styles.subTitle}>Trust me, I get a lot of these requests. Just enter your email below to receive our reset password email and you'll be up and running in no time!</Text>
               </View>
               <View style={styles.middleContainer}>
                 <Text style={styles.text}>Recovery Email</Text>
@@ -60,12 +60,12 @@ export default function ForgotModal(props): any {
                   autoCorrect={false}
                   placeholder="jdoe@ernestkoliqi.com"
                   placeholderTextColor="#999"
-                  value={email}
-                  onChangeText={(text): any => setEmail(text)}
+                  // value={email}
+                  // onChangeText={(text): any => setEmail(text)}
                   selectTextOnFocus
                   keyboardType="email-address"
                 />
-                <TouchableOpacity style={styles.continueContainer} onPress={forgotPassword}>
+                <TouchableOpacity style={styles.continueContainer} onPress={() => {}}>
                   <Text style={styles.continueText}>Continue</Text>
                 </TouchableOpacity>
               </View>
@@ -172,65 +172,5 @@ const styles = StyleSheet.create({
     color: "#4a4a4a",
     fontSize: 18,
     fontWeight: "700",
-  },
-
-  description: {
-    color: "#777",
-    fontSize: 24,
-    fontWeight: "800",
-  },
-
-  content: {
-    paddingTop: 30,
-    width: "90%",
-    marginHorizontal: "5%",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  bodyText: {
-    color: "white",
-    fontSize: 18,
-    paddingBottom: 32,
-    width: "98%",
-    marginHorizontal: "1%",
-  },
-
-  containerRow: {
-    flexDirection: "row",
-    marginVertical: 10,
-    width: "100%",
-    borderRadius: 18,
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingVertical: 10,
-  },
-
-  leftContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-
-  containerButton: {
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingVertical: 8,
-  },
-
-  containerRowTitle: {
-    color: "#fff",
-    fontWeight: "500",
-    fontSize: 18,
-    paddingLeft: 12,
-  },
-
-  modalArrow: {
-    color: "#8c8c8c",
-    fontSize: 24,
-    fontWeight: "600",
   },
 });
