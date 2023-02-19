@@ -5,11 +5,25 @@ import Card from "../../Other/Global/Card";
 import Colors from "../../../constants/colors";
 
 export default function QuoteCard(props): any {
-    // get quote from https://github.com/ywalia01/dune-api
+
+    let quoteText: string
+
+    const getQuote = async () => {
+        console.log("Getting quote data ig?")
+        const req = await fetch("https://the-dune-api.herokuapp.com/quotes");
+        const data = await req.json();
+        return data;
+    };
+
+    getQuote().then(quote => {
+        console.log("Maybe quote data? ", quote)
+        quoteText = quote.quote;
+        console.log(quoteText)
+    });
+
     return (
         <Card style={styles.card}>
-            <Text style={styles.quoteText}>"Input Quote Here"</Text>
-            <Text style={styles.authorText}>-Author</Text>
+            <Text style={styles.quoteText}>{quoteText}</Text>
         </Card>
     );
 };
@@ -29,11 +43,5 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: "700",
         color: "white",
-    },
-    
-    authorText: {
-        fontSize: 14,
-        fontWeight: "600",
-        color: "white"
     },
 });
