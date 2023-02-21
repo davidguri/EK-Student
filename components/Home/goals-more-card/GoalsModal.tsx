@@ -157,8 +157,8 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    width: "70%",
-    marginHorizontal: "15%",
+    width: "95%",
+    marginHorizontal: "2.5%",
     backgroundColor: Colors.opacity,
     borderRadius: 25,
     borderColor: Colors.primary,
@@ -168,9 +168,9 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: "700",
-    padding: 10,
+    padding: 12,
     textAlign: "center",
     color: Colors.primary,
   },

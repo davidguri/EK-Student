@@ -14,7 +14,6 @@ const ProjectTeamModal = (props) => {
   return (
     <Modal
       isVisible={props.isVisible}
-      backgroundColor={"transparent"}
       style={{ margin: 0 }}
       hideModalContentWhileAnimating={true}
       onBackdropPress={props.onBackdropPress}

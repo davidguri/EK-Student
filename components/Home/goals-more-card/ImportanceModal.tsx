@@ -22,7 +22,6 @@ const ImportanceModal = (props) => {
   return (
     <Modal
       isVisible={props.visible}
-      backgroundColor={"transparent"}
       style={{ margin: 0 }}
       hideModalContentWhileAnimating={true}
       onBackdropPress={props.onBackdropPress}

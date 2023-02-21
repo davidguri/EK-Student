@@ -50,14 +50,14 @@ const Item = ({ title, importance }) => {
         iconStyle={{ borderColor: Colors.primary, borderWidth: 2 }}
         textStyle={{ fontSize: 20, color: "white" }}
       />
-      <View style={styles.impContainer}>
+      <View>
         <Text style={styles.impText}>{importance}</Text>
       </View>
     </View>
   );
 };
 
-const ToDoModal = (props) => {
+export default function ToDoModal(props): any {
   const [isEnabledCompleted, setIsEnabledCompleted] = useState(false);
   const [isEnabledAll, setIsEnabledAll] = useState(true);
 
@@ -75,18 +75,15 @@ const ToDoModal = (props) => {
     setIsOpenAddModal(false);
   };
 
-  const addElement = () => {
-    {
-      /* Add new element with Redux */
-    }
-  };
-
-
+  // const addElement = () => {
+  //   {
+  //     /* Add new element with Redux */
+  //   }
+  // };
 
   return (
     <Modal
       isVisible={props.visible}
-      backgroundColor={"#000"}
       style={{ margin: 0 }}
       hideModalContentWhileAnimating={true}
       onBackdropPress={props.onBackdropPress}
@@ -106,69 +103,67 @@ const ToDoModal = (props) => {
             </TouchableOpacity>
           </View>
           <View style={styles.body}>
-            <ScrollView>
-              <Card style={styles.todayContainer}>
-                <View style={styles.todayTextContainer}>
-                  <Text style={styles.todayText}>For Today</Text>
-                  {/* Change this based on the presets set below */}
-                </View>
-                <FlatList
-                  data={DATA}
-                  renderItem={renderItem}
-                  keyExtractor={(item) => item.id}
-                  style={styles.list}
-                  scrollEnabled={false}
-                />
-              </Card>
-              <View style={styles.otherContainer}>
-                <Card style={styles.containerRow}>
-                  <TouchableOpacity
-                    onPress={() => { }}
-                    style={styles.containerButton}
-                  >
-                    <View style={styles.leftContainer}>
-                      <Ionicons
-                        name="checkmark-circle"
-                        size={27}
-                        color={Colors.primary}
-                      />
-                      <Text style={styles.containerRowTitle}>
-                        Show Completed
-                      </Text>
-                    </View>
-                    <Switch
-                      trackColor={{ false: "#767577", true: "#30d158" }}
-                      thumbColor={isEnabledCompleted ? "#f4f3f4" : "#f4f3f4"}
-                      ios_backgroundColor="#3e3e3e"
-                      onValueChange={toggleCompleted}
-                      value={isEnabledCompleted}
-                    />
-                  </TouchableOpacity>
-                </Card>
-                <Card style={styles.containerRow}>
-                  <TouchableOpacity
-                    onPress={() => { }}
-                    style={styles.containerButton}
-                  >
-                    <View style={styles.leftContainer}>
-                      <Ionicons
-                        name="albums"
-                        size={27}
-                        color={Colors.primary}
-                      />
-                      <Text style={styles.containerRowTitle}>Show All</Text>
-                    </View>
-                    <Switch
-                      trackColor={{ false: "#767577", true: "#30d158" }}
-                      thumbColor={isEnabledAll ? "#f4f3f4" : "#f4f3f4"}
-                      ios_backgroundColor="#3e3e3e"
-                      onValueChange={toggleAll}
-                      value={isEnabledAll}
-                    />
-                  </TouchableOpacity>
-                </Card>
+            <Card style={styles.todayContainer}>
+              <View style={styles.todayTextContainer}>
+                <Text style={styles.todayText}>For Today</Text>
+                {/* Change this based on the presets set below */}
               </View>
-            </ScrollView>
+              <FlatList
+                data={DATA}
+                renderItem={renderItem}
+                keyExtractor={(item) => item.id}
+                style={styles.list}
+              />
+            </Card>
+            <View>
+              <Card style={styles.containerRow}>
+                <TouchableOpacity
+                  onPress={() => { }}
+                  style={styles.containerButton}
+                >
+                  <View style={styles.leftContainer}>
+                    <Ionicons
+                      name="checkmark-circle"
+                      size={27}
+                      color={Colors.primary}
+                    />
+                    <Text style={styles.containerRowTitle}>
+                      Show Completed
+                    </Text>
+                  </View>
+                  <Switch
+                    trackColor={{ false: "#767577", true: "#30d158" }}
+                    thumbColor={isEnabledCompleted ? "#f4f3f4" : "#f4f3f4"}
+                    ios_backgroundColor="#3e3e3e"
+                    onValueChange={toggleCompleted}
+                    value={isEnabledCompleted}
+                  />
+                </TouchableOpacity>
+              </Card>
+              <Card style={styles.containerRow}>
+                <TouchableOpacity
+                  onPress={() => { }}
+                  style={styles.containerButton}
+                >
+                  <View style={styles.leftContainer}>
+                    <Ionicons
+                      name="albums"
+                      size={27}
+                      color={Colors.primary}
+                    />
+                    <Text style={styles.containerRowTitle}>Show All</Text>
+                  </View>
+                  <Switch
+                    trackColor={{ false: "#767577", true: "#30d158" }}
+                    thumbColor={isEnabledAll ? "#f4f3f4" : "#f4f3f4"}
+                    ios_backgroundColor="#3e3e3e"
+                    onValueChange={toggleAll}
+                    value={isEnabledAll}
+                  />
+                </TouchableOpacity>
+              </Card>
+            </View>
+
           </View>
           <View style={styles.footer}>
             <TouchableOpacity
@@ -183,7 +178,7 @@ const ToDoModal = (props) => {
       <AddGoalModal
         visible={isOpenAddModal}
         onCancel={closeModalHandler}
-        onSubmit={addElement}
+        // onSubmit={addElement}
         title="Add Task"
       />
     </Modal>
@@ -245,8 +240,8 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    width: "70%",
-    marginHorizontal: "15%",
+    width: "95%",
+    marginHorizontal: "2.5%",
     backgroundColor: Colors.opacity,
     borderRadius: 25,
     borderColor: Colors.primary,
@@ -256,9 +251,9 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: "700",
-    padding: 10,
+    padding: 12,
     textAlign: "center",
     color: Colors.primary,
   },
@@ -336,5 +331,3 @@ const styles = StyleSheet.create({
     paddingRight: 2,
   },
 });
-
-export default ToDoModal;

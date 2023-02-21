@@ -8,7 +8,7 @@ import {
 import Header from "../components/Home/other/Header";
 import UpcomingCard from "../components/Home/today-tomorrow-card/UpcomingCard";
 import WeatherWidget from "../components/Other/Weather/WeatherWidget";
-import NewsTodayCard from "../components/News/todayInNews/NewsTodayCard";
+import NewsTodayCard from "../components/News/todayInNews/NewsToday";
 import GoalsCard from "../components/Home/goals-more-card/GoalsCard";
 
 import Colors from "../constants/colors";

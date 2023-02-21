@@ -55,6 +55,9 @@ function Feed() {
             }
             return <Ionicons name={iconName} size={size} color={color} />;
           },
+          tabBarStyle: {
+            backgroundColor: "rgba(0, 0, 0, 0.4)"
+          },
           activeTintColor: Colors.primary,
           inactiveTintColor: Colors.back,
           showLabel: true,

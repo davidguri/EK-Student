@@ -7,16 +7,22 @@ import CalendarHeader from "../components/Calendar/CalendarHeader";
 import { CalendarList } from "react-native-calendars";
 
 export default function CalendarScreen(props): any {
+
+  const daysOff = { key: "dayOff", color: Colors.daysOff.main, selectedDotColor: Colors.daysOff.main }
+  const classes = { key: "classes", color: Colors.classes.main, selectedDotColor: Colors.classes.main }
+  const tests = { key: "tests", color: Colors.tests.main, selectedDotColor: Colors.tests.main }
+  const events = { key: "events", color: Colors.events.main, selectedDotColor: Colors.events.main }
+
   return (
     <View style={styles.screen}>
       <View style={styles.header}>
         <CalendarHeader />
       </View>
       <CalendarList
-        minDate={"2021-09-13"}
-        maxDate={"2022-06-10"}
-        futureScrollRange={12}
-        pastScrollRange={12}
+        minDate={"2023-01-01"}
+        maxDate={"2023-06-30"}
+        futureScrollRange={9}
+        pastScrollRange={9}
         onDayPress={(day) => {
           /* console.log("selected day", day); */
         }}
@@ -24,8 +30,13 @@ export default function CalendarScreen(props): any {
         firstDay={1}
         disableAllTouchEventsForDisabledDays={true}
         displayLoadingIndicator={false}
-        markingType={"period"}
-        markedDates={{}}
+        markingType={"multi-dot"}
+        markedDates={{
+          "2023-02-22": { dots: [events, daysOff], color: Colors.daysOff.main, textColor: "black" },
+          "2023-02-23": { color: Colors.tests.main, textColor: "black" },
+          "2023-02-24": { color: Colors.events.main, textColor: "black" },
+          "2023-02-25": { dotColor: Colors.classes.main },
+        }}
         style={{
           height: "100%",
           backgroundColor: "#000",
@@ -41,10 +52,10 @@ export default function CalendarScreen(props): any {
           indicatorColor: "white",
           textDayFontWeight: "300",
           textMonthFontWeight: "700",
-          textDayFontSize: 17.5,
-          textMonthFontSize: 30,
-          textDayHeaderFontSize: 15,
-          textDayHeaderFontWeight: "600",
+          textDayFontSize: 18,
+          textMonthFontSize: 32,
+          textDayHeaderFontSize: 18,
+          textDayHeaderFontWeight: "700",
         }}
       />
     </View>
@@ -59,7 +70,7 @@ const styles = StyleSheet.create({
   header: {
     width: "90%",
     marginHorizontal: "5%",
-    paddingBottom: 0,
+    paddingBottom: -5,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",

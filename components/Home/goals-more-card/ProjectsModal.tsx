@@ -97,13 +97,13 @@ console.log(str2); */
         </View>
         <View style={styles.cardBody}>
           <TouchableOpacity onPress={toggleTeamHandler}>
-            <View style={[styles.teamContainer, styles.container]}>
+            <View style={styles.container}>
               <Text style={styles.containerTitle}>Team</Text>
               <Text style={styles.containerArrow}>&gt;</Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity onPress={toggleWorkHandler}>
-            <View style={[styles.workContainer, styles.container]}>
+            <View style={styles.container}>
               <Text style={styles.containerTitle}>Work</Text>
               <Text style={styles.containerArrow}>&gt;</Text>
             </View>
@@ -144,17 +144,15 @@ const ProjectsModal = (props) => {
               <Text style={styles.buttonCancelText}>X</Text>
             </TouchableOpacity>
           </View>
-          <ScrollView showsVerticalScrollIndicator={false}>
-            <View style={styles.body}>
-              <FlatList
-                data={DATA}
-                renderItem={renderItem}
-                keyExtractor={(item) => item.id}
-                style={styles.list}
-                scrollEnabled={false}
-              />
-            </View>
-          </ScrollView>
+          <View style={styles.body}>
+            <FlatList
+              data={DATA}
+              renderItem={renderItem}
+              keyExtractor={(item) => item.id}
+              style={styles.list}
+              scrollEnabled={true}
+            />
+          </View>
         </View>
       </SafeAreaView>
     </Modal>

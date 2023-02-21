@@ -10,6 +10,19 @@ import { weatherConditions } from "./WeatherConditions";
 
 export default function WeatherWidget(props): any {
   var weather = "Clear";
+
+  // const APIKey = "5ef20fd863163abbd8e6a39edee11718";
+  // const lat = "41.35656308348034";
+  // const lon = "19.73590479245462";
+
+  // const URL = "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={APIKey}";
+
+  // fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${APIKey}`)
+  //   .then(response => response.json())
+  //   .then(json => {
+  //     if
+  //   })
+
   return (
     <Card style={{ ...styles.tempCard, ...props.styles }}>
       <View style={styles.main}>

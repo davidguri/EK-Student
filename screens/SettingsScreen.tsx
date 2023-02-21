@@ -22,12 +22,18 @@ import FeedbackModal from "../components/Settings/FeedbackModal";
 import PrivacyModal from "../components/Settings/PrivacyModal";
 import ProfileModal from "../components/Settings/ProfileModal";
 
-import { auth } from "../firebase";
 import firebase from "firebase/compat";
+import { auth } from "../firebase";
 
 export default function SettingsScreen(props): any {
   var username = "David Guri";
-  var email = "dguri@ernestkoliqi.com";
+
+  var User = firebase.auth().currentUser;
+  var email: any;
+
+  if (User != null) {
+    email = User.email;
+  }
 
   const [isEnabled, setIsEnabled] = useState(true);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);

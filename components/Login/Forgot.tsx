@@ -34,8 +34,8 @@ export default function ForgotModal(props): any {
     >
       <Modal
         isVisible={props.visible}
-        animationIn={"slideInDown"}
-        animationOut={"slideOutDown"}
+        animationIn={"slideInRight"}
+        animationOut={"slideOutRight"}
         style={{ margin: 0 }}
         hideModalContentWhileAnimating={true}
         avoidKeyboard={true}
@@ -65,10 +65,10 @@ export default function ForgotModal(props): any {
                   selectTextOnFocus
                   keyboardType="email-address"
                 />
-                <TouchableOpacity style={styles.continueContainer} onPress={() => {}}>
-                  <Text style={styles.continueText}>Continue</Text>
-                </TouchableOpacity>
               </View>
+              <TouchableOpacity style={styles.continueContainer} onPress={() => { }}>
+                <Text style={styles.continueText}>Continue</Text>
+              </TouchableOpacity>
             </View>
           </View>
         </SafeAreaView>
@@ -81,10 +81,9 @@ const styles = StyleSheet.create({
   screen: {
     backgroundColor: "#000",
     width: "95%",
-    margin: "2.5%",
     height: "100%",
+    marginHorizontal: "2.5%",
     alignItems: "center",
-    justifyContent: "space-between",
   },
 
   buttonText: {
@@ -133,12 +132,15 @@ const styles = StyleSheet.create({
 
   body: {
     width: "95%",
+    height: "90%",
     marginHorizontal: "2.5%",
-    height: "65%",
+    flexDirection: "column",
+    justifyContent: "center",
   },
 
   text: {
-    color: "white"
+    color: "white",
+    opacity: 0.7,
   },
 
   input: {
@@ -153,24 +155,22 @@ const styles = StyleSheet.create({
 
   headContainer: {
     width: "95%",
-    height: "20%",
     marginHorizontal: "2.5%",
     paddingTop: 10,
     flexDirection: "row",
-    justifyContent: "flex-start",
-    alignItems: "flex-start",
+    justifyContent: "flex-end",
   },
 
   title: {
     color: "white",
-    fontSize: 35,
+    fontSize: 38,
     fontWeight: "900",
     marginBottom: 4,
   },
 
   subTitle: {
     color: "#4a4a4a",
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: "700",
   },
 });
