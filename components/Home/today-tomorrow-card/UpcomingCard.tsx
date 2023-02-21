@@ -31,7 +31,7 @@ const DATA_TDY = [
   },
   {
     id: "jwiejiwefqijwfowjeiguoqwjrojef",
-    title: "Exam His",
+    title: "Exam History",
     colors: Colors.tests.main,
   },
 ];
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: 30,
     color: "white",
-    paddingVertical: 12,
+    paddingVertical: 18,
     fontWeight: "bold",
   },
 

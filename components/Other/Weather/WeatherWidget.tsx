@@ -28,7 +28,7 @@ export default function WeatherWidget(props): any {
       <View style={styles.main}>
         <View style={styles.leftContainer}>
           <Ionicons
-            size={38}
+            size={40}
             style={styles.conditionIcon}
             name={weatherConditions[weather].icon}
             color={Colors.primary}
@@ -49,7 +49,7 @@ export default function WeatherWidget(props): any {
 const styles = StyleSheet.create({
   tempCard: {
     width: "100%",
-    paddingVertical: 10,
+    paddingVertical: 12,
     borderRadius: 15,
     marginBottom: 14,
   },
@@ -77,15 +77,15 @@ const styles = StyleSheet.create({
 
   conditionText: {
     color: "#fff",
-    fontSize: 17,
+    fontSize: 18,
     fontWeight: "700",
     marginBottom: 1.5,
   },
 
   subtitleText: {
     color: "#fff",
-    fontSize: 14,
-    marginTop: 1.5,
+    fontSize: 15,
+    marginTop: 1.8,
     fontWeight: "600",
   },
 
