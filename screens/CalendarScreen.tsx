@@ -32,10 +32,10 @@ export default function CalendarScreen(props): any {
         displayLoadingIndicator={false}
         markingType={"multi-dot"}
         markedDates={{
-          "2023-02-22": { dots: [events, daysOff], color: Colors.daysOff.main, textColor: "black" },
+          "2023-02-22": { dots: [events, daysOff], textColor: "black" },
           "2023-02-23": { color: Colors.tests.main, textColor: "black" },
           "2023-02-24": { color: Colors.events.main, textColor: "black" },
-          "2023-02-25": { dotColor: Colors.classes.main },
+          "2023-02-25": { dots: [classes] },
         }}
         style={{
           height: "100%",
@@ -68,9 +68,8 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    width: "90%",
-    marginHorizontal: "5%",
-    paddingBottom: -5,
+    width: "92%",
+    marginHorizontal: "4%",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
