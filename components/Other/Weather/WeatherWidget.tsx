@@ -9,7 +9,7 @@ import Colors from "../../../constants/colors";
 import { weatherConditions } from "./WeatherConditions";
 
 export default function WeatherWidget(props): any {
-  let temp: any, condition: any;
+  let temp: any;
 
   const [tempVal, setTempVal] = useState();
   const [conditionVal, setConditionVal] = useState("");
@@ -26,7 +26,28 @@ export default function WeatherWidget(props): any {
           // console.log("!!404!!");
         };
 
-        temp = Math.floor(parseInt(json.main.temp));
+        let round: any;
+
+        temp = json.main.temp;
+        round = temp.toString().split(".")[1]
+        if (round.length >= 2) {
+          if (parseInt(round) > 50) {
+            temp = Math.ceil(parseFloat(json.main.temp))
+            setTempVal(temp)
+          } else {
+            temp = Math.floor(parseFloat(json.main.temp))
+            setTempVal(temp)
+          }
+        } else {
+          if (parseInt(round) > 5) {
+            temp = Math.ceil(parseFloat(json.main.temp))
+            setTempVal(temp)
+          } else {
+            temp = Math.floor(parseFloat(json.main.temp))
+            setTempVal(temp)
+          }
+        };
+        // console.log(round)
         setTempVal(temp)
         setConditionVal(json.weather[0].main)
         // console.log("Values retrieved! ", conditionVal);
