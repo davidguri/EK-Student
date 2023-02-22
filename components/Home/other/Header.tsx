@@ -10,16 +10,11 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 
 import Colors from "../../../constants/colors";
-import SettingsScreen from "../../../screens/SettingsScreen";
+import WeatherWidget from "../../Other/Weather/WeatherWidget";
 
 import firebase from "firebase/compat";
 
 export default function Header(props): any {
-  const [isOpenSettings, setIsOpenSettings] = useState(false);
-
-  const closeModalHandler = () => {
-    setIsOpenSettings(false);
-  };
 
   var user = firebase.auth().currentUser;
   var email: any;
@@ -35,7 +30,7 @@ export default function Header(props): any {
   if (hours >= 0 && hours < 12) {
     var HelloText = "Good Morning," + " " + username;
   } else if (hours >= 12 && hours < 18) {
-    var HelloText = "Good Afternoon," + " " + username;
+    var HelloText = "Good 'Noon," + " " + username;
   } else {
     var HelloText = "Good Evening," + " " + username;
   }
@@ -46,14 +41,7 @@ export default function Header(props): any {
         <Text style={styles.headerTitle}>{props.title}</Text>
         <Text style={styles.headerSubtitle}>{HelloText}</Text>
       </View>
-      <TouchableOpacity onPress={() => setIsOpenSettings(true)}>
-        <Ionicons
-          name="person-circle-outline"
-          color={Colors.primary}
-          size={75}
-        />
-      </TouchableOpacity>
-      <SettingsScreen visible={isOpenSettings} onCancel={closeModalHandler} />
+      <WeatherWidget />
     </View >
   );
 };
@@ -85,6 +73,5 @@ const styles = StyleSheet.create({
   textContainer: {
     justifyContent: "center",
     alignItems: "flex-start",
-    paddingLeft: 0,
   },
 });

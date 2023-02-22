@@ -7,7 +7,6 @@ import {
 
 import Colors from "../constants/colors";
 import NewsHeader from "../components/News/other/NewsHeader";
-import TemperatureCardSmall from "../components/Other/Weather/WeatherWidget";
 import NewsTodayCard from "../components/News/todayInNews/NewsToday";
 import NewsProjectCard from "../components/News/other/NewsProjectCard";
 import QuoteCard from "../components/News/todayInNews/quoteCard";
@@ -58,11 +57,10 @@ export default function NewsScreen(props): any {
         <NewsHeader title="News" sub={date} />
       </View>
       <View style={styles.smallCardContainer}>
-        <TemperatureCardSmall />
         <NewsProjectCard />
         {/* <QuoteCard /> */}
       </View>
-      <View>
+      <View style={{ width: "100%" }}>
         <NewsTodayCard />
       </View>
     </ScrollView>

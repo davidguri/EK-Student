@@ -102,7 +102,7 @@ export default function UpcomingCard(props): any {
 const styles = StyleSheet.create({
   card: {
     margin: 10,
-    marginBottom: 30,
+    marginBottom: 25,
   },
 
   cardTitle: {

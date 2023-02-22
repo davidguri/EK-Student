@@ -12,7 +12,7 @@ export default function WeatherWidget(props): any {
   let temp: any;
 
   const [tempVal, setTempVal] = useState();
-  const [conditionVal, setConditionVal] = useState("");
+  const [conditionVal, setConditionVal] = useState("Loading");
 
   const APIKey = "5ef20fd863163abbd8e6a39edee11718";
   const lat = "41.35656308348034";
@@ -23,7 +23,7 @@ export default function WeatherWidget(props): any {
       .then(response => response.json())
       .then(json => {
         if (json.cod === "404") {
-          // console.log("!!404!!");
+          console.log("!!404!!");
         };
 
         let round: any;
@@ -47,88 +47,46 @@ export default function WeatherWidget(props): any {
             setTempVal(temp)
           }
         };
-        // console.log(round)
         setTempVal(temp)
         setConditionVal(json.weather[0].main)
-        // console.log("Values retrieved! ", conditionVal);
+        // console.log(conditionVal)
       })
   };
 
+  setInterval(fetchData, 100000) // 1.6 minutes or 1 minute 40 seconds
   fetchData();
 
   return (
-    <Card style={{ ...styles.tempCard, ...props.styles }}>
-      <View style={styles.main}>
-        <View style={styles.leftContainer}>
-          <Ionicons
-            size={40}
-            style={styles.conditionIcon}
-            name={weatherConditions[conditionVal].icon}
-            color={Colors.primary}
-          />
-          <View style={styles.weatherData}>
-            <Text style={styles.conditionText}>{weatherConditions[conditionVal].title}</Text>
-          </View>
-        </View>
-        <View style={styles.rightContainer}>
-          <Text style={styles.currentText}>{tempVal}&deg;</Text>
-        </View>
-      </View>
+    <Card style={styles.tempCard}>
+      <Text style={styles.currentText}>{tempVal}&deg;</Text>
+      <Ionicons
+        size={32}
+        name={weatherConditions[conditionVal].icon}
+        style={styles.currentIcon}
+        color={weatherConditions[conditionVal].color}
+      />
     </Card>
   );
 };
 
 const styles = StyleSheet.create({
   tempCard: {
-    width: "100%",
-    paddingVertical: 12,
-    borderRadius: 15,
-    marginBottom: 14,
-  },
-
-  main: {
+    paddingVertical: 10,
+    padding: 13,
+    borderRadius: 25,
     flexDirection: "row",
+    justifyContent: "space-between",
     alignItems: "center",
-    justifyContent: "space-between"
   },
 
-  leftContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  conditionIcon: {
-    marginRight: 16,
-  },
-
-  weatherData: {
-    flexDirection: "column",
-    justifyContent: "center"
-  },
-
-  conditionText: {
-    color: "#fff",
-    fontSize: 20,
-    fontWeight: "700",
-  },
-
-  subtitleText: {
-    color: "#fff",
-    fontSize: 15,
-    marginTop: 1.8,
-    fontWeight: "600",
-  },
-
-  rightContainer: {
-    flexDirection: "row",
-    justifyContent: "flex-end",
-    flex: 1,
+  currentIcon: {
+    marginHorizontal: "1.3%",
   },
 
   currentText: {
     color: "#fff",
-    fontSize: 36,
-    fontWeight: "700"
+    fontSize: 21,
+    fontWeight: "800",
+    marginHorizontal: "1.3%",
   },
 });

@@ -21,12 +21,13 @@ export default function HomeScreen(props): any {
         <Header title="Home" />
       </View>
       <View style={styles.smallCardContainer}>
-        <WeatherWidget />
         <GoalsCard />
       </View>
       <View>
         <UpcomingCard />
-        <NewsTodayCard />
+        <Card style={{ width: "95%", marginHorizontal: "2.5%", borderRadius: 18, padding: 12 }}>
+          <NewsTodayCard />
+        </Card>
       </View>
     </ScrollView>
   );
@@ -44,6 +45,7 @@ const styles = StyleSheet.create({
 
   smallCardContainer: {
     margin: 10,
+    marginBottom: 0,
     width: "95%",
     flexDirection: "column",
     alignItems: "center",
