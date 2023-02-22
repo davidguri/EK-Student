@@ -10,14 +10,9 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 
 import Colors from "../../../constants/colors";
-import SettingsScreen from "../../../screens/SettingsScreen";
+import WeatherWidget from "../../Other/Weather/WeatherWidget";
 
 const NewsHeader = (props) => {
-  const [isOpenSettings, setIsOpenSettings] = useState(false);
-
-  const closeModalHandler = () => {
-    setIsOpenSettings(false);
-  };
 
   return (
     <View style={styles.header}>
@@ -25,15 +20,7 @@ const NewsHeader = (props) => {
         <Text style={styles.headerTitle}>{props.title}</Text>
         <Text style={styles.headerSubtitle}>{props.sub}</Text>
       </View>
-
-      <TouchableOpacity onPress={() => setIsOpenSettings(true)}>
-        <Ionicons
-          name="person-circle-outline"
-          color={Colors.primary}
-          size={75}
-        />
-      </TouchableOpacity>
-      <SettingsScreen visible={isOpenSettings} onCancel={closeModalHandler} />
+      <WeatherWidget />
     </View>
   );
 };

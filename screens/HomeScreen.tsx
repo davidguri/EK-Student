@@ -21,7 +21,6 @@ export default function HomeScreen(props): any {
         <Header title="Home" />
       </View>
       <View style={styles.smallCardContainer}>
-        <WeatherWidget />
         <GoalsCard />
       </View>
       <View>
