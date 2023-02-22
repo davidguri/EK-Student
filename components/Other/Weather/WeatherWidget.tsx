@@ -12,7 +12,7 @@ export default function WeatherWidget(props): any {
   let temp: any;
 
   const [tempVal, setTempVal] = useState();
-  const [conditionVal, setConditionVal] = useState("");
+  const [conditionVal, setConditionVal] = useState("Loading");
 
   const APIKey = "5ef20fd863163abbd8e6a39edee11718";
   const lat = "41.35656308348034";
@@ -23,7 +23,7 @@ export default function WeatherWidget(props): any {
       .then(response => response.json())
       .then(json => {
         if (json.cod === "404") {
-          // console.log("!!404!!");
+          console.log("!!404!!");
         };
 
         let round: any;
@@ -47,10 +47,8 @@ export default function WeatherWidget(props): any {
             setTempVal(temp)
           }
         };
-        // console.log(round)
         setTempVal(temp)
         setConditionVal(json.weather[0].main)
-        // console.log("Values retrieved! ", conditionVal);
       })
   };
 

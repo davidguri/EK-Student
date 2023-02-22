@@ -33,4 +33,9 @@ export const weatherConditions = {
     title: "Snowy",
     icon: "snow",
   },
+
+  Loading: {
+    title: "Loading",
+    icon: "reload",
+  },
 };
