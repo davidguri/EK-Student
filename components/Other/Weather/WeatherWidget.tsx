@@ -72,7 +72,7 @@ export default function WeatherWidget(props): any {
 const styles = StyleSheet.create({
   tempCard: {
     paddingVertical: 10,
-    padding: 10,
+    padding: 13,
     borderRadius: 25,
     flexDirection: "row",
     justifyContent: "space-between",
@@ -80,13 +80,13 @@ const styles = StyleSheet.create({
   },
 
   currentIcon: {
-    marginHorizontal: "1.25%",
+    marginHorizontal: "1.3%",
   },
 
   currentText: {
     color: "#fff",
     fontSize: 21,
     fontWeight: "800",
-    marginHorizontal: "1.25%",
+    marginHorizontal: "1.3%",
   },
 });
