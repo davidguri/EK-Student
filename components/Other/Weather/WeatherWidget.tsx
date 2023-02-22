@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
@@ -9,24 +9,69 @@ import Colors from "../../../constants/colors";
 import { weatherConditions } from "./WeatherConditions";
 
 export default function WeatherWidget(props): any {
-  var weather = "Clear";
+  let temp: any;
+
+  const [tempVal, setTempVal] = useState();
+  const [conditionVal, setConditionVal] = useState("");
+
+  const APIKey = "5ef20fd863163abbd8e6a39edee11718";
+  const lat = "41.35656308348034";
+  const lon = "19.73590479245462";
+
+  const fetchData = () => {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${APIKey}`)
+      .then(response => response.json())
+      .then(json => {
+        if (json.cod === "404") {
+          // console.log("!!404!!");
+        };
+
+        let round: any;
+
+        temp = json.main.temp;
+        round = temp.toString().split(".")[1]
+        if (round.length >= 2) {
+          if (parseInt(round) > 50) {
+            temp = Math.ceil(parseFloat(json.main.temp))
+            setTempVal(temp)
+          } else {
+            temp = Math.floor(parseFloat(json.main.temp))
+            setTempVal(temp)
+          }
+        } else {
+          if (parseInt(round) > 5) {
+            temp = Math.ceil(parseFloat(json.main.temp))
+            setTempVal(temp)
+          } else {
+            temp = Math.floor(parseFloat(json.main.temp))
+            setTempVal(temp)
+          }
+        };
+        // console.log(round)
+        setTempVal(temp)
+        setConditionVal(json.weather[0].main)
+        // console.log("Values retrieved! ", conditionVal);
+      })
+  };
+
+  fetchData();
+
   return (
     <Card style={{ ...styles.tempCard, ...props.styles }}>
       <View style={styles.main}>
         <View style={styles.leftContainer}>
           <Ionicons
-            size={38}
+            size={40}
             style={styles.conditionIcon}
-            name={weatherConditions[weather].icon}
+            name={weatherConditions[conditionVal].icon}
             color={Colors.primary}
           />
           <View style={styles.weatherData}>
-            <Text style={styles.conditionText}>{weatherConditions[weather].title}</Text>
-            <Text style={styles.subtitleText}>H: 13&deg; L: 10&deg;</Text>
+            <Text style={styles.conditionText}>{weatherConditions[conditionVal].title}</Text>
           </View>
         </View>
         <View style={styles.rightContainer}>
-          <Text style={styles.currentText}>12&deg;</Text>
+          <Text style={styles.currentText}>{tempVal}&deg;</Text>
         </View>
       </View>
     </Card>
@@ -36,7 +81,7 @@ export default function WeatherWidget(props): any {
 const styles = StyleSheet.create({
   tempCard: {
     width: "100%",
-    paddingVertical: 10,
+    paddingVertical: 12,
     borderRadius: 15,
     marginBottom: 14,
   },
@@ -64,15 +109,14 @@ const styles = StyleSheet.create({
 
   conditionText: {
     color: "#fff",
-    fontSize: 17,
+    fontSize: 20,
     fontWeight: "700",
-    marginBottom: 1.5,
   },
 
   subtitleText: {
     color: "#fff",
-    fontSize: 14,
-    marginTop: 1.5,
+    fontSize: 15,
+    marginTop: 1.8,
     fontWeight: "600",
   },
 

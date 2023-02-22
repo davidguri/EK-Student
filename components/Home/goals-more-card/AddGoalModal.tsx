@@ -17,7 +17,7 @@ import Modal from "react-native-modal";
 
 import ImportanceModal from "./ImportanceModal";
 
-const AddGoalModal = (props) => {
+export default function AddGoalModal(props): any {
   const [text, onChangeText] = React.useState("");
 
   const [isOpenImportanceModal, setIsOpenImportanceModal] = useState(false);
@@ -38,18 +38,18 @@ const AddGoalModal = (props) => {
 
   const handleConfirm = (date) => {
     console.log("A date has been picked: ", date);
-    var dateTime = date;
+    // var dateTime = date;
     hideDatePicker();
   };
 
   return (
     <Modal
       isVisible={props.visible}
-      animationType="slide"
-      transparent={true}
-      avoidKeyboard={true}
-      margin={0}
-      padding={0}
+      animationIn={"slideInUp"}
+      animationOut={"slideOutDown"}
+      style={{ margin: 0 }}
+      hideModalContentWhileAnimating={true}
+      avoidKeyboard
     >
       <SafeAreaView style={{ backgroundColor: "black" }}>
         <View style={styles.screen}>
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    width: "90%",
+    width: "95%",
     height: "auto",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     flexDirection: "row",
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     borderColor: Colors.red,
     borderWidth: 4,
-    margin: 10,
+    marginVertical: 10,
   },
 
   body: {
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
     borderWidth: 4,
     borderColor: Colors.primary,
     padding: 12,
-    margin: 10,
+    marginVertical: 10,
     color: "white",
   },
 
@@ -198,10 +198,8 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     borderColor: Colors.primary,
     borderWidth: 4,
-    margin: 10,
+    marginBottom: 10,
     padding: 13,
     marginTop: 35,
   },
 });
-
-export default AddGoalModal;

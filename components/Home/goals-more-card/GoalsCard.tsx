@@ -74,9 +74,9 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    fontSize: 21,
+    fontSize: 22,
     fontWeight: "700",
-    paddingVertical: 14,
+    paddingVertical: 16,
     textAlign: "center",
     color: "#fff",
   },

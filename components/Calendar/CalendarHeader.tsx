@@ -6,12 +6,11 @@ import {
   StatusBar,
   Platform,
   TouchableOpacity,
-  Image,
 } from "react-native";
 
 import Colors from "../../constants/colors";
 
-const CalendarHeader = (props) => {
+export default function CalendarHeader(props): any {
   var months = [
     "Jan",
     "Feb",
@@ -56,8 +55,6 @@ const CalendarHeader = (props) => {
 
 const styles = StyleSheet.create({
   header: {
-    width: "92.5%",
-    height: "auto",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     justifyContent: "space-between",
   },
@@ -81,5 +78,3 @@ const styles = StyleSheet.create({
     paddingBottom: 12,
   },
 });
-
-export default CalendarHeader;

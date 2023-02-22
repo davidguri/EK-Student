@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, StyleSheet } from "react-native";
 
 import Card from "../../Other/Global/Card";
@@ -6,24 +6,25 @@ import Colors from "../../../constants/colors";
 
 export default function QuoteCard(props): any {
 
-    let quoteText: string
+    // const [conditionVal, setConditionVal] = useState("");
 
-    const getQuote = async () => {
-        console.log("Getting quote data ig?")
-        const req = await fetch("https://the-dune-api.herokuapp.com/quotes");
-        const data = await req.json();
-        return data;
+    const fetchData = () => {
+        fetch(`https://movie-quote-api.herokuapp.com/v1/quote?censored`)
+            .then(response => response.json())
+            .then(json => {
+                if (json.cod === "404") {
+                    // console.log("!!404!!");
+                };
+
+                console.log("Values retrieved! ", json);
+            })
     };
 
-    getQuote().then(quote => {
-        console.log("Maybe quote data? ", quote)
-        quoteText = quote.quote;
-        console.log(quoteText)
-    });
+    fetchData();
 
     return (
         <Card style={styles.card}>
-            <Text style={styles.quoteText}>{quoteText}</Text>
+            <Text style={styles.quoteText}></Text>
         </Card>
     );
 };
@@ -34,9 +35,9 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         alignItems: "flex-start",
         justifyContent: "center",
-        paddingVertical: 6,
+        paddingVertical: 10,
         borderRadius: 15,
-        borderWidth: 4,
+        marginTop: 12,
     },
 
     quoteText: {
