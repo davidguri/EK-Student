@@ -10,6 +10,7 @@ import LoginScreen from "./screens/LoginScreen";
 import HomeScreen from "./screens/HomeScreen";
 import NewsScreen from "./screens/NewsScreen";
 import CalendarScreen from "./screens/CalendarScreen";
+import SettingsScreen from "./screens/SettingsScreen";
 
 const appTheme = {
   dark: true,
@@ -39,6 +40,10 @@ function Login() {
   return <LoginScreen />;
 }
 
+function Settings() {
+  return <SettingsScreen />;
+}
+
 function Feed() {
   return (
     <SafeAreaView style={styles.screen}>
@@ -50,6 +55,8 @@ function Feed() {
               iconName = focused ? "home" : "home-outline";
             } else if (route.name === "News") {
               iconName = focused ? "newspaper" : "newspaper-outline";
+            } else if (route.name === "Settings") {
+              iconName = focused ? "settings-sharp" : "settings-outline";
             } else if (route.name === "Calendar") {
               iconName = focused ? "calendar" : "calendar-outline";
             }
@@ -77,6 +84,11 @@ function Feed() {
         <Tab.Screen
           name="News"
           component={News}
+          options={{ headerShown: false }}
+        />
+        <Tab.Screen
+          name="Settings"
+          component={Settings}
           options={{ headerShown: false }}
         />
       </Tab.Navigator>

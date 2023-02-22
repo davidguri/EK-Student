@@ -92,20 +92,11 @@ export default function SettingsScreen(props): any {
   };
 
   return (
-    <Modal
-      isVisible={props.visible}
-      animationIn={"slideInRight"}
-      animationOut={"slideOutRight"}
-      style={{ margin: 0 }}
-      hideModalContentWhileAnimating={true}
-    >
+    <View>
       <SafeAreaView style={{ backgroundColor: "black" }}>
         <View style={styles.screen}>
           <View style={styles.header}>
             <Text style={styles.headerTitle}>Settings</Text>
-            <TouchableOpacity onPress={props.onCancel} style={styles.button}>
-              <Text style={styles.buttonText}>X</Text>
-            </TouchableOpacity>
           </View>
           <ScrollView
             style={{ width: "100%" }}
@@ -244,7 +235,7 @@ export default function SettingsScreen(props): any {
           </ScrollView>
         </View>
       </SafeAreaView>
-    </Modal>
+    </View>
   );
 };
 
@@ -271,21 +262,6 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 30,
     fontWeight: "bold",
-  },
-
-  buttonText: {
-    color: "rgb(255, 69, 58)",
-    fontSize: 18,
-    fontWeight: "800",
-    padding: 5,
-    paddingHorizontal: 10,
-  },
-
-  button: {
-    borderWidth: 3,
-    borderColor: Colors.red,
-    borderRadius: 50,
-    backgroundColor: Colors.redOpacity,
   },
 
   container: {
