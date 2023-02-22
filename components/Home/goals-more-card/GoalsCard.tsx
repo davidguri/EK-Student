@@ -66,18 +66,15 @@ const styles = StyleSheet.create({
 
   buttonContainer: {
     width: "31%",
-    backgroundColor: Colors.opacity,
+    backgroundColor: Colors.primary,
     borderRadius: 15,
-    borderColor: Colors.primary,
-    borderWidth: 3.5,
     marginHorizontal: "1.5%",
   },
 
   buttonText: {
     fontSize: 22,
     fontWeight: "700",
-    paddingVertical: 16,
+    paddingVertical: 15,
     textAlign: "center",
-    color: "#fff",
   },
 });

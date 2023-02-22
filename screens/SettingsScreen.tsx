@@ -248,7 +248,7 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    width: "90%",
+    width: "92%",
     height: "auto",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     flexDirection: "row",
@@ -260,8 +260,9 @@ const styles = StyleSheet.create({
 
   headerTitle: {
     color: "#fff",
-    fontSize: 30,
+    fontSize: 35,
     fontWeight: "bold",
+    paddingBottom: 5,
   },
 
   container: {
