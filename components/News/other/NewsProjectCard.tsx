@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical: 6,
+    paddingVertical: 10,
     backgroundColor: Colors.opacity,
     borderRadius: 15,
     borderWidth: 4,
@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 23,
     fontWeight: "800",
-    paddingVertical: 6,
     textAlign: "center",
     color: Colors.primary,
   },
