@@ -60,7 +60,7 @@ export default function NewsScreen(props): any {
       <View style={styles.smallCardContainer}>
         <TemperatureCardSmall />
         <NewsProjectCard />
-        <QuoteCard />
+        {/* <QuoteCard /> */}
       </View>
       <View>
         <NewsTodayCard />
