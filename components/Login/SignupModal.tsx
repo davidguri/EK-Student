@@ -16,16 +16,31 @@ import Input from "../Other/Global/Input";
 import LoginHead from "./LoginHead";
 
 import { auth } from "../../firebase";
+import firebase from "firebase/compat";
 
 import Background from "../../assets/background.png";
 
 import { AppContext } from "../../App";
 
 const SignupModal = (props) => {
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const { setIsSignedIn }: any = useContext(AppContext);
+
+  const writeUserData = (email, username) => { //email and full name
+    firebase.database().ref('UsersList/').push({
+      email,
+      username
+    }).then((data) => {
+      //success callback
+      // console.log('data ' , data)
+    }).catch((error) => {
+      //error callback
+      console.log('error ', error)
+    })
+  }
 
   const handleSignup = (): any => {
     Keyboard.dismiss
@@ -37,6 +52,7 @@ const SignupModal = (props) => {
         setIsSignedIn(true);
       })
       .catch((error) => alert(error.message));
+    writeUserData(email, username)
   };
 
   return (
@@ -65,6 +81,17 @@ const SignupModal = (props) => {
                 <Text style={styles.titleModal}>Sign Up</Text>
               </View>
               <View style={styles.inputContainer}>
+                <Input
+                  style={styles.input}
+                  blurOnSubmit
+                  autoCorrect={false}
+                  placeholder="Jean Doe"
+                  placeholderTextColor="#999"
+                  value={username}
+                  onChangeText={(text) => setUsername(text)}
+                  selectTextOnFocus
+                  keyboardType="default"
+                />
                 <Input
                   style={styles.input}
                   blurOnSubmit

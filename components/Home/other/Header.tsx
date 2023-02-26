@@ -7,7 +7,6 @@ import {
   Platform,
   TouchableOpacity,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 
 import Colors from "../../../constants/colors";
 import WeatherWidget from "../../Other/Weather/WeatherWidget";
@@ -17,22 +16,28 @@ import firebase from "firebase/compat";
 export default function Header(props): any {
 
   var user = firebase.auth().currentUser;
-  var email: any;
+  let username: any;
 
-  if (user != null) {
-    email = user.email;
+  const [usernameVal, setUsernameVal] = useState("")
+
+  const readUserData = () => {
+    firebase.database().ref('UsersList/').once('value', function (snapshot) {
+      // username = snapshot.val().username.split(" ")[0];
+      // setUsernameVal(username)
+      //console.log(snapshot.val());
+    });
   }
 
-  var username = email.split("@")[0];
+  readUserData()
 
   var objDate = new Date();
   var hours = objDate.getHours();
   if (hours >= 0 && hours < 12) {
-    var HelloText = "Good Morning," + " " + username;
+    var HelloText = "Good Morning," + " " + usernameVal;
   } else if (hours >= 12 && hours < 18) {
-    var HelloText = "Good 'Noon," + " " + username;
+    var HelloText = "Good 'Noon," + " " + usernameVal;
   } else {
-    var HelloText = "Good Evening," + " " + username;
+    var HelloText = "Good Evening," + " " + usernameVal;
   }
 
   return (
@@ -65,7 +70,7 @@ const styles = StyleSheet.create({
 
   headerSubtitle: {
     color: "#666",
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: "bold",
     paddingBottom: 12,
   },

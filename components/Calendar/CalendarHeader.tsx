@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
 
   headerSubtitle: {
     color: "#666",
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: "bold",
     paddingBottom: 12,
   },

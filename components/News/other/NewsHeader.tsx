@@ -12,7 +12,7 @@ import { Ionicons } from "@expo/vector-icons";
 import Colors from "../../../constants/colors";
 import WeatherWidget from "../../Other/Weather/WeatherWidget";
 
-const NewsHeader = (props) => {
+export default function NewsHeader(props): any {
 
   return (
     <View style={styles.header}>
@@ -44,10 +44,8 @@ const styles = StyleSheet.create({
 
   headerSubtitle: {
     color: "#666",
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: "bold",
     paddingBottom: 12,
   },
 });
-
-export default NewsHeader;
