@@ -1,95 +1,105 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Text, FlatList, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  StyleSheet,
+  FlatList,
+} from "react-native";
 
 import NewsCardElement from "./NewsCardElement";
-import Card from "../../Other/Global/Card";
+import EventModal from "../../Home/today-tomorrow-card/EventModal";
 
-// const DATA = [
-//   {
-//     publisher: "Principal's Office",
-//     title: "Back to School Folks",
-//     date: "September 09, 2022", // Date format is: Month DD, YYYY
-//     id: "item1",
-//   },
-// ];
+import Colors from "../../../constants/colors";
+
+const DATA_TDY = [
+  {
+    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
+    title: "Back to School, folks!",
+    publisher: "Principals Office",
+    date: "September 14, 2022"
+  },
+  {
+    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
+    title: "Back to School, folks!",
+    publisher: "Principals Office",
+    date: "September 14, 2022"
+  },
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d72",
+    title: "Back to School, folks!",
+    publisher: "Principals Office",
+    date: "September 14, 2022"
+  },
+  {
+    id: "jwiejiwefqijwfowjeiguoqwjrojef",
+    title: "Back to School, folks!",
+    publisher: "Principals Office",
+    date: "September 14, 2022"
+  },
+  {
+    id: "wiejiwefqijwfowjeiguoqwjrojef",
+    title: "Back to School, folks!",
+    publisher: "Principals Office",
+    date: "September 14, 2022"
+  },
+  {
+    id: "iejiwefqijwfowjeiguoqwjrojef",
+    title: "Back to School, folks!",
+    publisher: "Principals Office",
+    date: "September 14, 2022"
+  },
+  {
+    id: "ejiwefqijwfowjeiguoqwjrojef",
+    title: "Back to School, folks!",
+    publisher: "Principals Office",
+    date: "September 14, 2022"
+  },
+];
 
 export default function NewsTodayCard(props): any {
+  // const [isModalVisible, setModalVisible] = useState(false);
 
-  const [items, setItems] = useState([
-    {
-      id: "12",
-      publisher: "Pricipal's Office",
-      title: "Back to School Folks!",
-      date: "September 09, 2022",
-    },
-    {
-      id: "123",
-      publisher: "Pricipal's Office",
-      title: "Back to School Folks!",
-      date: "September 09, 2022",
-    },
-    {
-      id: "1234",
-      publisher: "Pricipal's Office",
-      title: "Back to School Folks!",
-      date: "September 09, 2022",
-    }
-  ])
+  const Item = ({ title, publisher, date }) => (
+    <TouchableOpacity onPress={() => { }}>
+      <NewsCardElement title={title} publisher={publisher} date={date} />
+    </TouchableOpacity>
+  );
 
-  const Item = ({ title, publisher, date }) => {
-    return (
-      <TouchableOpacity>
-        <NewsCardElement title={title} publisher={publisher} date={date} />
-      </TouchableOpacity>
-    );
-  };
+  // const toggleModalHandler = () => {
+  //   setModalVisible(!isModalVisible);
+  // };
 
-  const renderItem = ({ item }) => <Item title={item.title} publisher={item.publisher} date={item.date} />;
-
-  /* 
-  "Old News" card will have the title on the left (50-65%) and a day counter (eg: 2 days) with the number over the text on the right.
-  "Old News" will be considered every news that has been more than 2 days since its publishment. 
-
-  The modals will be the same for all of the different types of news (in order):
-  - Back arrow (upper left, inline) that closes the modal
-  - Small tag (upper left, inline) that shows type of news (color determined by type of news)
-  - Date (upper right, inline)
-  - Title (below the other components) full width
-  - Publisher info (below title, left)
-  - Description/body (rest of page)
-
-  For the news from the Ministry of Education, use a python web scraper to first fetch the data (this needs to be running on a server though)
-  and then a python script to dump that data into firebase to then be read by the react native side of the project.
-  */
+  const renderItem = ({ item }) => (
+    <Item title={item.title} publisher={item.publisher} date={item.date} />
+  );
 
   return (
     <View style={styles.card}>
-      <Text style={styles.cardTitle}>News For Today</Text>
+      <Text style={styles.cardTitle}>News for Today</Text>
       <FlatList
-        data={items}
+        data={DATA_TDY}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
-        horizontal
+        horizontal={true}
         showsHorizontalScrollIndicator={false}
       />
+      {/* <EventModal isVisible={isModalVisible} onBackdropPress={toggleModalHandler} /> */}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   card: {
-    margin: 8,
-    marginBottom: 0,
-    borderRadius: 18,
-    width: "95%",
-    marginHorizontal: "2.5%",
+    marginHorizontal: 10,
+    marginBottom: 18,
   },
 
   cardTitle: {
-    fontSize: 30,
+    fontSize: 32,
     color: "white",
-    fontWeight: "700",
-    paddingLeft: 2,
+    paddingVertical: 15,
+    fontWeight: "bold",
   },
-
 });

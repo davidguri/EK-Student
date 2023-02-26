@@ -35,7 +35,7 @@ export default function CalendarScreen(props): any {
           "2023-02-22": { dots: [events, daysOff], textColor: "black" },
           "2023-02-23": { color: Colors.tests.main, textColor: "black" },
           "2023-02-24": { color: Colors.events.main, textColor: "black" },
-          "2023-02-25": { dots: [classes] },
+          "2023-02-25": { dots: [classes, tests] },
         }}
         style={{
           height: "100%",
@@ -50,11 +50,11 @@ export default function CalendarScreen(props): any {
           textDisabledColor: "#2d4150",
           monthTextColor: Colors.primary,
           indicatorColor: "white",
-          textDayFontWeight: "300",
+          textDayFontWeight: "500",
           textMonthFontWeight: "700",
           textDayFontSize: 18,
-          textMonthFontSize: 32,
-          textDayHeaderFontSize: 18,
+          textMonthFontSize: 34,
+          textDayHeaderFontSize: 14,
           textDayHeaderFontWeight: "700",
         }}
       />
