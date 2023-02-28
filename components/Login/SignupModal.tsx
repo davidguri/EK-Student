@@ -29,7 +29,7 @@ const SignupModal = (props) => {
 
   const { setIsSignedIn }: any = useContext(AppContext);
 
-  const writeUserData = (email, username) => { //email and full name
+  const writeUserData = (email: string, username: string) => { //email and full name
     firebase.database().ref('UsersList/').push({
       email,
       username
