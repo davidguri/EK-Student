@@ -15,16 +15,15 @@ import firebase from "firebase/compat";
 
 export default function Header(props): any {
 
-  var user = firebase.auth().currentUser;
-  let username: any;
+  // var user = firebase.auth().currentUser;
 
   const [usernameVal, setUsernameVal] = useState("")
 
   const readUserData = () => {
     firebase.database().ref('UsersList/').once('value', function (snapshot) {
-      // username = snapshot.val().username.split(" ")[0];
-      // setUsernameVal(username)
-      //console.log(snapshot.val());
+      snapshot.forEach((child) => {
+        setUsernameVal(child.val().username.split(" ")[0])
+      });
     });
   }
 

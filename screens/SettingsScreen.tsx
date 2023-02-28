@@ -26,14 +26,20 @@ import firebase from "firebase/compat";
 import { auth } from "../firebase";
 
 export default function SettingsScreen(props): any {
-  var username = "David Guri";
 
-  var User = firebase.auth().currentUser;
-  var email: any;
+  const [usernameVal, setUsernameVal] = useState("")
+  const [emailVal, setEmailVal] = useState("")
 
-  if (User != null) {
-    email = User.email;
+  const readUserData = () => {
+    firebase.database().ref('UsersList/').once('value', function (snapshot) {
+      snapshot.forEach((child) => {
+        setUsernameVal(child.val().username)
+        setEmailVal(child.val().email)
+      });
+    });
   }
+
+  readUserData()
 
   const [isEnabled, setIsEnabled] = useState(true);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
@@ -110,8 +116,8 @@ export default function SettingsScreen(props): any {
                 size={125}
               />
               <View>
-                <Text style={styles.profileUsername}>{username}</Text>
-                <Text style={styles.profileEmail}>{user.email}</Text>
+                <Text style={styles.profileUsername}>{usernameVal}</Text>
+                <Text style={styles.profileEmail}>{emailVal}</Text>
               </View>
             </View>
 
