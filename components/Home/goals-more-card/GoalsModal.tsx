@@ -10,24 +10,24 @@ import {
   StatusBar,
   FlatList,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+// import { Ionicons } from "@expo/vector-icons";
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 import Colors from "../../../constants/colors";
 import Card from "../../Other/Global/Card";
 import AddGoalModal from "./AddGoalModal";
+import firebase from "firebase/compat";
 
-import BouncyCheckbox from "react-native-bouncy-checkbox";
-
-const DATA = [
-  {
-    id: "1",
-    title: "Launch MVP in April",
-  },
-  {
-    id: "2",
-    title: "Test Goal",
-  },
-];
+// const DATA = [
+//   {
+//     id: "1",
+//     title: "Launch MVP in April",
+//   },
+//   {
+//     id: "2",
+//     title: "Test Goal",
+//   },
+// ];
 
 const Item = ({ title }) => {
   return (
@@ -44,7 +44,16 @@ const Item = ({ title }) => {
   );
 };
 
-const GoalsModal = (props) => {
+export default function GoalsModal(props): any {
+
+  const [data, setData] = useState([])
+
+  const readData = () => {
+    firebase.database().ref('GoalsList/').once('value', function (snapshot) {
+      console.log(snapshot.val)
+    });
+  }
+
   const renderItem = ({ item }) => <Item title={item.title} />;
 
   const [isOpenAddModal, setIsOpenAddModal] = useState(false);
@@ -52,8 +61,6 @@ const GoalsModal = (props) => {
   const closeModalHandler = () => {
     setIsOpenAddModal(false);
   };
-
-  const addElement = () => { };
 
   return (
     <Modal visible={props.visible} animationType="slide" transparent={true}>
@@ -74,7 +81,7 @@ const GoalsModal = (props) => {
                 <Text style={styles.todayText}>Your Goals This Year</Text>
               </View>
               <FlatList
-                data={DATA}
+                data={data}
                 renderItem={renderItem}
                 keyExtractor={(item) => item.id}
                 style={styles.list}
@@ -95,7 +102,6 @@ const GoalsModal = (props) => {
       <AddGoalModal
         visible={isOpenAddModal}
         onCancel={closeModalHandler}
-        onSubmit={addElement}
         title="Add Goal"
       />
     </Modal>
@@ -241,5 +247,3 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
 });
-
-export default GoalsModal;

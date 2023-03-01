@@ -9,38 +9,31 @@ import {
   Platform,
   StatusBar,
 } from "react-native";
-import DateTimePickerModal from "react-native-modal-datetime-picker";
+import firebase from "firebase/compat";
 
 import Colors from "../../../constants/colors";
 
 import Modal from "react-native-modal";
 
-import ImportanceModal from "./ImportanceModal";
-
 export default function AddGoalModal(props): any {
-  const [text, onChangeText] = React.useState("");
+  const [text, onChangeText] = useState("");
 
-  const [isOpenImportanceModal, setIsOpenImportanceModal] = useState(false);
+  const writeData = (status: boolean, title: string) => { //email and full name
+    firebase.database().ref('GoalsList/').push({
+      status,
+      title
+    }).then((data) => {
+      //success callback
+      // console.log('data ' , data)
+    }).catch((error) => {
+      //error callback
+      console.log('error ', error)
+    })
+  }
 
-  const toggleImportanceModalHandler = () => {
-    setIsOpenImportanceModal(!isOpenImportanceModal);
-  };
-
-  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-
-  const showDatePicker = () => {
-    setDatePickerVisibility(true);
-  };
-
-  const hideDatePicker = () => {
-    setDatePickerVisibility(false);
-  };
-
-  const handleConfirm = (date) => {
-    console.log("A date has been picked: ", date);
-    // var dateTime = date;
-    hideDatePicker();
-  };
+  const addElement = () => {
+    writeData(false, text)
+  }
 
   return (
     <Modal
@@ -65,26 +58,10 @@ export default function AddGoalModal(props): any {
               placeholderTextColor="#777"
               placeholder="Title"
             />
-            <TouchableOpacity
-              onPress={toggleImportanceModalHandler}
-              style={[styles.inputButton, styles.input]}
-            >
-              <View>
-                <Text style={styles.inputButtonText}>Importance</Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={showDatePicker}
-              style={[styles.inputButton, styles.input]}
-            >
-              <View>
-                <Text style={styles.inputButtonText}>Set Date</Text>
-              </View>
-            </TouchableOpacity>
           </View>
           <View style={styles.footer}>
             <TouchableOpacity
-              onPress={props.onSubmit}
+              onPress={addElement}
               style={styles.submitContainer}
             >
               <Text style={styles.inputButtonText}>{props.title}</Text>
@@ -96,16 +73,6 @@ export default function AddGoalModal(props): any {
           </View>
         </View>
       </SafeAreaView>
-      <ImportanceModal
-        visible={isOpenImportanceModal}
-        onBackdropPress={toggleImportanceModalHandler}
-      />
-      <DateTimePickerModal
-        isVisible={isDatePickerVisible}
-        mode="date"
-        onConfirm={handleConfirm}
-        onCancel={hideDatePicker}
-      />
     </Modal>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
@@ -53,7 +53,7 @@ export default function WeatherWidget(props): any {
       })
   };
 
-  setInterval(fetchData, 100000) // 1.6 minutes or 1 minute 40 seconds
+  setInterval(fetchData, 300000) // 5 minutes
   fetchData();
 
   return (

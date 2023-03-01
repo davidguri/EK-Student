@@ -21,6 +21,7 @@ import firebase from "firebase/compat";
 import Background from "../../assets/background.png";
 
 import { AppContext } from "../../App";
+import { getDatabase, ref, set } from "firebase/database";
 
 const SignupModal = (props) => {
   const [username, setUsername] = useState("");
@@ -29,13 +30,13 @@ const SignupModal = (props) => {
 
   const { setIsSignedIn }: any = useContext(AppContext);
 
-  const writeUserData = (email, username) => { //email and full name
+  const writeUserData = (email: string, username: string) => { //email and full name
     firebase.database().ref('UsersList/').push({
       email,
       username
     }).then((data) => {
       //success callback
-      // console.log('data ' , data)
+      console.log('data ', data)
     }).catch((error) => {
       //error callback
       console.log('error ', error)
