@@ -18,15 +18,9 @@ export default function Header(props): any {
   const [usernameVal, setUsernameVal] = useState("")
 
   const readUserData = () => {
-    firebase.database().ref("UsersList/").once('value', function (snapshot) {
-
-
-      console.log(snapshot.val())
-
-
-      // snapshot.forEach((child) => {
-      //   setUsernameVal(child.val().username.split(" ")[0]);
-      // });
+    firebase.database().ref("UsersList/").once('child_added', function (snapshot) {
+      var username = snapshot.val().username.split(" ")[0]
+      setUsernameVal(username)
     });
   }
 

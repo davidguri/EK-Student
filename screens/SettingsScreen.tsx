@@ -31,11 +31,10 @@ export default function SettingsScreen(props): any {
   const [emailVal, setEmailVal] = useState("")
 
   const readUserData = () => {
-    firebase.database().ref('UsersList/').once('value', function (snapshot) {
-      snapshot.forEach((child) => {
-        setUsernameVal(child.val().username)
-        setEmailVal(child.val().email)
-      });
+    firebase.database().ref("UsersList/").once('child_added', function (snapshot) {
+      var username = snapshot.val().username.split(" ")[0]
+      setUsernameVal(username)
+      setEmailVal(snapshot.val().email)
     });
   }
 
