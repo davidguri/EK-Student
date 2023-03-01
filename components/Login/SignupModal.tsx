@@ -21,6 +21,7 @@ import firebase from "firebase/compat";
 import Background from "../../assets/background.png";
 
 import { AppContext } from "../../App";
+import { getDatabase, ref, set } from "firebase/database";
 
 const SignupModal = (props) => {
   const [username, setUsername] = useState("");
@@ -35,7 +36,7 @@ const SignupModal = (props) => {
       username
     }).then((data) => {
       //success callback
-      // console.log('data ' , data)
+      console.log('data ', data)
     }).catch((error) => {
       //error callback
       console.log('error ', error)

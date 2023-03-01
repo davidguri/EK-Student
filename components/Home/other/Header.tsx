@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -15,15 +15,18 @@ import firebase from "firebase/compat";
 
 export default function Header(props): any {
 
-  // var user = firebase.auth().currentUser;
-
   const [usernameVal, setUsernameVal] = useState("")
 
   const readUserData = () => {
-    firebase.database().ref('UsersList/').once('value', function (snapshot) {
-      snapshot.forEach((child) => {
-        setUsernameVal(child.val().username.split(" ")[0])
-      });
+    firebase.database().ref("UsersList/").once('value', function (snapshot) {
+
+
+      console.log(snapshot.val())
+
+
+      // snapshot.forEach((child) => {
+      //   setUsernameVal(child.val().username.split(" ")[0]);
+      // });
     });
   }
 

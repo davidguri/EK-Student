@@ -11,6 +11,7 @@ import {
   Platform,
   FlatList,
 } from "react-native";
+import firebase from "firebase/compat";
 
 import Colors from "../../../constants/colors";
 import Card from "../../Other/Global/Card";
@@ -130,6 +131,32 @@ console.log(str2); */
 
 const ProjectsModal = (props) => {
   const renderItem = ({ item }) => <Item title={item.title} />;
+
+  const writeData = (title: string, subject: string, date: string, total_points: number) => { //email and full name
+    firebase.database().ref('ProjectsList/').push({
+      title,
+      subject,
+      date,
+      total_points
+    }).then((data) => {
+      //success callback
+      // console.log('data ' , data)
+    }).catch((error) => {
+      //error callback
+      console.log('error ', error)
+    })
+  }
+
+  const [data, setData] = useState([])
+
+  const readData = () => {
+    firebase.database().ref('GoalsList/').once('value', function (snapshot) {
+      console.log(snapshot.val)
+      setData(snapshot.val())
+    });
+  }
+
+  readData
 
   return (
     <Modal visible={props.visible} animationType="slide" transparent={true}>
