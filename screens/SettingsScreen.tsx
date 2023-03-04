@@ -30,15 +30,17 @@ export default function SettingsScreen(props): any {
   const [usernameVal, setUsernameVal] = useState("")
   const [emailVal, setEmailVal] = useState("")
 
-  const readUserData = () => {
-    firebase.database().ref("UsersList/").once('child_added', function (snapshot) {
-      var username = snapshot.val().username.split(" ")[0]
-      setUsernameVal(username)
-      setEmailVal(snapshot.val().email)
-    });
-  }
+  function readUserData() {
+    firebase.database().ref("/UsersList").child(auth.currentUser.uid).orderByChild(auth.currentUser.uid).once("value", snapshot => {
+      //console.log(snapshot.val().username, snapshot.val().email);
+      setUsernameVal(snapshot.val().username);
+      setEmailVal(snapshot.val().email);
+    }).catch((error) => {
+      console.log("error:", error);
+    })
+  };
 
-  readUserData()
+  readUserData();
 
   const [isEnabled, setIsEnabled] = useState(true);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
@@ -339,7 +341,7 @@ const styles = StyleSheet.create({
 
   containerRowTitle: {
     color: "#fff",
-    fontWeight: "500",
+    fontWeight: "700",
     fontSize: 18,
     marginLeft: 15,
   },

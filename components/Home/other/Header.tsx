@@ -12,19 +12,23 @@ import Colors from "../../../constants/colors";
 import WeatherWidget from "../../Other/Weather/WeatherWidget";
 
 import firebase from "firebase/compat";
+import { auth } from "../../../firebase";
 
 export default function Header(props): any {
 
   const [usernameVal, setUsernameVal] = useState("")
 
-  const readUserData = () => {
-    firebase.database().ref("UsersList/").once('child_added', function (snapshot) {
-      var username = snapshot.val().username.split(" ")[0]
-      setUsernameVal(username)
-    });
-  }
+  function readUserData() {
+    firebase.database().ref("/UsersList").child(auth.currentUser.uid).orderByChild(auth.currentUser.uid).once("value", snapshot => {
+      //console.log(snapshot.val().username);
+      var username = snapshot.val().username.split(" ")[0];
+      setUsernameVal(username);
+    }).catch((error) => {
+      console.log("error:", error);
+    })
+  };
 
-  readUserData()
+  readUserData();
 
   var objDate = new Date();
   var hours = objDate.getHours();
