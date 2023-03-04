@@ -14,7 +14,7 @@ export default function WeatherWidget(props): any {
   const [tempVal, setTempVal] = useState();
   const [conditionVal, setConditionVal] = useState("Loading");
 
-  const APIKey = "5ef20fd863163abbd8e6a39edee11718";
+  const APIKey = "d85a5fbcd7e99247c549168f81153b34"; // this might change sometimes so beware!
   const lat = "41.35656308348034";
   const lon = "19.73590479245462";
 
@@ -26,7 +26,7 @@ export default function WeatherWidget(props): any {
           console.log("!!404!!");
         };
 
-        let round: any;
+        let round: any; // rrumbullakimi
 
         temp = json.main.temp;
         round = temp.toString().split(".")[1]

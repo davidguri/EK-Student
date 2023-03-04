@@ -30,30 +30,36 @@ const SignupModal = (props) => {
 
   const { setIsSignedIn }: any = useContext(AppContext);
 
-  const writeUserData = (email: string, username: string) => { //email and full name
-    firebase.database().ref('UsersList/').push({
-      email,
-      username
-    }).then((data) => {
-      //success callback
-      console.log('data ', data)
-    }).catch((error) => {
-      //error callback
-      console.log('error ', error)
-    })
-  }
+  let emailDomain: string;
 
   const handleSignup = (): any => {
     Keyboard.dismiss
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((userCredentials) => {
-        const user = userCredentials.user;
-        console.log("Registered with:", user.email);
-        setIsSignedIn(true);
-      })
-      .catch((error) => alert(error.message));
-    writeUserData(email, username)
+    emailDomain = (email.split("@")[1]).split(".")[0]
+    console.log("Email Domain: ", emailDomain);
+    if (emailDomain == "ernestkoliqi") {
+      auth
+        .createUserWithEmailAndPassword(email, password)
+        .then((userCredentials) => {
+          const user = userCredentials.user;
+          firebase.database().ref("UsersList").child(userCredentials.user.uid).set({
+            email: email,
+            username: username,
+          }).then((data) => {
+            //success callback
+            console.log('data ', data)
+          }).catch((error) => {
+            //error callback
+            console.log('error ', error)
+          })
+          console.log("Registered with:", user.email);
+          console.log("Registered with:", user.uid);
+          setIsSignedIn(true);
+        })
+        .catch((error) => alert(error.message));
+      // writeUserData(email, username)
+    } else {
+      alert("Use an '@ernestkoliqi' email domain! ek(0003)")
+    };
   };
 
   return (
@@ -92,6 +98,7 @@ const SignupModal = (props) => {
                   onChangeText={(text) => setUsername(text)}
                   selectTextOnFocus
                   keyboardType="default"
+                  autoCapitalize="words"
                 />
                 <Input
                   style={styles.input}
@@ -103,6 +110,7 @@ const SignupModal = (props) => {
                   onChangeText={(text) => setEmail(text)}
                   selectTextOnFocus
                   keyboardType="email-address"
+                  autoCapitalize="none"
                 />
                 <Input
                   style={styles.input}

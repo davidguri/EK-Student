@@ -32,30 +32,6 @@ const DATA_TDY = [
     publisher: "Principals Office",
     date: "September 14, 2022"
   },
-  {
-    id: "jwiejiwefqijwfowjeiguoqwjrojef",
-    title: "Back to School, folks!",
-    publisher: "Principals Office",
-    date: "September 14, 2022"
-  },
-  {
-    id: "wiejiwefqijwfowjeiguoqwjrojef",
-    title: "Back to School, folks!",
-    publisher: "Principals Office",
-    date: "September 14, 2022"
-  },
-  {
-    id: "iejiwefqijwfowjeiguoqwjrojef",
-    title: "Back to School, folks!",
-    publisher: "Principals Office",
-    date: "September 14, 2022"
-  },
-  {
-    id: "ejiwefqijwfowjeiguoqwjrojef",
-    title: "Back to School, folks!",
-    publisher: "Principals Office",
-    date: "September 14, 2022"
-  },
 ];
 
 export default function NewsTodayCard(props): any {
