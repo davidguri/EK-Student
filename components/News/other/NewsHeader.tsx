@@ -20,7 +20,7 @@ export default function NewsHeader(props): any {
         <Text style={styles.headerTitle}>{props.title}</Text>
         <Text style={styles.headerSubtitle}>{props.sub}</Text>
       </View>
-      {/* <WeatherWidget /> */}
+      <WeatherWidget />
     </View>
   );
 };
