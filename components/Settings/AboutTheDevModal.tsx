@@ -8,11 +8,14 @@ import {
   SafeAreaView,
   ScrollView,
   StatusBar,
-  Platform
+  Platform,
+  Linking
 } from "react-native";
 import Modal from "react-native-modal";
+import { Ionicons } from "@expo/vector-icons";
 
 import Colors from "../../constants/colors";
+import Card from "../Other/Global/Card";
 
 export default function AboutTheDevModal(props): any {
   return (
@@ -40,7 +43,26 @@ export default function AboutTheDevModal(props): any {
                 <Text style={styles.title}>About The Developer</Text>
               </View>
               <View style={styles.content}>
-                <Text style={styles.bodyText}>Something abt him</Text>
+                <Text style={styles.bodyText}>I, David Guri, a student of this school, currently in 11th grade (as of writing this), developed this app for two reasons: first, I saw a problem that some students were facing, such as keeping track of tests, assignments etc, and second, this app acted as a project for my Computer Sciences subject.</Text>
+                <Text style={styles.bodyText}>For more information, you can either talk to me irl (don't email me please, although if you want to, you can do it here: davidguri2006@gmail.com) or visit my GitHub account down below for more projects of mine 😊</Text>
+              </View>
+              <View style={styles.buttons}>
+                <Card style={styles.containerRow}>
+                  <TouchableOpacity
+                    onPress={() => Linking.openURL("https://github.com/davidguri")}
+                    style={styles.containerButton}
+                  >
+                    <View style={styles.leftContainer}>
+                      <Ionicons
+                        name="logo-github"
+                        size={27}
+                        color={"white"}
+                      />
+                      <Text style={styles.containerRowTitle}>GitHub</Text>
+                    </View>
+                    <Text style={styles.modalArrow}>&gt; </Text>
+                  </TouchableOpacity>
+                </Card>
               </View>
             </View>
           </ScrollView>
@@ -104,8 +126,8 @@ const styles = StyleSheet.create({
 
   content: {
     paddingTop: 30,
-    width: "90%",
-    marginHorizontal: "5%",
+    width: "95%",
+    marginHorizontal: "2.5%",
   },
 
   bodyText: {
@@ -116,14 +138,21 @@ const styles = StyleSheet.create({
     marginHorizontal: "1%",
   },
 
-  containerRow: {
-    flexDirection: "row",
-    marginVertical: 10,
-    width: "100%",
-    borderRadius: 18,
-    justifyContent: "space-between",
+  buttons: {
     alignItems: "center",
-    paddingVertical: 10,
+  },
+
+  containerRowTitle: {
+    color: "#fff",
+    fontWeight: "700",
+    fontSize: 18,
+    marginLeft: 15,
+  },
+
+  modalArrow: {
+    color: "#8c8c8c",
+    fontSize: 24,
+    fontWeight: "600",
   },
 
   leftContainer: {
@@ -140,16 +169,13 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
   },
 
-  containerRowTitle: {
-    color: "#fff",
-    fontWeight: "500",
-    fontSize: 18,
-    paddingLeft: 12,
-  },
-
-  modalArrow: {
-    color: "#8c8c8c",
-    fontSize: 24,
-    fontWeight: "600",
+  containerRow: {
+    flexDirection: "row",
+    marginVertical: 10,
+    width: "95%",
+    borderRadius: 18,
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingVertical: 7.5,
   },
 });

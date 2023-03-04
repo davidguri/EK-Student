@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import {
   View,
   Text,
-  Image,
   TouchableOpacity,
   StyleSheet,
   SafeAreaView,
   ScrollView,
   StatusBar,
   Platform,
+  Alert
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import Modal from "react-native-modal";
@@ -16,11 +16,31 @@ import Modal from "react-native-modal";
 import Colors from "../../constants/colors";
 import Card from "../Other/Global/Card";
 
-var account = "Developer";
-var username = "David Guri";
-var email = "dguri@ernestkoliqi.com";
+import firebase from "firebase/compat";
+import { auth } from "../../firebase";
 
 export default function ProfileModal(props): any {
+
+  const [usernameVal, setUsernameVal] = useState("")
+  const [emailVal, setEmailVal] = useState("")
+
+  function readUserData() {
+    firebase.database().ref("/UsersList").child(auth.currentUser.uid).orderByChild(auth.currentUser.uid).once("value", snapshot => {
+      //console.log(snapshot.val().username, snapshot.val().email);
+      setUsernameVal(snapshot.val().username);
+      setEmailVal(snapshot.val().email);
+    }).catch((error) => {
+      console.log("error:", error);
+    })
+  };
+
+  readUserData();
+
+  const alertConst = () =>
+    Alert.alert("Sorry!", "That feature is still under development. 😢 Come back soon to try again!", [
+      { text: "Ok", onPress: () => { }, style: "default" },
+    ]);
+
   return (
     <Modal
       isVisible={props.visible}
@@ -38,7 +58,7 @@ export default function ProfileModal(props): any {
               <Text style={styles.buttonText}>&lt; </Text>
               <Text style={styles.buttonText}>Settings</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => { }} style={styles.button}>
+            <TouchableOpacity onPress={alertConst} style={styles.button}>
               <Text style={styles.buttonText}>Edit</Text>
             </TouchableOpacity>
           </View>
@@ -53,14 +73,10 @@ export default function ProfileModal(props): any {
                     size={125}
                   />
                   <View>
-                    <Text style={styles.profileUsername}>{username}</Text>
-                    <Text style={styles.profileEmail}>{email}</Text>
+                    <Text style={styles.profileUsername}>{usernameVal}</Text>
+                    <Text style={styles.profileEmail}>{emailVal}</Text>
                   </View>
                 </View>
-                <Card style={styles.container}>
-                  <Text style={styles.containerTitle}>Account Type</Text>
-                  <Text style={styles.accountType}>{account}</Text>
-                </Card>
                 <Card style={styles.containerRow}>
                   <TouchableOpacity
                     onPress={() => { }}
