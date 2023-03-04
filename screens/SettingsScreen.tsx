@@ -12,7 +12,6 @@ import {
   StatusBar,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import Modal from "react-native-modal";
 import Colors from "../constants/colors";
 import { AppContext } from "../App";
 
@@ -24,6 +23,7 @@ import ProfileModal from "../components/Settings/ProfileModal";
 
 import firebase from "firebase/compat";
 import { auth } from "../firebase";
+import { CalendarContext } from "react-native-calendars";
 
 export default function SettingsScreen(props): any {
 
@@ -84,7 +84,6 @@ export default function SettingsScreen(props): any {
   };
 
   // Login shizz
-
   let user = firebase.auth().currentUser;
 
   const { setIsSignedIn }: any = useContext(AppContext);
@@ -98,6 +97,16 @@ export default function SettingsScreen(props): any {
       .catch((error) => alert(error.message));
   };
 
+  // Countdown shtuff
+  let endOfSchool = (new Date("06/14/2023")).getTime()
+  let currentDay = (new Date()).getTime()
+  let diff = endOfSchool - currentDay
+  let daysUntil = (Math.ceil(diff / (1000 * 3600 * 24))).toString()
+  let daysUntilInt = Math.ceil(diff / (1000 * 3600 * 24))
+  let countdownText = "Only " + daysUntil + " left!"
+  let progressWidth = (100 - ((daysUntilInt / 235) * 100))
+
+  // turn these cards below into a seperate component cause this file is to big
   return (
     <View>
       <SafeAreaView style={{ backgroundColor: "black" }}>
@@ -123,6 +132,16 @@ export default function SettingsScreen(props): any {
             </View>
 
             <View style={{ alignItems: "center" }}>
+              <Card style={styles.containerRow}>
+                <View style={styles.leftContainer}>
+                  <Text style={styles.containerRowTitle}>{countdownText}</Text>
+                </View>
+                <View style={{ width: "100%" }}>
+                  <View style={{ width: `${progressWidth}%` }}>
+                    {/* Check if this works for the progress bar thingy */}
+                  </View>
+                </View>
+              </Card>
               {/* profile card */}
               <Card style={styles.containerRow}>
                 <TouchableOpacity
@@ -379,5 +398,9 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 18,
     marginHorizontal: 15,
+  },
+
+  progressBar: {
+    // width: `100% - {daysUntil}`
   },
 });
