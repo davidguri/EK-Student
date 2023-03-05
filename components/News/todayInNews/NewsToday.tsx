@@ -53,7 +53,7 @@ export default function NewsTodayCard(props): any {
 
   return (
     <View style={styles.card}>
-      <Text style={styles.cardTitle}>News for Today</Text>
+      <Text style={styles.cardTitle}>News for The Week</Text>
       <FlatList
         data={DATA_TDY}
         renderItem={renderItem}
