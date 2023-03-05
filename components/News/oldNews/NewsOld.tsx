@@ -8,9 +8,6 @@ import {
   FlatList,
 } from "react-native";
 
-import NewsCardElement from "./NewsCardElement";
-import EventModal from "../../Home/today-tomorrow-card/EventModal";
-
 import Colors from "../../../constants/colors";
 
 const DATA_TDY = [
@@ -34,12 +31,12 @@ const DATA_TDY = [
   },
 ];
 
-export default function NewsTodayCard(props): any {
+export default function NewsOldCard(props): any {
   // const [isModalVisible, setModalVisible] = useState(false);
 
-  const Item = ({ title, publisher, date }) => (
+  const Item = ({ }) => (
     <TouchableOpacity onPress={() => { }}>
-      <NewsCardElement title={title} publisher={publisher} date={date} />
+      <View><Text style={{ color: "white" }}>Hello</Text></View>
     </TouchableOpacity>
   );
 
@@ -48,12 +45,12 @@ export default function NewsTodayCard(props): any {
   // };
 
   const renderItem = ({ item }) => (
-    <Item title={item.title} publisher={item.publisher} date={item.date} />
+    <Item />
   );
 
   return (
     <View style={styles.card}>
-      <Text style={styles.cardTitle}>News for The Week</Text>
+      <Text style={styles.cardTitle}>Old News</Text>
       <FlatList
         data={DATA_TDY}
         renderItem={renderItem}
