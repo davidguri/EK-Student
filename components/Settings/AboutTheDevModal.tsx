@@ -49,14 +49,14 @@ export default function AboutTheDevModal(props): any {
               <View style={styles.buttons}>
                 <Card style={styles.containerRow}>
                   <TouchableOpacity
-                    onPress={() => Linking.openURL("https://github.com/davidguri")}
+                    onPress={() => Linking.openURL("https://github.com/davidguri").catch((error) => { console.log(error, " ek(0069)") })}
                     style={styles.containerButton}
                   >
                     <View style={styles.leftContainer}>
                       <Ionicons
                         name="logo-github"
                         size={27}
-                        color={"white"}
+                        color={Colors.primary}
                       />
                       <Text style={styles.containerRowTitle}>GitHub</Text>
                     </View>

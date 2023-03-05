@@ -23,7 +23,6 @@ import ProfileModal from "../components/Settings/ProfileModal";
 
 import firebase from "firebase/compat";
 import { auth } from "../firebase";
-import { CalendarContext } from "react-native-calendars";
 
 export default function SettingsScreen(props): any {
 
@@ -59,28 +58,16 @@ export default function SettingsScreen(props): any {
     setIsOpenProfileModal(!isOpenProfileModal);
   };
 
-  const openAboutDevHandler = () => {
-    setIsOpenAboutModal(true);
+  const toggleAboutModalHandler = () => {
+    setIsOpenAboutModal(!isOpenAboutModal);
   };
 
-  const openFeedbackHandler = () => {
-    setIsOpenFeedbackModal(true);
+  const toggleFeedbackModalHandler = () => {
+    setIsOpenFeedbackModal(!isOpenFeedbackModal);
   };
 
-  const openPrivacyHandler = () => {
-    setIsOpenPrivacyModal(true);
-  };
-
-  const closeAboutHandler = () => {
-    setIsOpenAboutModal(false);
-  };
-
-  const closeFeedbackHandler = () => {
-    setIsOpenFeedbackModal(false);
-  };
-
-  const closePrivacyHandler = () => {
-    setIsOpenPrivacyModal(false);
+  const togglePrivacyModalHandler = () => {
+    setIsOpenPrivacyModal(!isOpenPrivacyModal);
   };
 
   // Login shizz
@@ -100,13 +87,19 @@ export default function SettingsScreen(props): any {
   // Countdown shtuff
   let endOfSchool = (new Date("06/14/2023")).getTime()
   let currentDay = (new Date()).getTime()
-  let diff = endOfSchool - currentDay
-  let daysUntil = (Math.ceil(diff / (1000 * 3600 * 24))).toString()
-  let daysUntilInt = Math.ceil(diff / (1000 * 3600 * 24))
-  let countdownText = "Only " + daysUntil + " left!"
-  let progressWidth = (100 - ((daysUntilInt / 235) * 100))
+  let daysUntil = (Math.floor((endOfSchool - currentDay) / (1000 * 3600 * 24))).toString()
+  let daysUntilInt = (Math.floor((endOfSchool - currentDay)) / (1000 * 3600 * 24))
+  let countdownText: string;
 
-  // turn these cards below into a seperate component cause this file is to big
+  if (daysUntilInt == 235) {
+    countdownText = "IT'S THE LAST DAY!!";
+  } else if (daysUntilInt == Math.floor(235 / 2) || daysUntilInt == Math.ceil(235 / 2)) {
+    countdownText = "You're halfway there!"
+  } else {
+    countdownText = "Only " + daysUntil + " days left!"
+  };
+  let progressWidth = ((Math.floor((endOfSchool - currentDay)) / (1000 * 3600 * 24) / 235) * 100)
+
   return (
     <View>
       <SafeAreaView style={{ backgroundColor: "black" }}>
@@ -118,27 +111,27 @@ export default function SettingsScreen(props): any {
             style={{ width: "100%" }}
             showsVerticalScrollIndicator={false}
           >
-            {/* about container */}
             <View style={styles.accountContainer}>
               <Ionicons
                 name="person-circle-outline"
                 color={Colors.primary}
-                size={125}
+                size={120}
+                style={{ flex: 0 }}
               />
-              <View>
+              <View style={{ flex: 1, alignItems: "flex-start", marginLeft: 5 }}>
                 <Text style={styles.profileUsername}>{usernameVal}</Text>
                 <Text style={styles.profileEmail}>{emailVal}</Text>
               </View>
             </View>
 
             <View style={{ alignItems: "center" }}>
-              <Card style={styles.containerRow}>
+              <Card style={styles.containerColumn}>
                 <View style={styles.leftContainer}>
-                  <Text style={styles.containerRowTitle}>{countdownText}</Text>
+                  <Text style={styles.containerColumnTitle}>{countdownText}</Text>
                 </View>
                 <View style={{ width: "100%" }}>
-                  <View style={{ width: `${progressWidth}%` }}>
-                    {/* Check if this works for the progress bar thingy */}
+                  <View style={{ width: `${progressWidth}%`, backgroundColor: Colors.primary, borderRadius: 25, padding: 5, marginBottom: 10, marginTop: 5 }}>
+
                   </View>
                 </View>
               </Card>
@@ -166,7 +159,7 @@ export default function SettingsScreen(props): any {
               {/* about card */}
               <Card style={styles.containerRow}>
                 <TouchableOpacity
-                  onPress={openAboutDevHandler}
+                  onPress={toggleAboutModalHandler}
                   style={styles.containerButton}
                 >
                   <View style={styles.leftContainer}>
@@ -183,13 +176,13 @@ export default function SettingsScreen(props): any {
                 </TouchableOpacity>
                 <AboutTheDevModal
                   visible={isOpenAboutModal}
-                  onCancel={closeAboutHandler}
+                  onCancel={toggleAboutModalHandler}
                 />
               </Card>
               {/* feedback card */}
               <Card style={styles.containerRow}>
                 <TouchableOpacity
-                  onPress={openFeedbackHandler}
+                  onPress={toggleFeedbackModalHandler}
                   style={styles.containerButton}
                 >
                   <View style={styles.leftContainer}>
@@ -204,13 +197,13 @@ export default function SettingsScreen(props): any {
                 </TouchableOpacity>
                 <FeedbackModal
                   visible={isOpenFeedbackModal}
-                  onCancel={closeFeedbackHandler}
+                  onCancel={toggleFeedbackModalHandler}
                 />
               </Card>
               {/* privacy card */}
               <Card style={styles.containerRow}>
                 <TouchableOpacity
-                  onPress={openPrivacyHandler}
+                  onPress={togglePrivacyModalHandler}
                   style={styles.containerButton}
                 >
                   <View style={styles.leftContainer}>
@@ -225,7 +218,7 @@ export default function SettingsScreen(props): any {
                 </TouchableOpacity>
                 <PrivacyModal
                   visible={isOpenPrivacyModal}
-                  onCancel={closePrivacyHandler}
+                  onCancel={togglePrivacyModalHandler}
                 />
               </Card>
               {/* dark-mode switch */}
@@ -308,6 +301,14 @@ const styles = StyleSheet.create({
     paddingVertical: 7.5,
   },
 
+  containerColumn: {
+    marginVertical: 10,
+    width: "95%",
+    borderRadius: 18,
+    justifyContent: "space-between",
+    paddingVertical: 7.5,
+  },
+
   leftContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -323,9 +324,8 @@ const styles = StyleSheet.create({
   },
 
   accountContainer: {
-    marginBottom: 12,
     width: "100%",
-    flexDirection: "column",
+    flexDirection: "row",
     alignItems: "center",
   },
 
@@ -352,17 +352,19 @@ const styles = StyleSheet.create({
     paddingBottom: 2,
   },
 
-  containerTitle: {
-    color: "#fff",
-    fontWeight: "500",
-    fontSize: 18,
-  },
-
   containerRowTitle: {
     color: "#fff",
     fontWeight: "700",
     fontSize: 18,
     marginLeft: 15,
+  },
+
+  containerColumnTitle: {
+    color: "#fff",
+    fontWeight: "700",
+    fontSize: 18,
+    marginTop: 10,
+    marginBottom: 5,
   },
 
   modalArrow: {
