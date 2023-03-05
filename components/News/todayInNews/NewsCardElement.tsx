@@ -19,9 +19,10 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     justinfyContent: "center",
     paddingVertical: 25,
+    marginVertical: 10,
     backgroundColor: Colors.primary,
     borderRadius: 25,
-    width: "95%"
+    width: "100%"
   },
 
   newsTitle: {

@@ -9,6 +9,7 @@ import Colors from "../constants/colors";
 import NewsHeader from "../components/News/other/NewsHeader";
 import NewsTodayCard from "../components/News/todayInNews/NewsToday";
 import NewsProjectCard from "../components/News/other/NewsProjectCard";
+import NewsOldCard from "../components/News/oldNews/NewsOld";
 import QuoteCard from "../components/News/todayInNews/quoteCard";
 
 var months = [
@@ -58,10 +59,11 @@ export default function NewsScreen(props): any {
       </View>
       <View style={styles.smallCardContainer}>
         <NewsProjectCard />
-        {/* <QuoteCard /> */}
+        <QuoteCard />
       </View>
       <View style={{ width: "100%" }}>
         <NewsTodayCard />
+        <NewsOldCard />
       </View>
     </ScrollView>
   );

@@ -25,7 +25,7 @@ export default function HomeScreen(props): any {
       </View>
       <View>
         <UpcomingCard />
-        <Card style={{ width: "95%", marginHorizontal: "2.5%", borderRadius: 18, padding: 12, marginBottom: 25, }}>
+        <Card style={{ width: "95%", marginHorizontal: "2.5%", borderRadius: 18, padding: 10, marginBottom: 25, alignItems: "center", justifyContent: "center" }}>
           <NewsTodayCard />
         </Card>
       </View>

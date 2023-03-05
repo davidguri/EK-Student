@@ -16,7 +16,7 @@ import Colors from "../../../constants/colors";
 const DATA_TDY = [
   {
     id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-    title: "Back to School, folks!",
+    title: "Back to School, folks",
     publisher: "Principals Office",
     date: "September 14, 2022"
   },
@@ -58,18 +58,18 @@ export default function NewsTodayCard(props): any {
         data={DATA_TDY}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
-        horizontal={true}
         showsHorizontalScrollIndicator={false}
+        scrollEnabled={false}
       />
-      {/* <EventModal isVisible={isModalVisible} onBackdropPress={toggleModalHandler} /> */}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   card: {
-    marginHorizontal: 10,
     marginBottom: 18,
+    width: "95%",
+    marginHorizontal: "2.5%"
   },
 
   cardTitle: {
