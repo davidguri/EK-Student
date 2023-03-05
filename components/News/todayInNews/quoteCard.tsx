@@ -8,7 +8,7 @@ export default function QuoteCard(props): any {
 
     const Quotes = require("randomquote-api");
     const randomQuote = Quotes.randomQuote().quote;
-    console.log(randomQuote);
+    //console.log(randomQuote);
 
     var quote = randomQuote + " - '" + Quotes.randomQuote().author + "'"
 
