@@ -6,25 +6,15 @@ import Colors from "../../../constants/colors";
 
 export default function QuoteCard(props): any {
 
-    // const [conditionVal, setConditionVal] = useState("");
+    const Quotes = require("randomquote-api");
+    const randomQuote = Quotes.randomQuote().quote;
+    console.log(randomQuote);
 
-    const fetchData = () => {
-        fetch(`https://movie-quote-api.herokuapp.com/v1/quote?censored`)
-            .then(response => response.json())
-            .then(json => {
-                if (json.cod === "404") {
-                    // console.log("!!404!!");
-                };
-
-                console.log("Values retrieved! ", json);
-            })
-    };
-
-    fetchData();
+    var quote = randomQuote + " - '" + Quotes.randomQuote().author + "'"
 
     return (
         <Card style={styles.card}>
-            <Text style={styles.quoteText}></Text>
+            <Text style={styles.quoteText}>{quote}</Text>
         </Card>
     );
 };
