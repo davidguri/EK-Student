@@ -98,7 +98,7 @@ export default function SettingsScreen(props): any {
   } else {
     countdownText = "Only " + daysUntil + " days left!"
   };
-  let progressWidth = ((Math.floor((endOfSchool - currentDay)) / (1000 * 3600 * 24) / 235) * 100)
+  let progressWidth = ((daysUntilInt / 235) * 100)
 
   return (
     <View>
