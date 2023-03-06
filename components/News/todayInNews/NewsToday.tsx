@@ -67,7 +67,6 @@ export default function NewsTodayCard(props): any {
 
 const styles = StyleSheet.create({
   card: {
-    marginBottom: 18,
     width: "95%",
     marginHorizontal: "2.5%"
   },
