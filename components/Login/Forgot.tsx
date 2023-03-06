@@ -17,15 +17,6 @@ import firebase from "firebase/compat";
 export default function ForgotModal(props): any {
   const [email, setEmail] = useState("");
 
-  // function forgotPassword(setEmail): any {
-  //   firebase.auth().sendPasswordResetEmail(setEmail)
-  //     .then(function (user) {
-  //       alert('Please check your email...')
-  //     }).catch(function (error) {
-  //       console.log(error)
-  //     });
-  // };
-
   let emailDomain: string;
 
   const handlePasswordReset = (): any => {
@@ -34,7 +25,7 @@ export default function ForgotModal(props): any {
     if (emailDomain == "ernestkoliqi") {
       firebase.auth().sendPasswordResetEmail(email)
         .then(function (user) {
-          alert("Check your email and then come back")
+          alert("Check your email and then come back to the app!")
         })
     } else {
       alert("Use an '@ernestkoliqi' email domain! ek(0003)")
@@ -81,7 +72,7 @@ export default function ForgotModal(props): any {
                   keyboardType="email-address"
                 />
               </View>
-              <TouchableOpacity style={styles.continueContainer} onPress={() => { }}>
+              <TouchableOpacity style={styles.continueContainer} onPress={handlePasswordReset}>
                 <Text style={styles.continueText}>Continue</Text>
               </TouchableOpacity>
             </View>
