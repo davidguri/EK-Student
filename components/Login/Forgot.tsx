@@ -15,7 +15,7 @@ import Input from "../Other/Global/Input";
 import firebase from "firebase/compat";
 
 export default function ForgotModal(props): any {
-  // const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("");
 
   // function forgotPassword(setEmail): any {
   //   firebase.auth().sendPasswordResetEmail(setEmail)
@@ -25,6 +25,21 @@ export default function ForgotModal(props): any {
   //       console.log(error)
   //     });
   // };
+
+  let emailDomain: string;
+
+  const handlePasswordReset = (): any => {
+    emailDomain = (email.split("@")[1]).split(".")[0]
+    console.log("Email Domain: ", emailDomain);
+    if (emailDomain == "ernestkoliqi") {
+      firebase.auth().sendPasswordResetEmail(email)
+        .then(function (user) {
+          alert("Check your email and then come back")
+        })
+    } else {
+      alert("Use an '@ernestkoliqi' email domain! ek(0003)")
+    }
+  };
 
   return (
     <TouchableWithoutFeedback
@@ -60,8 +75,8 @@ export default function ForgotModal(props): any {
                   autoCorrect={false}
                   placeholder="jdoe@ernestkoliqi.com"
                   placeholderTextColor="#999"
-                  // value={email}
-                  // onChangeText={(text): any => setEmail(text)}
+                  value={email}
+                  onChangeText={(text): any => setEmail(text)}
                   selectTextOnFocus
                   keyboardType="email-address"
                 />
