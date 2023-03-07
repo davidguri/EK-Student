@@ -23,10 +23,6 @@ export default function CalendarScreen(props): any {
         maxDate={"2023-06-30"}
         futureScrollRange={9}
         pastScrollRange={9}
-        onDayPress={(day) => {
-          /* console.log("selected day", day); */
-        }}
-        onDayLongPress={(day) => { }}
         firstDay={1}
         disableAllTouchEventsForDisabledDays={true}
         displayLoadingIndicator={false}

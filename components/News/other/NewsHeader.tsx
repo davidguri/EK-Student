@@ -5,11 +5,8 @@ import {
   StyleSheet,
   StatusBar,
   Platform,
-  TouchableOpacity,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 
-import Colors from "../../../constants/colors";
 import WeatherWidget from "../../Other/Weather/WeatherWidget";
 
 export default function NewsHeader(props): any {

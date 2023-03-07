@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Text, StyleSheet, View, TouchableOpacity, Image } from "react-native";
+import React from "react";
+import { Text, StyleSheet } from "react-native";
 
 import Card from "../../Other/Global/Card";
 import Colors from "../../../constants/colors";

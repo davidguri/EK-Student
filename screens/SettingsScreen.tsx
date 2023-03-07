@@ -31,7 +31,6 @@ export default function SettingsScreen(props): any {
 
   function readUserData() {
     firebase.database().ref("/UsersList").child(auth.currentUser.uid).orderByChild(auth.currentUser.uid).once("value", snapshot => {
-      //console.log(snapshot.val().username, snapshot.val().email);
       setUsernameVal(snapshot.val().username);
       setEmailVal(snapshot.val().email);
     }).catch((error) => {
@@ -71,7 +70,6 @@ export default function SettingsScreen(props): any {
   };
 
   // Login shizz
-  let user = firebase.auth().currentUser;
 
   const { setIsSignedIn }: any = useContext(AppContext);
 
@@ -97,7 +95,7 @@ export default function SettingsScreen(props): any {
     countdownText = "You're halfway there!"
   } else {
     countdownText = "Only " + daysUntil + " days left!"
-  };
+  }
   let progressWidth = ((daysUntilInt / 235) * 100)
 
   return (
@@ -234,7 +232,7 @@ export default function SettingsScreen(props): any {
                   </View>
                   <Switch
                     trackColor={{ false: "#767577", true: "#30d158" }}
-                    thumbColor={isEnabled ? "#f4f3f4" : "#f4f3f4"}
+                    thumbColor={"#f4f3f4"}
                     ios_backgroundColor="#3e3e3e"
                     onValueChange={toggleSwitch}
                     value={isEnabled}

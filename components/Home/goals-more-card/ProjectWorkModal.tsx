@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   View,
   Text,
-  TouchableOpacity,
   StyleSheet,
-  SafeAreaView,
 } from "react-native";
 import Modal from "react-native-modal";
 
@@ -14,7 +12,6 @@ const ProjectWorkModal = (props) => {
   return (
     <Modal
       isVisible={props.isVisible}
-      backgroundColor={"transparent"}
       style={{ margin: 0 }}
       hideModalContentWhileAnimating={true}
       onBackdropPress={props.onBackdropPress}

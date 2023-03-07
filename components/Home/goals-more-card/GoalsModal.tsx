@@ -10,24 +10,12 @@ import {
   StatusBar,
   FlatList,
 } from "react-native";
-// import { Ionicons } from "@expo/vector-icons";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 import Colors from "../../../constants/colors";
 import Card from "../../Other/Global/Card";
 import AddGoalModal from "./AddGoalModal";
 import firebase from "firebase/compat";
-
-// const DATA = [
-//   {
-//     id: "1",
-//     title: "Launch MVP in April",
-//   },
-//   {
-//     id: "2",
-//     title: "Test Goal",
-//   },
-// ];
 
 const Item = ({ title }) => {
   return (
@@ -48,11 +36,11 @@ export default function GoalsModal(props): any {
 
   const [data, setData] = useState([])
 
-  const readData = () => {
-    firebase.database().ref('GoalsList/').once('value', function (snapshot) {
-      console.log(snapshot.val)
-    });
-  }
+  // const readData = () => {
+  //   firebase.database().ref('GoalsList/').once('value', function (snapshot) {
+  //     //console.log(snapshot.val)
+  //   });
+  // }
 
   const renderItem = ({ item }) => <Item title={item.title} />;
 

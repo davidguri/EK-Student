@@ -21,7 +21,6 @@ import firebase from "firebase/compat";
 import Background from "../../assets/background.png";
 
 import { AppContext } from "../../App";
-import { getDatabase, ref, set } from "firebase/database";
 
 const SignupModal = (props) => {
   const [username, setUsername] = useState("");
@@ -33,7 +32,7 @@ const SignupModal = (props) => {
   let emailDomain: string;
 
   const handleSignup = (): any => {
-    Keyboard.dismiss
+    Keyboard.dismiss();
     emailDomain = (email.split("@")[1]).split(".")[0]
     console.log("Email Domain: ", emailDomain);
     if (emailDomain == "ernestkoliqi") {
@@ -56,7 +55,6 @@ const SignupModal = (props) => {
           setIsSignedIn(true);
         })
         .catch((error) => alert(error.message));
-      // writeUserData(email, username)
     } else {
       alert("Use an '@ernestkoliqi' email domain! ek(0003)")
     };

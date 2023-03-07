@@ -13,7 +13,6 @@ import {
 } from "react-native";
 
 import Colors from "../../../constants/colors";
-import Card from "../../Other/Global/Card";
 
 const NewsDetailPage = (props) => {
   return (

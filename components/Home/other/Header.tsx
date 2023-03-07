@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
   StyleSheet,
   StatusBar,
   Platform,
-  TouchableOpacity,
 } from "react-native";
 
-import Colors from "../../../constants/colors";
 import WeatherWidget from "../../Other/Weather/WeatherWidget";
 
 import firebase from "firebase/compat";
@@ -18,10 +16,11 @@ export default function Header(props): any {
 
   const [usernameVal, setUsernameVal] = useState("")
 
+  let username: string;
+
   function readUserData() {
     firebase.database().ref("/UsersList").child(auth.currentUser.uid).orderByChild(auth.currentUser.uid).once("value", snapshot => {
-      //console.log(snapshot.val().username);
-      var username = snapshot.val().username.split(" ")[0];
+      username = snapshot.val().username.split(" ")[0];
       setUsernameVal(username);
     }).catch((error) => {
       console.log("error:", error);
@@ -30,14 +29,15 @@ export default function Header(props): any {
 
   readUserData();
 
-  var objDate = new Date();
-  var hours = objDate.getHours();
+  let objDate = new Date();
+  let hours = objDate.getHours();
+  let HelloText: string;
   if (hours >= 0 && hours < 12) {
-    var HelloText = "Good Morning," + " " + usernameVal;
+    HelloText = "Good Morning," + " " + usernameVal;
   } else if (hours >= 12 && hours < 18) {
-    var HelloText = "Good 'Noon," + " " + usernameVal;
+    HelloText = "Good 'Noon," + " " + usernameVal;
   } else {
-    var HelloText = "Good Evening," + " " + usernameVal;
+    HelloText = "Good Evening," + " " + usernameVal;
   }
 
   return (

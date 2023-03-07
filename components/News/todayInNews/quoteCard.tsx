@@ -8,7 +8,7 @@ export default function QuoteCard(props): any {
   const Quotes = require("randomquote-api");
   const randomQuote = Quotes.randomQuote().quote;
 
-  var quote = randomQuote + "\n- " + Quotes.randomQuote().author + ""
+  let quote = randomQuote + "\n- " + Quotes.randomQuote().author + ""
 
   return (
     <Card style={styles.card}>

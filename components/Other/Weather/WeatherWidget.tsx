@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { useState } from "react";
+import { Text, StyleSheet } from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
 
 import Card from "../Global/Card";
-import Colors from "../../../constants/colors";
 
 import { weatherConditions } from "./WeatherConditions";
 

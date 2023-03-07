@@ -7,11 +7,9 @@ import {
 
 import Header from "../components/Home/other/Header";
 import UpcomingCard from "../components/Home/today-tomorrow-card/UpcomingCard";
-import WeatherWidget from "../components/Other/Weather/WeatherWidget";
 import NewsTodayCard from "../components/News/todayInNews/NewsToday";
 import GoalsCard from "../components/Home/goals-more-card/GoalsCard";
 
-import Colors from "../constants/colors";
 import Card from "../components/Other/Global/Card";
 
 export default function HomeScreen(props): any {
@@ -25,7 +23,7 @@ export default function HomeScreen(props): any {
       </View>
       <View>
         <UpcomingCard />
-        <Card style={{ width: "95%", marginHorizontal: "2.5%", borderRadius: 18, padding: 10, marginBottom: 25, alignItems: "center", justifyContent: "center" }}>
+        <Card style={styles.newsTodayCard}>
           <NewsTodayCard />
         </Card>
       </View>
@@ -49,5 +47,15 @@ const styles = StyleSheet.create({
     width: "95%",
     flexDirection: "column",
     alignItems: "center",
+  },
+
+  newsTodayCard: {
+    width: "95%",
+    marginHorizontal: "2.5%",
+    borderRadius: 18,
+    padding: 10,
+    marginBottom: 25,
+    alignItems: "center",
+    justifyContent: "center"
   },
 });

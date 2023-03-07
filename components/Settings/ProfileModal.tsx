@@ -26,7 +26,6 @@ export default function ProfileModal(props): any {
 
   function readUserData() {
     firebase.database().ref("/UsersList").child(auth.currentUser.uid).orderByChild(auth.currentUser.uid).once("value", snapshot => {
-      //console.log(snapshot.val().username, snapshot.val().email);
       setUsernameVal(snapshot.val().username);
       setEmailVal(snapshot.val().email);
     }).catch((error) => {
