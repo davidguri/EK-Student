@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   View,
   Text,
-  Image,
   TouchableOpacity,
   StyleSheet,
   SafeAreaView,
@@ -16,7 +15,6 @@ import Card from "../Other/Global/Card";
 import { Ionicons } from "@expo/vector-icons";
 
 import Colors from "../../constants/colors";
-import { Link } from "@react-navigation/native";
 
 export default function FeedbackModal(props): any {
   return (
@@ -38,7 +36,7 @@ export default function FeedbackModal(props): any {
             </TouchableOpacity>
           </View>
 
-          <ScrollView style={{ backgroundColor: "#000", width: "100%" }}>
+          <ScrollView style={{ width: "100%" }}>
             <View style={styles.body}>
               <View style={styles.headContainer}>
                 <Text style={styles.title}>Feedback</Text>

@@ -9,7 +9,6 @@ import {
   FlatList,
   Switch,
   Platform,
-  ScrollView,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -75,12 +74,6 @@ export default function ToDoModal(props): any {
     setIsOpenAddModal(false);
   };
 
-  // const addElement = () => {
-  //   {
-  //     /* Add new element with Redux */
-  //   }
-  // };
-
   return (
     <Modal
       isVisible={props.visible}
@@ -133,7 +126,7 @@ export default function ToDoModal(props): any {
                   </View>
                   <Switch
                     trackColor={{ false: "#767577", true: "#30d158" }}
-                    thumbColor={isEnabledCompleted ? "#f4f3f4" : "#f4f3f4"}
+                    thumbColor={"#f4f3f4"}
                     ios_backgroundColor="#3e3e3e"
                     onValueChange={toggleCompleted}
                     value={isEnabledCompleted}
@@ -155,7 +148,7 @@ export default function ToDoModal(props): any {
                   </View>
                   <Switch
                     trackColor={{ false: "#767577", true: "#30d158" }}
-                    thumbColor={isEnabledAll ? "#f4f3f4" : "#f4f3f4"}
+                    thumbColor={"#f4f3f4"}
                     ios_backgroundColor="#3e3e3e"
                     onValueChange={toggleAll}
                     value={isEnabledAll}

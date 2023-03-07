@@ -1,17 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   View,
   Text,
-  ScrollView,
   TouchableOpacity,
   StyleSheet,
   FlatList,
 } from "react-native";
 
 import NewsCardElement from "./NewsCardElement";
-import EventModal from "../../Home/today-tomorrow-card/EventModal";
 
-import Colors from "../../../constants/colors";
 
 const DATA_TDY = [
   {
@@ -35,17 +32,12 @@ const DATA_TDY = [
 ];
 
 export default function NewsTodayCard(props): any {
-  // const [isModalVisible, setModalVisible] = useState(false);
 
   const Item = ({ title, publisher, date }) => (
     <TouchableOpacity onPress={() => { }}>
       <NewsCardElement title={title} publisher={publisher} date={date} />
     </TouchableOpacity>
   );
-
-  // const toggleModalHandler = () => {
-  //   setModalVisible(!isModalVisible);
-  // };
 
   const renderItem = ({ item }) => (
     <Item title={item.title} publisher={item.publisher} date={item.date} />

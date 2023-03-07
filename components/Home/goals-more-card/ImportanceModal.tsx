@@ -12,7 +12,6 @@ import Modal from "react-native-modal";
 import NumberPlease from "react-native-number-please";
 
 import Colors from "../../../constants/colors";
-import Card from "../../Other/Global/Card";
 
 const ImportanceModal = (props) => {
   const initialValues = [{ id: "importance", value: 1 }];

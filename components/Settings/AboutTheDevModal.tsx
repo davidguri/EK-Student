@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   View,
   Text,
-  Image,
   TouchableOpacity,
   StyleSheet,
   SafeAreaView,
@@ -37,7 +36,7 @@ export default function AboutTheDevModal(props): any {
             </TouchableOpacity>
           </View>
 
-          <ScrollView style={{ backgroundColor: "#000", width: "100%" }}>
+          <ScrollView style={{ width: "100%" }}>
             <View style={styles.body}>
               <View style={styles.headContainer}>
                 <Text style={styles.title}>About The Developer</Text>

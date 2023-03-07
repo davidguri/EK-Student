@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Text, StyleSheet, TouchableOpacity } from "react-native";
 
-import Card from "../../Other/Global/Card";
 import Colors from "../../../constants/colors";
 
 import AddProjectModal from "./AddProjectModal";

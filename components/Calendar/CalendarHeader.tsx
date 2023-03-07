@@ -1,17 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   View,
   Text,
   StyleSheet,
   StatusBar,
   Platform,
-  TouchableOpacity,
 } from "react-native";
 
-import Colors from "../../constants/colors";
-
 export default function CalendarHeader(props): any {
-  var months = [
+  let months = [
     "Jan",
     "Feb",
     "Mar",
@@ -40,9 +37,9 @@ export default function CalendarHeader(props): any {
     }
   };
 
-  var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  var dt = new Date();
-  var date =
+  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  let dt = new Date();
+  let date =
     days[dt.getDay()] + ", " + months[dt.getMonth()] + " " + dt.getDate() + nth(dt.getDate());
 
   return (

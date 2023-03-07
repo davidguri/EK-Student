@@ -17,19 +17,12 @@ import firebase from "firebase/compat";
 export default function ForgotModal(props): any {
   const [email, setEmail] = useState("");
 
-  let emailDomain: string;
-
   const handlePasswordReset = (): any => {
-    emailDomain = (email.split("@")[1]).split(".")[0]
-    console.log("Email Domain: ", emailDomain);
-    if (emailDomain == "ernestkoliqi") {
-      firebase.auth().sendPasswordResetEmail(email)
-        .then(function (user) {
-          alert("Check your email and then come back to the app!")
-        })
-    } else {
-      alert("Use an '@ernestkoliqi' email domain! ek(0003)")
-    }
+    firebase.auth().sendPasswordResetEmail(email)
+      .then(function (user) {
+        alert("Check your email and then come back to the app!")
+      })
+      .catch((error) => alert(error.message));
   };
 
   return (

@@ -27,7 +27,7 @@ export default function AddGoalModal(props): any {
       // console.log('data ' , data)
     }).catch((error) => {
       //error callback
-      console.log('error ', error)
+      //('error ', error)
     })
   }
 

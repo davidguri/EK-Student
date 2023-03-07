@@ -7,7 +7,6 @@ import {
   Modal,
   SafeAreaView,
   StatusBar,
-  ScrollView,
   Platform,
   FlatList,
 } from "react-native";
@@ -55,15 +54,6 @@ const DATA = [
 ];
 
 const Item = ({ title }): any => {
-  {
-    /* const str = "hi-i-am-david-guri";
-  const arr = str.split("-");
-  for (var i = 0; i < arr.length; i++) {
-    arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
-  }
-  const str2 = arr.join(" ");
-console.log(str2); */
-  }
   {
     /* This is just a proof of concept for now to turn the names above into a normal convention */
   }
@@ -132,31 +122,31 @@ console.log(str2); */
 const ProjectsModal = (props) => {
   const renderItem = ({ item }) => <Item title={item.title} />;
 
-  const writeData = (title: string, subject: string, date: string, total_points: number) => { //email and full name
-    firebase.database().ref('ProjectsList/').push({
-      title,
-      subject,
-      date,
-      total_points
-    }).then((data) => {
-      //success callback
-      // console.log('data ' , data)
-    }).catch((error) => {
-      //error callback
-      console.log('error ', error)
-    })
-  }
+  // const writeData = (title: string, subject: string, date: string, total_points: number) => { //email and full name
+  //   firebase.database().ref('ProjectsList/').push({
+  //     title,
+  //     subject,
+  //     date,
+  //     total_points
+  //   }).then((data) => {
+  //     //success callback
+  //     // console.log('data ' , data)
+  //   }).catch((error) => {
+  //     //error callback
+  //     //console.log('error ', error)
+  //   })
+  // }
 
-  const [data, setData] = useState([])
+  // const [data, setData] = useState([])
 
-  const readData = () => {
-    firebase.database().ref('GoalsList/').once('value', function (snapshot) {
-      console.log(snapshot.val)
-      setData(snapshot.val())
-    });
-  }
+  // const readData = () => {
+  //   firebase.database().ref('GoalsList/').once('value', function (snapshot) {
+  //     console.log(snapshot.val)
+  //     setData(snapshot.val())
+  //   });
+  // }
 
-  readData
+  // readData();
 
   return (
     <Modal visible={props.visible} animationType="slide" transparent={true}>

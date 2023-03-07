@@ -12,7 +12,7 @@ import NewsProjectCard from "../components/News/other/NewsProjectCard";
 import NewsOldCard from "../components/News/oldNews/NewsOld";
 import QuoteCard from "../components/News/todayInNews/quoteCard";
 
-var months = [
+let months = [
   "January",
   "February",
   "March",
@@ -41,9 +41,9 @@ const nth = function (d) {
   }
 };
 
-var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-var dt = new Date();
-var date =
+let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+let dt = new Date();
+let date =
   days[dt.getDay()] +
   ", " +
   months[dt.getMonth()] +
