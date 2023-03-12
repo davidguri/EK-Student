@@ -51,18 +51,17 @@ With this app, I aim to make student life here in our school easier, even by a s
     -   [ ] Information
 -   [x] Login Screen
 -   [x] Signup Screen
--   [ ] Settings Screen
-    -   [ ] Editable Profile
+-   [x] Settings Screen
     -   [x] About the Developer page
     -   [x] Feedback page
-    -   [ ] Privacy page
+    -   [x] Privacy page
     -   [x] Dark mode switch
     -   [x] Logout function
 -   [ ] Home Screen
-    -   [ ] Weather
+    -   [x] Weather
     -   [x] Teams Redirect
     -   [x] Goals, Tasks, and Projects buttons and modals
-    -   [x] Next Today
+    -   [ ] Next Today
     -   [ ] For Tomorrow
 -   [x] Calendar Screen
 -   [ ] News Screen
