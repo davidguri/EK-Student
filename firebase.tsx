@@ -3,7 +3,7 @@ import "firebase/compat/auth";
 import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_CONFIG_API_KEY,
+  apiKey: "AIzaSyDcEpAnkGi44t3XEC5TUyMfcEKEHgCKWwA",
   authDomain: "ek-student-dfaa9.firebaseapp.com",
   projectId: "ek-student-dfaa9",
   storageBucket: "ek-student-dfaa9.appspot.com",
