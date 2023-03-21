@@ -2,16 +2,14 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import { getDatabase } from "firebase/database";
 
-const APIKey = process.env.FIREBASE_CONFIG_API_KEY
-
 const firebaseConfig = {
-  apiKey: APIKey,
+  apiKey: "AIzaSyDcEpAnkGi44t3XEC5TUyMfcEKEHgCKWwA",
   authDomain: "ek-student-dfaa9.firebaseapp.com",
+  databaseURL: "https://ek-student-dfaa9-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "ek-student-dfaa9",
   storageBucket: "ek-student-dfaa9.appspot.com",
   messagingSenderId: "223785383157",
-  appId: "1:223785383157:web:8e73b3b340660f9a7c01bc",
-  databaseURL: "https://ek-student-dfaa9-default-rtdb.europe-west1.firebasedatabase.app/",
+  appId: "1:223785383157:web:8e73b3b340660f9a7c01bc"
 };
 
 let app: any;
