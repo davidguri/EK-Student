@@ -1,15 +1,22 @@
 import React from "react";
-import { Text, StyleSheet } from "react-native";
+import { Text, StyleSheet, View } from "react-native";
 
 import Card from "../../Other/Global/Card";
 import Colors from "../../../constants/colors";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function NewsCardElement(props): any {
   return (
     <Card style={styles.newsCard}>
       <Text style={styles.newsTitle}>{props.title}</Text>
       <Text style={styles.newsDesc}>Hello there I am david guri</Text>
-      <Text style={styles.newsInfo}>{props.publisher}, {props.date}</Text>
+      <View style={styles.infoContainer}>
+        <View style={styles.newsSourceContainer}>
+          <Ionicons name={props.iconName} color={Colors.primary} size={20} />
+          <Text style={styles.newsSource}>{props.publisher}</Text>
+        </View>
+        <Text style={styles.newsInfo}>{props.date}</Text>
+      </View>
     </Card>
   );
 };
@@ -40,5 +47,28 @@ const styles = StyleSheet.create({
   newsInfo: {
     fontSize: 14,
     fontWeight: "600",
+  },
+
+  newsSourceContainer: {
+    backgroundColor: "#1a1a1a",
+    borderRadius: 25,
+    padding: 10,
+    paddingHorizontal: 15,
+    flexDirection: "row",
+    alignItems: "center"
+  },
+
+  newsSource: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "white",
+    paddingLeft: 10,
+  },
+
+  infoContainer: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
 });
