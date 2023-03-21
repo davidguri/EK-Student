@@ -16,6 +16,7 @@ import Modal from "react-native-modal";
 import Colors from "../../constants/colors";
 import Card from "../Other/Global/Card";
 
+import GradesModal from "./GradesModal";
 import firebase from "firebase/compat";
 import { auth } from "../../firebase";
 
@@ -40,6 +41,12 @@ export default function ProfileModal(props): any {
       { text: "Ok", onPress: () => { }, style: "default" },
     ]);
 
+  const [isOpenGradesModal, setIsOpenGradesModal] = useState(false);
+
+  const toggleGradesModalHandler = () => {
+    setIsOpenGradesModal(!isOpenGradesModal);
+  };
+
   return (
     <Modal
       isVisible={props.visible}
@@ -53,12 +60,11 @@ export default function ProfileModal(props): any {
       <SafeAreaView style={{ backgroundColor: "black" }}>
         <View style={styles.screen}>
           <View style={styles.header}>
-            <TouchableOpacity onPress={props.onCancel} style={styles.button}>
-              <Text style={styles.buttonText}>&lt; </Text>
-              <Text style={styles.buttonText}>Settings</Text>
-            </TouchableOpacity>
             <TouchableOpacity onPress={alertConst} style={styles.button}>
               <Text style={styles.buttonText}>Edit</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={props.onCancel} style={styles.button}>
+              <Text style={styles.buttonText}>Settings &gt;</Text>
             </TouchableOpacity>
           </View>
 
@@ -92,10 +98,30 @@ export default function ProfileModal(props): any {
                     <Text style={styles.modalArrow}>&gt; </Text>
                   </TouchableOpacity>
                 </Card>
+                <Card style={styles.containerRow}>
+                  <TouchableOpacity
+                    onPress={toggleGradesModalHandler}
+                    style={styles.containerButton}
+                  >
+                    <View style={styles.leftContainer}>
+                      <Ionicons
+                        name="school"
+                        size={27}
+                        color={Colors.primary}
+                      />
+                      <Text style={styles.containerRowTitle}>My Grades</Text>
+                    </View>
+                    <Text style={styles.modalArrow}>&gt; </Text>
+                  </TouchableOpacity>
+                </Card>
               </View>
             </View>
           </ScrollView>
         </View>
+        <GradesModal
+          visible={isOpenGradesModal}
+          onCancel={toggleGradesModalHandler}
+        />
       </SafeAreaView>
     </Modal>
   );
