@@ -77,7 +77,7 @@ export default function UpcomingCard(props): any {
 
   return (
     <View style={styles.card}>
-      <Text style={styles.cardTitle}>Next Today</Text>
+      <Text style={styles.cardTitle}>Timetable</Text>
       <FlatList
         data={DATA_TDY}
         renderItem={renderItem}
