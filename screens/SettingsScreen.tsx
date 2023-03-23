@@ -70,7 +70,6 @@ export default function SettingsScreen(props): any {
   };
 
   // Login shizz
-
   const { setIsSignedIn }: any = useContext(AppContext);
 
   const handleSignOut = () => {
@@ -83,20 +82,17 @@ export default function SettingsScreen(props): any {
   };
 
   // Countdown shtuff
-  let endOfSchool = (new Date("06/14/2023")).getTime()
-  let currentDay = (new Date()).getTime()
-  let daysUntil = (Math.floor((endOfSchool - currentDay) / (1000 * 3600 * 24))).toString()
-  let daysUntilInt = (Math.floor((endOfSchool - currentDay)) / (1000 * 3600 * 24))
+  let daysUntil = (Math.floor((((new Date("06/14/2023")).getTime()) - ((new Date()).getTime()))) / (1000 * 3600 * 24))
   let countdownText: string;
 
-  if (daysUntilInt == 235) {
+  if (daysUntil == 235) {
     countdownText = "IT'S THE LAST DAY!!";
-  } else if (daysUntilInt == Math.floor(235 / 2) || daysUntilInt == Math.ceil(235 / 2)) {
+  } else if (daysUntil == Math.floor(235 / 2) || daysUntil == Math.ceil(235 / 2)) {
     countdownText = "You're halfway there!"
   } else {
-    countdownText = "Only " + daysUntil + " days left!"
+    countdownText = "Only " + Math.floor(daysUntil).toString() + " days left!"
   }
-  let progressWidth = ((daysUntilInt / 235) * 100)
+  let progressWidth = ((daysUntil / 235) * 100)
 
   return (
     <View>
