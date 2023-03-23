@@ -9,20 +9,14 @@ import {
 import Colors from "../../../constants/colors";
 
 import GoalModal from "./GoalsModal";
-import ToDoModal from "./ToDoModal";
 import ProjectsModal from "./ProjectsModal";
 
 export default function GoalsCard(props): any {
   const [isOpenGoalModal, setIsOpenGoalModal] = useState(false);
-  const [isOpenToDoModal, setIsOpenToDoModal] = useState(false);
   const [isOpenProjectModal, setIsOpenProjectModal] = useState(false);
 
   const toggleGoalModalHandler = () => {
     setIsOpenGoalModal(!isOpenGoalModal);
-  };
-
-  const toggleToDoModalHandler = () => {
-    setIsOpenToDoModal(!isOpenToDoModal);
   };
 
   const toggleProjectModalHandler = () => {
@@ -38,19 +32,12 @@ export default function GoalsCard(props): any {
         <Text style={styles.buttonText}>Goals</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={toggleToDoModalHandler}
-        style={styles.buttonContainer}
-      >
-        <Text style={styles.buttonText}>Tasks</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
         onPress={toggleProjectModalHandler}
         style={styles.buttonContainer}
       >
         <Text style={styles.buttonText}>Projects</Text>
       </TouchableOpacity>
       <GoalModal visible={isOpenGoalModal} onCancel={toggleGoalModalHandler} />
-      <ToDoModal visible={isOpenToDoModal} onCancel={toggleToDoModalHandler} />
       <ProjectsModal visible={isOpenProjectModal} onCancel={toggleProjectModalHandler} />
     </View>
   );
@@ -60,19 +47,20 @@ const styles = StyleSheet.create({
   card: {
     width: "100%",
     flexDirection: "row",
-    justifyContent: "center",
+    alignItems: "center",
+    justifyContent: "space-around",
     paddingVertical: 0,
   },
 
   buttonContainer: {
-    width: "31%",
+    width: "48%",
     backgroundColor: Colors.primary,
     borderRadius: 15,
-    marginHorizontal: "1.5%",
+    marginHorizontal: "1%",
   },
 
   buttonText: {
-    fontSize: 22,
+    fontSize: 23,
     fontWeight: "700",
     paddingVertical: 15,
     textAlign: "center",
