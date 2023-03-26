@@ -15,10 +15,9 @@ The app is divided into sections, also known as Tabs:
 
 The first tab is the **Home tab**, otherwise the "dashboard" of the app, where you can quickly glance at the most important information.
 
-At the top (look at the screenshot below), there are three cards. One for the weather, to help you in the morning to quickly see what the weather is going to be like. Below that there is a Microsoft Teams button that redirects you to the Teams app. To the right of these is a bigger card that holds three different buttons: Goals, Tasks, and Projects.
+At the top (look at the screenshot below), there are three cards. One for the weather, to help you in the morning to quickly see what the weather is going to be like. To the right of these is a bigger card that holds three different buttons: Goals, Tasks, and Projects.
 
 -   The Goals button leads to a modal where you can set and complete goals for yourself throughout the school year.
--   The Tasks button leads to a modal where you can view deadlines for homework or other assignments. You can also set them as completed when done.
 -   The Projects button leads to a modal where you can view different projects throughout your subjects, including your groups, the points the project has, and the objectives.
 
 Below this section, Next Today and For Tomorrow cards are displayed one beneath the other.
