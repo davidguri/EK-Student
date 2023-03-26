@@ -9,7 +9,7 @@ export default function NewsCardElement(props): any {
   return (
     <Card style={styles.newsCard}>
       <Text style={styles.newsTitle}>{props.title}</Text>
-      <Text style={styles.newsDesc}>Hello there I am david guri</Text>
+      <Text style={styles.newsDesc}>Now that's unfortunate!</Text>
       <View style={styles.infoContainer}>
         <View style={styles.newsSourceContainer}>
           <Ionicons name={props.iconName} color={Colors.primary} size={20} />
