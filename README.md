@@ -5,6 +5,10 @@
 > Tirana, Albania
 > Status: In Progress
 
+## 🥞 Tech Stack
+
+A tech stack is the combination of technologies someone uses to build and run an application or project. The tech stack I am using is a custom one "engineered" only for this project called FRaT, which stands for Firebase React and Typescript.
+
 ## 👀 Overview
 
 My project is an app called EK-Student, which is going to be available on all platforms (such as iOS, Android, Windows, and macOS\*). The app aims to help students of Ernest Koliqi high-school to keep track of their classes, updated schedules, project deadlines, assigned homework, test dates, etc. Furthermore, the app will also provide a "news" section, where all relevant news from the Ministry of Education (such as national holidays, etc) and from the school itself (such as field trip announcements, events, etc) are shown.
