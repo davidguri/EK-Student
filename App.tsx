@@ -24,6 +24,29 @@ const appTheme = {
   },
 };
 
+const tabNavTheme = ({ route }) => ({
+  tabBarIcon: ({ focused, color, size }) => {
+    let iconName: any;
+    if (route.name === "Home") {
+      iconName = focused ? "home" : "home-outline";
+    } else if (route.name === "News") {
+      iconName = focused ? "newspaper" : "newspaper-outline";
+    } else if (route.name === "Settings") {
+      iconName = focused ? "settings-sharp" : "settings-outline";
+    } else if (route.name === "Calendar") {
+      iconName = focused ? "calendar" : "calendar-outline";
+    }
+    return <Ionicons name={iconName} size={size} color={color} />;
+  },
+  tabBarStyle: {
+    backgroundColor: "rgba(0, 0, 0, 0.4)"
+  },
+  activeTintColor: Colors.primary,
+  inactiveTintColor: Colors.back,
+  showLabel: true,
+  showIcon: true,
+})
+
 function Home() {
   return <HomeScreen />;
 }
@@ -48,28 +71,7 @@ function Feed() {
   return (
     <SafeAreaView style={styles.screen}>
       <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName: any;
-            if (route.name === "Home") {
-              iconName = focused ? "home" : "home-outline";
-            } else if (route.name === "News") {
-              iconName = focused ? "newspaper" : "newspaper-outline";
-            } else if (route.name === "Settings") {
-              iconName = focused ? "settings-sharp" : "settings-outline";
-            } else if (route.name === "Calendar") {
-              iconName = focused ? "calendar" : "calendar-outline";
-            }
-            return <Ionicons name={iconName} size={size} color={color} />;
-          },
-          tabBarStyle: {
-            backgroundColor: "rgba(0, 0, 0, 0.4)"
-          },
-          activeTintColor: Colors.primary,
-          inactiveTintColor: Colors.back,
-          showLabel: true,
-          showIcon: true,
-        })}
+        screenOptions={tabNavTheme}
       >
         <Tab.Screen
           name="Home"
