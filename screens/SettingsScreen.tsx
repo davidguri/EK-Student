@@ -30,12 +30,16 @@ export default function SettingsScreen(props): any {
   const [emailVal, setEmailVal] = useState("")
 
   function readUserData() {
-    firebase.database().ref("/UsersList").child(auth.currentUser.uid).orderByChild(auth.currentUser.uid).once("value", snapshot => {
-      setUsernameVal(snapshot.val().username);
-      setEmailVal(snapshot.val().email);
-    }).catch((error) => {
-      console.log("error:", error);
-    })
+    firebase.database()
+      .ref("/UsersList")
+      .child(auth.currentUser.uid)
+      .orderByChild(auth.currentUser.uid)
+      .once("value", snapshot => {
+        setUsernameVal(snapshot.val().username);
+        setEmailVal(snapshot.val().email);
+      }).catch((error) => {
+        console.log("error:", error);
+      })
   };
 
   readUserData();

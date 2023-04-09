@@ -69,10 +69,10 @@ export default function GradesModal(props): any {
       <SafeAreaView style={{ backgroundColor: "black" }}>
         <View style={styles.screen}>
           <View style={styles.header}>
-            <Text style={styles.headerTitle}>Grades</Text>
             <TouchableOpacity onPress={props.onCancel} style={styles.button}>
-              <Text style={styles.buttonText}>Back &gt;</Text>
+              <Text style={styles.buttonText}>&lt; Back</Text>
             </TouchableOpacity>
+            <Text style={styles.headerTitle}>Grades</Text>
           </View>
           <ScrollView style={{ backgroundColor: "#000", width: "100%" }}>
             <View style={styles.body}>
@@ -132,8 +132,6 @@ const styles = StyleSheet.create({
     marginHorizontal: "2.5%",
     height: "auto",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-    flexDirection: "row",
-    alignItems: "center",
     justifyContent: "space-between",
     marginVertical: 12,
     marginBottom: 20,

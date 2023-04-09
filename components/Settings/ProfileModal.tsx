@@ -37,7 +37,7 @@ export default function ProfileModal(props): any {
   readUserData();
 
   const alertConst = () =>
-    Alert.alert("Sorry!", "That feature is still under development. 😢 Come back soon to try again!", [
+    Alert.alert("Sorry!", "That feature is still under development 😢. Come back soon to try again!", [
       { text: "Ok", onPress: () => { }, style: "default" },
     ]);
 
@@ -60,11 +60,11 @@ export default function ProfileModal(props): any {
       <SafeAreaView style={{ backgroundColor: "black" }}>
         <View style={styles.screen}>
           <View style={styles.header}>
+            <TouchableOpacity onPress={props.onCancel} style={styles.button}>
+              <Text style={styles.buttonText}>&lt; Settings</Text>
+            </TouchableOpacity>
             <TouchableOpacity onPress={alertConst} style={styles.button}>
               <Text style={styles.buttonText}>Edit</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={props.onCancel} style={styles.button}>
-              <Text style={styles.buttonText}>Settings &gt;</Text>
             </TouchableOpacity>
           </View>
 
@@ -82,6 +82,7 @@ export default function ProfileModal(props): any {
                     <Text style={styles.profileEmail}>{emailVal}</Text>
                   </View>
                 </View>
+                <Text style={styles.sectionHeader}>Personal</Text>
                 <Card style={styles.containerRow}>
                   <TouchableOpacity
                     onPress={() => { }}
@@ -110,6 +111,23 @@ export default function ProfileModal(props): any {
                         color={Colors.primary}
                       />
                       <Text style={styles.containerRowTitle}>My Grades</Text>
+                    </View>
+                    <Text style={styles.modalArrow}>&gt; </Text>
+                  </TouchableOpacity>
+                </Card>
+                <Text style={styles.sectionHeader}>Account</Text>
+                <Card style={styles.containerRow}>
+                  <TouchableOpacity
+                    onPress={() => { }}
+                    style={styles.containerButton}
+                  >
+                    <View style={styles.leftContainer}>
+                      <Ionicons
+                        name="refresh-circle"
+                        size={27}
+                        color={Colors.primary}
+                      />
+                      <Text style={styles.containerRowTitle}>Change Password</Text>
                     </View>
                     <Text style={styles.modalArrow}>&gt; </Text>
                   </TouchableOpacity>
@@ -257,4 +275,11 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "600",
   },
+
+  sectionHeader: {
+    color: "#4a4a4a",
+    fontSize: 18,
+    fontWeight: "800",
+    marginVertical: 3,
+  }
 });
