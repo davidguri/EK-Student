@@ -52,6 +52,7 @@
     "react-native-swipeview": "^1.0.3",
     "react-native-swipeview-flat": "^1.0.1",
     "react-native-switch-toggles": "1.0.1",
+    "react-native-table-component": "^1.2.2",
     "react-native-toggle-button": "^0.1.0",
     "react-native-web": "~0.18.7",
     "react-redux": "^8.0.2",
