@@ -1,29 +1,36 @@
 import React, { useState } from "react";
-import { View, StyleSheet, TouchableHighlight, Text } from "react-native";
+import { View, StyleSheet, TouchableHighlight, Text, Dimensions, ScrollView, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import Colors from "../constants/colors";
 import CalendarHeader from "../components/Calendar/CalendarHeader";
+import Card from "../components/Other/Global/Card";
 
 import { Calendar } from "react-native-calendars";
 
-const events = [
-  { title: 'Event 1', date: '2023-04-01' },
-  { title: 'Event 2', date: '2023-04-01' },
-  { title: 'Event 3', date: '2023-04-02' },
-  { title: 'Event 4', date: '2023-04-03' },
+const events = [ // TODO: remove this from hardcoding
+  { title: 'Maths Exam', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", duration: "HH:MM", teacher: "Ms. Sonila", details: "Lorem Ipsum Dolor Sit amet" },
+  { title: 'English Quiz', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", duration: "HH:MM", teacher: "Ms. Morena", details: "Lorem Ipsum Dolor Sit amet" },
+  { title: 'Albanian Essay', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", duration: "HH:MM", teacher: "Ms. Junilda", details: "Lorem Ipsum Dolor Sit amet" },
+  { title: 'Albanian Project', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", duration: "HH:MM", teacher: "Ms. Junilda", details: "Lorem Ipsum Dolor Sit amet" },
+  { title: 'Albanian Something', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", duration: "HH:MM", teacher: "Ms. Junilda", details: "Lorem Ipsum Dolor Sit amet" },
 ];
 
 const CalendarObject = () => {
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().slice(0, 10));
 
-  const getEventsForDay = (date: any) => {
+  const getEventsForDay = (date) => {
     return events.filter((event) => event.date === date);
   };
 
-  const onDayPress = (day: any) => {
+  const onDayPress = (day) => {
     setSelectedDate(day.dateString);
   };
+
+  let dateSelected = (selectedDate.replaceAll("-", " ")).split(" ").reverse().join(" ");
+
+  const windowHeight = Dimensions.get('window').height;
+  const calendarHeight = windowHeight / 2.75
 
   let currentDate = (new Date()).toISOString().split('T')[0]
 
@@ -43,8 +50,9 @@ const CalendarObject = () => {
         markingType={"multi-dot"}
         markedDates={{}}
         style={{
-          height: "100%",
+          height: calendarHeight,
           backgroundColor: "#000",
+          marginBottom: 5,
         }}
         theme={{
           backgroundColor: "#000",
@@ -56,19 +64,32 @@ const CalendarObject = () => {
           monthTextColor: Colors.primary,
           indicatorColor: "white",
           textDayFontWeight: "500",
-          textMonthFontWeight: "700",
+          textMonthFontWeight: "900",
           textDayFontSize: 18,
-          textMonthFontSize: 34,
+          textMonthFontSize: 35,
           textDayHeaderFontSize: 14,
           textDayHeaderFontWeight: "700",
           arrowColor: "#fff",
           disabledArrowColor: '#2d4150',
         }}
       />
-      <Text style={{ color: "white", fontSize: 15 }}>Events for {selectedDate}:</Text>
-      {getEventsForDay(selectedDate).map((event, index) => (
-        <Text style={{ color: "white", fontSize: 15 }} key={index}>{event.title}</Text>
-      ))}
+      <View style={{ width: "90%", marginHorizontal: "5%" }}>
+        <Text style={styles.eventsTitle}>Events for {dateSelected}:</Text>
+        <ScrollView style={{ height: (calendarHeight / 1.5) + 15 }} showsVerticalScrollIndicator={false}>
+          {getEventsForDay(selectedDate).map((event, index) => (
+            <Card style={styles.eventItem} key={index}>
+              <Text style={styles.eventItemTitle}>{event.title}</Text>
+              <TouchableOpacity onPress={() => { }}>
+                <Ionicons
+                  name="chevron-down"
+                  color={Colors.primary}
+                  size={25}
+                />
+              </TouchableOpacity>
+            </Card>
+          ))}
+        </ScrollView>
+      </View>
     </View>
   );
 }
@@ -193,6 +214,28 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 4.75,
     paddingHorizontal: 5.3,
+  },
+
+  eventsTitle: {
+    fontSize: 32,
+    fontWeight: "800",
+    color: "white",
+    marginTop: 5,
+    marginBottom: 15,
+  },
+
+  eventItem: {
+    marginVertical: 5,
+    borderRadius: 20,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
+  },
+
+  eventItemTitle: {
+    fontSize: 22,
+    fontWeight: "700",
+    color: "white",
   },
 });
 
