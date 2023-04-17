@@ -59,7 +59,8 @@
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1",
     "typescript": "^4.6.3",
-    "url-parse": "^1.5.10"
+    "url-parse": "^1.5.10",
+    "expo-updates": "~0.15.6"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
