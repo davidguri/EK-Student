@@ -14,6 +14,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import Colors from "../constants/colors";
 import { AppContext } from "../App";
+import { LinearGradient } from 'expo-linear-gradient';
 
 import Card from "../components/Other/Global/Card";
 import AboutTheDevModal from "../components/Settings/AboutTheDevModal";
@@ -128,9 +129,12 @@ export default function SettingsScreen(props): any {
                   <Text style={styles.containerColumnTitle}>{countdownText}</Text>
                 </View>
                 <View style={{ width: "100%" }}>
-                  <View style={{ width: `${progressWidth}%`, backgroundColor: Colors.primary, borderRadius: 25, padding: 5, marginBottom: 10, marginTop: 5 }}>
-
-                  </View>
+                  <LinearGradient
+                    colors={['rgba(79, 255, 227, 0.2)', '#8afbe4']}
+                    style={{ width: `${progressWidth}%`, borderRadius: 25, padding: 5, marginBottom: 10, marginTop: 5 }}
+                    start={{ x: 0, y: 1 }}
+                    end={{ x: 1, y: 1 }}
+                  />
                 </View>
               </Card>
               {/* profile card */}
@@ -141,7 +145,7 @@ export default function SettingsScreen(props): any {
                 >
                   <View style={styles.leftContainer}>
                     <Ionicons
-                      name="person-circle-outline"
+                      name="person-circle"
                       size={27}
                       color={Colors.primary}
                     />

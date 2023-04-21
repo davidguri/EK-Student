@@ -26,12 +26,16 @@ export default function ProfileModal(props): any {
   const [emailVal, setEmailVal] = useState("")
 
   function readUserData() {
-    firebase.database().ref("/UsersList").child(auth.currentUser.uid).orderByChild(auth.currentUser.uid).once("value", snapshot => {
-      setUsernameVal(snapshot.val().username);
-      setEmailVal(snapshot.val().email);
-    }).catch((error) => {
-      console.log("error:", error);
-    })
+    firebase.database()
+      .ref("/UsersList")
+      .child(auth.currentUser.uid)
+      .orderByChild(auth.currentUser.uid)
+      .once("value", snapshot => {
+        setUsernameVal(snapshot.val().username);
+        setEmailVal(snapshot.val().email);
+      }).catch((error) => {
+        console.log("error:", error);
+      })
   };
 
   readUserData();
@@ -65,6 +69,12 @@ export default function ProfileModal(props): any {
             </TouchableOpacity>
             <TouchableOpacity onPress={alertConst} style={styles.button}>
               <Text style={styles.buttonText}>Edit</Text>
+              <Ionicons
+                name="pencil"
+                color={Colors.blue}
+                size={20}
+                style={styles.editIcon}
+              />
             </TouchableOpacity>
           </View>
 
@@ -73,9 +83,9 @@ export default function ProfileModal(props): any {
               <View style={styles.content}>
                 <View style={styles.accountContainer}>
                   <Ionicons
-                    name="person-circle-outline"
+                    name="person-circle"
                     color={Colors.primary}
-                    size={125}
+                    size={160}
                   />
                   <View>
                     <Text style={styles.profileUsername}>{usernameVal}</Text>
@@ -174,6 +184,7 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "space-between",
   },
 
   body: {
@@ -225,15 +236,15 @@ const styles = StyleSheet.create({
 
   profileUsername: {
     color: "#fff",
-    fontSize: 26,
-    paddingBottom: 2.25,
-    fontWeight: "600",
+    fontSize: 32,
+    paddingBottom: 2,
+    fontWeight: "800",
     textAlign: "center",
   },
 
   profileEmail: {
-    paddingTop: 2.25,
-    fontSize: 16,
+    paddingTop: 2,
+    fontSize: 18,
     fontWeight: "500",
     color: Colors.primary,
     textAlign: "center",
@@ -280,6 +291,10 @@ const styles = StyleSheet.create({
     color: "#4a4a4a",
     fontSize: 18,
     fontWeight: "800",
-    marginVertical: 3,
-  }
+    marginVertical: 5,
+  },
+
+  editIcon: {
+    paddingLeft: 12,
+  },
 });
