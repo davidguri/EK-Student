@@ -8,7 +8,7 @@ import Card from "../components/Other/Global/Card";
 
 import { Calendar } from "react-native-calendars";
 
-const events = [ // TODO: remove this from hardcoding
+const events = [ // TODO: remove this from hardcoding (aka use firebase)
   { title: 'Maths Exam', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", duration: "HH:MM", teacher: "Ms. Sonila", details: "Lorem Ipsum Dolor Sit amet" },
   { title: 'English Quiz', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", duration: "HH:MM", teacher: "Ms. Morena", details: "Lorem Ipsum Dolor Sit amet" },
   { title: 'Albanian Essay', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", duration: "HH:MM", teacher: "Ms. Junilda", details: "Lorem Ipsum Dolor Sit amet" },
@@ -18,6 +18,8 @@ const events = [ // TODO: remove this from hardcoding
 
 const CalendarObject = () => {
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().slice(0, 10));
+  let currentDate = (new Date()).toISOString().split('T')[0]
+  let dateSelected = (selectedDate.replaceAll("-", " ")).split(" ").reverse().join(" ");
 
   const getEventsForDay = (date) => {
     return events.filter((event) => event.date === date);
@@ -27,12 +29,13 @@ const CalendarObject = () => {
     setSelectedDate(day.dateString);
   };
 
-  let dateSelected = (selectedDate.replaceAll("-", " ")).split(" ").reverse().join(" ");
-
   const windowHeight = Dimensions.get('window').height;
   const calendarHeight = windowHeight / 2.75
 
-  let currentDate = (new Date()).toISOString().split('T')[0]
+  const [isDetailed, setIsDetailed] = useState(false);
+  function toggleView() {
+    setIsDetailed(!isDetailed)
+  }
 
   return (
     <View style={{ height: "100%", width: "100%" }}>
@@ -58,7 +61,7 @@ const CalendarObject = () => {
           backgroundColor: "#000",
           calendarBackground: "#000",
           textSectionTitleColor: "#b6c1cd",
-          todayTextColor: Colors.accent,
+          todayTextColor: Colors.primary,
           dayTextColor: "#d9e1e8",
           textDisabledColor: "#2d4150",
           monthTextColor: Colors.primary,
@@ -66,27 +69,39 @@ const CalendarObject = () => {
           textDayFontWeight: "500",
           textMonthFontWeight: "900",
           textDayFontSize: 18,
-          textMonthFontSize: 35,
+          textMonthFontSize: 36,
           textDayHeaderFontSize: 14,
           textDayHeaderFontWeight: "700",
           arrowColor: "#fff",
           disabledArrowColor: '#2d4150',
+          selectedDayTextColor: Colors.accent
         }}
       />
       <View style={{ width: "90%", marginHorizontal: "5%" }}>
         <Text style={styles.eventsTitle}>Events for {dateSelected}:</Text>
         <ScrollView style={{ height: (calendarHeight / 1.5) + 15 }} showsVerticalScrollIndicator={false}>
           {getEventsForDay(selectedDate).map((event, index) => (
-            <Card style={styles.eventItem} key={index}>
-              <Text style={styles.eventItemTitle}>{event.title}</Text>
-              <TouchableOpacity onPress={() => { }}>
-                <Ionicons
-                  name="chevron-down"
-                  color={Colors.primary}
-                  size={25}
-                />
-              </TouchableOpacity>
-            </Card>
+            <TouchableOpacity onPress={toggleView} key={index}>
+              <Card style={styles.eventItem}>
+                <Text style={styles.eventItemTitle}>{event.title}</Text>
+                {isDetailed ? (
+                  <Ionicons
+                    name="chevron-down"
+                    color={Colors.primary}
+                    size={25}
+                    key={index}
+                  />
+                ) : (
+                  <Ionicons
+                    name="chevron-up"
+                    color={Colors.primary}
+                    size={25}
+                    key={index}
+                  />
+                )
+                }
+              </Card>
+            </TouchableOpacity>
           ))}
         </ScrollView>
       </View>
