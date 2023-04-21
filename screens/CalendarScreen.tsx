@@ -86,14 +86,14 @@ const CalendarObject = () => {
                 <Text style={styles.eventItemTitle}>{event.title}</Text>
                 {isDetailed ? (
                   <Ionicons
-                    name="chevron-down"
+                    name="chevron-up"
                     color={Colors.primary}
                     size={25}
                     key={index}
                   />
                 ) : (
                   <Ionicons
-                    name="chevron-up"
+                    name="chevron-down"
                     color={Colors.primary}
                     size={25}
                     key={index}
