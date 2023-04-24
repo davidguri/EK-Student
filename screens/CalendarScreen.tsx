@@ -26,9 +26,16 @@ const EventComponent = ({ event, index }) => {
     <TouchableOpacity onPress={toggleView} key={index}>
       <Card style={styles.eventItem}>
         <View>
-          <Text style={styles.eventItemTitle}>{event.title}</Text>
+          <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
+            <Text style={styles.eventItemTitle}>{event.title}</Text>
+            {/* @ts-ignore */}
+            <Text style={[styles.eventItemTitle, { display: `${isBlock}`, marginLeft: 18, color: Colors.primary, fontWeight: "600" }]}>{event.time_start}</Text>
+          </View>
           {/* @ts-ignore */}
-          <Text style={{ display: `${isBlock}`, color: "white", marginTop: 5 }}>{event.details}</Text>
+          <View style={{ display: `${isBlock}`, marginTop: 5 }}>
+            <Text style={[styles.eventItemText, { marginTop: 0, marginBottom: 6, fontSize: 20, fontWeight: "700", color: Colors.primary }]} >{event.teacher}</Text>
+            <Text style={[styles.eventItemText, { fontSize: 16 }]} >{event.details}</Text>
+          </View>
         </View>
         {isDetailed ? (
           <Ionicons
@@ -51,12 +58,12 @@ const EventComponent = ({ event, index }) => {
 
 const CalendarObject = () => {
   const events = [ // TODO: remove this from hardcoding (aka use firebase)
-    { title: 'Maths Exam', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", duration: "HH:MM", teacher: "Ms. Sonila", details: "Lorem Ipsum Dolor Sit amet" },
-    { title: 'English Quiz', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", duration: "HH:MM", teacher: "Ms. Morena", details: "Lorem Ipsum Dolor Sit amet" },
-    { title: 'Albanian Essay', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", duration: "HH:MM", teacher: "Ms. Junilda", details: "Lorem Ipsum Dolor Sit amet" },
-    { title: 'Albanian Project', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", duration: "HH:MM", teacher: "Ms. Junilda", details: "Lorem Ipsum Dolor Sit amet" },
-    { title: 'Albanian Something', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", duration: "HH:MM", teacher: "Ms. Junilda", details: "Lorem Ipsum Dolor Sit amet" },
-  ];
+    { title: 'Maths Exam', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", teacher: "Ms. Sonila", details: "Lorem Ipsum Dolor Sit amet" },
+    { title: 'English Quiz', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", teacher: "Ms. Morena", details: "Lorem Ipsum Dolor Sit amet" },
+    { title: 'Albanian Essay', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", teacher: "Ms. Junilda", details: "Lorem Ipsum Dolor Sit amet" },
+    { title: 'Albanian Project', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", teacher: "Ms. Junilda", details: "Lorem Ipsum Dolor Sit amet" },
+    { title: 'Albanian Finals', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", teacher: "Ms. Junilda", details: "Lorem Ipsum Dolor Sit amet" },
+  ]; // duration is calculated locally when needed to save on server storage
 
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().slice(0, 10));
   let currentDate = (new Date()).toISOString().split('T')[0]
@@ -129,6 +136,8 @@ const CalendarObject = () => {
   );
 }
 
+// TODO: Add a touchable table component
+
 const TimetableObject = () => {
 
   const TableHead = ["Mon", "Tue", "Wed", "Thu", "Fri"]
@@ -144,8 +153,8 @@ const TimetableObject = () => {
 
   return (
     <View style={styles.container}>
-      <Table borderStyle={{ borderWidth: 3, borderColor: '#fff' }}>
-        <Row data={TableHead} style={styles.tableHead} textStyle={[styles.tableText, styles.tableHeadText]} />
+      <Table borderStyle={{ borderWidth: 1, borderColor: '#999' }}>
+        <Row data={TableHead} borderStyle={{ borderWidth: 0 }} style={styles.tableHead} textStyle={[styles.tableText, styles.tableHeadText]} />
         <Rows data={TableData} textStyle={styles.tableText} />
       </Table>
     </View>
@@ -286,8 +295,14 @@ const styles = StyleSheet.create({
 
   eventItemTitle: {
     fontSize: 22,
-    fontWeight: "700",
+    fontWeight: "800",
     color: "white",
+    margin: 0,
+  },
+
+  eventItemText: {
+    color: "white",
+    marginTop: 5
   },
 
   container: {
@@ -300,6 +315,7 @@ const styles = StyleSheet.create({
   tableHead: {
     height: 50,
     alignItems: "center",
+    backgroundColor: Colors.back,
   },
 
   tableText: {
