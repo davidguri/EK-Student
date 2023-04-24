@@ -20,11 +20,9 @@ const CalendarObject = () => {
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().slice(0, 10));
   let currentDate = (new Date()).toISOString().split('T')[0]
   let dateSelected = (selectedDate.replaceAll("-", " ")).split(" ").reverse().join(" ");
-
   const getEventsForDay = (date) => {
     return events.filter((event) => event.date === date);
   };
-
   const onDayPress = (day) => {
     setSelectedDate(day.dateString);
   };
@@ -33,8 +31,14 @@ const CalendarObject = () => {
   const calendarHeight = windowHeight / 2.75
 
   const [isDetailed, setIsDetailed] = useState(false);
+  const [isBlock, setIsBlock] = useState("none");
   function toggleView() {
-    setIsDetailed(!isDetailed)
+    setIsDetailed(!isDetailed);
+    if (isDetailed) {
+      setIsBlock("flex")
+    } else {
+      setIsBlock("none")
+    }
   }
 
   return (
@@ -83,7 +87,11 @@ const CalendarObject = () => {
           {getEventsForDay(selectedDate).map((event, index) => (
             <TouchableOpacity onPress={toggleView} key={index}>
               <Card style={styles.eventItem}>
-                <Text style={styles.eventItemTitle}>{event.title}</Text>
+                <View>
+                  <Text style={styles.eventItemTitle}>{event.title}</Text>
+                  {/* @ts-ignore */}{/* This is to ignore the "display: `${isBlock}`" below as it threw an error. */}
+                  <Text style={{ display: `${isBlock}`, color: "white", marginTop: 5 }}>{event.details}</Text>
+                </View>
                 {isDetailed ? (
                   <Ionicons
                     name="chevron-up"
