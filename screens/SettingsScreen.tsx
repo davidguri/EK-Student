@@ -128,10 +128,10 @@ export default function SettingsScreen(props): any {
                 <View style={styles.leftContainer}>
                   <Text style={styles.containerColumnTitle}>{countdownText}</Text>
                 </View>
-                <View style={{ width: "100%" }}>
+                <View style={{ width: "100%", backgroundColor: "#333", marginBottom: 10, marginTop: 5, borderRadius: 25 }}>
                   <LinearGradient
-                    colors={['rgba(79, 255, 227, 0.2)', '#8afbe4']}
-                    style={{ width: `${progressWidth}%`, borderRadius: 25, padding: 5, marginBottom: 10, marginTop: 5 }}
+                    colors={['#0d1916', '#8afbe4']}
+                    style={{ width: `${progressWidth}%`, borderRadius: 25, padding: 5, zIndex: 1 }}
                     start={{ x: 0, y: 1 }}
                     end={{ x: 1, y: 1 }}
                   />
