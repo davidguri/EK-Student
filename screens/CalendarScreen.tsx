@@ -8,15 +8,55 @@ import Card from "../components/Other/Global/Card";
 
 import { Calendar } from "react-native-calendars";
 
-const events = [ // TODO: remove this from hardcoding (aka use firebase)
-  { title: 'Maths Exam', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", duration: "HH:MM", teacher: "Ms. Sonila", details: "Lorem Ipsum Dolor Sit amet" },
-  { title: 'English Quiz', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", duration: "HH:MM", teacher: "Ms. Morena", details: "Lorem Ipsum Dolor Sit amet" },
-  { title: 'Albanian Essay', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", duration: "HH:MM", teacher: "Ms. Junilda", details: "Lorem Ipsum Dolor Sit amet" },
-  { title: 'Albanian Project', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", duration: "HH:MM", teacher: "Ms. Junilda", details: "Lorem Ipsum Dolor Sit amet" },
-  { title: 'Albanian Something', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", duration: "HH:MM", teacher: "Ms. Junilda", details: "Lorem Ipsum Dolor Sit amet" },
-];
+const EventComponent = ({ event, key }) => {
+  const [isDetailed, setIsDetailed] = useState(false);
+  const [isBlock, setIsBlock] = useState("none");
+
+  function toggleView() {
+    setIsDetailed(!isDetailed);
+    if (isDetailed) {
+      setIsBlock("flex")
+    } else {
+      setIsBlock("none")
+    }
+  }
+
+  return (
+    <TouchableOpacity onPress={toggleView} key={key}>
+      <Card style={styles.eventItem}>
+        <View>
+          <Text style={styles.eventItemTitle}>{event.title}</Text>
+          {/* @ts-ignore */}{/* This is to ignore the "display: `${isBlock}`" below as it threw an error. */}
+          <Text style={{ display: `${isBlock}`, color: "white", marginTop: 5 }}>{event.details}</Text>
+        </View>
+        {isDetailed ? (
+          <Ionicons
+            name="chevron-up"
+            color={Colors.primary}
+            size={25}
+          />
+        ) : (
+          <Ionicons
+            name="chevron-down"
+            color={Colors.primary}
+            size={25}
+          />
+        )
+        }
+      </Card>
+    </TouchableOpacity>
+  )
+}
 
 const CalendarObject = () => {
+  const events = [ // TODO: remove this from hardcoding (aka use firebase)
+    { title: 'Maths Exam', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", duration: "HH:MM", teacher: "Ms. Sonila", details: "Lorem Ipsum Dolor Sit amet" },
+    { title: 'English Quiz', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", duration: "HH:MM", teacher: "Ms. Morena", details: "Lorem Ipsum Dolor Sit amet" },
+    { title: 'Albanian Essay', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", duration: "HH:MM", teacher: "Ms. Junilda", details: "Lorem Ipsum Dolor Sit amet" },
+    { title: 'Albanian Project', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", duration: "HH:MM", teacher: "Ms. Junilda", details: "Lorem Ipsum Dolor Sit amet" },
+    { title: 'Albanian Something', date: '2023-04-17', time_start: "HH:MM", time_end: "HH:MM", duration: "HH:MM", teacher: "Ms. Junilda", details: "Lorem Ipsum Dolor Sit amet" },
+  ];
+
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().slice(0, 10));
   let currentDate = (new Date()).toISOString().split('T')[0]
   let dateSelected = (selectedDate.replaceAll("-", " ")).split(" ").reverse().join(" ");
@@ -31,11 +71,6 @@ const CalendarObject = () => {
 
   const windowHeight = Dimensions.get('window').height;
   const calendarHeight = windowHeight / 2.75
-
-  const [isDetailed, setIsDetailed] = useState(false);
-  function toggleView() {
-    setIsDetailed(!isDetailed)
-  }
 
   return (
     <View style={{ height: "100%", width: "100%" }}>
@@ -81,27 +116,10 @@ const CalendarObject = () => {
         <Text style={styles.eventsTitle}>Events for {dateSelected}:</Text>
         <ScrollView style={{ height: (calendarHeight / 1.5) + 15 }} showsVerticalScrollIndicator={false}>
           {getEventsForDay(selectedDate).map((event, index) => (
-            <TouchableOpacity onPress={toggleView} key={index}>
-              <Card style={styles.eventItem}>
-                <Text style={styles.eventItemTitle}>{event.title}</Text>
-                {isDetailed ? (
-                  <Ionicons
-                    name="chevron-up"
-                    color={Colors.primary}
-                    size={25}
-                    key={index}
-                  />
-                ) : (
-                  <Ionicons
-                    name="chevron-down"
-                    color={Colors.primary}
-                    size={25}
-                    key={index}
-                  />
-                )
-                }
-              </Card>
-            </TouchableOpacity>
+            <EventComponent
+              event={event}
+              key={index}
+            />
           ))}
         </ScrollView>
       </View>
