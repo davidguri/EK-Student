@@ -41,11 +41,11 @@ export default function CalendarHeader(props): any {
   let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   let dt = new Date();
   let date =
-    days[dt.getDay()] + ", " + months[dt.getMonth()] + " " + dt.getDate() + nth(dt.getDate());
+    months[dt.getMonth()] + " " + dt.getDate() + nth(dt.getDate()) + ", " + dt.getFullYear();
 
   return (
     <View style={styles.header}>
-      <Text style={styles.headerTitle}>Today,</Text>
+      <Text style={styles.headerTitle}>{days[dt.getDay()]}</Text>
       <Text style={styles.headerSubtitle}>{date}</Text>
     </View>
   );
