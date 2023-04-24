@@ -7,6 +7,7 @@ import CalendarHeader from "../components/Calendar/CalendarHeader";
 import Card from "../components/Other/Global/Card";
 
 import { Calendar } from "react-native-calendars";
+import { Table, Row, Rows } from 'react-native-table-component';
 
 const EventComponent = ({ event, index }) => {
   const [isDetailed, setIsDetailed] = useState(false);
@@ -14,7 +15,7 @@ const EventComponent = ({ event, index }) => {
 
   function toggleView() {
     setIsDetailed(!isDetailed);
-    if (isDetailed) {
+    if (!isDetailed) {
       setIsBlock("flex")
     } else {
       setIsBlock("none")
@@ -26,18 +27,18 @@ const EventComponent = ({ event, index }) => {
       <Card style={styles.eventItem}>
         <View>
           <Text style={styles.eventItemTitle}>{event.title}</Text>
-          {/* @ts-ignore */}{/* This is to ignore the "display: `${isBlock}`" below as it threw an error. */}
+          {/* @ts-ignore */}
           <Text style={{ display: `${isBlock}`, color: "white", marginTop: 5 }}>{event.details}</Text>
         </View>
         {isDetailed ? (
           <Ionicons
-            name="chevron-down"
+            name="chevron-up"
             color={Colors.primary}
             size={25}
           />
         ) : (
           <Ionicons
-            name="chevron-up"
+            name="chevron-down"
             color={Colors.primary}
             size={25}
           />
@@ -129,8 +130,25 @@ const CalendarObject = () => {
 }
 
 const TimetableObject = () => {
+
+  const TableHead = ["Mon", "Tue", "Wed", "Thu", "Fri"]
+  let TableData = [
+    ["PE", "CS", "Math", "CS", "Chem"],
+    ["Math", "Lit", "Chem", "Chem", "Chem"],
+    ["Bio", "Phys", "His", "Chem", "Math"],
+    ["Bio", "Phys", "Eng", "Phys", "Math"],
+    ["Phys", "Math", "Math", "PE", "Alb"],
+    ["Phys", "Math", "Bio", "Eng", "Bio"],
+    ["Lit", "Fr", "Alb", "Fr", "Eng"],
+  ]; // We're gonna have to make a compromise here where the subjects are shorter. :(
+
   return (
-    <Text style={{ color: "white" }}>Timetable</Text>
+    <View style={styles.container}>
+      <Table borderStyle={{ borderWidth: 3, borderColor: '#fff' }}>
+        <Row data={TableHead} style={styles.tableHead} textStyle={[styles.tableText, styles.tableHeadText]} />
+        <Rows data={TableData} textStyle={styles.tableText} />
+      </Table>
+    </View>
   );
 }
 
@@ -270,5 +288,32 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: "700",
     color: "white",
+  },
+
+  container: {
+    width: "92%",
+    marginHorizontal: "4%",
+    marginTop: 20,
+    borderRadius: 25
+  },
+
+  tableHead: {
+    height: 50,
+    alignItems: "center",
+  },
+
+  tableText: {
+    margin: 10,
+    color: "white",
+    textAlign: "center",
+    fontSize: 20
+  },
+
+  tableHeadText: {
+    margin: 10,
+    color: Colors.primary,
+    textAlign: "center",
+    fontSize: 24,
+    fontWeight: "800",
   },
 });
