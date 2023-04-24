@@ -8,7 +8,7 @@ import Card from "../components/Other/Global/Card";
 
 import { Calendar } from "react-native-calendars";
 
-const EventComponent = ({ event, key }) => {
+const EventComponent = ({ event, index }) => {
   const [isDetailed, setIsDetailed] = useState(false);
   const [isBlock, setIsBlock] = useState("none");
 
@@ -22,7 +22,7 @@ const EventComponent = ({ event, key }) => {
   }
 
   return (
-    <TouchableOpacity onPress={toggleView} key={key}>
+    <TouchableOpacity onPress={toggleView} key={index}>
       <Card style={styles.eventItem}>
         <View>
           <Text style={styles.eventItemTitle}>{event.title}</Text>
@@ -31,13 +31,13 @@ const EventComponent = ({ event, key }) => {
         </View>
         {isDetailed ? (
           <Ionicons
-            name="chevron-up"
+            name="chevron-down"
             color={Colors.primary}
             size={25}
           />
         ) : (
           <Ionicons
-            name="chevron-down"
+            name="chevron-up"
             color={Colors.primary}
             size={25}
           />
@@ -118,6 +118,7 @@ const CalendarObject = () => {
           {getEventsForDay(selectedDate).map((event, index) => (
             <EventComponent
               event={event}
+              index={index}
               key={index}
             />
           ))}
