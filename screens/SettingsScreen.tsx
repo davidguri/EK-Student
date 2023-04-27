@@ -29,6 +29,7 @@ export default function SettingsScreen(props): any {
 
   const [usernameVal, setUsernameVal] = useState("")
   const [emailVal, setEmailVal] = useState("")
+  let accountType: string;
 
   function readUserData() {
     firebase.database()
@@ -44,6 +45,12 @@ export default function SettingsScreen(props): any {
   };
 
   readUserData();
+
+  if (emailVal === "dguri@ernestkoliqi.com" || emailVal === "davidguri@ernestkoliqi.com") {
+    accountType = "Developer"
+  } else {
+    accountType = "Student"
+  };
 
   const [isEnabled, setIsEnabled] = useState(true);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
@@ -114,11 +121,12 @@ export default function SettingsScreen(props): any {
               <Ionicons
                 name="person-circle-outline"
                 color={Colors.primary}
-                size={120}
+                size={125}
                 style={{ flex: 0 }}
               />
               <View style={{ flex: 1, alignItems: "flex-start", marginLeft: 5 }}>
                 <Text style={styles.profileUsername}>{usernameVal}</Text>
+                <Text style={styles.profileType}>{accountType}</Text>
                 <Text style={styles.profileEmail}>{emailVal}</Text>
               </View>
             </View>
@@ -276,7 +284,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginTop: 12,
-    marginBottom: 7.5,
   },
 
   headerTitle: {
@@ -333,17 +340,25 @@ const styles = StyleSheet.create({
 
   profileUsername: {
     color: "#fff",
-    fontSize: 26,
+    fontSize: 28,
     paddingBottom: 2.25,
-    fontWeight: "600",
+    fontWeight: "800",
     textAlign: "center",
   },
 
   profileEmail: {
     paddingTop: 2.25,
-    fontSize: 16,
-    fontWeight: "500",
+    fontSize: 17,
+    fontWeight: "600",
     color: Colors.primary,
+    textAlign: "center",
+  },
+
+  profileType: {
+    paddingVertical: 2.25,
+    fontSize: 15,
+    fontWeight: "500",
+    color: "#aaa",
     textAlign: "center",
   },
 
