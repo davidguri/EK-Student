@@ -57,14 +57,12 @@ With this app, I aim to make student life here in our school easier, even by a s
 -   [x] Settings Screen
 -   [ ] Home Screen
     -   [x] Weather
-    -   [x] Teams Redirect
     -   [x] Goals, Tasks, and Projects buttons and modals
     -   [ ] Next Today
     -   [ ] For Tomorrow
 -   [x] Calendar Screen
 -   [ ] News Screen
-    -   [ ] Project Section
-    -   [x] Today and Old News
+    -   [ ] Today and Old News
 
 ## ﻿⛳️ Milestones
 
