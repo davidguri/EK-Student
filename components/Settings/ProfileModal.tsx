@@ -8,13 +8,16 @@ import {
   ScrollView,
   StatusBar,
   Platform,
-  Alert
+  Alert,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import Modal from "react-native-modal";
 
 import Colors from "../../constants/colors";
 import Card from "../Other/Global/Card";
+import Input from "../Other/Global/Input";
 
 import GradesModal from "./GradesModal";
 import firebase from "firebase/compat";
@@ -24,6 +27,12 @@ export default function ProfileModal(props): any {
 
   const [usernameVal, setUsernameVal] = useState("")
   const [emailVal, setEmailVal] = useState("")
+
+  const [isOpenChangePassword, setIsOpenChangePassword] = useState(false)
+
+  const toggleChangePasswordHandler = () => {
+    setIsOpenChangePassword(!isOpenChangePassword)
+  }
 
   function readUserData() {
     firebase.database()
@@ -49,6 +58,28 @@ export default function ProfileModal(props): any {
 
   const toggleGradesModalHandler = () => {
     setIsOpenGradesModal(!isOpenGradesModal);
+  };
+
+  // Change password stuff
+
+  const [isCurrentPassword, setIsCurrentPassword] = useState("");
+  const [isNewPassword, setIsNewPassword] = useState("");
+  const [confirmedPassword, setConfirmedPassword] = useState("");
+
+  function emptyFields() {
+    setIsCurrentPassword("")
+    setIsNewPassword("")
+    setConfirmedPassword("")
+  }
+
+  function changePassword() {
+    if (isNewPassword === confirmedPassword) {
+      // Change password idk
+    } else {
+      Alert.alert("Sorry!", "The new passwords entered need to match in order to change your original password.", [
+        { text: "Try Again", onPress: () => { emptyFields() }, style: "default" },
+      ]);
+    }
   };
 
   return (
@@ -128,7 +159,7 @@ export default function ProfileModal(props): any {
                 <Text style={styles.sectionHeader}>Account</Text>
                 <Card style={styles.containerRow}>
                   <TouchableOpacity
-                    onPress={() => { }}
+                    onPress={toggleChangePasswordHandler}
                     style={styles.containerButton}
                   >
                     <View style={styles.leftContainer}>
@@ -150,6 +181,72 @@ export default function ProfileModal(props): any {
           visible={isOpenGradesModal}
           onCancel={toggleGradesModalHandler}
         />
+        <TouchableWithoutFeedback
+          onPress={() => {
+            Keyboard.dismiss();
+          }}
+        >
+          <Modal
+            isVisible={isOpenChangePassword}
+            animationIn={"slideInRight"}
+            animationOut={"slideOutRight"}
+            style={{ margin: 0 }}
+            hideModalContentWhileAnimating={true}
+          >
+            <SafeAreaView style={styles.changePasswordContainer}>
+              <View style={styles.changePasswordHead}>
+                <TouchableOpacity onPress={toggleChangePasswordHandler} style={[styles.button, { paddingHorizontal: 0 }]}>
+                  <Text style={styles.buttonText}>&lt; Profile</Text>
+                </TouchableOpacity>
+                <Text style={styles.changePasswordTitle}>Change Password</Text>
+                <Text style={styles.changePasswordText}>If for whatever reason you want to change your password,
+                  you can do it here. But first, we have to confirm it's you:</Text>
+              </View>
+              <View style={styles.middleContainer}>
+                <Text style={styles.sectionHeader}>Current Password</Text>
+                <Input
+                  style={styles.input}
+                  blurOnSubmit
+                  autoCorrect={false}
+                  placeholder="Current password"
+                  placeholderTextColor="#999"
+                  selectTextOnFocus
+                  bool={true}
+                  value={isCurrentPassword}
+                  onChangeText={(text) => setIsCurrentPassword(text)}
+                />
+                <Text style={styles.sectionHeader}>New Password</Text>
+                <Input
+                  style={styles.input}
+                  blurOnSubmit
+                  autoCorrect={false}
+                  placeholder="New password"
+                  placeholderTextColor="#999"
+                  selectTextOnFocus
+                  bool={true}
+                  value={isNewPassword}
+                  onChangeText={(text) => setIsNewPassword(text)}
+                />
+                <Input
+                  style={styles.input}
+                  blurOnSubmit
+                  autoCorrect={false}
+                  placeholder="Confirm password"
+                  placeholderTextColor="#999"
+                  selectTextOnFocus
+                  bool={true}
+                  value={confirmedPassword}
+                  onChangeText={(text) => setConfirmedPassword(text)}
+                />
+              </View>
+              <View style={styles.bottomContainer}>
+                <TouchableOpacity style={styles.submitButton} onPress={() => { }}>
+                  <Text style={styles.submitButtonText}>Change Password</Text>
+                </TouchableOpacity>
+              </View>
+            </SafeAreaView>
+          </Modal>
+        </TouchableWithoutFeedback>
       </SafeAreaView>
     </Modal>
   );
@@ -296,5 +393,76 @@ const styles = StyleSheet.create({
 
   editIcon: {
     paddingLeft: 12,
+  },
+
+  changePasswordContainer: {
+    width: "92%",
+    marginHorizontal: "4%",
+    height: "100%",
+    backgroundColor: "black",
+    justifyContent: "space-between",
+  },
+
+  changePasswordHead: {
+    backgroundColor: "black",
+    flex: 1,
+    height: "33%",
+  },
+
+  changePasswordTitle: {
+    color: "white",
+    fontSize: 38,
+    fontWeight: "900",
+    marginBottom: 15,
+  },
+
+  changePasswordText: {
+    color: "#4a4a4a",
+    fontSize: 21,
+    fontWeight: "700",
+  },
+
+  text: {
+    color: "white",
+    opacity: 0.7,
+  },
+
+  middleContainer: {
+    height: "33%",
+    flex: 1,
+    justifyContent: "center",
+  },
+
+  input: {
+    width: "100%",
+    padding: 10,
+    paddingHorizontal: 14,
+    fontSize: 14,
+    borderWidth: 4,
+    color: "white",
+    textAlign: "left",
+  },
+
+  bottomContainer: {
+    flex: 1,
+    height: "33%",
+    justifyContent: "flex-end",
+  },
+
+  submitButton: {
+    padding: 10,
+    paddingHorizontal: 16,
+    backgroundColor: Colors.opacity,
+    borderWidth: 4,
+    borderColor: Colors.primary,
+    borderRadius: 22,
+    marginBottom: 18,
+  },
+
+  submitButtonText: {
+    fontWeight: "600",
+    textAlign: "center",
+    fontSize: 20,
+    color: "white",
   },
 });
