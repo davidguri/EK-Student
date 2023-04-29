@@ -18,21 +18,24 @@ import Modal from "react-native-modal";
 export default function AddGoalModal(props): any {
   const [text, onChangeText] = useState("");
 
-  const writeData = (status: boolean, title: string) => { //email and full name
-    firebase.database().ref('GoalsList/').push({
+  const writeData = (status: boolean, title: string, uid: string) => {
+    firebase.database().ref("UsersList/" + uid + "/GoalsList/").push({
       status,
-      title
+      title,
+      key: Date.now()
     }).then((data) => {
-      //success callback
-      // console.log('data ' , data)
+      console.log('data ', data)
     }).catch((error) => {
-      //error callback
-      //('error ', error)
+      console.log('error ', error)
     })
   }
 
+  const user = firebase.auth().currentUser
+  const uid = user.uid
+
   const addElement = () => {
-    writeData(false, text)
+    writeData(false, text, uid)
+    onChangeText("")
   }
 
   return (
@@ -65,7 +68,6 @@ export default function AddGoalModal(props): any {
               style={styles.submitContainer}
             >
               <Text style={styles.inputButtonText}>{props.title}</Text>
-              {/* onSubmit, send out importance, title */}
             </TouchableOpacity>
             <TouchableOpacity onPress={props.onCancel} style={styles.button}>
               <Text style={styles.buttonCancelText}>Cancel</Text>

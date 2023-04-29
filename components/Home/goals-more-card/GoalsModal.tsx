@@ -17,16 +17,21 @@ import Card from "../../Other/Global/Card";
 import AddGoalModal from "./AddGoalModal";
 import firebase from "firebase/compat";
 
-const Item = ({ title }) => {
+const Item = ({ title, status }) => {
+
+  const [isChecked, setIsChecked] = useState(status)
+
   return (
     <View style={styles.item}>
       <BouncyCheckbox
-        size={28.25}
+        size={28}
         fillColor={Colors.opacity}
         unfillColor="transparent"
         text={title}
         iconStyle={{ borderColor: Colors.primary, borderWidth: 2 }}
         textStyle={{ fontSize: 20, color: "white" }}
+        isChecked={isChecked}
+        onPress={() => { setIsChecked(!status) }} // Have a function here to write this data to the realtime database
       />
     </View>
   );
@@ -34,20 +39,32 @@ const Item = ({ title }) => {
 
 export default function GoalsModal(props): any {
 
-  const [data, setData] = useState([])
+  const user = firebase.auth().currentUser
+  const uid = user.uid
 
-  // const readData = () => {
-  //   firebase.database().ref('GoalsList/').once('value', function (snapshot) {
-  //     //console.log(snapshot.val)
-  //   });
-  // }
+  function getGoalsData() {
+    firebase.database()
+      .ref("UsersList/" + uid + "/GoalsList")
+      .once("value", snap => {
+        console.log(snap.val())
+        return (snap.val());
+      })
+  }
 
-  const renderItem = ({ item }) => <Item title={item.title} />;
+  const data = [
+    {
+      "key": "0",
+      "status": false,
+      "title": "Hi",
+    }
+  ]
+
+  const renderItem = ({ item }) => <Item title={item.title} status={item.status} />;
 
   const [isOpenAddModal, setIsOpenAddModal] = useState(false);
 
-  const closeModalHandler = () => {
-    setIsOpenAddModal(false);
+  const toggleModalHandler = () => {
+    setIsOpenAddModal(!isOpenAddModal);
   };
 
   return (
@@ -79,7 +96,7 @@ export default function GoalsModal(props): any {
           </View>
           <View style={styles.footer}>
             <TouchableOpacity
-              onPress={() => setIsOpenAddModal(true)}
+              onPress={toggleModalHandler}
               style={styles.button}
             >
               <Text style={styles.buttonText}>Add Goal</Text>
@@ -89,7 +106,7 @@ export default function GoalsModal(props): any {
       </SafeAreaView>
       <AddGoalModal
         visible={isOpenAddModal}
-        onCancel={closeModalHandler}
+        onCancel={toggleModalHandler}
         title="Add Goal"
       />
     </Modal>
