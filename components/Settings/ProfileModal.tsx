@@ -28,6 +28,14 @@ export default function ProfileModal(props): any {
   const [usernameVal, setUsernameVal] = useState("")
   const [emailVal, setEmailVal] = useState("")
 
+  let accountType: string;
+
+  if (emailVal === "dguri@ernestkoliqi.com" || emailVal === "davidguri@ernestkoliqi.com") {
+    accountType = "Developer"
+  } else {
+    accountType = "Student"
+  };
+
   const [isOpenChangePassword, setIsOpenChangePassword] = useState(false)
 
   const toggleChangePasswordHandler = () => {
@@ -120,6 +128,7 @@ export default function ProfileModal(props): any {
                   />
                   <View>
                     <Text style={styles.profileUsername}>{usernameVal}</Text>
+                    <Text style={styles.profileType}>{accountType}</Text>
                     <Text style={styles.profileEmail}>{emailVal}</Text>
                   </View>
                 </View>
@@ -240,7 +249,7 @@ export default function ProfileModal(props): any {
                 />
               </View>
               <View style={styles.bottomContainer}>
-                <TouchableOpacity style={styles.submitButton} onPress={() => { }}>
+                <TouchableOpacity style={styles.submitButton} onPress={changePassword}>
                   <Text style={styles.submitButtonText}>Change Password</Text>
                 </TouchableOpacity>
               </View>
@@ -339,10 +348,18 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 
+  profileType: {
+    paddingVertical: 2,
+    fontSize: 16,
+    fontWeight: "500",
+    color: "#aaa",
+    textAlign: "center",
+  },
+
   profileEmail: {
     paddingTop: 2,
     fontSize: 18,
-    fontWeight: "500",
+    fontWeight: "600",
     color: Colors.primary,
     textAlign: "center",
   },
@@ -463,6 +480,6 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     textAlign: "center",
     fontSize: 20,
-    color: "white",
+    color: Colors.primary,
   },
 });

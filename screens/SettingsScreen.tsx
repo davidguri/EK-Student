@@ -418,8 +418,4 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginHorizontal: 15,
   },
-
-  progressBar: {
-    // width: `100% - {daysUntil}`
-  },
 });

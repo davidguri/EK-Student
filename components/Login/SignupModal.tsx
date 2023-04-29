@@ -26,6 +26,7 @@ const SignupModal = (props) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isClass, setIsClass] = useState("");
 
   const { setIsSignedIn }: any = useContext(AppContext);
 
@@ -43,11 +44,10 @@ const SignupModal = (props) => {
           firebase.database().ref("UsersList").child(userCredentials.user.uid).set({
             email: email,
             username: username,
+            class: isClass,
           }).then((data) => {
-            //success callback
             console.log('data ', data)
           }).catch((error) => {
-            //error callback
             console.log('error ', error)
           })
           console.log("Registered with:", user.email);
@@ -93,7 +93,19 @@ const SignupModal = (props) => {
                   placeholder="Jean Doe"
                   placeholderTextColor="#999"
                   value={username}
-                  onChangeText={(text) => setUsername(text)}
+                  onChangeText={(text: string) => setUsername(text)}
+                  selectTextOnFocus
+                  keyboardType="default"
+                  autoCapitalize="words"
+                />
+                <Input
+                  style={styles.input}
+                  blurOnSubmit
+                  autoCorrect={false}
+                  placeholder="X-1"
+                  placeholderTextColor="#999"
+                  value={isClass}
+                  onChangeText={(text: string) => setIsClass(text)}
                   selectTextOnFocus
                   keyboardType="default"
                   autoCapitalize="words"
@@ -105,7 +117,7 @@ const SignupModal = (props) => {
                   placeholder="jdoe@ernestkoliqi.com"
                   placeholderTextColor="#999"
                   value={email}
-                  onChangeText={(text) => setEmail(text)}
+                  onChangeText={(text: string) => setEmail(text)}
                   selectTextOnFocus
                   keyboardType="email-address"
                   autoCapitalize="none"
@@ -118,7 +130,7 @@ const SignupModal = (props) => {
                   placeholderTextColor="#999"
                   bool={true}
                   value={password}
-                  onChangeText={(text) => setPassword(text)}
+                  onChangeText={(text: string) => setPassword(text)}
                   selectTextOnFocus
                 />
               </View>
