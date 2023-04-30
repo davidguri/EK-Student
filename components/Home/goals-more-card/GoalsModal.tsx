@@ -42,22 +42,19 @@ export default function GoalsModal(props): any {
   const user = firebase.auth().currentUser
   const uid = user.uid
 
+  const data = []
+
   function getGoalsData() {
     firebase.database()
       .ref("UsersList/" + uid + "/GoalsList")
       .once("value", snap => {
-        console.log(snap.val())
-        return (snap.val());
+        const val = snap.val();
+        for (const element in val) {
+          data.push(val[element])
+          // console.log(data)
+        }
       })
   }
-
-  const data = [
-    {
-      "key": "0",
-      "status": false,
-      "title": "Hi",
-    }
-  ]
 
   const renderItem = ({ item }) => <Item title={item.title} status={item.status} />;
 
@@ -68,7 +65,7 @@ export default function GoalsModal(props): any {
   };
 
   return (
-    <Modal visible={props.visible} animationType="slide" transparent={true}>
+    <Modal visible={props.visible} animationType="slide" transparent={true} onShow={getGoalsData}>
       <SafeAreaView style={{ backgroundColor: "black" }}>
         <View style={styles.screen}>
           <View style={styles.header}>
@@ -90,7 +87,6 @@ export default function GoalsModal(props): any {
                 renderItem={renderItem}
                 keyExtractor={(item) => item.id}
                 style={styles.list}
-                scrollEnabled={false}
               />
             </Card>
           </View>
