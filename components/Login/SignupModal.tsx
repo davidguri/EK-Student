@@ -36,7 +36,7 @@ const SignupModal = (props) => {
     Keyboard.dismiss();
     emailDomain = (email.split("@")[1]).split(".")[0]
     console.log("Email Domain: ", emailDomain);
-    if (emailDomain == "ernestkoliqi") {
+    if (emailDomain == "ernestkoliqi" && password.length >= 8) {
       auth
         .createUserWithEmailAndPassword(email, password)
         .then((userCredentials) => {
@@ -55,9 +55,11 @@ const SignupModal = (props) => {
           setIsSignedIn(true);
         })
         .catch((error) => alert(error.message));
-    } else {
+    } else if (emailDomain !== "ernestkoliqi.com") {
       alert("Use an '@ernestkoliqi' email domain! ek(0003)")
-    };
+    } else {
+      alert("Password must be more than or equal to 8 characters! ek(0004)")
+    }
   };
 
   return (
