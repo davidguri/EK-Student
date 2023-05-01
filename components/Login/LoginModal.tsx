@@ -76,12 +76,13 @@ export default function LoginModal(props): any {
                   style={styles.input}
                   blurOnSubmit
                   autoCorrect={false}
-                  placeholder="jdoe@ernestkoliqi.com"
+                  placeholder="Email, jdoe@ernestkoliqi.com"
                   placeholderTextColor="#999"
                   value={email}
                   onChangeText={(text) => setEmail(text)}
                   selectTextOnFocus
                   keyboardType="email-address"
+                  autoCapitalize="none"
                 />
                 <Input
                   style={styles.input}

@@ -92,7 +92,7 @@ const SignupModal = (props) => {
                   style={styles.input}
                   blurOnSubmit
                   autoCorrect={false}
-                  placeholder="Jean Doe"
+                  placeholder="Username, Jean Doe"
                   placeholderTextColor="#999"
                   value={username}
                   onChangeText={(text: string) => setUsername(text)}
@@ -104,7 +104,7 @@ const SignupModal = (props) => {
                   style={styles.input}
                   blurOnSubmit
                   autoCorrect={false}
-                  placeholder="X-1"
+                  placeholder="Class, X-1"
                   placeholderTextColor="#999"
                   value={isClass}
                   onChangeText={(text: string) => setIsClass(text)}
@@ -116,7 +116,7 @@ const SignupModal = (props) => {
                   style={styles.input}
                   blurOnSubmit
                   autoCorrect={false}
-                  placeholder="jdoe@ernestkoliqi.com"
+                  placeholder="Email, jdoe@ernestkoliqi.com"
                   placeholderTextColor="#999"
                   value={email}
                   onChangeText={(text: string) => setEmail(text)}
