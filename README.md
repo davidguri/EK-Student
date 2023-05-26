@@ -7,7 +7,7 @@
 
 ## 🥞 Tech Stack
 
-A tech stack is the combination of technologies someone uses to build and run an application or project. The tech stack I am using is a custom one "engineered" only for this project called FRaT, which stands for Firebase React and Typescript.
+A tech stack is the combination of technologies someone uses to build and run an application or project. The tech stack I am using is a custom one "engineered" only for this project called FNERDS, which stands for Firebase Native Expo React Docker Stack.
 
 ## 👀 Overview
 
