@@ -18,7 +18,7 @@ export default function EventModal(props): any {
       animationInTiming={450}
       animationOutTiming={350}
     >
-      <View style={styles.main}>
+      <View style={[styles.main, { backgroundColor: `${props.color}`, }]}>
         <View style={styles.header}>
           <View style={styles.textContainer}>
             <Text style={styles.headerTitle}>{props.title}</Text>
@@ -39,7 +39,7 @@ export default function EventModal(props): any {
           <View style={[styles.section, styles.column]}>
             <Text style={styles.description}>Event Description:</Text>
             <Text style={styles.descriptionBody}>
-              Lorem Ipsum Dolor Sit Amet
+              {props.description}
             </Text>
           </View>
         </View>
@@ -54,7 +54,6 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 15,
     borderRadius: 20,
-    backgroundColor: Colors.primary,
   },
 
   header: {
