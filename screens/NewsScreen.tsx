@@ -52,7 +52,7 @@ let date =
 
 export default function NewsScreen(props): any {
   return (
-    <ScrollView style={styles.screen}>
+    <ScrollView showsVerticalScrollIndicator={false} style={styles.screen}>
       <View style={styles.header}>
         <NewsHeader title="News" sub={date} />
       </View>

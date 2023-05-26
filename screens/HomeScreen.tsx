@@ -14,7 +14,7 @@ import Card from "../components/Other/Global/Card";
 
 export default function HomeScreen(props): any {
   return (
-    <ScrollView style={styles.screen}>
+    <ScrollView showsVerticalScrollIndicator={false} style={styles.screen}>
       <View style={styles.header}>
         <Header title="Home" />
       </View>
