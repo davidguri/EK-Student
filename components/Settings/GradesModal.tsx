@@ -19,7 +19,7 @@ const DATA_TDY = [
   {
     id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
     subject: "Math",
-    note: "Hello",
+    note: "Lorem",
     grade: 9,
   },
   {
@@ -239,6 +239,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: "400",
     paddingVertical: 2,
+    width: "100%",
   },
 
   gradeText: {
