@@ -53,7 +53,7 @@ export default function GoalsModal(props): any {
           data.push(val[element])
           console.log(data[0])
         }
-      })
+      }).catch(err => console.log(err));
   }
 
   const renderItem = ({ item }) => <Item title={item.title} status={item.status} />;
