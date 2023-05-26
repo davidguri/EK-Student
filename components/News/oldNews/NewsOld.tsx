@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -10,52 +10,72 @@ import {
 import Colors from "../../../constants/colors";
 import Card from "../../Other/Global/Card";
 import { Ionicons } from "@expo/vector-icons";
+import NewsDetailPage from "../other/NewsDetailPage";
 
 const DATA_TDY = [
   {
     id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-    title: "Back to School, folks!",
-    publisher: "Principals Office",
-    date: "Sep 14, 2022"
+    title: "As finals are nearing, students share their opinions on the school year.",
+    publisher: "School",
+    date: "May 26, 2023",
+    description: "Here are the 10 questions we asked them:",
+    body: "Lorem ipsum dolor sit amet, consectetur adip",
+    iconName: "school",
   },
   {
     id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
     title: "Back to School, folks!",
-    publisher: "Principals Office",
-    date: "Sep 14, 2022"
+    publisher: "School",
+    date: "Sep 14, 2022",
+    description: "Description goes here",
+    body: "Lorem ipsum dolor sit amet, consectetur adip",
+    iconName: "school",
   },
   {
     id: "58694a0f-3da1-471f-bd96-145571e29d72",
     title: "Back to School, folks!",
-    publisher: "Principals Office",
-    date: "Sep 14, 2022"
+    publisher: "School",
+    date: "Sep 14, 2022",
+    description: "Description goes here",
+    body: "Lorem ipsum dolor sit amet, consectetur adip",
+    iconName: "school",
   },
 ];
 
 export default function NewsOldCard(props): any {
-  // const [isModalVisible, setModalVisible] = useState(false);
+  const [isOpenDetailPage, setIsOpenDetailPage] = useState(false);
 
-  const Item = ({ title, date, publisher }) => (
-    <TouchableOpacity onPress={() => { }}>
+  const closeModalHandler = () => {
+    setIsOpenDetailPage(false);
+  };
+
+  const Item = ({ title, date, publisher, description, body, iconName }) => (
+    <TouchableOpacity onPress={() => setIsOpenDetailPage(true)}>
       <Card style={styles.newsCard}>
         <View style={styles.leftCont}>
-          <Text style={styles.newsTitle}>{title}</Text>
-          <Text style={styles.newsDesc}>Description goes here</Text>
+          <Text numberOfLines={1} style={styles.newsTitle}>{title}</Text>
+          <Text numberOfLines={1} style={styles.newsDesc}>{description}</Text>
         </View>
         <View style={styles.rightCont}>
           <Text style={styles.newsPublisher}>{publisher}</Text>
           <Text style={styles.newsDate}>{date}</Text>
         </View>
       </Card>
+      <NewsDetailPage
+        visible={isOpenDetailPage}
+        onCancel={closeModalHandler}
+        title={title}
+        iconName={iconName}
+        date={date}
+        publisher={publisher}
+        description={description}
+        body={body}
+      />
     </TouchableOpacity>
   );
 
-  // const toggleModalHandler = () => {
-  //   setModalVisible(!isModalVisible);
-  // };
-
   const renderItem = ({ item }) => (
-    <Item title={item.title} date={item.date} publisher={item.publisher} />
+    <Item title={item.title} date={item.date} publisher={item.publisher} description={item.description} body={item.body} iconName={item.iconName} />
   );
 
   return (
@@ -114,7 +134,8 @@ const styles = StyleSheet.create({
     color: Colors.primary,
     fontSize: 21,
     fontWeight: "700",
-    paddingBottom: 2.5
+    paddingBottom: 2.5,
+    width: "100%",
   },
 
   newsDesc: {
@@ -141,6 +162,7 @@ const styles = StyleSheet.create({
   leftCont: {
     flex: 1,
     paddingHorizontal: 1,
+    paddingRight: 30,
   },
 
   rightCont: {
