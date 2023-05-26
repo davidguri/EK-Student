@@ -9,9 +9,6 @@ import Card from "../components/Other/Global/Card";
 import { Calendar } from "react-native-calendars";
 import { Table, Row, Rows } from 'react-native-table-component';
 
-import firebase from "firebase/compat";
-import { auth } from "../firebase";
-
 const EventComponent = ({ event, index }) => {
   const [isDetailed, setIsDetailed] = useState(false);
   const [isBlock, setIsBlock] = useState("none");
@@ -154,21 +151,6 @@ const TimetableObject = () => {
     ["Phys", "Math", "Bio", "Eng", "Bio"],
     ["Lit", "Fr", "Alb", "Fr", "Eng"],
   ]
-
-  // function readUserData() {
-  //   firebase.database()
-  //     .ref("/UsersList")
-  //     .child(auth.currentUser.uid)
-  //     .orderByChild(auth.currentUser.uid)
-  //     .once("value", snapshot => {
-  //       setClassVal(snapshot.val().class);
-  //       console.log(classVal);
-  //     }).catch((error) => {
-  //       console.log("error:", error);
-  //     })
-  // };
-
-  // readUserData();
 
   const TableHead = ["Mon", "Tue", "Wed", "Thu", "Fri"]
   // We're gonna have to make a compromise here where the subjects names are shorter. :(
