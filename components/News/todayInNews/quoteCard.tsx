@@ -2,17 +2,19 @@ import React from "react";
 import { Text, StyleSheet } from "react-native";
 
 import Card from "../../Other/Global/Card";
+import Colors from "../../../constants/colors";
 
 export default function QuoteCard(props): any {
 
   const Quotes = require("randomquote-api");
-  const randomQuote = Quotes.randomQuote().quote;
 
-  let quote = randomQuote + "\n- " + Quotes.randomQuote().author
+  let quote = Quotes.randomQuote().quote;
+  let quoteAuthor = "- " + Quotes.randomQuote().author;
 
   return (
     <Card style={styles.card}>
       <Text style={styles.quoteText}>{quote}</Text>
+      <Text style={styles.quoteAuthor}>{quoteAuthor}</Text>
     </Card>
   );
 };
@@ -32,5 +34,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "600",
     color: "white",
+  },
+
+  quoteAuthor: {
+    fontSize: 18,
+    fontWeight: "600",
+    color: Colors.primary,
   },
 });
