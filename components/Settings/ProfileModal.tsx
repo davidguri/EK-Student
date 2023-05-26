@@ -78,11 +78,32 @@ export default function ProfileModal(props): any {
     setIsCurrentPassword("")
     setIsNewPassword("")
     setConfirmedPassword("")
-  }
+  };
+
+  function reAuth(currentPassword) {
+    let user = firebase.auth().currentUser;
+    let cred = firebase.auth.EmailAuthProvider.credential(
+      user.email, currentPassword);
+    console.log("Success");
+    return user.reauthenticateWithCredential(cred);
+  };
 
   function changePassword() {
-    if (isNewPassword === confirmedPassword) {
-      // Change password idk
+    if (isNewPassword === confirmedPassword && isNewPassword !== "") {
+      console.log("Passwords match!");
+
+      reAuth(isCurrentPassword)
+        .then(() => {
+          let user = firebase.auth().currentUser;
+          user.updatePassword(isNewPassword)
+            .then(() => {
+              console.log("User updated password!")
+            })
+            .catch((err) => Alert.alert(err))
+        })
+        .catch((err) => Alert.alert(err));
+
+      emptyFields();
     } else {
       Alert.alert("Sorry!", "The new passwords entered need to match in order to change your original password.", [
         { text: "Try Again", onPress: () => { emptyFields() }, style: "default" },
