@@ -9,6 +9,9 @@ import Card from "../components/Other/Global/Card";
 import { Calendar } from "react-native-calendars";
 import { Table, Row, Rows } from 'react-native-table-component';
 
+import firebase from "firebase/compat";
+import { auth } from "../firebase";
+
 const EventComponent = ({ event, index }) => {
   const [isDetailed, setIsDetailed] = useState(false);
   const [isBlock, setIsBlock] = useState("none");
@@ -140,8 +143,9 @@ const CalendarObject = () => {
 
 const TimetableObject = () => {
 
-  const TableHead = ["Mon", "Tue", "Wed", "Thu", "Fri"]
-  let TableData = [
+  // const [classVal, setClassVal] = useState("")
+
+  let TimetableData = [
     ["PE", "CS", "Math", "CS", "Chem"],
     ["Math", "Lit", "Chem", "Chem", "Chem"],
     ["Bio", "Phys", "His", "Chem", "Math"],
@@ -149,13 +153,31 @@ const TimetableObject = () => {
     ["Phys", "Math", "Math", "PE", "Alb"],
     ["Phys", "Math", "Bio", "Eng", "Bio"],
     ["Lit", "Fr", "Alb", "Fr", "Eng"],
-  ]; // We're gonna have to make a compromise here where the subjects are shorter. :(
+  ]
+
+  // function readUserData() {
+  //   firebase.database()
+  //     .ref("/UsersList")
+  //     .child(auth.currentUser.uid)
+  //     .orderByChild(auth.currentUser.uid)
+  //     .once("value", snapshot => {
+  //       setClassVal(snapshot.val().class);
+  //       console.log(classVal);
+  //     }).catch((error) => {
+  //       console.log("error:", error);
+  //     })
+  // };
+
+  // readUserData();
+
+  const TableHead = ["Mon", "Tue", "Wed", "Thu", "Fri"]
+  // We're gonna have to make a compromise here where the subjects names are shorter. :(
 
   return (
     <View style={styles.container}>
       <Table borderStyle={{ borderWidth: 1, borderColor: '#999' }}>
         <Row data={TableHead} borderStyle={{ borderWidth: 0 }} style={styles.tableHead} textStyle={[styles.tableText, styles.tableHeadText]} />
-        <Rows data={TableData} textStyle={styles.tableText} />
+        <Rows data={TimetableData} textStyle={styles.tableText} />
       </Table>
     </View>
   );
