@@ -51,7 +51,7 @@ export default function GoalsModal(props): any {
         const val = snap.val();
         for (const element in val) {
           data.push(val[element])
-          // console.log(data)
+          console.log(data[0])
         }
       })
   }
@@ -83,9 +83,9 @@ export default function GoalsModal(props): any {
                 <Text style={styles.todayText}>Your Goals This Year</Text>
               </View>
               <FlatList
-                data={data}
+                data={data[0]}
                 renderItem={renderItem}
-                keyExtractor={(item) => item.id}
+                keyExtractor={(item) => item.key}
                 style={styles.list}
               />
             </Card>
