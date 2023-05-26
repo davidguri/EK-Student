@@ -7,7 +7,7 @@ import {
 } from "react-native";
 
 import NewsCardElement from "./NewsCardElement";
-
+import Colors from "../../../constants/colors";
 
 const DATA_TDY = [
   {
@@ -58,6 +58,7 @@ export default function NewsTodayCard(props): any {
         keyExtractor={(item) => item.id}
         showsHorizontalScrollIndicator={false}
         scrollEnabled={false}
+        ListEmptyComponent={<Text style={{ color: Colors.primary, fontSize: 21, fontWeight: "600", textAlign: "center", paddingBottom: 20 }}>You seem to be all caught up!{"\n"}Check back in later.</Text>}
       />
     </View>
   );
