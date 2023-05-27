@@ -104,6 +104,7 @@ export default function SettingsScreen(props): any {
   } else {
     countdownText = "Only " + Math.floor(daysUntil).toString() + " days left!"
   }
+
   let progressWidth = (100 - (daysUntil / 235) * 100)
 
   return (
