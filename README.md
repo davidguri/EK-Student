@@ -37,7 +37,6 @@ The second tab is the **Calendar tab**, where you have a calendar view with diff
 
 The last tab is the **News tab**, which is divided into three sub-sections:
 
--   The Submit Project card gives you the option to submit one of the projects you have done that might be extra-curricular that you would like the other students to view and give feedback on.
 -   The Today in News section gives you all the news published or relevant to the day you are viewing it.
 -   At the bottom of the News tab, there is an Older News section, where you can view older news (pretty self-explanatory)
 
@@ -55,14 +54,11 @@ With this app, I aim to make student life here in our school easier, even by a s
 -   [x] Login Screen
 -   [x] Signup Screen
 -   [x] Settings Screen
--   [ ] Home Screen
-    -   [x] Weather
-    -   [x] Goals, Tasks, and Projects buttons and modals
-    -   [ ] Next Today
-    -   [ ] For Tomorrow
+-   [x] Home Screen
 -   [x] Calendar Screen
--   [ ] News Screen
-    -   [ ] Today and Old News
+-   [x] News Screen
+
+All that is left currently with the EK-Student app is the database, which can't be finished without first finishing EK-Admin.
 
 ## ﻿⛳️ Milestones
 
