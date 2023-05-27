@@ -56,7 +56,6 @@ export default function NewsTodayCard(props): any {
         data={DATA_TDY}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
-        showsHorizontalScrollIndicator={false}
         scrollEnabled={false}
         ListEmptyComponent={<Text style={{ color: Colors.primary, fontSize: 21, fontWeight: "600", textAlign: "center", paddingBottom: 20 }}>You seem to be all caught up!{"\n"}Check back in later.</Text>}
       />

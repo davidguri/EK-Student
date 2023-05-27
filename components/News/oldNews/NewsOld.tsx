@@ -10,7 +10,9 @@ import {
 import Colors from "../../../constants/colors";
 import Card from "../../Other/Global/Card";
 import { Ionicons } from "@expo/vector-icons";
+
 import NewsDetailPage from "../other/NewsDetailPage";
+import NewsArchive from "./NewsArchive";
 
 const DATA_TDY = [
   {
@@ -47,6 +49,12 @@ export default function NewsOldCard(props): any {
 
   const closeModalHandler = () => {
     setIsOpenDetailPage(false);
+  };
+
+  const [isOpenArchivePage, setIsOpenArchivePage] = useState(false);
+
+  const closeArchiveHandler = () => {
+    setIsOpenArchivePage(false);
   };
 
   const Item = ({ title, date, publisher, description, body, iconName }) => (
@@ -90,7 +98,7 @@ export default function NewsOldCard(props): any {
       />
       <Card style={styles.containerRow}>
         <TouchableOpacity
-          onPress={() => { }}
+          onPress={() => setIsOpenArchivePage(true)}
           style={styles.containerButton}
         >
           <View style={styles.leftContainer}>
@@ -104,6 +112,7 @@ export default function NewsOldCard(props): any {
           <Text style={styles.modalArrow}>&gt; </Text>
         </TouchableOpacity>
       </Card>
+      <NewsArchive onCancel={closeArchiveHandler} visible={isOpenArchivePage} />
     </View>
   );
 };
