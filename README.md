@@ -55,14 +55,9 @@ With this app, I aim to make student life here in our school easier, even by a s
 - [x] Login Screen
 - [x] Signup Screen
 - [x] Settings Screen
-- [ ] Home Screen
-  - [x] Weather
-  - [x] Goals, Tasks, and Projects buttons and modals
-  - [ ] Next Today
-  - [ ] For Tomorrow
+- [x] Home Screen
 - [x] Calendar Screen
-- [ ] News Screen
-  - [ ] Today and Old News
+- [x] News Screen
 
 ## ﻿⛳️ Milestones
 
