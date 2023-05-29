@@ -21,13 +21,13 @@ The first tab is the **Home tab**, otherwise the "dashboard" of the app, where y
 
 At the top (look at the screenshot below), there are three cards. One for the weather, to help you in the morning to quickly see what the weather is going to be like. To the right of these is a bigger card that holds three different buttons: Goals, Tasks, and Projects.
 
--   The Goals button leads to a modal where you can set and complete goals for yourself throughout the school year.
--   The Projects button leads to a modal where you can view different projects throughout your subjects, including your groups, the points the project has, and the objectives.
+- The Goals button leads to a modal where you can set and complete goals for yourself throughout the school year.
+- The Projects button leads to a modal where you can view different projects throughout your subjects, including your groups, the points the project has, and the objectives.
 
 Below this section, Next Today and For Tomorrow cards are displayed one beneath the other.
 
--   The Next Today card shows you what classes, projects, and tests you have for the rest of that day, all color-coded to make it easier to distinguish.
--   The For Tomorrow card shows the same things as the Next Today card does, but in a more detailed view in the form of a list.
+- The Next Today card shows you what classes, projects, and tests you have for the rest of that day, all color-coded to make it easier to distinguish.
+- The For Tomorrow card shows the same things as the Next Today card does, but in a more detailed view in the form of a list.
 
 ### 🗓️ Calendar Tab
 
@@ -37,9 +37,9 @@ The second tab is the **Calendar tab**, where you have a calendar view with diff
 
 The last tab is the **News tab**, which is divided into three sub-sections:
 
--   The Submit Project card gives you the option to submit one of the projects you have done that might be extra-curricular that you would like the other students to view and give feedback on.
--   The Today in News section gives you all the news published or relevant to the day you are viewing it.
--   At the bottom of the News tab, there is an Older News section, where you can view older news (pretty self-explanatory)
+- The Submit Project card gives you the option to submit one of the projects you have done that might be extra-curricular that you would like the other students to view and give feedback on.
+- The Today in News section gives you all the news published or relevant to the day you are viewing it.
+- At the bottom of the News tab, there is an Older News section, where you can view older news (pretty self-explanatory)
 
 \*→ On the desktop the app will be in the form of a web app on the browser
 
@@ -49,20 +49,15 @@ With this app, I aim to make student life here in our school easier, even by a s
 
 ### 🚗 Roadmap:
 
--   [ ] Database
-    -   [x] Authentication
-    -   [ ] Information
--   [x] Login Screen
--   [x] Signup Screen
--   [x] Settings Screen
--   [ ] Home Screen
-    -   [x] Weather
-    -   [x] Goals, Tasks, and Projects buttons and modals
-    -   [ ] Next Today
-    -   [ ] For Tomorrow
--   [x] Calendar Screen
--   [ ] News Screen
-    -   [ ] Today and Old News
+- [ ] Database
+  - [x] Authentication
+  - [ ] Information
+- [x] Login Screen
+- [x] Signup Screen
+- [x] Settings Screen
+- [x] Home Screen
+- [x] Calendar Screen
+- [x] News Screen
 
 ## ﻿⛳️ Milestones
 
