@@ -101,8 +101,10 @@ export default function SettingsScreen(props): any {
     countdownText = "IT'S THE LAST DAY!!";
   } else if (daysUntil == Math.floor(235 / 2) || daysUntil == Math.ceil(235 / 2)) {
     countdownText = "You're halfway there!"
+  } else if (daysUntil < 0) {
+    countdownText = "It's been " + ((Math.floor(daysUntil)).toString())[1] + " days since school ended.";
   } else {
-    countdownText = "Only " + Math.floor(daysUntil).toString() + " days left!"
+    countdownText = "Only " + Math.floor(daysUntil).toString() + " days left!";
   }
 
   let progressWidth = (100 - (daysUntil / 235) * 100)
