@@ -54,14 +54,6 @@ const DATA = [
 ];
 
 const Item = ({ title }): any => {
-  {
-    /* This is just a proof of concept for now to turn the names above into a normal convention */
-  }
-  {
-    /* const TotalPoints = {
-    In here, have a function that just adds the points from each of the tasks
-  }; */
-  }
 
   const [isTeamVisible, setTeamVisible] = useState(false);
   const [isWorkVisible, setWorkVisible] = useState(false);
@@ -115,9 +107,6 @@ const Item = ({ title }): any => {
     </View>
   );
 };
-{
-  /* Gonna have to make two modals: one for seeing the team and another for the work/points */
-}
 
 const ProjectsModal = (props) => {
   const renderItem = ({ item }) => <Item title={item.title} />;
