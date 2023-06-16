@@ -142,7 +142,7 @@ export default function SettingsScreen(props): any {
                 <View style={{ width: "100%", backgroundColor: "#333", marginBottom: 10, marginTop: 5, borderRadius: 25 }}>
                   <LinearGradient
                     colors={['#0d1916', '#8afbe4']}
-                    style={{ width: `${progressWidth}%`, borderRadius: 25, padding: 5, zIndex: 1 }}
+                    style={{ width: `${progressWidth}%`, borderRadius: 25, padding: 5, zIndex: 1, maxWidth: "100%" }}
                     start={{ x: 0, y: 1 }}
                     end={{ x: 1, y: 1 }}
                   />
