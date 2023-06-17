@@ -32,19 +32,21 @@ export default function AchievementsModal(props: any) {
       <SafeAreaView style={{ backgroundColor: "black" }}>
         <View style={styles.screen}>
           <View style={styles.header}>
-            <TouchableOpacity onPress={props.onCancel} style={styles.button}>
-              <Text style={styles.buttonText}>&lt; Back</Text>
+            <TouchableOpacity onPress={props.onCancel}>
+              <Ionicons
+                name="chevron-back"
+                size={32}
+                color={Colors.primary}
+              />
             </TouchableOpacity>
-            <View style={styles.titleContainer}>
-              <Text style={styles.headerTitle}>Achievements</Text>
-              <TouchableOpacity onPress={alertConst}>
-                <Ionicons
-                  name="information-circle-outline"
-                  size={28}
-                  color={Colors.primary}
-                />
-              </TouchableOpacity>
-            </View>
+            <Text style={styles.headerTitle}>Achievements</Text>
+            <TouchableOpacity onPress={alertConst}>
+              <Ionicons
+                name="information-circle-outline"
+                size={28}
+                color={Colors.primary}
+              />
+            </TouchableOpacity>
           </View>
           <ScrollView style={{ backgroundColor: "#000", width: "100%" }}>
             <View style={styles.body}>
@@ -69,14 +71,10 @@ const styles = StyleSheet.create({
     marginHorizontal: "2.5%",
     height: "auto",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-    justifyContent: "space-between",
-    marginVertical: 12,
-    marginBottom: 20,
-  },
-
-  titleContainer: {
     flexDirection: "row",
     alignItems: "center",
+    marginVertical: 12,
+    marginBottom: 20,
   },
 
   headerTitle: {
@@ -85,18 +83,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     paddingBottom: 5,
     paddingRight: 12,
-  },
-
-  buttonText: {
-    color: Colors.blue,
-    fontSize: 21,
-    fontWeight: "500",
-  },
-
-  button: {
-    paddingBottom: 10,
-    flexDirection: "row",
-    alignItems: "center",
+    paddingLeft: 8,
   },
 
   body: {

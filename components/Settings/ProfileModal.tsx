@@ -20,7 +20,7 @@ import Card from "../Other/Global/Card";
 import Input from "../Other/Global/Input";
 
 import GradesModal from "./GradesModal";
-import AchievementsModal from "./AchievemtsModal";
+import AchievementsModal from "./AchievementsModal";
 import firebase from "firebase/compat";
 import { auth } from "../../firebase";
 
@@ -247,18 +247,22 @@ export default function ProfileModal(props): any {
             isVisible={isOpenChangePassword}
             animationIn={"slideInRight"}
             animationOut={"slideOutRight"}
-            style={{ margin: 0 }}
+            style={{ margin: 0, width: "100%", height: "100%" }}
             hideModalContentWhileAnimating={true}
           >
             <SafeAreaView style={styles.changePasswordContainer}>
-              <View style={styles.changePasswordHead}>
-                <TouchableOpacity onPress={toggleChangePasswordHandler} style={[styles.button, { paddingHorizontal: 0 }]}>
-                  <Text style={styles.buttonText}>&lt; Profile</Text>
+              <View style={styles.changePasswordHeader}>
+                <TouchableOpacity onPress={toggleChangePasswordHandler}>
+                  <Ionicons
+                    name="chevron-back"
+                    size={32}
+                    color={"white"}
+                  />
                 </TouchableOpacity>
-                <Text style={styles.changePasswordTitle}>Change Password</Text>
-                <Text style={styles.changePasswordText}>If for whatever reason you want to change your password,
-                  you can do it here. But first, we have to confirm it's you:</Text>
+                <Text style={styles.headerTitle}>Change Password</Text>
               </View>
+              <Text style={styles.changePasswordText}>If for whatever reason you want to change your password,
+                you can do it here. But first, we have to confirm it's you:</Text>
               <View style={styles.middleContainer}>
                 <Text style={styles.sectionHeader}>Current Password</Text>
                 <Input
@@ -468,17 +472,23 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
 
-  changePasswordHead: {
-    backgroundColor: "black",
-    flex: 1,
-    height: "33%",
+  changePasswordHeader: {
+    width: "100%",
+    height: "auto",
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    flexDirection: "row",
+    alignItems: "center",
+    marginVertical: 12,
+    marginBottom: 20,
   },
 
-  changePasswordTitle: {
+  headerTitle: {
     color: "white",
-    fontSize: 38,
-    fontWeight: "900",
-    marginBottom: 15,
+    fontSize: 35,
+    fontWeight: "700",
+    paddingBottom: 5,
+    paddingRight: 12,
+    paddingLeft: 8,
   },
 
   changePasswordText: {

@@ -182,7 +182,7 @@ export default function SettingsScreen(props): any {
                       color={Colors.primary}
                     />
                     <Text style={styles.containerRowTitle}>
-                      About the Developer
+                      About the Dev
                     </Text>
                   </View>
                   <Text style={styles.modalArrow}>&gt; </Text>

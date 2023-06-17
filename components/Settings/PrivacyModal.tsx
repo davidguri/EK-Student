@@ -10,6 +10,7 @@ import {
   Platform,
 } from "react-native";
 import Modal from "react-native-modal";
+import { Ionicons } from "@expo/vector-icons";
 
 import Colors from "../../constants/colors";
 
@@ -25,19 +26,20 @@ export default function PrivacyModal(props): any {
       swipeDirection="right"
     >
       <SafeAreaView style={{ backgroundColor: "black" }}>
-        <View style={styles.screen}>
+        <ScrollView style={styles.screen}>
           <View style={styles.header}>
-            <TouchableOpacity onPress={props.onCancel} style={styles.button}>
-              <Text style={styles.buttonText}>&lt; </Text>
-              <Text style={styles.buttonText}>Settings</Text>
+            <TouchableOpacity onPress={props.onCancel}>
+              <Ionicons
+                name="chevron-back"
+                size={32}
+                color={Colors.primary}
+              />
             </TouchableOpacity>
+            <Text style={styles.headerTitle}>Privacy</Text>
           </View>
 
           <View style={{ backgroundColor: "#000", width: "100%" }}>
-            <ScrollView style={styles.body}>
-              <View style={styles.headContainer}>
-                <Text style={styles.title}>Privacy</Text>
-              </View>
+            <View style={styles.body}>
               <View style={styles.content}>
                 <Text style={styles.headText}>Terms and Conditions</Text>
                 <Text style={styles.bodyText}>Last updated: March 05, 2023</Text>
@@ -96,9 +98,9 @@ export default function PrivacyModal(props): any {
                 <Text style={styles.bodyText}>If you have any questions about these Terms and Conditions, You can contact us:</Text>
                 <Text style={styles.bodyText}>By email: dguri@ernestkoliqi.com</Text>
               </View>
-            </ScrollView>
+            </View>
           </View>
-        </View>
+        </ScrollView>
       </SafeAreaView>
     </Modal>
   );
@@ -109,17 +111,27 @@ const styles = StyleSheet.create({
     backgroundColor: "#000",
     width: "100%",
     height: "100%",
-    alignItems: "center",
     padding: 8.5,
   },
 
   header: {
-    width: "100%",
+    width: "95%",
+    marginHorizontal: "2.5%",
     height: "auto",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     flexDirection: "row",
-    justifyContent: "space-between",
     alignItems: "center",
+    marginVertical: 12,
+    marginBottom: 20,
+  },
+
+  headerTitle: {
+    color: "white",
+    fontSize: 35,
+    fontWeight: "700",
+    paddingBottom: 5,
+    paddingRight: 12,
+    paddingLeft: 8,
   },
 
   buttonText: {
@@ -157,7 +169,6 @@ const styles = StyleSheet.create({
   },
 
   content: {
-    paddingTop: 30,
     width: "95%",
     marginHorizontal: "2.5%",
   },

@@ -9,6 +9,7 @@ import {
   StatusBar,
   ScrollView,
   FlatList,
+  Alert
 } from "react-native";
 import Modal from "react-native-modal";
 import Colors from "../../constants/colors";
@@ -42,7 +43,12 @@ const DATA_TDY = [
   },
 ];
 
-export default function GradesModal(props): any {
+export default function GradesModal(props: any) {
+
+  const alertConst = () =>
+    Alert.alert("Grades", "This is a feature that allows you to view your grades during the trimester, as well as the end-of-trimester report cards you have gotten throughout the year. Along with the grades, you will also see the notes given by the teacher on that specific grade, eg: 'Quiz Grade'.", [
+      { text: "Ok", onPress: () => { }, style: "default" },
+    ]);
 
   const Item = ({ subject, note, grade }) => (
     <Card style={styles.gradeCard}>
@@ -69,10 +75,21 @@ export default function GradesModal(props): any {
       <SafeAreaView style={{ backgroundColor: "black" }}>
         <View style={styles.screen}>
           <View style={styles.header}>
-            <TouchableOpacity onPress={props.onCancel} style={styles.button}>
-              <Text style={styles.buttonText}>&lt; Back</Text>
+            <TouchableOpacity onPress={props.onCancel}>
+              <Ionicons
+                name="chevron-back"
+                size={32}
+                color={Colors.primary}
+              />
             </TouchableOpacity>
             <Text style={styles.headerTitle}>Grades</Text>
+            <TouchableOpacity onPress={alertConst}>
+              <Ionicons
+                name="information-circle-outline"
+                size={28}
+                color={Colors.primary}
+              />
+            </TouchableOpacity>
           </View>
           <ScrollView style={{ backgroundColor: "#000", width: "100%" }}>
             <View style={styles.body}>
@@ -88,6 +105,7 @@ export default function GradesModal(props): any {
               </View>
               <View style={styles.reportContainer}>
                 <Text style={styles.title}>Report Cards</Text>
+                {/* Make this a flatlist item */}
                 <Card style={styles.reportCard}>
                   <View style={{ width: "100%", height: 180, borderRadius: 15, backgroundColor: "black" }}></View>
                   <View style={styles.textContainer}>
@@ -132,7 +150,8 @@ const styles = StyleSheet.create({
     marginHorizontal: "2.5%",
     height: "auto",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-    justifyContent: "space-between",
+    flexDirection: "row",
+    alignItems: "center",
     marginVertical: 12,
     marginBottom: 20,
   },
@@ -142,18 +161,8 @@ const styles = StyleSheet.create({
     fontSize: 35,
     fontWeight: "700",
     paddingBottom: 5,
-  },
-
-  buttonText: {
-    color: Colors.blue,
-    fontSize: 21,
-    fontWeight: "500",
-  },
-
-  button: {
-    paddingBottom: 10,
-    flexDirection: "row",
-    alignItems: "center",
+    paddingRight: 12,
+    paddingLeft: 8,
   },
 
   body: {

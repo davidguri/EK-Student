@@ -8,7 +8,8 @@ import {
   ScrollView,
   StatusBar,
   Platform,
-  Linking
+  Linking,
+  Alert
 } from "react-native";
 import Modal from "react-native-modal";
 import { Ionicons } from "@expo/vector-icons";
@@ -16,7 +17,8 @@ import { Ionicons } from "@expo/vector-icons";
 import Colors from "../../constants/colors";
 import Card from "../Other/Global/Card";
 
-export default function AboutTheDevModal(props): any {
+export default function AboutTheDevModal(props: any) {
+
   return (
     <Modal
       isVisible={props.visible}
@@ -28,19 +30,19 @@ export default function AboutTheDevModal(props): any {
       swipeDirection="right"
     >
       <SafeAreaView style={{ backgroundColor: "black" }}>
-        <View style={styles.screen}>
+        <ScrollView style={styles.screen}>
           <View style={styles.header}>
-            <TouchableOpacity onPress={props.onCancel} style={styles.button}>
-              <Text style={styles.buttonText}>&lt; </Text>
-              <Text style={styles.buttonText}>Settings</Text>
+            <TouchableOpacity onPress={props.onCancel}>
+              <Ionicons
+                name="chevron-back"
+                size={32}
+                color={Colors.primary}
+              />
             </TouchableOpacity>
+            <Text style={styles.headerTitle}>About</Text>
           </View>
-
-          <ScrollView style={{ width: "100%" }}>
+          <View style={{ width: "100%" }}>
             <View style={styles.body}>
-              <View style={styles.headContainer}>
-                <Text style={styles.title}>About The Developer</Text>
-              </View>
               <View style={styles.content}>
                 <Text style={styles.bodyText}>I, David Guri, a student of this school, currently in 11th grade (as of writing this), developed this app for two reasons: first, I saw a problem that some students were facing, such as keeping track of tests, assignments etc, and second, this app acted as a project for my Computer Sciences subject.</Text>
                 <Text style={styles.bodyText}>For more information, you can either talk to me irl (don't email me please, although if you want to, you can do it here: davidguri2006@gmail.com) or visit my GitHub account down below for more projects of mine 😊</Text>
@@ -64,8 +66,8 @@ export default function AboutTheDevModal(props): any {
                 </Card>
               </View>
             </View>
-          </ScrollView>
-        </View>
+          </View>
+        </ScrollView>
       </SafeAreaView>
     </Modal>
   );
@@ -76,30 +78,27 @@ const styles = StyleSheet.create({
     backgroundColor: "#000",
     width: "100%",
     height: "100%",
-    alignItems: "center",
     padding: 8.5,
   },
 
   header: {
-    width: "100%",
+    width: "95%",
+    marginHorizontal: "2.5%",
     height: "auto",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     flexDirection: "row",
-    justifyContent: "space-between",
     alignItems: "center",
+    marginVertical: 12,
+    marginBottom: 20,
   },
 
-  buttonText: {
-    color: Colors.blue,
-    fontSize: 21,
-    fontWeight: "500",
-  },
-
-  button: {
-    paddingHorizontal: 12,
-    paddingBottom: 10,
-    flexDirection: "row",
-    alignItems: "center",
+  headerTitle: {
+    color: "white",
+    fontSize: 35,
+    fontWeight: "700",
+    paddingBottom: 5,
+    paddingRight: 12,
+    paddingLeft: 8,
   },
 
   body: {
@@ -124,7 +123,6 @@ const styles = StyleSheet.create({
   },
 
   content: {
-    paddingTop: 30,
     width: "95%",
     marginHorizontal: "2.5%",
   },

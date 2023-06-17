@@ -28,19 +28,20 @@ export default function FeedbackModal(props): any {
       swipeDirection="right"
     >
       <SafeAreaView style={{ backgroundColor: "black" }}>
-        <View style={styles.screen}>
+        <ScrollView style={styles.screen}>
           <View style={styles.header}>
-            <TouchableOpacity onPress={props.onCancel} style={styles.button}>
-              <Text style={styles.buttonText}>&lt; </Text>
-              <Text style={styles.buttonText}>Settings</Text>
+            <TouchableOpacity onPress={props.onCancel}>
+              <Ionicons
+                name="chevron-back"
+                size={32}
+                color={Colors.primary}
+              />
             </TouchableOpacity>
+            <Text style={styles.headerTitle}>Feedback</Text>
           </View>
 
-          <ScrollView style={{ width: "100%" }}>
+          <View style={{ width: "100%" }}>
             <View style={styles.body}>
-              <View style={styles.headContainer}>
-                <Text style={styles.title}>Feedback</Text>
-              </View>
               <View style={styles.content}>
                 <Text style={styles.bodyText}>If you have any opinions, good or bad, or any suggestions on what you would like me to add or remove from the app, you're welcome to talk to me irl or email me using the first link below. If you're an advanced programmer, then open an issue at the second link below. If you don't feel like doing any of these, then you can get a friend to do it idk.</Text>
               </View>
@@ -79,8 +80,8 @@ export default function FeedbackModal(props): any {
                 </Card>
               </View>
             </View>
-          </ScrollView>
-        </View>
+          </View>
+        </ScrollView>
       </SafeAreaView>
     </Modal>
   );
@@ -91,17 +92,27 @@ const styles = StyleSheet.create({
     backgroundColor: "#000",
     width: "100%",
     height: "100%",
-    alignItems: "center",
     padding: 8.5,
   },
 
   header: {
-    width: "100%",
+    width: "95%",
+    marginHorizontal: "2.5%",
     height: "auto",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     flexDirection: "row",
-    justifyContent: "space-between",
     alignItems: "center",
+    marginVertical: 12,
+    marginBottom: 20,
+  },
+
+  headerTitle: {
+    color: "white",
+    fontSize: 35,
+    fontWeight: "700",
+    paddingBottom: 5,
+    paddingRight: 12,
+    paddingLeft: 8,
   },
 
   buttonText: {
@@ -133,7 +144,7 @@ const styles = StyleSheet.create({
   },
 
   content: {
-    paddingVertical: 30,
+    paddingBottom: 25,
     width: "95%",
     marginHorizontal: "2.5%",
   },
