@@ -8,7 +8,7 @@ import {
   Platform,
   StatusBar,
   ScrollView,
-  FlatList,
+  Alert,
 } from "react-native";
 import Modal from "react-native-modal";
 import Colors from "../../constants/colors";
@@ -16,6 +16,10 @@ import Card from "../Other/Global/Card";
 import { Ionicons } from "@expo/vector-icons";
 
 export default function AchievementsModal(props: any) {
+  const alertConst = () =>
+    Alert.alert("Achievements", "This is a feature that allows you to earn badges throught the school year for things such as attendence, grades, how often you've handed in projects on time etc. These badges are ranked from bronze to diamond, meaning you can compete with your friends on who has the most badges!", [
+      { text: "Ok", onPress: () => { }, style: "default" },
+    ]);
 
   return (
     <Modal
@@ -31,14 +35,19 @@ export default function AchievementsModal(props: any) {
             <TouchableOpacity onPress={props.onCancel} style={styles.button}>
               <Text style={styles.buttonText}>&lt; Back</Text>
             </TouchableOpacity>
-            <Text style={styles.headerTitle}>Achievements</Text>
+            <View style={styles.titleContainer}>
+              <Text style={styles.headerTitle}>Achievements</Text>
+              <TouchableOpacity onPress={alertConst}>
+                <Ionicons
+                  name="information-circle-outline"
+                  size={28}
+                  color={Colors.primary}
+                />
+              </TouchableOpacity>
+            </View>
           </View>
           <ScrollView style={{ backgroundColor: "#000", width: "100%" }}>
             <View style={styles.body}>
-              <View style={styles.reportContainer}>
-                <Text style={styles.title}>Report Cards</Text>
-
-              </View>
             </View>
           </ScrollView>
         </View>
@@ -65,11 +74,17 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
 
+  titleContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+
   headerTitle: {
     color: "white",
     fontSize: 35,
     fontWeight: "700",
     paddingBottom: 5,
+    paddingRight: 12,
   },
 
   buttonText: {
@@ -87,14 +102,6 @@ const styles = StyleSheet.create({
   body: {
     width: "95%",
     marginHorizontal: "2.5%",
-  },
-
-  recentContainer: {
-    marginBottom: 30,
-  },
-
-  reportContainer: {
-    marginBottom: 30,
   },
 
   containerRow: {
