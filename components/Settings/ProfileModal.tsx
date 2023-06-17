@@ -20,6 +20,7 @@ import Card from "../Other/Global/Card";
 import Input from "../Other/Global/Input";
 
 import GradesModal from "./GradesModal";
+import AchievementsModal from "./AchievemtsModal";
 import firebase from "firebase/compat";
 import { auth } from "../../firebase";
 
@@ -66,6 +67,12 @@ export default function ProfileModal(props): any {
 
   const toggleGradesModalHandler = () => {
     setIsOpenGradesModal(!isOpenGradesModal);
+  };
+
+  const [isOpenAchievementsModal, setIsOpenAchievementsModal] = useState(false);
+
+  const toggleAchievementsModalHandler = () => {
+    setIsOpenAchievementsModal(!isOpenAchievementsModal);
   };
 
   // Change password stuff
@@ -156,7 +163,23 @@ export default function ProfileModal(props): any {
                 <Text style={styles.sectionHeader}>Personal</Text>
                 <Card style={styles.containerRow}>
                   <TouchableOpacity
-                    onPress={() => { }}
+                    onPress={toggleAchievementsModalHandler}
+                    style={styles.containerButton}
+                  >
+                    <View style={styles.leftContainer}>
+                      <Ionicons
+                        name="ribbon"
+                        size={27}
+                        color={Colors.primary}
+                      />
+                      <Text style={styles.containerRowTitle}>My Achievements</Text>
+                    </View>
+                    <Text style={styles.modalArrow}>&gt; </Text>
+                  </TouchableOpacity>
+                </Card>
+                <Card style={styles.containerRow}>
+                  <TouchableOpacity
+                    onPress={alertConst}
                     style={styles.containerButton}
                   >
                     <View style={styles.leftContainer}>
@@ -210,6 +233,10 @@ export default function ProfileModal(props): any {
         <GradesModal
           visible={isOpenGradesModal}
           onCancel={toggleGradesModalHandler}
+        />
+        <AchievementsModal
+          visible={isOpenAchievementsModal}
+          onCancel={toggleAchievementsModalHandler}
         />
         <TouchableWithoutFeedback
           onPress={() => {
