@@ -12,7 +12,7 @@
     "@builder.io/partytown": "^0.6.4",
     "@expo/vector-icons": "^13.0.0",
     "@react-native-community/masked-view": "^0.1.11",
-    "@react-native-masked-view/masked-view": "0.2.8",
+    "@react-native-masked-view/masked-view": "^0.2.8",
     "@react-navigation/bottom-tabs": "^6.3.2",
     "@react-navigation/native": "^6.0.11",
     "@react-navigation/native-stack": "^6.7.0",
@@ -23,6 +23,7 @@
     "expo-cli": "^6.3.2",
     "expo-linear-gradient": "~12.0.1",
     "expo-status-bar": "~1.4.2",
+    "expo-updates": "~0.15.6",
     "firebase": "^9.19.1",
     "idb": "^7.1.1",
     "immer": "^9.0.21",
@@ -54,14 +55,14 @@
     "react-native-swipeview-flat": "^1.0.1",
     "react-native-switch-toggles": "1.0.1",
     "react-native-table-component": "^1.2.2",
+    "react-native-text-gradient": "^0.1.7",
     "react-native-toggle-button": "^0.1.0",
     "react-native-web": "~0.18.7",
     "react-redux": "^8.0.2",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1",
     "typescript": "^4.6.3",
-    "url-parse": "^1.5.10",
-    "expo-updates": "~0.15.6"
+    "url-parse": "^1.5.10"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",

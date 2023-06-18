@@ -9,11 +9,16 @@ import {
   StatusBar,
   ScrollView,
   Alert,
+  Image,
 } from "react-native";
 import Modal from "react-native-modal";
 import Colors from "../../constants/colors";
 import Card from "../Other/Global/Card";
 import { Ionicons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
+import MaskedView from '@react-native-masked-view/masked-view';
+
+import PlatinumAttendance from "../../assets/AchievementsIcons/platinumAttendance.png"
 
 export default function AchievementsModal(props: any) {
   const alertConst = () =>
@@ -50,6 +55,82 @@ export default function AchievementsModal(props: any) {
           </View>
           <ScrollView style={{ backgroundColor: "#000", width: "100%" }}>
             <View style={styles.body}>
+              <Card style={styles.card}>
+                <MaskedView
+                  style={{ flex: 1, flexDirection: "column", height: 36, marginBottom: 25 }}
+                  maskElement={<Text style={styles.cardTitle}>Platinum</Text>}
+                >
+                  <LinearGradient
+                    colors={['#294855', '#aec5ce']}
+                    start={{ x: 1, y: 1 }}
+                    end={{ x: 0, y: 0.33 }}
+                    style={{ flex: 1 }}
+                  />
+                </MaskedView>
+                <View>
+                  <Image
+                    source={PlatinumAttendance}
+                    style={{ width: 64, height: 64 }}
+                  />
+                </View>
+              </Card>
+              <Card style={styles.card}>
+                <MaskedView
+                  style={{ flex: 1, flexDirection: "column", height: 36, marginBottom: 25 }}
+                  maskElement={<Text style={styles.cardTitle}>Gold</Text>}
+                >
+                  <LinearGradient
+                    colors={['#e6cb82', '#b69d4a']}
+                    start={{ x: 1, y: 1 }}
+                    end={{ x: 0, y: 0.33 }}
+                    style={{ flex: 1 }}
+                  />
+                </MaskedView>
+                <View>
+                  <Image
+                    source={PlatinumAttendance}
+                    style={{ width: 64, height: 64 }}
+                  />
+                </View>
+              </Card>
+              <Card style={styles.card}>
+                <MaskedView
+                  style={{ flex: 1, flexDirection: "column", height: 36, marginBottom: 25 }}
+                  maskElement={<Text style={styles.cardTitle}>Silver</Text>}
+                >
+                  <LinearGradient
+                    colors={['#77797a', '#c7c8c2']}
+                    start={{ x: 1, y: 1 }}
+                    end={{ x: 0, y: 0.33 }}
+                    style={{ flex: 1 }}
+                  />
+                </MaskedView>
+                <View>
+                  <Image
+                    source={PlatinumAttendance}
+                    style={{ width: 64, height: 64 }}
+                  />
+                </View>
+              </Card>
+              <Card style={styles.card}>
+                <MaskedView
+                  style={{ flex: 1, flexDirection: "column", height: 36, marginBottom: 25 }}
+                  maskElement={<Text style={styles.cardTitle}>Bronze</Text>}
+                >
+                  <LinearGradient
+                    colors={['#ccae9f', '#784f2a']}
+                    start={{ x: 1, y: 1.5 }}
+                    end={{ x: 0, y: 1 }}
+                    style={{ flex: 1 }}
+                  />
+                </MaskedView>
+                <View>
+                  <Image
+                    source={PlatinumAttendance}
+                    style={{ width: 64, height: 64 }}
+                  />
+                </View>
+              </Card>
             </View>
           </ScrollView>
         </View>
@@ -91,102 +172,14 @@ const styles = StyleSheet.create({
     marginHorizontal: "2.5%",
   },
 
-  containerRow: {
-    flexDirection: "row",
-    marginVertical: 10,
-    width: "100%",
-    borderRadius: 22,
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingVertical: 10,
+  card: {
+    flexDirection: "column",
+    marginBottom: 25,
+    borderRadius: 25,
   },
 
-  containerButton: {
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingVertical: 8,
-  },
-
-  containerRowTitle: {
-    color: "#fff",
-    fontWeight: "500",
-    fontSize: 18,
-    marginLeft: 15,
-  },
-
-  leftContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-
-  modalArrow: {
-    color: "#8c8c8c",
-    fontSize: 24,
-    fontWeight: "600",
-  },
-
-  title: {
-    color: "white",
-    fontSize: 28,
-    fontWeight: "600",
-    paddingVertical: 5,
-    paddingBottom: 15,
-  },
-
-  gradeCard: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    flex: 1,
-    borderRadius: 15,
-    marginRight: 12,
-  },
-
-  leftBox: {
-    paddingRight: 24,
-  },
-
-  subjectText: {
-    color: Colors.primary,
-    fontSize: 20,
-    fontWeight: "700",
-    paddingVertical: 2,
-  },
-
-  noteText: {
-    color: "white",
-    fontSize: 13,
-    fontWeight: "400",
-    paddingVertical: 2,
-    width: "100%",
-  },
-
-  gradeText: {
-    color: "white",
-    fontSize: 32,
+  cardTitle: {
+    fontSize: 35,
     fontWeight: "800",
-    paddingVertical: 2,
-    paddingLeft: 24,
-  },
-
-  reportCard: {
-    borderRadius: 15,
-    width: "100%",
-    padding: 0,
-    borderColor: Colors.primary,
-    borderWidth: 3.5
-  },
-
-  textContainer: {
-    padding: 15,
-  },
-
-  reportText: {
-    color: "white",
-    fontSize: 21,
-    fontWeight: "600",
   },
 });
