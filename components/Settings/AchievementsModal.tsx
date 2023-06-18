@@ -19,6 +19,9 @@ import { LinearGradient } from "expo-linear-gradient";
 import MaskedView from '@react-native-masked-view/masked-view';
 
 import PlatinumAttendance from "../../assets/AchievementsIcons/platinumAttendance.png"
+import GoldAttendance from "../../assets/AchievementsIcons/goldAttendance.png"
+import SilverAttendance from "../../assets/AchievementsIcons/silverAttendance.png"
+import BronzeAttendance from "../../assets/AchievementsIcons/bronzeAttendance.png"
 
 export default function AchievementsModal(props: any) {
   const alertConst = () =>
@@ -70,7 +73,7 @@ export default function AchievementsModal(props: any) {
                 <View>
                   <Image
                     source={PlatinumAttendance}
-                    style={{ width: 64, height: 64 }}
+                    style={{ width: 64, height: 64, marginBottom: 5 }}
                   />
                 </View>
               </Card>
@@ -88,8 +91,8 @@ export default function AchievementsModal(props: any) {
                 </MaskedView>
                 <View>
                   <Image
-                    source={PlatinumAttendance}
-                    style={{ width: 64, height: 64 }}
+                    source={GoldAttendance}
+                    style={{ width: 64, height: 64, marginBottom: 5 }}
                   />
                 </View>
               </Card>
@@ -107,8 +110,8 @@ export default function AchievementsModal(props: any) {
                 </MaskedView>
                 <View>
                   <Image
-                    source={PlatinumAttendance}
-                    style={{ width: 64, height: 64 }}
+                    source={SilverAttendance}
+                    style={{ width: 64, height: 64, marginBottom: 5 }}
                   />
                 </View>
               </Card>
@@ -126,8 +129,8 @@ export default function AchievementsModal(props: any) {
                 </MaskedView>
                 <View>
                   <Image
-                    source={PlatinumAttendance}
-                    style={{ width: 64, height: 64 }}
+                    source={BronzeAttendance}
+                    style={{ width: 64, height: 64, marginBottom: 5 }}
                   />
                 </View>
               </Card>
@@ -174,7 +177,7 @@ const styles = StyleSheet.create({
 
   card: {
     flexDirection: "column",
-    marginBottom: 25,
+    marginBottom: 18,
     borderRadius: 25,
   },
 
