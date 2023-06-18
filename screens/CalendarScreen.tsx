@@ -182,15 +182,18 @@ export default function CalendarScreen(props): any {
   const [isOpenCalendar, setIsOpenCalendar] = useState(true)
 
   const toggleTimetableModal = () => {
-    setSelected(2)
-    setIsOpenTimetable(!isOpenTimetable)
-    setIsOpenCalendar(!isOpenCalendar)
+    if (selected !== 2) {
+      setSelected(2)
+      setIsOpenTimetable(true)
+      setIsOpenCalendar(false)
+    }
   }
-
   const toggleCalendarModal = () => {
-    setSelected(1)
-    setIsOpenCalendar(!isOpenCalendar)
-    setIsOpenTimetable(!isOpenTimetable)
+    if (selected !== 1) {
+      setSelected(1)
+      setIsOpenCalendar(true)
+      setIsOpenTimetable(false)
+    }
   }
 
   return (
